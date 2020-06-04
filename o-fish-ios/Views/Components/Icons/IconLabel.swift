@@ -1,0 +1,39 @@
+//
+//  IconLabel.swift
+//
+//  Created on 3/23/20.
+//  Copyright © 2020 WildAid. All rights reserved.
+//
+
+import SwiftUI
+
+struct IconLabel: View {
+
+    let imagePath: String
+    let title: String
+
+    var color = Color.main
+
+    private enum Dimension {
+        static let spacing: CGFloat = 10.0
+    }
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack(spacing: Dimension.spacing) {
+                Image(systemName: imagePath)
+                Text(LocalizedStringKey(title))
+                Spacer()
+            }
+                .foregroundColor(color)
+        }
+            .padding(.horizontal)
+    }
+}
+
+struct SystemIconView_Previews: PreviewProvider {
+    static var previews: some View {
+        IconLabel(imagePath: "plus",
+                      title: "Add New Vessel")
+    }
+}
