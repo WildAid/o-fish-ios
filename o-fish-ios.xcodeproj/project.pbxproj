@@ -1122,7 +1122,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = ClusterDB;
+				ORGANIZATIONNAME = WildAid;
 				TargetAttributes = {
 					490C0DA023F6B15800283307 = {
 						CreatedOnToolsVersion = 11.3.1;
