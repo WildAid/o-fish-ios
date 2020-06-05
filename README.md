@@ -6,6 +6,8 @@ O-FISH (Officer Fishery Information Sharing Hub) is a multi-platform application
 
 This repo implements the iOS O-FISH app.
 
+Details on installing all applications making up the solution can be found [here](https://github.com/WildAid/o-fish.github.io).
+
 ## Prerequisites
 
 This is the iOS Mobile app for O-FISH. To build and use the app, you must first create and configure your serverless backend application using the [WildAid O-FISH MongoDB Realm repo](https://github.com/WildAid/o-fish-realm).
