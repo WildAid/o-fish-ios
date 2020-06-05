@@ -133,6 +133,7 @@ struct VesselView: View {
         self.vessel.homePort = self.initialVessel.homePort
         self.vessel.nationality = self.initialVessel.nationality
         self.showingPrefilledAlert = false
+        informationComplete = !vessel.isEmpty
     }
 
     /// Logic

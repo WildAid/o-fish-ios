@@ -56,8 +56,10 @@ struct DeliveryInputView: View {
                 fieldButtonClicked: self.dateFieldClicked)
                 .sheet(isPresented: $showingDatePickerSheet) {
                     DatePickerWithButton(selectButtonTitle: "Select",
-                        date: self.$delivery.date,
-                        selectButtonClicked: { self.showingDatePickerSheet = false })
+                        selectButtonClicked: { date in
+                            self.delivery.date = date
+                            self.checkAllInput()
+                            self.showingDatePickerSheet = false })
                 }
 
             if isAutofillBusiness {
@@ -132,7 +134,7 @@ struct DeliveryInputView: View {
     private func checkAllInput() {
         showingBusinessWarning = showingWarningState && delivery.business.isEmpty
         showingLocationWarning = showingWarningState && delivery.location.isEmpty
-        showingDateWarning = showingDateWarning && delivery.date == nil
+        showingDateWarning = showingWarningState && delivery.date == nil
 
         informationComplete = !delivery.business.isEmpty
             && !delivery.location.isEmpty

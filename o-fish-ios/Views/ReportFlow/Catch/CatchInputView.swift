@@ -90,8 +90,9 @@ struct CatchInputView: View {
                         text: NSLocalizedString(self.catchModel.unit.rawValue, comment: "Units localized"),
                         fieldButtonClicked: { self.showingUnitPicker = true })
                         .sheet(isPresented: self.$showingUnitPicker) {
-                            UnitPickerWithButton(unit: self.$catchModel.unit,
-                                                 selectButtonClicked: { self.showingUnitPicker = false })
+                            UnitPickerWithButton(selectButtonClicked: { unit in
+                                self.catchModel.unit = unit
+                                self.showingUnitPicker = false })
                     }
                 }
             }

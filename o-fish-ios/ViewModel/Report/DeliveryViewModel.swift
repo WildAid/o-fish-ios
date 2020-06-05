@@ -20,7 +20,11 @@ class DeliveryViewModel: ObservableObject, Identifiable {
         self.init()
         if let delivery = delivery {
             self.delivery = delivery
-            date = delivery.date as Date
+            if delivery.date == NSDate(timeIntervalSince1970: 0) {
+                date = nil
+            } else {
+                date = delivery.date as Date
+            }
             location = delivery.location
             business = delivery.business
             attachments = AttachmentsViewModel(delivery.attachments)
@@ -36,8 +40,6 @@ class DeliveryViewModel: ObservableObject, Identifiable {
         guard let delivery = delivery else { return nil }
         if let deliveryDate = date {
             delivery.date = deliveryDate as NSDate
-        } else {
-            delivery.date = NSDate()
         }
         delivery.location = location
         delivery.business = business
