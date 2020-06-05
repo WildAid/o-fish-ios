@@ -8,7 +8,7 @@ This repo implements the iOS O-FISH app.
 
 ## Prerequisites
 
-This is the iOS Mobile app for O-FISH. To build and use the app, you must first create and configure your serverless backend application using the [WildAid O-FISH MongoDB Realm repo](https://github.com/WildAid/o-fish-realm)
+This is the iOS Mobile app for O-FISH. To build and use the app, you must first create and configure your serverless backend application using the [WildAid O-FISH MongoDB Realm repo](https://github.com/WildAid/o-fish-realm).
 
 ## Building and running the app
 
