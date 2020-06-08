@@ -74,14 +74,7 @@ class RealmConnection {
         return email
     }
 
-    private static let app = RealmApp(
-        id: Constants.realmAppId,
-        configuration: AppConfiguration(
-            baseURL: Constants.realmURL,
-            transport: nil,
-            localAppName: nil,
-            localAppVersion: nil)
-    )
+    private static let app = RealmApp(id: Constants.realmAppId)
 
     static func logIn(username: String,
                       password: String,
