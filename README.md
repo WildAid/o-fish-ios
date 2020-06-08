@@ -1,5 +1,7 @@
 #  WildAid O-FISH iOS App
 
+**This app is work-in-progress**
+
 The [WildAid Marine Program](https://marine.wildaid.org/) work to protect vulnerable marine environments.
 
 O-FISH (Officer Fishery Information Sharing Hub) is a multi-platform application that enables officers to browse and record boarding report data from their mobile devices.
