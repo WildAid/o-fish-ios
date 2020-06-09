@@ -23,9 +23,9 @@ realm_app_id=your_app_id
 ```
 
 To build:
-`pod install`
-Note: you may need to resolve dependencies by doing `pod install --repo-update`
-Build/run in Xcode
+- `pod install`
+  - Note: you may need to resolve dependencies by doing `pod install --repo-update`
+- Build/run in Xcode
 
 To be able to login to the app once it is built, you need to create a user in your instance of the [O-FISH Realm App](https://github.com/WildAid/o-fish-realm).
 
