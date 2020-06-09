@@ -16,11 +16,16 @@ This is the iOS Mobile app for O-FISH. To build and use the app, you must first 
 
 ## Building and running the app
 
-Build and run the app using Xcode - but before building, set the Realm Application ID (find it for your app through the [MongoDB Realm UI](https://realm.mongodb.com)) in `o-fish/Helpers/Constant.swift`:
+Set the Realm Application ID (find it for your app through the [MongoDB Realm UI](https://realm.mongodb.com)) in `o-fish/Helpers/Constant.swift`:
 
 ```
 realm_app_id=your_app_id
 ```
 
-Before using the app, you need to create a user in your instance of the [O-FISH Realm App](https://github.com/WildAid/o-fish-realm).
+To build:
+`pod install`
+Note: you may need to resolve dependencies by doing `pod install --repo-update`
+Build/run in Xcode
+
+To be able to login to the app once it is built, you need to create a user in your instance of the [O-FISH Realm App](https://github.com/WildAid/o-fish-realm).
 
