@@ -18,9 +18,9 @@ struct LoginView: View {
     @State private var showingLoading = false
 
     private enum Dimensions {
-        static let topInputFieldPadding: CGFloat = 29.0
+        static let topInputFieldPadding: CGFloat = 32.0
         static let buttonPadding: CGFloat = 24.0
-        static let topPadding: CGFloat = 53.0
+        static let topPadding: CGFloat = 48.0
         static let padding: CGFloat = 16.0
     }
 
@@ -32,7 +32,7 @@ struct LoginView: View {
             } else {
                 KeyboardControllingScrollView {
                     Group {
-                        Image("WildAidLogin")
+                        Image("ofish-blue")
 
                         ZStack(alignment: .trailing) {
                             InputField(title: "Email/Username",
@@ -52,7 +52,9 @@ struct LoginView: View {
 
                         CallToActionButton(title: "Log In",
                             action: self.login)
-                            .padding(.vertical, Dimensions.buttonPadding)
+                            .opacity(self.username.isEmpty || self.password.isEmpty ? 0.5 : 1.0)
+                            .padding(.top, Dimensions.topInputFieldPadding)
+                            .padding(.bottom, Dimensions.buttonPadding)
                         //TODO need to implement Forgot password
                         Button(action: { print("Forgot password") }) {
                             Text("Forgot Password?")
@@ -63,7 +65,6 @@ struct LoginView: View {
                 }
             }
         }
-
             .padding(.top, Dimensions.topPadding)
             .padding(.horizontal, Dimensions.padding)
             .navigationBarBackButtonHidden(true)
