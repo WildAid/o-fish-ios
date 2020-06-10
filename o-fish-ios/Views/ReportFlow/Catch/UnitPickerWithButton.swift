@@ -10,11 +10,10 @@ import SwiftUI
 struct UnitPickerWithButton: View {
     typealias UnitSpecification = CatchViewModel.UnitSpecification
 
+    var selectButtonTitle: String = "Select"
+    var selectButtonClicked: ((UnitSpecification) -> Void)?
+    @State private var unit = UnitSpecification.allCases.first ?? .notSelected
     var options = UnitSpecification.allCases
-    @Binding var unit: UnitSpecification
-    @State var selectButtonTitle: String = "Select"
-
-    var selectButtonClicked: (() -> Void)?
 
     private enum Dimensions {
         static let buttonHeight: CGFloat = 54.0
@@ -22,7 +21,7 @@ struct UnitPickerWithButton: View {
 
     var body: some View {
         VStack {
-            Button(action: { self.selectButtonClicked?() }) {
+            Button(action: { self.selectButtonClicked?(self.unit) }) {
                 HStack {
                     Spacer()
                     Text(LocalizedStringKey(selectButtonTitle))
@@ -32,13 +31,7 @@ struct UnitPickerWithButton: View {
                     .background(Color.main)
                     .foregroundColor(.white)
             }
-            Picker("", selection:
-                Binding<String>(
-                    get: { self.unit.rawValue },
-                    set: {
-                        self.unit = UnitSpecification(rawValue: $0) ?? .notSelected
-                    })
-            ) {
+            Picker("", selection: textBinding) {
                 ForEach(options.map {$0.rawValue}) { option in
                     Text(LocalizedStringKey(option))
                 }
@@ -46,10 +39,18 @@ struct UnitPickerWithButton: View {
                 .labelsHidden()
         }
     }
+
+    private var textBinding: Binding<String> {
+        Binding<String>(
+            get: { self.unit.rawValue},
+            set: { self.unit = UnitSpecification(rawValue: $0) ?? .notSelected }
+        )
+    }
+
 }
 
 struct UnitPickerWithButton_Previews: PreviewProvider {
     static var previews: some View {
-        UnitPickerWithButton(unit: .constant(.kilograms))
+        UnitPickerWithButton()
     }
 }

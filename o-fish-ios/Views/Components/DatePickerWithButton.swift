@@ -10,39 +10,25 @@ import SwiftUI
 struct DatePickerWithButton: View {
 
     var selectButtonTitle: String = "Select"
-    @Binding private(set) var date: Date?
+    @State private var date = Date()
 
-    var selectButtonClicked: (() -> Void)?
+    var selectButtonClicked: ((Date) -> Void)?
 
     var body: some View {
         VStack {
-            Button(action: { self.selectButtonClicked?() }) {
+            Button(action: { self.selectButtonClicked?(self.date) }) {
                 HStack {
                     Text(selectButtonTitle)
                 }
             }
-            DatePicker("", selection: dateBinding, in: ...Date())
+            DatePicker("", selection: $date, in: ...Date())
                 .labelsHidden()
         }
-    }
-
-    private var dateBinding: Binding<Date> {
-        Binding<Date>(
-            get: {
-                if let date = self.date {
-                    return date
-                } else {
-                    return Date()
-                }
-        },
-            set: {
-                self.date = $0
-        })
     }
 }
 
 struct DatePickerWithButton_Previews: PreviewProvider {
     static var previews: some View {
-        DatePickerWithButton(date: .constant(Date()))
+        DatePickerWithButton()
     }
 }
