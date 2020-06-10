@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,8 +15,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WilAidSplash" translatesAutoresizingMaskIntoConstraints="NO" id="Z5Y-vF-ibQ">
-                                <rect key="frame" x="127" y="369.5" width="160" height="157"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ofish-white" translatesAutoresizingMaskIntoConstraints="NO" id="Z5Y-vF-ibQ">
+                                <rect key="frame" x="69.5" y="353" width="275" height="190"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="7NI-6C-ube"/>
+                                    <constraint firstAttribute="height" constant="190" id="HK6-np-LaT"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.039215686274509803" green="0.25098039215686274" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
@@ -33,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="WilAidSplash" width="160" height="157"/>
+        <image name="ofish-white" width="207" height="143"/>
     </resources>
 </document>
