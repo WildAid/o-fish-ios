@@ -21,16 +21,7 @@ struct UnitPickerWithButton: View {
 
     var body: some View {
         VStack {
-            Button(action: { self.selectButtonClicked?(self.unit) }) {
-                HStack {
-                    Spacer()
-                    Text(LocalizedStringKey(selectButtonTitle))
-                    Spacer()
-                }
-                    .frame(height: Dimensions.buttonHeight)
-                    .background(Color.main)
-                    .foregroundColor(.white)
-            }
+            RectangleButton(title: selectButtonTitle, action: { self.selectButtonClicked?(self.unit) })
             Picker("", selection: textBinding) {
                 ForEach(options.map {$0.rawValue}) { option in
                     Text(LocalizedStringKey(option))

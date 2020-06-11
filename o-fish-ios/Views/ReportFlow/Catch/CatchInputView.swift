@@ -12,12 +12,10 @@ struct CatchInputView: View {
     @ObservedObject var catchModel: CatchViewModel
     let index: Int
     var removeClicked: ((CatchViewModel) -> Void)?
-    var attachClicked: ((CatchViewModel) -> Void)? // TODO fixme connect attaches
 
     /// Navigation states
     @State private var showingSpeciesPicker = false
     @State private var showingQunatityTypePicker = false
-    @State private var showingUnitPicker = false
 
     private enum Dimensions {
         static let spacing: CGFloat = 16
@@ -88,12 +86,7 @@ struct CatchInputView: View {
 
                     ButtonField(title: "Unit",
                         text: NSLocalizedString(self.catchModel.unit.rawValue, comment: "Units localized"),
-                        fieldButtonClicked: { self.showingUnitPicker = true })
-                        .sheet(isPresented: self.$showingUnitPicker) {
-                            UnitPickerWithButton(selectButtonClicked: { unit in
-                                self.catchModel.unit = unit
-                                self.showingUnitPicker = false })
-                    }
+                        fieldButtonClicked: self.showUnitPickerClicked)
                 }
             }
 
@@ -126,6 +119,26 @@ struct CatchInputView: View {
 
     private var countQuantitySelected: Bool {
         catchModel.quantityType.contains(.count)
+    }
+
+    /// Actions
+
+    private func showUnitPickerClicked() {
+        // TODO: for some reason this works only from action and not from viewModifier
+        // TODO: review when viewModifier actions will be available
+
+        let popoverId = UUID().uuidString
+
+        let unitPickerSelectClicked = { (unit: UnitPickerWithButton.UnitSpecification) in
+            self.catchModel.unit = unit
+            self.updateCatchStatus()
+            PopoverManager.shared.hidePopover(id: popoverId)
+        }
+
+        PopoverManager.shared.showPopover(id: popoverId) {
+            UnitPickerWithButton(selectButtonClicked: unitPickerSelectClicked)
+                .background(Color.white)
+        }
     }
 
     /// Internal logic

@@ -13,7 +13,6 @@ struct DeliveryInputView: View {
     @Binding var informationComplete: Bool
     @Binding var showingWarningState: Bool
 
-    @State private var showingDatePickerSheet = false
     @State private var showingBusinessPickerSheet = false
     @State private var isAutofillBusiness = true
 
@@ -53,14 +52,7 @@ struct DeliveryInputView: View {
             ButtonField(title: "Date",
                 text: deliveryDate,
                 showingWarning: showingDateWarning,
-                fieldButtonClicked: self.dateFieldClicked)
-                .sheet(isPresented: $showingDatePickerSheet) {
-                    DatePickerWithButton(selectButtonTitle: "Select",
-                        selectButtonClicked: { date in
-                            self.delivery.date = date
-                            self.checkAllInput()
-                            self.showingDatePickerSheet = false })
-                }
+                fieldButtonClicked: dateFieldClicked)
 
             if isAutofillBusiness {
                 VStack {
@@ -116,8 +108,22 @@ struct DeliveryInputView: View {
     }
 
     private func dateFieldClicked() {
-        showingDatePickerSheet = true
+        // TODO: for some reason this works only from action and not from viewModifier
+        // TODO: review when viewModifier actions will be available
+
+        let popoverId = UUID().uuidString
         activeEditableComponentId = self.delivery.id
+
+        let datePickerSelectClicked = { (date: Date) in
+            self.delivery.date = date
+            self.checkAllInput()
+            PopoverManager.shared.hidePopover(id: popoverId)
+        }
+
+        PopoverManager.shared.showPopover(id: popoverId) {
+            DatePickerWithButton(selectButtonClicked: datePickerSelectClicked)
+                .background(Color.white)
+        }
     }
 
     private func showBusinessPicker() {

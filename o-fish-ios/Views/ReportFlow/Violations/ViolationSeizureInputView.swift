@@ -10,8 +10,6 @@ import SwiftUI
 struct ViolationSeizureInputView: View {
     @ObservedObject var seizure: SeizuresViewModel
 
-    var attachClicked: ((SeizuresViewModel) -> Void)? // TODO fixme connect attaches
-
     private enum Dimensions {
         static let spacing: CGFloat = 16
         static let textFrameHeight: CGFloat = 45

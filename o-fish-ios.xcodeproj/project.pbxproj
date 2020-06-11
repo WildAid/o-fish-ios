@@ -176,6 +176,7 @@
 		BCE483F97684587434E8421E /* ReportNavigationRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE482077A38D1F61E84B2E2 /* ReportNavigationRootView.swift */; };
 		BCE4840F4C0C0F2758546FCF /* ViolationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48F5852801DEB5F962739 /* ViolationView.swift */; };
 		BCE484202B483EC9484CB5AB /* TopTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489F610C0078AE3ED2944 /* TopTabBarContainerView.swift */; };
+		BCE4848AF540CA27E798B49F /* UIView+Constraings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE485EA5EF8E62DFA007248 /* UIView+Constraings.swift */; };
 		BCE484BF3E04A46029372B13 /* CrewMemberStaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48F00468932867B086CA2 /* CrewMemberStaticView.swift */; };
 		BCE485037FD0F27E83D60FA2 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48F582115EDDFFD929037 /* CheckBox.swift */; };
 		BCE48509E0E079B8621F7794 /* CatchStaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE481999CBFC7C934B77A3E /* CatchStaticView.swift */; };
@@ -183,6 +184,7 @@
 		BCE4854AADAFBC1B0BD9ECFB /* ChooseViolationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE488D24416A6BC37C41F71 /* ChooseViolationsView.swift */; };
 		BCE4856F6CE56291D9BCB13E /* VesselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D28C07E6FB0EA7DE384 /* VesselView.swift */; };
 		BCE485929167780EDC77D607 /* Color+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4856CC007A1EF1F4C7D48 /* Color+Design.swift */; };
+		BCE485FB82E626571C19B582 /* RectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4805F57C9DCAF47BCB4FE /* RectangleButton.swift */; };
 		BCE485FD5632C4C598D43309 /* ViolationCrewMemberSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4867F873ECC8BEEF0AF47 /* ViolationCrewMemberSelectView.swift */; };
 		BCE486016027CCB045AFECB5 /* VesselInformationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4869550ED589453572C7E /* VesselInformationInputView.swift */; };
 		BCE48602B111BBC1D7148B41 /* CountryPickerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4824D90AA3E6903C93562 /* CountryPickerDataView.swift */; };
@@ -218,6 +220,7 @@
 		BCE48D2E80CF82657D03614D /* ExclamationIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48B94994CFA0A8C5C943F /* ExclamationIconView.swift */; };
 		BCE48D2FCD0F20F23AEC0EF4 /* ChooseNationalityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48554847307C2A23A9DEA /* ChooseNationalityView.swift */; };
 		BCE48D3B49087F1687BB71D2 /* ScrollableTabBarItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE485E9BD233698DEE6D897 /* ScrollableTabBarItemView.swift */; };
+		BCE48D3F831CFB459F1F6F56 /* PopoverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE483BB45A7BCD0ADC62551 /* PopoverManager.swift */; };
 		BCE48D4A017A5B4B64690CCE /* ViolationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE483315BCBE777464D2FF4 /* ViolationPickerView.swift */; };
 		BCE48DD44979CC96F9372607 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE485E3BAF07E6F7052F9FB /* LoadingIndicatorView.swift */; };
 		BCE48DD4CE4154294AE96D20 /* SegmentedField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489DDA8774B9D56F44157 /* SegmentedField.swift */; };
@@ -388,6 +391,7 @@
 		49FDCD8F241E41EB00C00574 /* NoInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInputField.swift; sourceTree = "<group>"; };
 		542E5D76C2521F4603E2BDEA /* Pods-o-fish-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-o-fish-ios.debug.xcconfig"; path = "Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		7F135385C428BA5F9EB62154 /* Pods-o-fish-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-o-fish-ios.release.xcconfig"; path = "Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios.release.xcconfig"; sourceTree = "<group>"; };
+		BCE4805F57C9DCAF47BCB4FE /* RectangleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleButton.swift; sourceTree = "<group>"; };
 		BCE4817C8B123F01E50A23D9 /* MultiRowPickerWithButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiRowPickerWithButton.swift; sourceTree = "<group>"; };
 		BCE481836AE46B8919574CA9 /* RowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		BCE481999CBFC7C934B77A3E /* CatchStaticView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchStaticView.swift; sourceTree = "<group>"; };
@@ -399,6 +403,7 @@
 		BCE4827EACF438010EAE5BA1 /* ViolationCreateCrewMemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationCreateCrewMemberView.swift; sourceTree = "<group>"; };
 		BCE482B62D2BFC22CCFF4ABA /* View+Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Shadow.swift"; sourceTree = "<group>"; };
 		BCE483315BCBE777464D2FF4 /* ViolationPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationPickerView.swift; sourceTree = "<group>"; };
+		BCE483BB45A7BCD0ADC62551 /* PopoverManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverManager.swift; sourceTree = "<group>"; };
 		BCE483CAE164B70D857A62B0 /* ReportSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportSummaryView.swift; sourceTree = "<group>"; };
 		BCE48456167E25D77C838694 /* CrewMemberShortView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrewMemberShortView.swift; sourceTree = "<group>"; };
 		BCE484E6974BBB4F08413A3E /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
@@ -411,6 +416,7 @@
 		BCE485D2BA893C25D49E2A05 /* BoardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardButton.swift; sourceTree = "<group>"; };
 		BCE485E3BAF07E6F7052F9FB /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		BCE485E9BD233698DEE6D897 /* ScrollableTabBarItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabBarItemView.swift; sourceTree = "<group>"; };
+		BCE485EA5EF8E62DFA007248 /* UIView+Constraings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraings.swift"; sourceTree = "<group>"; };
 		BCE4861F5EE6F1A6E55D35D4 /* VesselIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselIconView.swift; sourceTree = "<group>"; };
 		BCE4867F873ECC8BEEF0AF47 /* ViolationCrewMemberSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationCrewMemberSelectView.swift; sourceTree = "<group>"; };
 		BCE4869550ED589453572C7E /* VesselInformationInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselInformationInputView.swift; sourceTree = "<group>"; };
@@ -684,6 +690,7 @@
 				BCE48F54CA4C3989E363C19A /* String+Identifiable.swift */,
 				BCE48EFBBE1997660C4F1EE6 /* Collection+EnumeratedArray.swift */,
 				49674E3E2450AD190023ABC6 /* Array_OptionalAppend.swift */,
+				BCE485EA5EF8E62DFA007248 /* UIView+Constraings.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -732,6 +739,8 @@
 				BCE4882A12D87E9A66F57B10 /* ScrollableTabBar */,
 				BCE486BBFA7E770F010DA1AA /* AlertItem.swift */,
 				BCE487147B3BBFF7F30D24A0 /* KeyboardControlling */,
+				BCE48B73700857DD26654AED /* Popover */,
+				BCE4805F57C9DCAF47BCB4FE /* RectangleButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1018,6 +1027,14 @@
 				BCE483CAE164B70D857A62B0 /* ReportSummaryView.swift */,
 			);
 			path = ReportList;
+			sourceTree = "<group>";
+		};
+		BCE48B73700857DD26654AED /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				BCE483BB45A7BCD0ADC62551 /* PopoverManager.swift */,
+			);
+			path = Popover;
 			sourceTree = "<group>";
 		};
 		BCE48CAC6D64429D408B7A01 /* swiftlint */ = {
@@ -1460,6 +1477,9 @@
 				BCE48D2E80CF82657D03614D /* ExclamationIconView.swift in Sources */,
 				BCE4814543022D42A642CA4A /* KeyboardController.swift in Sources */,
 				BCE488F38035E437A264E0A5 /* KeyboardControllingScrollView.swift in Sources */,
+				BCE48D3F831CFB459F1F6F56 /* PopoverManager.swift in Sources */,
+				BCE4848AF540CA27E798B49F /* UIView+Constraings.swift in Sources */,
+				BCE485FB82E626571C19B582 /* RectangleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

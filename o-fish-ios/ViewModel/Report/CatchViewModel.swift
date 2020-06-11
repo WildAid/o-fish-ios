@@ -52,7 +52,7 @@ class CatchViewModel: ObservableObject, Identifiable {
     }
 
     var isEmpty: Bool {
-        fish.isEmpty && quantityType.contains(.notSelected) && number == 0 && weight == 0
+        fish.isEmpty && quantityType.contains(.notSelected) && number == 0 && weight == 0 && unit == .notSelected
     }
 
     convenience init(_ fishCatch: Catch?) {
