@@ -25,41 +25,41 @@ struct RemovableViewModifier: ViewModifier {
         HStack(spacing: Dimensions.spacing) {
             content
 
-                if self.showingRemove {
-                    Button(action: self.action) {
-                        VStack {
-                            Spacer()
-                            Image(systemName: "trash")
-                            Text(NSLocalizedString("Remove", comment: ""))
-                            Spacer()
-                        }
+            if self.showingRemove {
+                Button(action: self.action) {
+                    VStack {
+                        Spacer()
+                        Image(systemName: "trash")
+                        Text(NSLocalizedString("Remove", comment: ""))
+                        Spacer()
                     }
-                        .padding(.horizontal, Dimensions.spacing)
-                        .background(Color.red)
-                        .foregroundColor(Color.white)
-                        .transition(.slide)
                 }
+                    .padding(.horizontal, Dimensions.spacing)
+                    .background(Color.red)
+                    .foregroundColor(Color.white)
+                    .transition(.slide)
+            }
         }
             .padding(.trailing, showingRemove ? Dimensions.trailingPadding : Dimensions.noPadding)
             .gesture(DragGesture()
-            .onChanged({ value in
-                if value.translation.width < 0 && self.isActive {
-                    withAnimation {
-                        self.showingRemove = true
+                .onChanged({ value in
+                    if value.translation.width < 0 && self.isActive {
+                        withAnimation {
+                            self.showingRemove = true
+                        }
                     }
-                }
-                if value.translation.width > 0 {
-                    withAnimation {
-                        self.showingRemove = false
+                    if value.translation.width > 0 {
+                        withAnimation {
+                            self.showingRemove = false
+                        }
                     }
-                }
-            })
+                })
             )
             .onTapGesture {
                 withAnimation {
                     self.showingRemove = false
                 }
-        }
+            }
     }
 }
 

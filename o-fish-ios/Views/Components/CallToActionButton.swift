@@ -13,9 +13,7 @@ struct CallToActionButton: View {
     let action: () -> Void
 
     private enum Dimensions {
-        static let spacing: CGFloat = 16
         static let labelSpacing: CGFloat = 14
-        static let lineWidth: CGFloat = 1
         static let lineLimit = 1
     }
 

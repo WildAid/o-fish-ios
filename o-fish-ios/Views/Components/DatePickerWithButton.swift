@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct DatePickerWithButton: View {
-
     var selectButtonTitle: String = "Select"
-    @State private var date = Date()
-
     var selectButtonClicked: ((Date) -> Void)?
+
+    @State private var date = Date()
 
     var body: some View {
         VStack {
-            Button(action: { self.selectButtonClicked?(self.date) }) {
-                HStack {
-                    Text(selectButtonTitle)
-                }
-            }
+            RectangleButton(title: selectButtonTitle, action: { self.selectButtonClicked?(self.date) })
             DatePicker("", selection: $date, in: ...Date())
                 .labelsHidden()
         }
