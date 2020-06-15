@@ -25,6 +25,13 @@ struct MapView: UIViewRepresentable {
         let mapView = MKMapView()
         let radius = CLLocationDistance(settings.intialZoomLevel)
 
+        if let boarderCoordinates = AreaManager.shared.readJson(fileName: "test") {
+            for boarderLine in boarderCoordinates {
+                let polyline = MKPolyline(coordinates: boarderLine, count: boarderLine.count)
+                mapView.addOverlay(polyline)
+            }
+        }
+
         mapView.region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: radius, longitudinalMeters: radius)
         mapView.delegate = context.coordinator
         return mapView
@@ -46,6 +53,18 @@ struct MapView: UIViewRepresentable {
                 print("centerCoordinate: \(self.parent.centerCoordinate.latitude), \(self.parent.centerCoordinate.longitude)")
                 mapView.setCenter(self.parent.centerCoordinate, animated: true)
             }
+        }
+
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            if overlay is MKPolyline {
+                let polylineRender = MKPolylineRenderer(overlay: overlay)
+                polylineRender.strokeColor = UIColor.main
+                polylineRender.lineWidth = 1.0
+
+                return polylineRender
+            }
+
+            return MKOverlayRenderer()
         }
     }
 }

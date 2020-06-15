@@ -11,5 +11,5 @@ struct Constants {
 
     static let realmAppId = "your-realm-app-id"
 
-    static let DefaultLocation = CLLocationCoordinate2D(latitude: 51.506520923981554, longitude: -0.10689139236939127)
+    static let DefaultLocation = CLLocationCoordinate2D(latitude: 34.0813919, longitude: -120.0168590)
 }

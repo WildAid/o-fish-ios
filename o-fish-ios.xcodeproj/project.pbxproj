@@ -20,9 +20,11 @@
 		30234A27244DAFEE00244997 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30234A26244DAFEE00244997 /* DeliveryView.swift */; };
 		30234A29244DAFF400244997 /* EMSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30234A28244DAFF400244997 /* EMSView.swift */; };
 		30234A2B244DAFFB00244997 /* VesselInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30234A2A244DAFFB00244997 /* VesselInformationView.swift */; };
+		303718A92497993D0012CDDC /* AreaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303718A82497993D0012CDDC /* AreaManager.swift */; };
 		303A3F10241A4EAE000DCADB /* ViolationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A3F0F241A4EAE000DCADB /* ViolationInputView.swift */; };
 		303A3F14241A4ECB000DCADB /* ViolationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A3F13241A4ECB000DCADB /* ViolationsView.swift */; };
 		303A3F18241A9591000DCADB /* ViolationStaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A3F17241A9591000DCADB /* ViolationStaticView.swift */; };
+		303EDD5D2493A55400BF2B08 /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 303EDD5C2493A55400BF2B08 /* test.json */; };
 		307F47BC247C5362003D46B4 /* CrewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307F47BB247C5362003D46B4 /* CrewItemView.swift */; };
 		308A75352476704000C10462 /* PersonIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A75342476704000C10462 /* PersonIconView.swift */; };
 		308A75372476B99C00C10462 /* NoteFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A75362476B99C00C10462 /* NoteFieldView.swift */; };
@@ -246,9 +248,11 @@
 		30234A26244DAFEE00244997 /* DeliveryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
 		30234A28244DAFF400244997 /* EMSView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMSView.swift; sourceTree = "<group>"; };
 		30234A2A244DAFFB00244997 /* VesselInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselInformationView.swift; sourceTree = "<group>"; };
+		303718A82497993D0012CDDC /* AreaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaManager.swift; sourceTree = "<group>"; };
 		303A3F0F241A4EAE000DCADB /* ViolationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationInputView.swift; sourceTree = "<group>"; };
 		303A3F13241A4ECB000DCADB /* ViolationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationsView.swift; sourceTree = "<group>"; };
 		303A3F17241A9591000DCADB /* ViolationStaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationStaticView.swift; sourceTree = "<group>"; };
+		303EDD5C2493A55400BF2B08 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		307F47BB247C5362003D46B4 /* CrewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewItemView.swift; sourceTree = "<group>"; };
 		308A75342476704000C10462 /* PersonIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonIconView.swift; sourceTree = "<group>"; };
 		308A75362476B99C00C10462 /* NoteFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFieldView.swift; sourceTree = "<group>"; };
@@ -680,6 +684,7 @@
 		493CDFC723FEBA9300516048 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				303EDD5C2493A55400BF2B08 /* test.json */,
 				493B5CDD245C1DDD00071740 /* Constants.swift */,
 				49674E422451D3780023ABC6 /* ImageLoading */,
 				3093806624460A6D00E23350 /* UIImage+resize.swift */,
@@ -749,6 +754,7 @@
 			isa = PBXGroup;
 			children = (
 				4980765C242E82AB00D463F4 /* MapDisplayView.swift */,
+				303718A82497993D0012CDDC /* AreaManager.swift */,
 				493CDFDD2403CDBA00516048 /* MapView.swift */,
 				493CDFDF2403CDD600516048 /* MapComponentView.swift */,
 				493CDFE524044AE700516048 /* LocationCoordsView.swift */,
@@ -1173,6 +1179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				490C0DB123F6B15A00283307 /* LaunchScreen.storyboard in Resources */,
+				303EDD5D2493A55400BF2B08 /* test.json in Resources */,
 				FBE107AE247FFF87001DA29C /* Localizable.strings in Resources */,
 				490C0DAE23F6B15A00283307 /* Preview Assets.xcassets in Resources */,
 				490C0DAB23F6B15A00283307 /* Assets.xcassets in Resources */,
@@ -1292,6 +1299,7 @@
 				490C0DBE23FAB49300283307 /* MenuData.swift in Sources */,
 				493CDFEA24044F1100516048 /* LabeledDoubleInput.swift in Sources */,
 				493CDFE02403CDD600516048 /* MapComponentView.swift in Sources */,
+				303718A92497993D0012CDDC /* AreaManager.swift in Sources */,
 				49E0BE4D24129B5B0083228C /* NotesView.swift in Sources */,
 				49674E462451D3DE0023ABC6 /* AsyncImage.swift in Sources */,
 				30F4D604245C727500543F54 /* ChooseBusinessView.swift in Sources */,
