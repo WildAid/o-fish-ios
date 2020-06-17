@@ -15,8 +15,7 @@ struct MainNavigationRootView: View {
     var body: some View {
         NavigationView {
             if isLoggedIn {
-                // TODO: Use the real user once the custom data is available from the Realm SDK
-                PatrolBoatView(user: .sample, onDuty: DutyState(user: .sample), isLoggedIn: self.$isLoggedIn)
+                PatrolBoatView(isLoggedIn: self.$isLoggedIn)
             } else {
                 LoginView(loggedIn: self.$isLoggedIn)
             }

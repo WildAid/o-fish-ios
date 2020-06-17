@@ -36,14 +36,13 @@ struct LoadedStateView: View {
             ScrollView {
                 VStack {
                     ForEach(storedReports) { item in
-                        NavigationLink(destination: LoadingVesselRecordView(report: item,
-                                                                            onDuty: self.onDuty)) {
-                                                                                VesselItemView(report: item)
-                        }
+                        NavigationLink(destination: LoadingVesselRecordView(
+                            report: item,
+                            onDuty: self.onDuty)) { VesselItemView(report: item) }
                     }
 
                     if showingAddVessel {
-                        NavigationLink(destination: ReportNavigationRootView(report: nil)) {
+                        NavigationLink(destination: ReportNavigationRootView()) {
                             VStack(spacing: Dimensions.noSpacing) {
                                 IconLabel(imagePath: "plus", title: "Add New Vessel")
                                     .padding(.vertical, Dimensions.padding)
@@ -60,9 +59,10 @@ struct LoadedStateView: View {
 
 struct LoadedStateView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadedStateView(onDuty: DutyState(user: UserViewModel()),
-                        storedReports: .constant([.sample, .sample]),
-                        showingRecentBoardings: .constant(true),
-                        showingAddVessel: true)
+        LoadedStateView(
+            onDuty: DutyState(user: UserViewModel()),
+            storedReports: .constant([.sample, .sample]),
+            showingRecentBoardings: .constant(true),
+            showingAddVessel: true)
     }
 }

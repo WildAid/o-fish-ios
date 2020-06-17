@@ -14,7 +14,6 @@ class ReportViewModel: ObservableObject, Identifiable {
     var id = ObjectId.generate().stringValue
     @Published var location = LocationViewModel()
     @Published var date = Date()
-    // TODO: should use the email address of the currently logged-in user
     @Published var reportingOfficer = UserViewModel()
     @Published var vessel = BoatViewModel()
     @Published var captain = CrewMemberViewModel()
@@ -24,6 +23,9 @@ class ReportViewModel: ObservableObject, Identifiable {
 
     init() {
         self.captain.isCaptain = true
+        self.reportingOfficer.email = RealmConnection.emailAddress
+        self.reportingOfficer.name.first = RealmConnection.firstName
+        self.reportingOfficer.name.last = RealmConnection.lastName
     }
 
     convenience init (_ report: Report) {

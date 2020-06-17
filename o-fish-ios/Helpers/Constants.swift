@@ -9,7 +9,7 @@ import CoreLocation
 
 struct Constants {
 
-    static let realmAppId = "your-realm-app-id"
+    static let realmAppId = "wildaid-o-fish-sskep"
 
     static let DefaultLocation = CLLocationCoordinate2D(latitude: 51.506520923981554, longitude: -0.10689139236939127)
 }
