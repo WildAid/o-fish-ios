@@ -12,31 +12,33 @@ struct AddAttachmentsButton: View {
 
     @State private var showingActionSheet = false
     @State private var showingPhotoTaker = false
-    @State private var newPhotoID = ""
 
     var body: some View {
         Button(action: { self.showingActionSheet.toggle() }) {
             AddAttachmentIconView()
         }
             .actionSheet(isPresented: $showingActionSheet) {
-                ActionSheet(title: Text("Choose the type of attachments"),
-                            message: nil,
-                            buttons: [.default(Text("Photo")) { self.showingPhotoTaker = true },
-                                      .default(Text("Note")) {
-                                        self.attachments.notes.append(Note(text: ""))
-                                },
-                                      .default(Text("Cancel"))])
+                chooseTypeActionSheet
             }
-            .sheet(isPresented: $showingPhotoTaker) {
-                PhotoCaptureView(
-                    showingPhotoTaker: self.$showingPhotoTaker,
-                    photoID: self.$newPhotoID,
-                    reportID: self.attachments.id,
-                    photoTaken: {
-                        self.attachments.photoIDs.append(self.newPhotoID)
-                }
-                )
-            }
+    }
+
+    private var chooseTypeActionSheet: ActionSheet {
+        ActionSheet(title: Text("Choose the type of attachments"),
+            message: nil,
+            buttons: [.default(Text("Photo")) {
+                self.showPhotoTaker()
+            },
+                .default(Text("Note")) {
+                    self.attachments.notes.append(Note(text: ""))
+                },
+                .default(Text("Cancel"))])
+    }
+
+    private func showPhotoTaker() {
+        PhotoCaptureController.show(reportID: self.attachments.id) { controller, photoId in
+            self.attachments.photoIDs.append(photoId)
+            controller.hide()
+        }
     }
 }
 

@@ -74,8 +74,7 @@
 		493CE0162405495100516048 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CE0152405495100516048 /* BackButton.swift */; };
 		493CE01924054FD500516048 /* ReportSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CE01824054FD500516048 /* ReportSummary.swift */; };
 		493CE01B240555CA00516048 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CE01A240555CA00516048 /* Date.swift */; };
-		4946C108240D4C1B009FB1D9 /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946C106240D4C1B009FB1D9 /* PhotoCaptureView.swift */; };
-		4946C109240D4C1B009FB1D9 /* PhotoTaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946C107240D4C1B009FB1D9 /* PhotoTaker.swift */; };
+		4946C108240D4C1B009FB1D9 /* PhotoCaptureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4946C106240D4C1B009FB1D9 /* PhotoCaptureController.swift */; };
 		495AC6F5243F0BBB00EA11D3 /* SafetyLevelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495AC6F4243F0BBB00EA11D3 /* SafetyLevelViewModel.swift */; };
 		495AC6F9243F176C00EA11D3 /* SeizureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495AC6F8243F176C00EA11D3 /* SeizureViewModel.swift */; };
 		495F1B122412C47F00377D54 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495F1B112412C47F00377D54 /* MultilineTextView.swift */; };
@@ -159,7 +158,7 @@
 		49FDCD74241D274200C00574 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDCD73241D274200C00574 /* PhotoViewModel.swift */; };
 		49FDCD8E241E200000C00574 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDCD8D241E200000C00574 /* Photo.swift */; };
 		49FDCD90241E41EB00C00574 /* NoInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDCD8F241E41EB00C00574 /* NoInputField.swift */; };
-		88727904DBC9DF0474076256 /* Pods_o_fish_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86693C19FBEDFD36B140C62 /* Pods_o_fish_ios.framework */; };
+		A1404A98C1D9F0F6A7FFDF3F /* Pods_o_fish_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */; };
 		BCE48044A1B3C063E89649B4 /* CallToActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48AB83BB50A193A6B4113 /* CallToActionButton.swift */; };
 		BCE4808C711680D5EDD03D5C /* EditIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE481A493BE842563164A56 /* EditIconView.swift */; };
 		BCE480D0F3CA40D362612037 /* String+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48F54CA4C3989E363C19A /* String+Identifiable.swift */; };
@@ -233,6 +232,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_o_fish_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		300C4AE924190226000A2763 /* ActivityItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityItemView.swift; sourceTree = "<group>"; };
 		300C4AEA24190226000A2763 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		300C4AF0241904A1000A2763 /* CrewMemberInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrewMemberInputView.swift; sourceTree = "<group>"; };
@@ -304,8 +304,7 @@
 		493CE0152405495100516048 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		493CE01824054FD500516048 /* ReportSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSummary.swift; sourceTree = "<group>"; };
 		493CE01A240555CA00516048 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		4946C106240D4C1B009FB1D9 /* PhotoCaptureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
-		4946C107240D4C1B009FB1D9 /* PhotoTaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTaker.swift; sourceTree = "<group>"; };
+		4946C106240D4C1B009FB1D9 /* PhotoCaptureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureController.swift; sourceTree = "<group>"; };
 		495AC6F4243F0BBB00EA11D3 /* SafetyLevelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyLevelViewModel.swift; sourceTree = "<group>"; };
 		495AC6F8243F176C00EA11D3 /* SeizureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeizureViewModel.swift; sourceTree = "<group>"; };
 		495F1B112412C47F00377D54 /* MultilineTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
@@ -461,7 +460,6 @@
 		BCE48FAB856639D53CABC76C /* ChooseSpeciesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSpeciesView.swift; sourceTree = "<group>"; };
 		BCE48FCB06AC5B25AF1BCA74 /* CatchOnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchOnBoardView.swift; sourceTree = "<group>"; };
 		BCE48FD07A95AD6916693E79 /* ChooseQuantityTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseQuantityTypeView.swift; sourceTree = "<group>"; };
-		E86693C19FBEDFD36B140C62 /* Pods_o_fish_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_o_fish_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBC9242D2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBC9242E2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBE107AF247FFF87001DA29C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -473,7 +471,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88727904DBC9DF0474076256 /* Pods_o_fish_ios.framework in Frameworks */,
+				A1404A98C1D9F0F6A7FFDF3F /* Pods_o_fish_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,8 +765,7 @@
 		4946C0DD240D29DB009FB1D9 /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
-				4946C107240D4C1B009FB1D9 /* PhotoTaker.swift */,
-				4946C106240D4C1B009FB1D9 /* PhotoCaptureView.swift */,
+				4946C106240D4C1B009FB1D9 /* PhotoCaptureController.swift */,
 				49674E402450BF900023ABC6 /* PhotoThumbNail.swift */,
 				49674E51245322980023ABC6 /* PhotoThumbNailGrid.swift */,
 				49674E5524535E2A0023ABC6 /* PhotosDisplayView.swift */,
@@ -1093,7 +1090,7 @@
 		DAE9DCD121DA99696B456B9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E86693C19FBEDFD36B140C62 /* Pods_o_fish_ios.framework */,
+				01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1120,7 +1117,7 @@
 				490C0D9D23F6B15800283307 /* Sources */,
 				490C0D9E23F6B15800283307 /* Frameworks */,
 				490C0D9F23F6B15800283307 /* Resources */,
-				F2CBD6C378906DE97308C56C /* [CP] Embed Pods Frameworks */,
+				8089F24B445E2755BA001DB6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1182,6 +1179,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8089F24B445E2755BA001DB6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C3BA199732B0F2466F7F7A99 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1202,23 +1216,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F2CBD6C378906DE97308C56C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FB7596382406787600DA7B70 /* ShellScript */ = {
@@ -1341,8 +1338,7 @@
 				49FDCD5B241D1DCF00C00574 /* OffenceViewModel.swift in Sources */,
 				3093805E24460A2A00E23350 /* VesselRecordView.swift in Sources */,
 				49669329243E304900AC4D87 /* ActivityViewModel.swift in Sources */,
-				4946C108240D4C1B009FB1D9 /* PhotoCaptureView.swift in Sources */,
-				4946C109240D4C1B009FB1D9 /* PhotoTaker.swift in Sources */,
+				4946C108240D4C1B009FB1D9 /* PhotoCaptureController.swift in Sources */,
 				3013CA7C2424AF7A00D2FF60 /* PatrolBoatView.swift in Sources */,
 				BCE480D709F963CBC526C21F /* ButtonField.swift in Sources */,
 				4977D0EB244864E700E3E409 /* NoteStaticView.swift in Sources */,
