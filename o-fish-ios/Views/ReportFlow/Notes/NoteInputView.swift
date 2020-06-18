@@ -15,7 +15,6 @@ struct NoteInputView: View {
     var deleteClicked: ((AnnotatedNoteViewModel) -> Void)?
 
     @State private var showingPhotoTaker = false
-    @State private var newPhotoID = ""
 
     private enum Dimensions {
         static let spacing: CGFloat = 16
@@ -26,7 +25,7 @@ struct NoteInputView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack {
                 TitleLabel(title: NSLocalizedString("Note", comment: "") + " \(noteIndex + 1)")
-                Button(action: { self.showingPhotoTaker = true }) {
+                Button(action: showPhotoTaker) {
                     AddPhotoIconView()
                 }
             }
@@ -39,22 +38,21 @@ struct NoteInputView: View {
                 PhotoIDsDisplayView(photoIDs: annotatedNote.photoIDs, deletePhoto: deletePhoto)
             }
             SectionButton(title: "Remove Note",
-                          systemImageName: "minus",
-                          callingToAction: false,
-                          action: { self.deleteClicked?(self.annotatedNote) })
+                systemImageName: "minus",
+                callingToAction: false,
+                action: { self.deleteClicked?(self.annotatedNote) })
                 .padding(.bottom, Dimensions.spacing)
-        }
-        .sheet(isPresented: $showingPhotoTaker) {
-            PhotoCaptureView(
-                showingPhotoTaker: self.$showingPhotoTaker,
-                photoID: self.$newPhotoID,
-                reportID: self.reportID,
-                photoTaken: { self.annotatedNote.photoIDs.append(self.newPhotoID) }
-            )
         }
     }
 
-    func deletePhoto(photo: PhotoViewModel) {
+    private func showPhotoTaker() {
+        PhotoCaptureController.show(reportID: self.reportID) { controller, photoId in
+            self.annotatedNote.photoIDs.append(photoId)
+            controller.hide()
+        }
+    }
+
+    private func deletePhoto(photo: PhotoViewModel) {
         annotatedNote.photoIDs.removeAll(where: { $0.id == photo.id })
         photo.delete()
     }
