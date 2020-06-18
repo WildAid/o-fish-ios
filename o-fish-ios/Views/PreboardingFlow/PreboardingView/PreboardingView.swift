@@ -80,25 +80,26 @@ struct PreboardingView: View {
     var body: some View {
 
         VStack {
-            SearchBarView(searchText: Binding<String>(
-                get: { self.searchText },
-                set: { self.searchText = $0
-                    if !$0.isEmpty {
-                        self.state = .loading
-                        let debounceHandler: () -> Void = {
-                            self.loadReports(with: self.searchText)
+            SearchBarView(
+                searchText: Binding<String>(
+                    get: { self.searchText },
+                    set: { self.searchText = $0
+                        if !$0.isEmpty {
+                            self.state = .loading
+                            let debounceHandler: () -> Void = {
+                                self.loadReports(with: self.searchText)
+                            }
+                            self.searchDebouncer.invalidate()
+                            self.searchDebouncer.handler = debounceHandler
+                            self.searchDebouncer.call()
+
+                        } else {
+                            self.storedReports = []
+                            self.state = .loaded
                         }
-                        self.searchDebouncer.invalidate()
-                        self.searchDebouncer.handler = debounceHandler
-                        self.searchDebouncer.call()
-
-                    } else {
-                        self.storedReports = []
-                        self.state = .loaded
-                    }
-            }),
-                          placeholder: searchbarPlaceholder)
-
+                }),
+                placeholder: searchbarPlaceholder
+            )
             stateView()
             Spacer()
         }
@@ -171,17 +172,20 @@ struct PreboardingView: View {
         switch state {
 
         case .loaded:
-            return AnyView(LoadedStateView(onDuty: onDuty,
-                                           storedReports: $storedReports,
-                                           showingRecentBoardings: $showingRecentBoardings,
-                                           showingAddVessel: showingAddVessel))
+            return AnyView(LoadedStateView(
+                onDuty: onDuty,
+                storedReports: $storedReports,
+                showingRecentBoardings: $showingRecentBoardings,
+                showingAddVessel: showingAddVessel)
+            )
 
         case .loading:
-            return AnyView(ActivityIndicator(isAnimating: Binding<Bool>(
-                get: { self.state == .loading },
-                set: { _ in }
+            return AnyView(ActivityIndicator(
+                isAnimating: Binding<Bool>(
+                    get: { self.state == .loading },
+                    set: { _ in }
                 ),
-                                             style: .medium)
+                style: .medium)
                     .padding(.top, Dimension.topPadding))
 
         case .empty:

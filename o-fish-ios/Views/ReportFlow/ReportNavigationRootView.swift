@@ -16,7 +16,7 @@ struct ReportNavigationRootView: View {
     @State private var showingAlertItem: AlertItem?
     @State private var notFilledScreens: [String] = TopTabBarItems.allCases.map { $0.rawValue }
 
-    init(report: ReportViewModel?, prefilledVesselAvailable: Bool = false) {
+    init(report: ReportViewModel? = nil, prefilledVesselAvailable: Bool = false) {
         self.report = report ?? ReportViewModel()
         self.prefilledVesselAvailable = prefilledVesselAvailable
     }

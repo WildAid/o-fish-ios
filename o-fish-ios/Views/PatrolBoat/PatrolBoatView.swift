@@ -9,10 +9,14 @@ import SwiftUI
 
 class DutyState: ObservableObject {
 
-    var user: UserViewModel
+    var user: UserViewModel?
 
     @Published var onDuty = false {
         didSet { recordOnDutyChange() }
+    }
+
+    init() {
+        user = nil
     }
 
     init(user: UserViewModel) {
@@ -22,6 +26,10 @@ class DutyState: ObservableObject {
 
     private func recordOnDutyChange() {
         let dutyChangeViewModel = DutyChangeViewModel()
+        guard let user = user else {
+            print("User not set when trying to record onDuty change")
+            return
+        }
         dutyChangeViewModel.user = user
         dutyChangeViewModel.status = onDuty ? .onDuty : .offDuty
         dutyChangeViewModel.save()
@@ -42,8 +50,8 @@ class DutyState: ObservableObject {
 
 struct PatrolBoatView: View {
 
-    @ObservedObject var user: UserViewModel
-    @ObservedObject var onDuty: DutyState
+    @ObservedObject var user = UserViewModel()
+    @ObservedObject var onDuty = DutyState()
     var isLoggedIn: Binding<Bool>
     @State private var location = LocationViewModel(LocationHelper.currentLocation)
     @State private var showingGoOnDutyAlert  = false
@@ -97,18 +105,14 @@ struct PatrolBoatView: View {
                         .padding(.bottom, Dimensions.bottomPadding)
                         .padding(.horizontal, Dimensions.allCoordPadding)
 
-                    NavigationLink(destination: PreboardingView(viewType: .preboarding,
-                                                                onDuty: onDuty),
-                                   isActive: self.$showingPreboardingView) {
-                                    EmptyView()
-                    }
+                    NavigationLink(
+                        destination: PreboardingView(viewType: .preboarding, onDuty: onDuty),
+                        isActive: self.$showingPreboardingView) { EmptyView() }
                 }
 
                 NavigationLink(destination: PreboardingView(viewType: .searchRecords,
                                                             onDuty: onDuty),
-                               isActive: self.$showingSearchView) {
-                                EmptyView()
-                }
+                               isActive: self.$showingSearchView) { EmptyView() }
             }
                 .edgesIgnoringSafeArea(.all)
                 .alert(isPresented: $showingGoOnDutyAlert ) {
@@ -161,9 +165,7 @@ struct PatrolBoatView: View {
 struct PatrolBoatView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PatrolBoatView(user: .sample,
-                           onDuty: .sample,
-                           isLoggedIn: .constant(true))
+            PatrolBoatView(isLoggedIn: .constant(true))
                 .environmentObject(Settings.shared)
         }
     }
