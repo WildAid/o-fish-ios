@@ -49,33 +49,33 @@ struct VesselRecordView: View {
     }
 
     var body: some View {
-        VStack(spacing: Dimensions.spacing) {
+        ScrollView {
+            VStack(spacing: Dimensions.spacing) {
                 VesselRecordHeaderView(report: reports.first ?? ReportViewModel(),
-                                       onDuty: onDuty,
-                                       boardings: numberOfBoardings,
-                                       warnings: numberOfWarnings,
-                                       citations: numberOfCitations)
+                    onDuty: onDuty,
+                    boardings: numberOfBoardings,
+                    warnings: numberOfWarnings,
+                    citations: numberOfCitations)
                     .background(Color.white)
                     .compositingGroup()
                     .defaultShadow()
 
-            wrappedShadowView {
+                wrappedShadowView {
 
-                VStack(alignment: .leading, spacing: Dimensions.noSpacing) {
-                    Text("Previous Boardings")
-                        .font(.system(size: Dimensions.titleFontSize))
-                        .bold()
-                        .padding(.top, Dimensions.topPadding)
-                        .padding(.bottom, Dimensions.bottomPadding)
-                    ScrollView {
+                    VStack(alignment: .leading, spacing: Dimensions.noSpacing) {
+                        Text("Previous Boardings")
+                            .font(.system(size: Dimensions.titleFontSize))
+                            .bold()
+                            .padding(.top, Dimensions.topPadding)
+                            .padding(.bottom, Dimensions.bottomPadding)
                         VStack(spacing: Dimensions.noSpacing) {
                             ForEach(self.reports) { report in
                                 VesselRecordItemView(report: report,
-                                                     snapshotManager: self.snapshotManager)
+                                    snapshotManager: self.snapshotManager)
                                     .onTapGesture {
                                         //TODO Need to replace on Button. For now it's unexpected behavior with showing mapViewImage.
                                         self.openBoardingRecordView(with: report)
-                                }
+                                    }
                             }
                         }
                     }
@@ -83,10 +83,11 @@ struct VesselRecordView: View {
             }
 
             //TODO Need to replace to ForEach. For now it's unexpected behavior with showing mapViewImage.
-                NavigationLink(destination: BoardingRecordView(report: selectedReport), isActive: $showingBoardingRecordView) {
-                    EmptyView()
-                }
+            NavigationLink(destination: BoardingRecordView(report: selectedReport), isActive: $showingBoardingRecordView) {
+                EmptyView()
             }
+        }
+            .background(Color.backgroundGrey)
     }
 
     private func openBoardingRecordView(with report: ReportViewModel) {
@@ -100,7 +101,7 @@ struct VesselRecordView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             VesselRecordView(reports: [.sample, .sample, .sample],
-                             onDuty: .sample)
+                onDuty: .sample)
         }
     }
 }
