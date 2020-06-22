@@ -56,7 +56,6 @@ class PhotoViewModel: ObservableObject, Identifiable {
                 photo.pictureURL = pictureURL
                 photo.date = date as NSDate
                 photo.referencingReportID = referencingReportID
-                photo.agency = RealmConnection.partition
                 if isNew {
                     guard let realm = RealmConnection.realm else {
                         print("Can't access Realm")

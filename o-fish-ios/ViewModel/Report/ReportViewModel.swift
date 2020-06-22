@@ -94,7 +94,6 @@ class ReportViewModel: ObservableObject, Identifiable {
                         report.notes.append(modelItem)
                     }
                 }
-                report.agency = RealmConnection.partition
                 if isNewReport {
                     realm.add(report)
                 }
