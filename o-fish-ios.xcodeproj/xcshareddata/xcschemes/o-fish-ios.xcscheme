@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "490C0DA023F6B15800283307"
-               BuildableName = "WildAid.app"
+               BuildableName = "O-FISH.app"
                BlueprintName = "o-fish-ios"
                ReferencedContainer = "container:o-fish-ios.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "490C0DA023F6B15800283307"
-            BuildableName = "WildAid.app"
+            BuildableName = "O-FISH.app"
             BlueprintName = "o-fish-ios"
             ReferencedContainer = "container:o-fish-ios.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "490C0DA023F6B15800283307"
-            BuildableName = "WildAid.app"
+            BuildableName = "O-FISH.app"
             BlueprintName = "o-fish-ios"
             ReferencedContainer = "container:o-fish-ios.xcodeproj">
          </BuildableReference>

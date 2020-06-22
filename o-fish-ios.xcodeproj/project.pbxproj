@@ -1638,7 +1638,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wildaid.ofish;
-				PRODUCT_NAME = WildAid;
+				PRODUCT_NAME = O-FISH;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1660,7 +1660,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wildaid.ofish;
-				PRODUCT_NAME = WildAid;
+				PRODUCT_NAME = O-FISH;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
