@@ -18,8 +18,6 @@ class MenuData: EmbeddedObject, ObservableObject {
 
 class MenuDataList: Object {
     @objc dynamic var _id = ObjectId.generate()
-    // TODO: Remove when no longer required by MongoDB Realm Sync
-    @objc dynamic var agency = ""
     // TODO: This should be replaced with a Realm  query once available. This meta data
     // will be set up in Atlas by the web app and then synced to this app by Realm
 

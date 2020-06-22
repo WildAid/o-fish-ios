@@ -43,7 +43,6 @@ class DutyChangeViewModel: ObservableObject {
                 guard let dutyChange = dutyChange else { return }
                 dutyChange.user = self.user.save()
                 dutyChange.status = self.status.rawValue
-                dutyChange.agency = RealmConnection.partition
                 if isNew {
                     guard let realm = RealmConnection.realm else {
                         print("Can't access Realm")

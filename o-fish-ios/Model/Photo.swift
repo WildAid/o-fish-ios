@@ -10,8 +10,6 @@ import RealmSwift
 class Photo: Object {
 
     @objc dynamic var _id: ObjectId = ObjectId.generate()
-    // TODO: Remove when no longer required by MongoDB Realm Sync
-    @objc dynamic var agency = ""
     @objc dynamic var thumbNail: NSData?
     @objc dynamic var picture: NSData?
     @objc dynamic var pictureURL = ""

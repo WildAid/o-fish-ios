@@ -9,8 +9,6 @@ import RealmSwift
 
 class DutyChange: Object {
     @objc dynamic var _id: ObjectId = ObjectId.generate()
-    // TODO: Remove when no longer required by MongoDB Realm Sync
-    @objc dynamic var agency = ""
     @objc dynamic var user: User? = User()
     @objc dynamic var date = Date()
     @objc dynamic var status = ""

@@ -9,8 +9,6 @@ import RealmSwift
 
 class Report: Object, Identifiable {
     @objc dynamic var _id: ObjectId = ObjectId.generate()
-    // TODO: Remove when no longer required by MongoDB Realm Sync
-    @objc dynamic var agency = ""
     @objc dynamic var reportingOfficer: User? = User()
     @objc dynamic var timestamp = NSDate()
     @objc dynamic var location: Location? = Location()
