@@ -13,8 +13,8 @@ struct LocationCoordsDisplayView: View {
     var body: some View {
         VStack {
             HStack(alignment: .center) {
-                LabeledText(label: "Latitude", text: "\(location.latitude)")
-                LabeledText(label: "Longitude", text: "\(location.longitude)")
+                LabeledText(label: "Latitude", text: "\(location.latitude.locationDegrees(.latitude))")
+                LabeledText(label: "Longitude", text: "\(location.longitude.locationDegrees(.longitude))")
             }
         }
     }

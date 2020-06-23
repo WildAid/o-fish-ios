@@ -14,13 +14,14 @@ struct CoordsBoxView: View {
     private enum Dimensions {
         static let cornerRadius: CGFloat = 4.0
         static let padding: CGFloat = 8.0
+        static let spacing: CGFloat = 18.0
         static let opacity = 0.7
     }
 
     var body: some View {
-        HStack {
-            LabeledDoubleOutput(label: "Latitude", value: self.$location.latitude)
-            LabeledDoubleOutput(label: "Longitude", value: self.$location.longitude)
+        HStack(spacing: Dimensions.spacing) {
+            LabeledDoubleOutput(coordinate: .latitude, value: self.location.latitude)
+            LabeledDoubleOutput(coordinate: .longitude, value: self.location.longitude)
         }
             .padding(.vertical, Dimensions.padding)
             .background(Color.white.opacity(Dimensions.opacity))

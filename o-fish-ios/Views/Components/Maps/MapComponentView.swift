@@ -13,7 +13,7 @@ struct MapComponentView: View {
     @Binding var location: LocationViewModel
     @Binding var reset: () -> Void
     @State private var childReCenter: () -> Void = { }
-    var isLocationInputNeeded: Bool = true
+    var isLocationViewNeeded: Bool = true
 
     private enum Dimensions {
         static let trailingPadding: CGFloat = 16.0
@@ -26,15 +26,8 @@ struct MapComponentView: View {
                 LocationPointView()
             }
 
-            if isLocationInputNeeded {
-                HStack {
-                    LocationCoordsView(location: self.$location.location)
-                    Button(action: refreshLocation) {
-                        Image(systemName: "arrow.right.circle")
-                            .foregroundColor(.main)
-                    }
-                        .padding()
-                }
+            if isLocationViewNeeded {
+                LocationCoordsView(location: self.$location.location)
                     .padding(.horizontal, Dimensions.trailingPadding)
             }
         }

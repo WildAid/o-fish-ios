@@ -8,33 +8,23 @@
 import SwiftUI
 
 struct LabeledDoubleOutput: View {
-    var label: String
-    @Binding var value: Double
+    var coordinate: Coordinate
+    var value: Double
 
     var body: some View {
         VStack(spacing: 4) {
-            Text(LocalizedStringKey(label))
+            Text(LocalizedStringKey(coordinate.rawValue))
                 .font(.caption)
-            TextField(label,
-                text:
-                Binding(
-                    get: { String(format: "%.7f", Double(self.value)) },
-                    set: {
-                        guard let value = NumberFormatter().number(from: $0) else {
-                            return
-                        }
-                        self.value = value.doubleValue
-                    })
-            )
+            Text(value.locationDegrees(self.coordinate))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.black)
-                .disabled(true)
         }
+            .padding(.horizontal)
     }
 }
 
 struct LabeledDoubleOutput_Previews: PreviewProvider {
     static var previews: some View {
-        LabeledDoubleOutput(label: "Test Label", value: .constant(22.3763527237532))
+        LabeledDoubleOutput(coordinate: .latitude, value: 22.3763527237532)
     }
 }

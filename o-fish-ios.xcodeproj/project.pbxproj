@@ -46,6 +46,7 @@
 		30CBCE512475B8D7000AC61C /* LocationPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBCE502475B8D7000AC61C /* LocationPointView.swift */; };
 		30D82D842498E14100AB0E2E /* UIImage+Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */; };
 		30E31E8E243F36EA00B96A04 /* DeliveryInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */; };
+		30E9393924A225C500011305 /* Double+LocationDegrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E9393824A225C500011305 /* Double+LocationDegrees.swift */; };
 		30F4D601245C725C00543F54 /* BusinessPickerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */; };
 		30F4D604245C727500543F54 /* ChooseBusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D603245C727500543F54 /* ChooseBusinessView.swift */; };
 		49063BC7240FE0C100C54231 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49063BC6240FE0C100C54231 /* BasicInfoView.swift */; };
@@ -71,7 +72,6 @@
 		493CDFE42404069D00516048 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CDFE32404069D00516048 /* LocationHelper.swift */; };
 		493CDFE624044AE700516048 /* LocationCoordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CDFE524044AE700516048 /* LocationCoordsView.swift */; };
 		493CDFE824044B9100516048 /* LabeledTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CDFE724044B9100516048 /* LabeledTextInput.swift */; };
-		493CDFEA24044F1100516048 /* LabeledDoubleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CDFE924044F1100516048 /* LabeledDoubleInput.swift */; };
 		493CE0162405495100516048 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CE0152405495100516048 /* BackButton.swift */; };
 		493CE01924054FD500516048 /* ReportSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CE01824054FD500516048 /* ReportSummary.swift */; };
 		493CE01B240555CA00516048 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CE01A240555CA00516048 /* Date.swift */; };
@@ -273,6 +273,7 @@
 		30CBCE502475B8D7000AC61C /* LocationPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPointView.swift; sourceTree = "<group>"; };
 		30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Thumbnail.swift"; sourceTree = "<group>"; };
 		30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInputView.swift; sourceTree = "<group>"; };
+		30E9393824A225C500011305 /* Double+LocationDegrees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+LocationDegrees.swift"; sourceTree = "<group>"; };
 		30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessPickerDataView.swift; sourceTree = "<group>"; };
 		30F4D603245C727500543F54 /* ChooseBusinessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBusinessView.swift; sourceTree = "<group>"; };
 		49063BC6240FE0C100C54231 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
@@ -281,7 +282,7 @@
 		49076E3F2411850A00B3CF43 /* RiskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskView.swift; sourceTree = "<group>"; };
 		49076E412411867800B3CF43 /* TrafficLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLights.swift; sourceTree = "<group>"; };
 		49076E43241192D900B3CF43 /* TrafficLightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightButton.swift; sourceTree = "<group>"; };
-		490C0DA123F6B15800283307 /* WildAid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildAid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		490C0DA123F6B15800283307 /* WildAid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = WildAid.app; path = "O-FISH.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		490C0DA423F6B15800283307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		490C0DA623F6B15800283307 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		490C0DAA23F6B15A00283307 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -302,7 +303,6 @@
 		493CDFE32404069D00516048 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		493CDFE524044AE700516048 /* LocationCoordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCoordsView.swift; sourceTree = "<group>"; };
 		493CDFE724044B9100516048 /* LabeledTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledTextInput.swift; sourceTree = "<group>"; };
-		493CDFE924044F1100516048 /* LabeledDoubleInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledDoubleInput.swift; sourceTree = "<group>"; };
 		493CE0152405495100516048 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		493CE01824054FD500516048 /* ReportSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSummary.swift; sourceTree = "<group>"; };
 		493CE01A240555CA00516048 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -680,6 +680,7 @@
 		493CDFC723FEBA9300516048 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				30E9393824A225C500011305 /* Double+LocationDegrees.swift */,
 				493B5CDD245C1DDD00071740 /* Constants.swift */,
 				49674E422451D3780023ABC6 /* ImageLoading */,
 				3093806624460A6D00E23350 /* UIImage+resize.swift */,
@@ -707,7 +708,6 @@
 				493CE01724054FA300516048 /* Reports */,
 				493CDFD62403CB9400516048 /* Maps */,
 				493CDFE724044B9100516048 /* LabeledTextInput.swift */,
-				493CDFE924044F1100516048 /* LabeledDoubleInput.swift */,
 				3013CA832424B0E900D2FF60 /* LabeledDoubleOutput.swift */,
 				493CE0152405495100516048 /* BackButton.swift */,
 				BCE484E6974BBB4F08413A3E /* InputField.swift */,
@@ -1290,7 +1290,6 @@
 				49E385AB2431F9D5000A6EC3 /* ActivitySummaryView.swift in Sources */,
 				49063BCC240FEBD200C54231 /* DateTimeView.swift in Sources */,
 				490C0DBE23FAB49300283307 /* MenuData.swift in Sources */,
-				493CDFEA24044F1100516048 /* LabeledDoubleInput.swift in Sources */,
 				493CDFE02403CDD600516048 /* MapComponentView.swift in Sources */,
 				49E0BE4D24129B5B0083228C /* NotesView.swift in Sources */,
 				49674E462451D3DE0023ABC6 /* AsyncImage.swift in Sources */,
@@ -1420,6 +1419,7 @@
 				BCE48D4A017A5B4B64690CCE /* ViolationPickerView.swift in Sources */,
 				BCE4854AADAFBC1B0BD9ECFB /* ChooseViolationsView.swift in Sources */,
 				BCE48602B111BBC1D7148B41 /* CountryPickerDataView.swift in Sources */,
+				30E9393924A225C500011305 /* Double+LocationDegrees.swift in Sources */,
 				30CBCE4D24755663000AC61C /* ViolationStaticItemView.swift in Sources */,
 				BCE480EEF0B2F0E6A189ECC6 /* ViolationPickerDataView.swift in Sources */,
 				3093805C24460A2A00E23350 /* VesselRecordHeaderView.swift in Sources */,
@@ -1642,7 +1642,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wildaid.ofish;
-				PRODUCT_NAME = O-FISH;
+				PRODUCT_NAME = "O-FISH";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1664,7 +1664,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.wildaid.ofish;
-				PRODUCT_NAME = O-FISH;
+				PRODUCT_NAME = "O-FISH";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
