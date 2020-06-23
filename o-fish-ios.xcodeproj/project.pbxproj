@@ -44,6 +44,7 @@
 		30CBCE4D24755663000AC61C /* ViolationStaticItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBCE4C24755663000AC61C /* ViolationStaticItemView.swift */; };
 		30CBCE4F24757E61000AC61C /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBCE4E24757E61000AC61C /* LocationButton.swift */; };
 		30CBCE512475B8D7000AC61C /* LocationPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBCE502475B8D7000AC61C /* LocationPointView.swift */; };
+		30D82D842498E14100AB0E2E /* UIImage+Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */; };
 		30E31E8E243F36EA00B96A04 /* DeliveryInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */; };
 		30F4D601245C725C00543F54 /* BusinessPickerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */; };
 		30F4D604245C727500543F54 /* ChooseBusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D603245C727500543F54 /* ChooseBusinessView.swift */; };
@@ -270,6 +271,7 @@
 		30CBCE4C24755663000AC61C /* ViolationStaticItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationStaticItemView.swift; sourceTree = "<group>"; };
 		30CBCE4E24757E61000AC61C /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
 		30CBCE502475B8D7000AC61C /* LocationPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPointView.swift; sourceTree = "<group>"; };
+		30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Thumbnail.swift"; sourceTree = "<group>"; };
 		30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInputView.swift; sourceTree = "<group>"; };
 		30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessPickerDataView.swift; sourceTree = "<group>"; };
 		30F4D603245C727500543F54 /* ChooseBusinessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBusinessView.swift; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 				BCE48EFBBE1997660C4F1EE6 /* Collection+EnumeratedArray.swift */,
 				49674E3E2450AD190023ABC6 /* Array_OptionalAppend.swift */,
 				BCE485EA5EF8E62DFA007248 /* UIView+Constraings.swift */,
+				30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1448,6 +1451,7 @@
 				BCE4899BD7A859DA2985D1E3 /* ChooseCrewMemberView.swift in Sources */,
 				BCE48DD4CE4154294AE96D20 /* SegmentedField.swift in Sources */,
 				BCE48636CB4B6415762754EC /* ViolationSeizureInputView.swift in Sources */,
+				30D82D842498E14100AB0E2E /* UIImage+Thumbnail.swift in Sources */,
 				BCE48B09547E88D2E76107BB /* Collection+EnumeratedArray.swift in Sources */,
 				BCE4808C711680D5EDD03D5C /* EditIconView.swift in Sources */,
 				BCE48998EA1E025783FB6D6F /* IconLabel.swift in Sources */,

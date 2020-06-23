@@ -13,7 +13,7 @@ struct LocationButton: View {
 
     private enum Dimensions {
         static let cornerRadius: CGFloat = 4.0
-        static let opacity = 0.5
+        static let opacity = 0.7
         static let size: CGFloat = 32.0
     }
 

@@ -13,6 +13,7 @@ class PhotoCaptureController: UIImagePickerController {
     private var reportID: String = ""
 
     var photo = PhotoViewModel()
+    private let imageSizeThumbnails: CGFloat = 102
 
     override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
@@ -68,6 +69,7 @@ extension PhotoCaptureController: UIImagePickerControllerDelegate, UINavigationC
 
         photo.date = Date()
         photo.picture = uiImage
+        photo.thumbNail = uiImage.thumbnail(size: imageSizeThumbnails)
         savePhoto()
     }
 

@@ -22,12 +22,8 @@ struct PhotoThumbNail: View {
     var body: some View {
         ZStack {
             Button(action: { self.displayPhoto?(self.photo) }) {
-                if photo.thumbNail != nil {
-                    Image(uiImage: photo.thumbNail!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } else if photo.picture != nil {
-                    Image(uiImage: photo.picture!)
+                if photo.thumbNail != nil || photo.picture != nil {
+                    Image(uiImage: photo.thumbNail ?? photo.picture ?? UIImage())
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 } else if photo.pictureURL != "" {
