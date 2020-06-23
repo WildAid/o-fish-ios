@@ -14,7 +14,7 @@ struct CoordsBoxView: View {
     private enum Dimensions {
         static let cornerRadius: CGFloat = 4.0
         static let padding: CGFloat = 8.0
-        static let opacity = 0.5
+        static let opacity = 0.7
     }
 
     var body: some View {
