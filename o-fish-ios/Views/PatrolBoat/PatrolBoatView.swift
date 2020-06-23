@@ -82,7 +82,7 @@ struct PatrolBoatView: View {
             ZStack(alignment: .bottom) {
                 MapComponentView(location: self.$location,
                                  reset: self.$resetLocation,
-                                 isLocationInputNeeded: false)
+                                 isLocationViewNeeded: false)
                 VStack {
                     HStack {
                         Spacer()

@@ -17,8 +17,14 @@ struct LocationCoordsView: View {
 
     var body: some View {
         HStack(spacing: Dimensions.spacing) {
-            LabeledDoubleInput(label: "Latitude", value: self.$location.latitude)
-            LabeledDoubleInput(label: "Longitude", value: self.$location.longitude)
+            VStack(spacing: Dimensions.spacing) {
+                LabeledText(label: "Latitude", text: "\(location.latitude.locationDegrees(.latitude))")
+                Divider()
+            }
+            VStack(spacing: Dimensions.spacing) {
+                LabeledText(label: "Longitude", text: "\(location.longitude.locationDegrees(.longitude))")
+                Divider()
+            }
         }
     }
 }
