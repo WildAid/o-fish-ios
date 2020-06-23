@@ -21,7 +21,7 @@ struct VesselRecordItemView: View {
         let warnings = report.inspection.summary.violations.filter({ $0.disposition == .warning }).count
         let citations = report.inspection.summary.violations.filter({ $0.disposition == .citation }).count
 
-        if warnings  > 0 {
+        if warnings > 0 {
             warningString = "\(warnings) \(warnings == 1 ? "Warning" : "Warnings")"
         }
 
@@ -60,10 +60,10 @@ struct VesselRecordItemView: View {
                 ZStack {
                     Image(uiImage: image)
                         .frame(width: Dimensions.imageSize,
-                               height: Dimensions.imageSize,
-                               alignment: .center)
+                            height: Dimensions.imageSize,
+                            alignment: .center)
                         .foregroundColor(.white)
-                        .background( Color(UIColor.systemGray5))
+                        .background(Color(UIColor.systemGray5))
                         .cornerRadius(Dimensions.imageCornerRadius)
                     ActivityIndicator(isAnimating: self.$isPictureLoading, style: .medium)
                 }
@@ -73,7 +73,8 @@ struct VesselRecordItemView: View {
                         .foregroundColor(.text)
 
                     CaptionLabel(title: violationsTitle,
-                                 color: .gray)
+                        color: .gray,
+                        font: .subheadline)
                 }
                     .padding(.bottom, Dimensions.bottomPadding)
                 Spacer()
@@ -90,6 +91,6 @@ struct VesselRecordItemView: View {
 struct VesselRecordItemView_Previews: PreviewProvider {
     static var previews: some View {
         VesselRecordItemView(report: .sample,
-                             snapshotManager: LocationSnapshotManager())
+            snapshotManager: LocationSnapshotManager())
     }
 }

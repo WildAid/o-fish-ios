@@ -9,7 +9,14 @@ import SwiftUI
 import UIKit
 
 extension UIColor {
-    public static let main = UIColor(red: 10.0 / 255.0, green: 64.0 / 255.0, blue: 116.0 / 255.0, alpha: 1.0)
+    convenience init(red: UInt, green: UInt, blue: UInt, alpha: CGFloat = 1) {
+        self.init(red: CGFloat(red) / 255.0,
+            green: CGFloat(green) / 255.0,
+            blue: CGFloat(blue) / 255.0,
+            alpha: alpha)
+    }
+
+    public static let main = UIColor(red: 10, green: 64, blue: 116) // #0a4074
 }
 
 extension Color {
@@ -24,7 +31,7 @@ extension Color {
 extension Color {
     public static let main = Color(.main)
 
-    public static let backgroundGrey = Color(red: 249, green: 251, blue: 250)
+    public static let backgroundGrey = Color(red: 249, green: 250, blue: 250) // f9fafa
     public static let text = Color.black
 
     public static let callToAction = main

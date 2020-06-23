@@ -47,11 +47,11 @@ struct VesselRecordHeaderView: View {
 
             VStack {
                 Text(report.vessel.name)
-                    .font(.headline)
+                    .font(Font.headline.weight(.semibold))
                     .bold()
                     .foregroundColor(.text)
                 Text(NSLocalizedString("Permit #", comment: "") + report.vessel.permitNumber)
-                    .font(.caption)
+                    .font(.body)
             }
                 .padding(.vertical, Dimensions.mainSpacing)
 

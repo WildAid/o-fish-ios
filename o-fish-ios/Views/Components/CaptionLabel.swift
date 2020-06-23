@@ -10,11 +10,12 @@ import SwiftUI
 struct CaptionLabel: View {
     var title = "Title"
     var color: Color = .removeAction
+    var font: Font = .caption
 
     var body: some View {
         HStack {
             Text(LocalizedStringKey(title))
-                .font(.caption)
+                .font(font)
                 .lineLimit(5)
                 .multilineTextAlignment(.leading)
                 .foregroundColor(color)

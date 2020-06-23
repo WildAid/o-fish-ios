@@ -18,10 +18,10 @@ struct ColumnText: View {
     var body: some View {
         VStack {
             Text(title)
-                .font(.title)
+                .font(Font.title.weight(.semibold))
                 .bold()
             Text(subtitle)
-                .font(.footnote)
+                .font(.callout)
         }
             .padding([.horizontal], Dimensions.padding)
     }
