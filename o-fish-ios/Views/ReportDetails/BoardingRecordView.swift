@@ -17,65 +17,64 @@ struct BoardingRecordView: View {
     }
 
     var body: some View {
-            ScrollView {
-                VStack(spacing: Dimensions.spacing) {
+        ScrollView {
+            VStack(spacing: Dimensions.spacing) {
+                InspectionSummaryView(report: report)
+                    .background(Color.white)
+                    .compositingGroup()
+                    .defaultShadow()
 
-                    InspectionSummaryView(report: report)
-                        .background(Color.white)
-                        .compositingGroup()
-                        .defaultShadow()
-
+                wrappedShadowView {
+                    VesselSummaryView(vessel: report.vessel)
+                }
+                if !report.vessel.lastDelivery.isEmtpy {
                     wrappedShadowView {
-                        VesselSummaryView(vessel: report.vessel)
+                        LastDeliverySummaryView(delivery: report.vessel.lastDelivery)
                     }
-                    if !report.vessel.lastDelivery.isEmtpy {
-                        wrappedShadowView {
-                            LastDeliverySummaryView(delivery: report.vessel.lastDelivery)
-                        }
-                    }
-                    ForEach(report.vessel.ems) { ems in
-                        wrappedShadowView {
-                            EMSSummaryView(ems: ems)
-                        }
-                    }
-                    if !report.captain.isEmpty {
-                        wrappedShadowView {
-                            CrewMemberStaticView(crewMember: report.captain,
-                                                 isCaptain: true,
-                                                 isEditable: false)
-                        }
-                    }
-                    if !report.crew.isEmpty {
-                        wrappedShadowView {
-                            CrewSummaryView(crew: report.crew)
-                        }
-                    }
+                }
+                ForEach(report.vessel.ems) { ems in
                     wrappedShadowView {
-                        ActivitySummaryView(inspection: report.inspection)
+                        EMSSummaryView(ems: ems)
                     }
-                    if !report.inspection.actualCatch.isEmpty {
-                        wrappedShadowView {
-                            CatchSummaryView(catchList: report.inspection.actualCatch)
-                        }
+                }
+                if !report.captain.isEmpty {
+                    wrappedShadowView {
+                        CrewMemberStaticView(crewMember: report.captain,
+                            isCaptain: true,
+                            isEditable: false)
                     }
-                    if !report.inspection.summary.violations.isEmpty {
-                        wrappedShadowView {
-                            ViolationsSummaryView(violations: report.inspection.summary.violations)
-                        }
+                }
+                if !report.crew.isEmpty {
+                    wrappedShadowView {
+                        CrewSummaryView(crew: report.crew)
                     }
-                    if !report.notes.isEmpty {
-                        wrappedShadowView {
-                            NotesSummaryView(notes: report.notes)
-                        }
+                }
+                wrappedShadowView {
+                    ActivitySummaryView(inspection: report.inspection)
+                }
+                if !report.inspection.actualCatch.isEmpty {
+                    wrappedShadowView {
+                        CatchSummaryView(catchList: report.inspection.actualCatch)
+                    }
+                }
+                if !report.inspection.summary.violations.isEmpty {
+                    wrappedShadowView {
+                        ViolationsSummaryView(violations: report.inspection.summary.violations)
+                    }
+                }
+                if !report.notes.isEmpty {
+                    wrappedShadowView {
+                        NotesSummaryView(notes: report.notes)
                     }
                 }
             }
-                .navigationBarTitle("Boarding", displayMode: .inline)
-                .navigationBarBackButtonHidden(true)
-                .navigationBarItems(
-                    leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) { BackButton(label: "\(report.vessel.name)") })
-                .padding(.top)
         }
+            .navigationBarTitle("Boarding", displayMode: .inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                BackButton(label: "\(report.vessel.name)")
+            })
+    }
 }
 
 struct BoardingRecordView_Previews: PreviewProvider {

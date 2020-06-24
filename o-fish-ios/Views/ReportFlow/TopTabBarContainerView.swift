@@ -96,6 +96,8 @@ struct TopTabBarContainerView: View {
 
     var body: some View {
         VStack(spacing: Dimensions.noSpacing) {
+            Color.inactiveBar.frame(height: 0.5)
+
             ScrollableTabBar(items: $tabBarItems,
                 selectedItem: self.selectedItem,
                 itemClicked: scrollableBarItemClicked)

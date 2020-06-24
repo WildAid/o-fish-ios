@@ -22,13 +22,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let rootView = MainNavigationRootView()
 
+        let mainColor = UIColor.main
+
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
 
-            window.tintColor = .main
+            window.tintColor = mainColor
 
             window.rootViewController = UIHostingController(rootView: rootView
+                .navigationBar(backgroundColor: .white, textColor: .black, tintColor: mainColor)
+                .stackNavigationView()
                 .environmentObject(self.settings)
                 .environmentObject(self.locationHelper)
                 .environmentObject(self.imageCache)
