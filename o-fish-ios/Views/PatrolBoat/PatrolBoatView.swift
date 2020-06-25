@@ -63,9 +63,9 @@ struct PatrolBoatView: View {
     private enum Dimensions {
         static let bottomPadding: CGFloat = 75
         static let topPadding: CGFloat = 14
-        static let coordPadding: CGFloat = 60.0
-        static let coordTopPadding: CGFloat = 15.0
-        static let allCoordPadding: CGFloat = 50.0
+        static let coordPadding: CGFloat = 58.0
+        static let coordTopPadding: CGFloat = 14.0
+        static let allCoordPadding: CGFloat = 48.0
         static let imagePadding: CGFloat = 8.0
         static let lineLimit = 1
         static let trailingPadding: CGFloat = 16.0
@@ -85,13 +85,12 @@ struct PatrolBoatView: View {
                                  isLocationViewNeeded: false)
                 VStack {
                     HStack {
-                        Spacer()
                         CoordsBoxView(location: location)
                             .padding(.trailing, Dimensions.trailingCoordPadding)
                             .padding(.leading, Dimensions.coordPadding)
 
                         LocationButton(action: resetLocation)
-                            .padding(.trailing, Dimensions.trailingPadding)
+                            .padding(.trailing, Dimensions.coordTopPadding)
                     }
                         .padding(.top, Dimensions.coordTopPadding)
                     Spacer()
@@ -139,7 +138,7 @@ struct PatrolBoatView: View {
                                 .lineLimit(Dimensions.lineLimit)
                         }
                     }), trailing:
-                    TextToggle(isOn: $onDuty.onDuty, titleLabel: "", onLabel: "ON DUTY", offLabel: "OFF DUTY")
+                    TextToggle(isOn: $onDuty.onDuty, titleLabel: "", onLabel: "On Duty", offLabel: "Off Duty")
                 )
                 .navigationBarTitle(Text(""), displayMode: .inline)
                 .navigationBarBackButtonHidden(true)

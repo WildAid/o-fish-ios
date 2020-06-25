@@ -53,6 +53,7 @@ struct LoginView: View {
                                     .opacity(0) // TODO remove after implementing
                             }
                                 .padding(.top, Dimensions.topInputFieldPadding)
+                                .padding(.bottom, Dimensions.padding)
 
                             InputField(title: "Password",
                                 text: self.$password,
@@ -84,7 +85,7 @@ struct LoginView: View {
             .alert(isPresented: Binding<Bool>(
                 get: { !self.errorMessage.isEmpty },
                 set: { _ in })) {
-                Alert(title: Text("Error"),
+                Alert(title: Text("Login Error"),
                     message: Text(errorMessage),
                     dismissButton: .default(Text("Ok")) {
                         self.errorMessage = ""
@@ -95,15 +96,14 @@ struct LoginView: View {
 
     private func login() {
         if username.isEmpty || password.isEmpty {
-            errorMessage = "Please write email and password"
             return
         }
         showingLoading = true
         RealmConnection.logIn( username: username, password: password) { result in
             self.showingLoading = false
             switch result {
-            case .failure(let error):
-                self.errorMessage = error.localizedDescription
+            case .failure:
+                self.errorMessage = "Invalid email or password"
             case .success:
                 print("Logged in")
                 self.loggedIn.wrappedValue = true

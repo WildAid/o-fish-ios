@@ -16,7 +16,7 @@ struct TitleLabel: View {
                 .lineLimit(3)
                 .multilineTextAlignment(.leading)
                 .foregroundColor(color)
-                .font(.headline)
+                .font(Font.title3.weight(.semibold))
             Spacer()
         }
     }

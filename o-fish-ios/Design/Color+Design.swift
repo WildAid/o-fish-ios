@@ -66,4 +66,6 @@ extension Color {
 
     public static let appGray = Color(white: 186.0/255.0)
 
+    public static let lightGrayButton = Color(red: 161, green: 161, blue: 161, alpha: 0.16)
+
 }

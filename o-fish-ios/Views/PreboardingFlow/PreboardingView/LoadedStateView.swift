@@ -25,8 +25,7 @@ struct LoadedStateView: View {
             if showingRecentBoardings && !storedReports.isEmpty {
                 HStack {
                     Text("Recently Boarded")
-                        .font(.body)
-                        .bold()
+                        .font(Font.title3.weight(.semibold))
                     Spacer()
                 }
                 .padding([.top, .leading], Dimensions.padding)

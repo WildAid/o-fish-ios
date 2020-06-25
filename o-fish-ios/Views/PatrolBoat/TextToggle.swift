@@ -30,13 +30,13 @@ struct TextToggle_Previews: PreviewProvider {
         VStack {
             TextToggle(isOn: .constant(false),
                        titleLabel: "Test",
-                       onLabel: "ON DUTY",
-                       offLabel: "OFF DUTY")
+                       onLabel: "On Duty",
+                       offLabel: "Off Duty")
             Divider()
             TextToggle(isOn: .constant(true),
                        titleLabel: "Test",
-                       onLabel: "ON DUTY",
-                       offLabel: "OFF DUTY")
+                       onLabel: "On Duty",
+                       offLabel: "Off Duty")
 
         }
     }

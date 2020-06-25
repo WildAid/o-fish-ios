@@ -45,6 +45,7 @@
 		30CBCE4F24757E61000AC61C /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBCE4E24757E61000AC61C /* LocationButton.swift */; };
 		30CBCE512475B8D7000AC61C /* LocationPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBCE502475B8D7000AC61C /* LocationPointView.swift */; };
 		30D82D842498E14100AB0E2E /* UIImage+Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */; };
+		30DBF2F824A34B6C00A364F1 /* Font+title2+titile3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */; };
 		30E31E8E243F36EA00B96A04 /* DeliveryInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */; };
 		30E9393924A225C500011305 /* Double+LocationDegrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E9393824A225C500011305 /* Double+LocationDegrees.swift */; };
 		30F4D601245C725C00543F54 /* BusinessPickerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */; };
@@ -274,6 +275,7 @@
 		30CBCE4E24757E61000AC61C /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
 		30CBCE502475B8D7000AC61C /* LocationPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPointView.swift; sourceTree = "<group>"; };
 		30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Thumbnail.swift"; sourceTree = "<group>"; };
+		30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+title2+titile3.swift"; sourceTree = "<group>"; };
 		30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInputView.swift; sourceTree = "<group>"; };
 		30E9393824A225C500011305 /* Double+LocationDegrees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+LocationDegrees.swift"; sourceTree = "<group>"; };
 		30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessPickerDataView.swift; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 		493CDFC723FEBA9300516048 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */,
 				30E9393824A225C500011305 /* Double+LocationDegrees.swift */,
 				493B5CDD245C1DDD00071740 /* Constants.swift */,
 				49674E422451D3780023ABC6 /* ImageLoading */,
@@ -1273,6 +1276,7 @@
 				49063BCA240FEAAF00C54231 /* DisplayField.swift in Sources */,
 				493CDFE624044AE700516048 /* LocationCoordsView.swift in Sources */,
 				49076E422411867800B3CF43 /* TrafficLights.swift in Sources */,
+				30DBF2F824A34B6C00A364F1 /* Font+title2+titile3.swift in Sources */,
 				495F1B122412C47F00377D54 /* MultilineTextView.swift in Sources */,
 				303A3F14241A4ECB000DCADB /* ViolationsView.swift in Sources */,
 				493CDFB823FEB7FF00516048 /* AttributeSelectorView.swift in Sources */,

@@ -42,7 +42,7 @@ struct StatusSymbolView: View {
                 .cornerRadius(height / 2)
                 .frame(width: width, height: height)
             Text(NSLocalizedString(risk.rawValue, comment: "Risk color").uppercased())
-                .font(size == .small ? .caption : .subheadline)
+                .font(size == .small ? Font.caption.weight(.semibold) : Font.headline.weight(.semibold))
                 .foregroundColor(colors.textColor)
         }
     }
