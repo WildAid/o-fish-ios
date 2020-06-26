@@ -175,3 +175,5 @@
 "Log In" = "Увійти";
 "Name" = "Ім'я";
 "Type" = "Тип";
+"You sure you want to logout?" = "Ви впевнені що хочете вийти?";
+"You can only log back in once you have cellular service or are connected to WIFI with internet" = "Ви зможете зайти тільки коли у вас з\'явиться інтернет";

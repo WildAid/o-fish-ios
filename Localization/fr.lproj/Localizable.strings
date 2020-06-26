@@ -167,3 +167,5 @@
 "Log In" = "Log In";
 "Name" = "Name";
 "Type" = "Type";
+"You sure you want to logout?" = "You sure you want to logout?";
+"You can only log back in once you have cellular service or are connected to WIFI with internet" = "You can only log back in once you have cellular service or are connected to WIFI with internet";

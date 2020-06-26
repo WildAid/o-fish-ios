@@ -12,7 +12,9 @@ class DutyState: ObservableObject {
     var user: UserViewModel?
 
     @Published var onDuty = false {
-        didSet { recordOnDutyChange() }
+        didSet {
+            recordOnDutyChange()
+        }
     }
 
     init() {
@@ -41,7 +43,7 @@ class DutyState: ObservableObject {
         guard let dutyChange = RealmConnection.realm?.objects(DutyChange.self).filter(predicate)
                                    .sorted(byKeyPath: "date", ascending: false).first ?? nil else {
 
-                return false
+            return false
         }
 
         return DutyChangeViewModel(dutyChange: dutyChange).status == .onDuty ? true : false
@@ -54,11 +56,12 @@ struct PatrolBoatView: View {
     @ObservedObject var onDuty = DutyState()
     var isLoggedIn: Binding<Bool>
     @State private var location = LocationViewModel(LocationHelper.currentLocation)
-    @State private var showingGoOnDutyAlert  = false
     @State private var showingLogOut = false
     @State private var showingPreboardingView = false
     @State private var showingSearchView = false
     @State private var resetLocation = {}
+
+    @State private var showingAlertItem: AlertItem?
 
     private enum Dimensions {
         static let bottomPadding: CGFloat = 75
@@ -81,8 +84,8 @@ struct PatrolBoatView: View {
 
             ZStack(alignment: .bottom) {
                 MapComponentView(location: self.$location,
-                                 reset: self.$resetLocation,
-                                 isLocationViewNeeded: false)
+                    reset: self.$resetLocation,
+                    isLocationViewNeeded: false)
                 VStack {
                     HStack {
                         CoordsBoxView(location: location)
@@ -98,7 +101,7 @@ struct PatrolBoatView: View {
                         if self.onDuty.onDuty {
                             self.showingPreboardingView.toggle()
                         } else {
-                            self.showingGoOnDutyAlert  = true
+                            self.showGoOnDutyAlert()
                         }
                     }
                         .padding(.bottom, Dimensions.bottomPadding)
@@ -106,27 +109,23 @@ struct PatrolBoatView: View {
 
                     NavigationLink(
                         destination: PreboardingView(viewType: .preboarding, onDuty: onDuty),
-                        isActive: self.$showingPreboardingView) { EmptyView() }
+                        isActive: self.$showingPreboardingView) {
+                        EmptyView()
+                    }
                 }
 
                 NavigationLink(destination: PreboardingView(viewType: .searchRecords,
-                                                            onDuty: onDuty),
-                               isActive: self.$showingSearchView) { EmptyView() }
+                    onDuty: onDuty),
+                    isActive: self.$showingSearchView) {
+                    EmptyView()
+                }
             }
                 .edgesIgnoringSafeArea(.all)
-                .alert(isPresented: $showingGoOnDutyAlert ) {
-                    Alert(title: Text("You're currently off duty"),
-                          message: Text("Change status to \"On Duty\" "),
-                          primaryButton: .default(Text("Yes")) {
-                            self.onDuty.onDuty = true
-                        },
-                          secondaryButton: .cancel())
-                }
                 .actionSheet(isPresented: $showingLogOut) {
                     ActionSheet(title: Text("Choose the action"),
-                            message: nil,
-                            buttons: [.destructive(Text("Log Out"), action: logout),
-                                      .default(Text("Cancel"))])
+                        message: nil,
+                        buttons: [.destructive(Text("Log Out"), action: showLogoutAlert),
+                                  .default(Text("Cancel"))])
                 }
                 .navigationBarItems(leading:
                     Button(action: { self.showingLogOut = true }, label: {
@@ -142,20 +141,43 @@ struct PatrolBoatView: View {
                 )
                 .navigationBarTitle(Text(""), displayMode: .inline)
                 .navigationBarBackButtonHidden(true)
+        }
+            .showingAlert(alertItem: $showingAlertItem)
+            .onAppear {
+                self.user.email = RealmConnection.emailAddress
+                self.user.name.first = RealmConnection.firstName
+                self.user.name.last = RealmConnection.lastName
+                self.onDuty.user = self.user
+                if self.isLoggedIn.wrappedValue && !RealmConnection.isConnected {
+                    print("Connecting to realm from patrol")
+                    RealmConnection.connect()
                 }
-                .onAppear {
-                    self.user.email = RealmConnection.emailAddress
-                    self.user.name.first = RealmConnection.firstName
-                    self.user.name.last = RealmConnection.lastName
-                    self.onDuty.user = self.user
-                    if self.isLoggedIn.wrappedValue && !RealmConnection.isConnected {
-                        print("Connecting to realm from patrol")
-                        RealmConnection.connect()
-                    }
-                }
+            }
     }
 
-    func logout() {
+    /// Alerts
+
+    private func showLogoutAlert() {
+        showingAlertItem = AlertItem(title: "You sure you want to logout?",
+            message: "You can only log back in once you have cellular service or are connected to WIFI with internet",
+            primaryButton: .default(Text("Yes"), action: logoutAlertClicked),
+            secondaryButton: .cancel())
+    }
+
+    private func showGoOnDutyAlert() {
+        showingAlertItem = AlertItem(title: "You're currently off duty",
+            message: "Change status to \"On Duty\" ",
+            primaryButton: .default(Text("Yes"), action: goOnDutyAlertClicked),
+            secondaryButton: .cancel())
+    }
+
+    /// Actions
+
+    private func goOnDutyAlertClicked() {
+        self.onDuty.onDuty = true
+    }
+
+    private func logoutAlertClicked() {
         RealmConnection.logout()
         isLoggedIn.wrappedValue = false
     }
