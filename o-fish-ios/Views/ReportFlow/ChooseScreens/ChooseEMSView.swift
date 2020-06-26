@@ -11,8 +11,8 @@ struct ChooseEMSView: View {
 
     private var items: [String] {
         var array = [String]()
-        EMSViewModel.EMSType.allCases.forEach { type in
-            array.append(type.rawValue)
+        for type in Settings.shared.menuData.emsTypes {
+            array.append(type)
         }
         return array
     }

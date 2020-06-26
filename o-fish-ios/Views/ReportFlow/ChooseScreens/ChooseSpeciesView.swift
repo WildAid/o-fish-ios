@@ -10,12 +10,13 @@ import SwiftUI
 struct ChooseSpeciesView: View {
     @Binding var selectedSpecies: String
 
-    private let items: [String] = [
-        "Tuna",
-        "Swordfish",
-        "Clownfish",
-        "Other"
-    ]
+    private var items: [String] {
+        var speciesList = [String]()
+        for species in Settings.shared.menuData.species {
+            speciesList.append(species)
+        }
+        return speciesList
+    }
 
     var body: some View {
         TextPickerView(selectedItem: $selectedSpecies,

@@ -19,6 +19,11 @@ struct ReportNavigationRootView: View {
     init(report: ReportViewModel? = nil, prefilledVesselAvailable: Bool = false) {
         self.report = report ?? ReportViewModel()
         self.prefilledVesselAvailable = prefilledVesselAvailable
+        if let menuData = RealmConnection.realm?.objects(MenuData.self).first {
+            Settings.shared.menuData = menuData
+        } else {
+            print("Failed to read menus")
+        }
     }
 
     var body: some View {

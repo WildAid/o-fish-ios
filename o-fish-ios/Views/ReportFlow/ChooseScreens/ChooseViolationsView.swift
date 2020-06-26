@@ -8,27 +8,22 @@
 import SwiftUI
 
 struct ChooseViolationsView: View {
-    let violations: [ViolationPickerData] = [
-        ViolationPickerData(caption: "California",
-            title: "Fish and Game code 7850(a)",
-            description: "No Commercial License"),
-
-        ViolationPickerData(caption: "California",
-            title: "Fish and Game code 7145(a)",
-            description: "Fishing without a license"),
-
-        ViolationPickerData(caption: "California",
-            title: "T-14 29.85(a)(7)",
-            description: "Take/Possess undersize Dungeness crab"),
-
-        ViolationPickerData(caption: "California",
-            title: "T-14 189(a)",
-            description: "Take in violation of Federal Regulations"),
-
-        ViolationPickerData(caption: "California",
-            title: "T-14 27.80(a)(2)",
-            description: "Use barbed hooks for Salmon")
-    ]
+    private var violations: [ViolationPickerData] {
+        var list = [ViolationPickerData]()
+        if Settings.shared.menuData.violationCodes.count == Settings.shared.menuData.violationDescriptions.count {
+            for index in Settings.shared.menuData.violationCodes.indices {
+                let violation = ViolationPickerData(
+                    caption: "California",  // TODO: Remove once agreed with design
+                    title: Settings.shared.menuData.violationCodes[index],
+                    description: Settings.shared.menuData.violationDescriptions[index]
+                )
+                list.append(violation)
+            }
+        } else {
+            print("Violation code and description lists have different lengths")
+        }
+        return list
+    }
 
     @Binding var selectedItem: ViolationPickerData
 

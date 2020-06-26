@@ -110,7 +110,7 @@ extension EMSViewModel: Samplable {
     static var sample: EMSViewModel {
         let ems = EMSViewModel()
         ems.id = "123"
-        ems.emsType = .other
+        ems.emsType = "Other"
         ems.emsDescription = "Makes odd noises"
         ems.registryNumber = "77777777"
         ems.attachments = .sample

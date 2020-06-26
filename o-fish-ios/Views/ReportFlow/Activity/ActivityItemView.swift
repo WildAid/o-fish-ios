@@ -17,28 +17,30 @@ extension ActivityItem {
     }
 
     fileprivate func sheetItem() -> SheetItem {
+        var items = [String]()
+
         switch self {
         case .activity:
+            for activity in Settings.shared.menuData.activities {
+                items.append(activity)
+            }
             return SheetItem(title: self.rawValue,
                              searchBarPlaceholder: "Search Activities",
-                             items: ["Fishing",
-                                     "Transiting",
-                                     "Offloading",
-                                     "Other"])
+                             items: items)
         case .fishery:
+            for fishery in Settings.shared.menuData.fisheries {
+                items.append(fishery)
+            }
             return SheetItem(title: self.rawValue,
-                             searchBarPlaceholder: "Search Fishery",
-                             items: ["Tuna",
-                                     "Groundfish",
-                                     "Bluefish",
-                                     "Other"])
+                             searchBarPlaceholder: "Search Fisheries",
+                             items: items)
         case .gear:
+            for gear in Settings.shared.menuData.gear {
+                items.append(gear)
+            }
             return SheetItem(title: self.rawValue,
                              searchBarPlaceholder: "Search Gear",
-                             items: ["Trawl",
-                                     "Long-line",
-                                     "Nets",
-                                     "Other"])
+                             items: items)
         }
     }
 }

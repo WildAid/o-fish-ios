@@ -11,6 +11,6 @@ class Settings: ObservableObject {
 
     static let shared = Settings()
 
-    let menuDataList = MenuDataList()
+    var menuData = MenuData()
     var intialZoomLevel = 1000 // Meters to show in map views
 }
