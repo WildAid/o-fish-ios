@@ -30,17 +30,17 @@ struct EMSInputView: View {
             }
                 .padding(.top, Dimensions.spacing)
 
-            ButtonField(title: "EMS Type", text: self.ems.emsType.rawValue, fieldButtonClicked: {
+            ButtonField(title: "EMS Type", text: self.ems.emsType, fieldButtonClicked: {
                 self.showingChooseEMSPicker.toggle()
                 self.activeEditableComponentId = self.ems.id
             })
                 .sheet(isPresented: $showingChooseEMSPicker) {
                     ChooseEMSView(selectedItem:
                         Binding<String>(
-                            get: { self.ems.emsType.rawValue },
+                            get: { self.ems.emsType },
                             set: {
-                                self.ems.emsType = EMSViewModel.EMSType(rawValue: $0) ?? .notSelected
-                                if self.ems.emsType != .other {
+                                self.ems.emsType = $0
+                                if self.ems.emsType != "Other" {
                                     self.ems.emsDescription = ""
                                 }
                                 self.isEmsNonEmpty = !self.ems.isEmpty
@@ -48,7 +48,7 @@ struct EMSInputView: View {
                     )
             }
 
-            if ems.emsType == .other {
+            if ems.emsType == "Other" {
                 InputField(title: "Description", text: $ems.emsDescription)
             }
 

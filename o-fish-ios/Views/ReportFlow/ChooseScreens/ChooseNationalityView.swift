@@ -11,8 +11,6 @@ private class CountryHelper {
 
     static let shared = CountryHelper()
 
-    private let settings = Settings.shared
-
     private func pickerDataFromCountry(code: String) -> CountryPickerData? {
         if let name = Locale.autoupdatingCurrent.localizedString(forRegionCode: code) {
             return CountryPickerData(image: code, title: name)
@@ -21,13 +19,11 @@ private class CountryHelper {
     }
 
     private func prioritySettingsCountryCodes() -> [String] {
-        var result = [String]()
-        let menuType = MenuType.countryPickerPriorityList
-        for index in 0 ..< settings.menuDataList.optionCount(menuType) {
-            let code = settings.menuDataList.getOptionString(menuType: menuType, index: index)
-            result.append(code)
+        var priorityCodes = [String]()
+        for code in Settings.shared.menuData.countryPickerPriorityList {
+            priorityCodes.append(code)
         }
-        return result
+        return priorityCodes
     }
 
     private func allCountryCodes() -> [String] {

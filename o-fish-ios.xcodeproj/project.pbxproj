@@ -64,7 +64,6 @@
 		490C0DBC23F6E6F700283307 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C0DBB23F6E6F700283307 /* Report.swift */; };
 		490C0DBE23FAB49300283307 /* MenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C0DBD23FAB49300283307 /* MenuData.swift */; };
 		493B5CDE245C1DDD00071740 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493B5CDD245C1DDD00071740 /* Constants.swift */; };
-		493CDFB823FEB7FF00516048 /* AttributeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CDFB723FEB7FF00516048 /* AttributeSelectorView.swift */; };
 		493CDFBC23FEB86D00516048 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CDFB923FEB86D00516048 /* LoginView.swift */; };
 		493CDFC023FEB87600516048 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CDFBF23FEB87600516048 /* Settings.swift */; };
 		493CDFCA23FEBAD500516048 /* RealmConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493CDFC823FEBAD500516048 /* RealmConnection.swift */; };
@@ -296,7 +295,6 @@
 		490C0DBB23F6E6F700283307 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		490C0DBD23FAB49300283307 /* MenuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuData.swift; sourceTree = "<group>"; };
 		493B5CDD245C1DDD00071740 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		493CDFB723FEB7FF00516048 /* AttributeSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeSelectorView.swift; sourceTree = "<group>"; };
 		493CDFB923FEB86D00516048 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		493CDFBF23FEB87600516048 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		493CDFC823FEBAD500516048 /* RealmConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConnection.swift; sourceTree = "<group>"; };
@@ -667,20 +665,11 @@
 				BCE486EF5A22D91EE1260968 /* MainNavigationRootView.swift */,
 				4980764A242E46D700D463F4 /* ReportDetails */,
 				493CDFB923FEB86D00516048 /* LoginView.swift */,
-				490C0DC123FBE0A600283307 /* Attribute Selectors */,
 				3013CA782424AF1300D2FF60 /* PatrolBoat */,
 				BCE483F917662257CAB7586F /* ReportFlow */,
 				BCE48B378C5953371739F735 /* ReportList */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		490C0DC123FBE0A600283307 /* Attribute Selectors */ = {
-			isa = PBXGroup;
-			children = (
-				493CDFB723FEB7FF00516048 /* AttributeSelectorView.swift */,
-			);
-			path = "Attribute Selectors";
 			sourceTree = "<group>";
 		};
 		493CDFC723FEBA9300516048 /* Helpers */ = {
@@ -1279,7 +1268,6 @@
 				30DBF2F824A34B6C00A364F1 /* Font+title2+titile3.swift in Sources */,
 				495F1B122412C47F00377D54 /* MultilineTextView.swift in Sources */,
 				303A3F14241A4ECB000DCADB /* ViolationsView.swift in Sources */,
-				493CDFB823FEB7FF00516048 /* AttributeSelectorView.swift in Sources */,
 				3093806124460A2A00E23350 /* VesselItemView.swift in Sources */,
 				49B83EE92489546D00027B8C /* Activity.swift in Sources */,
 				495F1B142412C54D00377D54 /* InputMultilineField.swift in Sources */,

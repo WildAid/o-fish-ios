@@ -11,30 +11,20 @@ class EMSViewModel: ObservableObject, Identifiable {
     private var eMS: EMS?
 
     @Published var id = UUID().uuidString
-    @Published var emsType: EMSType = .notSelected
+    @Published var emsType = ""
     @Published var emsDescription = ""
     @Published var registryNumber = ""
     @Published var attachments = AttachmentsViewModel()
 
-    enum EMSType: String {
-        case notSelected = ""
-        case ais = "Automatic identification System (AIS)"
-        case viirs = "Visible Infrared Imaging Radiometer Suite (VIIRS)"
-        case vms = "Vessel Monitoring System (VMS)"
-        case other = "Other"
-
-        static let allCases = [ais, viirs, vms, other]
-    }
-
     var isEmpty: Bool {
-        emsType == .notSelected && registryNumber.isEmpty
+        emsType == "" && registryNumber.isEmpty
     }
 
     convenience init(_ eMS: EMS?) {
         self.init()
         if let eMS = eMS {
             self.eMS = eMS
-            emsType = EMSType(rawValue: eMS.emsType) ?? .notSelected
+            emsType = eMS.emsType
             emsDescription = eMS.emsDescription
             registryNumber = eMS.registryNumber
             attachments = AttachmentsViewModel(eMS.attachments)
@@ -48,7 +38,7 @@ class EMSViewModel: ObservableObject, Identifiable {
             eMS = EMS()
         }
         guard let eMS = eMS else { return nil }
-        eMS.emsType = emsType.rawValue
+        eMS.emsType = emsType
         eMS.emsDescription = emsDescription
         eMS.registryNumber = registryNumber
         eMS.attachments = attachments.save()

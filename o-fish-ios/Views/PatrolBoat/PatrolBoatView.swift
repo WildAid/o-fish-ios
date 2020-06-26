@@ -23,7 +23,7 @@ class DutyState: ObservableObject {
 
     init(user: UserViewModel) {
         self.user = user
-        self._onDuty = Published(initialValue: loadOnDutyState(with: user))
+        self._onDuty = Published(initialValue: loadOnDutyState(user: user))
     }
 
     private func recordOnDutyChange() {
@@ -37,12 +37,11 @@ class DutyState: ObservableObject {
         dutyChangeViewModel.save()
     }
 
-    private func loadOnDutyState(with user: UserViewModel) -> Bool {
+    private func loadOnDutyState(user: UserViewModel) -> Bool {
         let predicate = NSPredicate(format: "user.email CONTAINS %@", user.email)
 
         guard let dutyChange = RealmConnection.realm?.objects(DutyChange.self).filter(predicate)
                                    .sorted(byKeyPath: "date", ascending: false).first ?? nil else {
-
             return false
         }
 
