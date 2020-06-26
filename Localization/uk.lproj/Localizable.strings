@@ -20,12 +20,13 @@
 "Continue with empty fields?" = "Продовжити з порожніми полями?";
 "Date: " = "Дата:";
 "Empty fields" = "Порожні поля";
-"Error" = "Помилка";
+"Login Error" = "Помилка авторизації";
 "Forgot Password?" = "Забули пароль?";
 "Keep Editing" = "Продовжуйте редагування";
 "Loading..." = "Завантаження...";
 "Log Out" = "Вийти";
 "Login" = "Ввійти";
+"Invalid email or password" = "Невірні електронна адреса та/або пароль";
 "No" = "Ні";
 "No Results for “%@“" = "Немає результатів для «%@»";
 "Ok" = "Добре";
@@ -135,8 +136,8 @@
 "Date & Time" = "Дата та час";
 "Time" = "Час";
 "Skip the following sections?" = "Пропустити наступні розділи?";
-"ON DUTY" = "НА ВАРТІ";
-"OFF DUTY" = "ВІЛЬНО";
+"On Duty" = "На Варті";
+"Off Duty" = "Вільно";
 "Find records" = "Знайти звіти";
 "Red" = "Червоний";
 "Amber" = "Бурштиновий";
