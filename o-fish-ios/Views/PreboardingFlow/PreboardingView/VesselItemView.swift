@@ -29,6 +29,7 @@ struct VesselItemView: View {
                     HStack {
                         Text(report.vessel.name)
                             .foregroundColor(.text)
+                            .font(.body)
                         Spacer()
                         StatusSymbolView(risk: report.inspection.summary.safetyLevel.level)
                     }
@@ -39,6 +40,7 @@ struct VesselItemView: View {
                         CaptionLabel(title: "\(report.crew.count + 1)" + " " +  NSLocalizedString("Crew Members", comment: ""),
                                      color: .gray)
                     }
+                        .font(.subheadline)
                 }
             }
                 .padding(.bottom, Dimensions.padding)

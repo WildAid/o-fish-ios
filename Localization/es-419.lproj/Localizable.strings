@@ -12,12 +12,13 @@
 "Continue with empty fields?" = "Continue with empty fields?";
 "Date: " = "Date: ";
 "Empty fields" = "Empty fields";
-"Error" = "Error";
+"Login Error" = "Login Error";
 "Forgot Password?" = "Forgot Password?";
 "Keep Editing" = "Keep Editing";
 "Loading..." = "Loading...";
 "Log Out" = "Log Out";
 "Login" = "Login";
+"Invalid email or password" = "Invalid email or password";
 "No" = "No";
 "No Results for “%@“" = "No Results for “%@“";
 "Ok" = "Ok";
@@ -127,8 +128,8 @@
 "Date & Time" = "Date & Time";
 "Time" = "Time";
 "Skip the following sections?" = "Skip the following sections?";
-"ON DUTY" = "ON DUTY";
-"OFF DUTY" = "OFF DUTY";
+"On Duty" = "On Duty";
+"Off Duty" = "Off Duty";
 "Find records" = "Find records";
 "Red" = "Red";
 "Amber" = "Amber";
@@ -166,3 +167,5 @@
 "Log In" = "Log In";
 "Name" = "Name";
 "Type" = "Type";
+"You sure you want to logout?" = "You sure you want to logout?";
+"You can only log back in once you have cellular service or are connected to WIFI with internet" = "You can only log back in once you have cellular service or are connected to WIFI with internet";

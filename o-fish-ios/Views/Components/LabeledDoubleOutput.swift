@@ -16,9 +16,9 @@ struct LabeledDoubleOutput: View {
             Text(LocalizedStringKey(coordinate.rawValue))
                 .font(.caption)
             Text(value.locationDegrees(self.coordinate))
-                .multilineTextAlignment(.center)
                 .foregroundColor(.black)
         }
+            .multilineTextAlignment(.center)
             .padding(.horizontal)
     }
 }
