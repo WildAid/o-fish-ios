@@ -55,7 +55,6 @@ struct PatrolBoatView: View {
     @ObservedObject var onDuty = DutyState()
     var isLoggedIn: Binding<Bool>
     @State private var location = LocationViewModel(LocationHelper.currentLocation)
-    @State private var showingLogOut = false
     @State private var showingPreboardingView = false
     @State private var showingSearchView = false
     @State private var resetLocation = {}
@@ -120,14 +119,8 @@ struct PatrolBoatView: View {
                 }
             }
                 .edgesIgnoringSafeArea(.all)
-                .actionSheet(isPresented: $showingLogOut) {
-                    ActionSheet(title: Text("Choose the action"),
-                        message: nil,
-                        buttons: [.destructive(Text("Log Out"), action: showLogoutAlert),
-                                  .default(Text("Cancel"))])
-                }
                 .navigationBarItems(leading:
-                    Button(action: { self.showingLogOut = true }, label: {
+                    Button(action: showLogoutModal, label: {
                         HStack {
                             PersonIconView()
                                 .padding(.trailing, Dimensions.imagePadding)
@@ -179,6 +172,30 @@ struct PatrolBoatView: View {
     private func logoutAlertClicked() {
         RealmConnection.logout()
         isLoggedIn.wrappedValue = false
+    }
+
+    private func showLogoutModal() {
+        // TODO: for some reason this works only from action and not from viewModifier
+        // TODO: review when viewModifier actions will be available
+        let popoverId = UUID().uuidString
+
+        func hidePopover() {
+            PopoverManager.shared.hidePopover(id: popoverId)
+        }
+
+        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
+            LogoutModalView(logout: {
+                hidePopover()
+                self.showLogoutAlert()
+            },
+                            cancel: {
+                                hidePopover()
+            })
+                .background(Color.blackWithOpacity)
+                .onTapGesture {
+                    hidePopover()
+            }
+        }
     }
 }
 

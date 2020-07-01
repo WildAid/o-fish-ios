@@ -10,34 +10,43 @@ import SwiftUI
 struct AddAttachmentsButton: View {
     @ObservedObject var attachments: AttachmentsViewModel
 
-    @State private var showingActionSheet = false
-    @State private var showingPhotoTaker = false
+    @State private var popoverId = UUID().uuidString
 
     var body: some View {
-        Button(action: { self.showingActionSheet.toggle() }) {
+        Button(action: { self.showCustomActionSheet() }) {
             AddAttachmentIconView()
         }
-            .actionSheet(isPresented: $showingActionSheet) {
-                chooseTypeActionSheet
-            }
-    }
-
-    private var chooseTypeActionSheet: ActionSheet {
-        ActionSheet(title: Text("Choose the type of attachments"),
-            message: nil,
-            buttons: [.default(Text("Photo")) {
-                self.showPhotoTaker()
-            },
-                .default(Text("Note")) {
-                    self.attachments.notes.append(Note(text: ""))
-                },
-                .default(Text("Cancel"))])
     }
 
     private func showPhotoTaker() {
+        hidePopover()
         PhotoCaptureController.show(reportID: self.attachments.id) { controller, photoId in
             self.attachments.photoIDs.append(photoId)
             controller.hide()
+        }
+    }
+
+    private func addNote() {
+        hidePopover()
+        attachments.notes.append(Note(text: ""))
+    }
+
+    private func hidePopover() {
+        PopoverManager.shared.hidePopover(id: popoverId)
+    }
+
+    private func showCustomActionSheet() {
+        // TODO: for some reason this works only from action and not from viewModifier
+        // TODO: review when viewModifier actions will be available
+
+        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
+            AddAttachmentsModalView(photo: showPhotoTaker,
+                                    note: addNote,
+                                    cancel: hidePopover)
+                .background(Color.blackWithOpacity)
+                .onTapGesture {
+                    self.hidePopover()
+            }
         }
     }
 }
