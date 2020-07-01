@@ -79,7 +79,8 @@ struct CrewView: View {
                     SectionButton(title: "Add Crew Member", systemImageName: "plus") {
                         self.addCrewMemberClicked()
                     }
-                    .padding(.top, Dimensions.topPadding)
+                        .padding(.top, Dimensions.topPadding)
+                        .padding(.bottom, Dimensions.topPadding + Dimensions.spacing)
                 }
 
                 // TODO: Should be revisited after the June 2020 SwiftUI improvements

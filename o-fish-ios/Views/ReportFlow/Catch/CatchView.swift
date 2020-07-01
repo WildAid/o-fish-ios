@@ -49,6 +49,7 @@ struct CatchView: View {
                         systemImageName: "plus",
                         action: { self.addNewCatch() })
                         .padding(.top, self.inspection.actualCatch.count > 0 ? Dimensions.buttonTop : Dimensions.top)
+                        .padding(.bottom, Dimensions.buttonTop + Dimensions.spacing)
                 }
 
                 // TODO: Should be revisited after the June 2020 SwiftUI improvements

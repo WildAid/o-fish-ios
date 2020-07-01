@@ -93,6 +93,7 @@ struct VesselView: View {
                         self.addEMSClicked()
                     }
                         .padding(.top, Dimensions.bottomPadding)
+                        .padding(.bottom, Dimensions.bottomPadding + Dimensions.itemsSpacing)
                 }
             }
         }
