@@ -11,7 +11,6 @@ struct LoadedStateView: View {
     @ObservedObject var onDuty: DutyState
     @Binding var storedReports: [ReportViewModel]
     @Binding var showingRecentBoardings: Bool
-    var showingAddVessel: Bool
 
     private enum Dimensions {
         static let padding: CGFloat = 16.0
@@ -39,17 +38,6 @@ struct LoadedStateView: View {
                             report: item,
                             onDuty: self.onDuty)) { VesselItemView(report: item) }
                     }
-
-                    if showingAddVessel {
-                        NavigationLink(destination: ReportNavigationRootView()) {
-                            VStack(spacing: Dimensions.noSpacing) {
-                                IconLabel(imagePath: "plus", title: "Add New Vessel")
-                                    .padding(.vertical, Dimensions.padding)
-                                Divider()
-                            }
-                            Spacer()
-                        }
-                    }
                 }
             }
         }
@@ -61,7 +49,6 @@ struct LoadedStateView_Previews: PreviewProvider {
         LoadedStateView(
             onDuty: DutyState(user: UserViewModel()),
             storedReports: .constant([.sample, .sample]),
-            showingRecentBoardings: .constant(true),
-            showingAddVessel: true)
+            showingRecentBoardings: .constant(true))
     }
 }

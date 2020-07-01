@@ -71,6 +71,8 @@ struct PreboardingView: View {
 
     private enum Dimension {
         static let topPadding: CGFloat = 20.0
+        static let noSpacing: CGFloat = 0.0
+        static let padding: CGFloat = 16.0
     }
 
     private enum States {
@@ -100,6 +102,19 @@ struct PreboardingView: View {
                 }),
                 placeholder: searchbarPlaceholder
             )
+
+            if showingAddVessel {
+                NavigationLink(destination: ReportNavigationRootView()) {
+                    VStack(spacing: Dimension.noSpacing) {
+                        IconLabel(imagePath: "plus", title: "Add New Vessel")
+                            .padding(.vertical, Dimension.padding)
+                        Divider()
+                    }
+                    Spacer()
+                }
+                    .opacity(state == .loading ? 0.0 : 1.0)
+            }
+
             stateView()
             Spacer()
         }
@@ -175,8 +190,7 @@ struct PreboardingView: View {
             return AnyView(LoadedStateView(
                 onDuty: onDuty,
                 storedReports: $storedReports,
-                showingRecentBoardings: $showingRecentBoardings,
-                showingAddVessel: showingAddVessel)
+                showingRecentBoardings: $showingRecentBoardings)
             )
 
         case .loading:
