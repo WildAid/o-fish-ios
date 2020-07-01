@@ -14,7 +14,7 @@ struct NotesView: View {
     @State private var activeNoteId = ""
 
     private enum Dimensions {
-        static let topPadding: CGFloat = 24.0
+        static let verticalPadding: CGFloat = 24.0
         static let spacing: CGFloat = 16.0
     }
 
@@ -33,7 +33,7 @@ struct NotesView: View {
                 }
 
                 SectionButton(title: "Add Note", systemImageName: "plus", action: self.addNote)
-                    .padding(.top, Dimensions.topPadding)
+                    .padding(.vertical, Dimensions.verticalPadding)
 
                 // TODO: Should be revisited after the June 2020 SwiftUI improvements
                 HStack {

@@ -22,6 +22,8 @@ struct InspectionSummaryView: View {
                 StatusSymbolView(risk: report.inspection.summary.safetyLevel.level, size: .large)
             }
                 .padding([.horizontal], Dimensions.spacing)
+                .padding(.top, Dimensions.spacing)
+
             LocationDisplayView(report: report)
             if !report.inspection.attachments.notes.isEmpty || !report.inspection.attachments.photoIDs.isEmpty {
                 AttachmentsView(attachments: report.inspection.attachments, isEditable: false)

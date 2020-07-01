@@ -88,6 +88,7 @@ struct VesselRecordView: View {
             }
         }
             .background(Color.backgroundGrey)
+            .edgesIgnoringSafeArea(.bottom)
     }
 
     private func openBoardingRecordView(with report: ReportViewModel) {
