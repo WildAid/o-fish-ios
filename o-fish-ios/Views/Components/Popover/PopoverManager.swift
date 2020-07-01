@@ -12,18 +12,20 @@ class PopoverManager {
 
     var currentlyShowingPopovers: [String: UIViewController] = [:]
 
-    func showPopover<Popover: View>(id: String, content: () -> Popover) {
+    func showPopover<Popover: View>(id: String, content: () -> Popover, withButton: Bool = true) {
 
         let hidePopoverAction = {
             self.hidePopover(id: id)
         }
 
         let view = VStack(spacing: .zero) {
-            Button(action: hidePopoverAction) {
-                Color.clear
-                    .edgesIgnoringSafeArea(.all)
+            if withButton {
+                Button(action: hidePopoverAction) {
+                    Color.clear
+                        .edgesIgnoringSafeArea(.all)
+                }
+                Spacer(minLength: .zero)
             }
-            Spacer(minLength: .zero)
             content()
         }
             .background(Color.clear)

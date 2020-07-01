@@ -36,6 +36,7 @@
 		3093806124460A2A00E23350 /* VesselItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093805B24460A2900E23350 /* VesselItemView.swift */; };
 		3093806324460A4C00E23350 /* ColumnText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093806224460A4C00E23350 /* ColumnText.swift */; };
 		3093806724460A6D00E23350 /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093806624460A6D00E23350 /* UIImage+resize.swift */; };
+		3099D47624A60AA90046E38E /* AddAttachmentsModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3099D47524A60AA90046E38E /* AddAttachmentsModalView.swift */; };
 		30BDE77E2472CD2D0058E401 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BDE77D2472CD2D0058E401 /* EmptyStateView.swift */; };
 		30BDE7822472D9CB0058E401 /* LoadedStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BDE7812472D9CB0058E401 /* LoadedStateView.swift */; };
 		30C112B62477E90D00DD13A8 /* NotesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C112B52477E90D00DD13A8 /* NotesListView.swift */; };
@@ -47,7 +48,9 @@
 		30D82D842498E14100AB0E2E /* UIImage+Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */; };
 		30DBF2F824A34B6C00A364F1 /* Font+title2+titile3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */; };
 		30E31E8E243F36EA00B96A04 /* DeliveryInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */; };
+		30E5377624A4E945006017C9 /* LogoutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5377524A4E945006017C9 /* LogoutModalView.swift */; };
 		30E9393924A225C500011305 /* Double+LocationDegrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E9393824A225C500011305 /* Double+LocationDegrees.swift */; };
+		30EB886224ACA24600904894 /* ActionSheetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EB886124ACA24600904894 /* ActionSheetButton.swift */; };
 		30F4D601245C725C00543F54 /* BusinessPickerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */; };
 		30F4D604245C727500543F54 /* ChooseBusinessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D603245C727500543F54 /* ChooseBusinessView.swift */; };
 		49063BC7240FE0C100C54231 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49063BC6240FE0C100C54231 /* BasicInfoView.swift */; };
@@ -265,6 +268,7 @@
 		3093805B24460A2900E23350 /* VesselItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselItemView.swift; sourceTree = "<group>"; };
 		3093806224460A4C00E23350 /* ColumnText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnText.swift; sourceTree = "<group>"; };
 		3093806624460A6D00E23350 /* UIImage+resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
+		3099D47524A60AA90046E38E /* AddAttachmentsModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAttachmentsModalView.swift; sourceTree = "<group>"; };
 		30BDE77D2472CD2D0058E401 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		30BDE7812472D9CB0058E401 /* LoadedStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedStateView.swift; sourceTree = "<group>"; };
 		30C112B52477E90D00DD13A8 /* NotesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListView.swift; sourceTree = "<group>"; };
@@ -276,7 +280,9 @@
 		30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Thumbnail.swift"; sourceTree = "<group>"; };
 		30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+title2+titile3.swift"; sourceTree = "<group>"; };
 		30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInputView.swift; sourceTree = "<group>"; };
+		30E5377524A4E945006017C9 /* LogoutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutModalView.swift; sourceTree = "<group>"; };
 		30E9393824A225C500011305 /* Double+LocationDegrees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+LocationDegrees.swift"; sourceTree = "<group>"; };
+		30EB886124ACA24600904894 /* ActionSheetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetButton.swift; sourceTree = "<group>"; };
 		30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessPickerDataView.swift; sourceTree = "<group>"; };
 		30F4D603245C727500543F54 /* ChooseBusinessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBusinessView.swift; sourceTree = "<group>"; };
 		49063BC6240FE0C100C54231 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
@@ -698,6 +704,9 @@
 			isa = PBXGroup;
 			children = (
 				3093806224460A4C00E23350 /* ColumnText.swift */,
+				30EB886124ACA24600904894 /* ActionSheetButton.swift */,
+				30E5377524A4E945006017C9 /* LogoutModalView.swift */,
+				3099D47524A60AA90046E38E /* AddAttachmentsModalView.swift */,
 				301A17662484E2F300034CFC /* RemovableViewModifier.swift */,
 				308A75362476B99C00C10462 /* NoteFieldView.swift */,
 				30C112B52477E90D00DD13A8 /* NotesListView.swift */,
@@ -1263,6 +1272,7 @@
 				30BDE7822472D9CB0058E401 /* LoadedStateView.swift in Sources */,
 				490C0DA523F6B15800283307 /* AppDelegate.swift in Sources */,
 				49063BCA240FEAAF00C54231 /* DisplayField.swift in Sources */,
+				30E5377624A4E945006017C9 /* LogoutModalView.swift in Sources */,
 				493CDFE624044AE700516048 /* LocationCoordsView.swift in Sources */,
 				49076E422411867800B3CF43 /* TrafficLights.swift in Sources */,
 				30DBF2F824A34B6C00A364F1 /* Font+title2+titile3.swift in Sources */,
@@ -1394,8 +1404,10 @@
 				BCE48B088018D82ECFC5F7A9 /* MultiRowPickerWithButton.swift in Sources */,
 				49674E4A2451D7010023ABC6 /* ImageCache.swift in Sources */,
 				49E385A32431F1EC000A6EC3 /* EMSSummaryView.swift in Sources */,
+				30EB886224ACA24600904894 /* ActionSheetButton.swift in Sources */,
 				3093806324460A4C00E23350 /* ColumnText.swift in Sources */,
 				495AC6F9243F176C00EA11D3 /* SeizureViewModel.swift in Sources */,
+				3099D47624A60AA90046E38E /* AddAttachmentsModalView.swift in Sources */,
 				49674E442451D3960023ABC6 /* ImageLoader.swift in Sources */,
 				4980764E242E688B00D463F4 /* InspectionSummaryView.swift in Sources */,
 				BCE48A80D03CDC3B8C68F3CC /* UnitPickerWithButton.swift in Sources */,
