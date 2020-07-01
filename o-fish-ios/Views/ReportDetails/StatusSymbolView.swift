@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-typealias StatusColors = (textColor: Color, backgroundColor: Color)
+private typealias StatusColors = (textColor: Color, backgroundColor: Color)
 
 enum Size {
     case small, large
@@ -16,12 +16,6 @@ enum Size {
 struct StatusSymbolView: View {
     @State var risk: SafetyLevelViewModel.LevelColor
     var size: Size = .small
-    private var height: CGFloat {
-        size == .small ? 24.0 : 36
-    }
-    private var width: CGFloat {
-        size == .small ? 68.0 : 100.0
-    }
 
     private var colors: StatusColors {
 
@@ -39,12 +33,26 @@ struct StatusSymbolView: View {
         ZStack {
             Rectangle()
                 .fill(colors.backgroundColor)
-                .cornerRadius(height / 2)
+                .cornerRadius(.infinity)
                 .frame(width: width, height: height)
+
             Text(NSLocalizedString(risk.rawValue, comment: "Risk color").uppercased())
-                .font(size == .small ? Font.caption.weight(.semibold) : Font.headline.weight(.semibold))
+                .minimumScaleFactor(0.5)
+                .font(font)
                 .foregroundColor(colors.textColor)
         }
+    }
+
+    private var height: CGFloat {
+        size == .small ? 24 : 36
+    }
+
+    private var width: CGFloat {
+        size == .small ? 68 : 100
+    }
+
+    private var font: Font {
+        size == .small ? Font.caption1.weight(.semibold) : Font.headline.weight(.semibold)
     }
 }
 
