@@ -72,8 +72,8 @@ struct BoardingRecordView: View {
                 }
             }
         }
-            .edgesIgnoringSafeArea(.bottom)
             .background(Color.backgroundGrey)
+            .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("Boarding", displayMode: .inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
