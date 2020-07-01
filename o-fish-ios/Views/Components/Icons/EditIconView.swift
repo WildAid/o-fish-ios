@@ -17,7 +17,7 @@ struct EditIconView: View {
     var body: some View {
         Image(systemName: "pencil")
             .font(.system(size: Dimensions.imageSize))
-            .foregroundColor(Color.iconsGray)
+            .foregroundColor(Color.lightGrayIcon)
             .padding(.top, Dimensions.padding)
     }
 }

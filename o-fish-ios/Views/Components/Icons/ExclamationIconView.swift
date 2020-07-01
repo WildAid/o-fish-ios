@@ -21,6 +21,6 @@ struct ExclamationIconView: View {
 
 struct ExclamationIconView_Previews: PreviewProvider {
     static var previews: some View {
-        EditIconView()
+        ExclamationIconView()
     }
 }

@@ -16,7 +16,7 @@ struct AddAttachmentIconView: View {
     var body: some View {
         Image(systemName: "paperclip")
             .font(.system(size: Dimensions.imageSize))
-            .foregroundColor(Color.iconsGray)
+            .foregroundColor(Color.lightGrayIcon)
             .padding(.top, Dimensions.padding)
     }
 }

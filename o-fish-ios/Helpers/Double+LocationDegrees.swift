@@ -29,11 +29,11 @@ extension Double {
         case .longitude: sideOfTheWorld = self >= 0 ? "E" : "W"
         }
 
-        return String(format: "%02d°%02d'%02d\"%@",
+        return String(format: "%@%02d°%02d'%02d\"",
+                      sideOfTheWorld,
                       coordDegrees,
                       coordMinutes,
-                      coordSeconds,
-                      sideOfTheWorld
+                      coordSeconds
         )
     }
 }

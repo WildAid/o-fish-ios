@@ -68,4 +68,6 @@ extension Color {
 
     public static let lightGrayButton = Color(red: 161, green: 161, blue: 161, alpha: 0.16)
 
+    public static let lightGrayIcon = Color(red: 203, green: 203, blue: 203) //#CBCBCB
+
 }

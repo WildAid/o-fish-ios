@@ -16,7 +16,7 @@ struct PhotoThumbNail: View {
 
     private enum Dimensions {
         static let radius: CGFloat = 4
-        static let iconPadding: CGFloat = 12
+        static let iconPadding: CGFloat = 8
     }
 
     var body: some View {
@@ -55,7 +55,9 @@ struct PhotoThumbNail: View {
 
 struct PhotoThumbNail_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoThumbNail(photo: .sample)
+        func dummyFunc (_: PhotoViewModel) { }
+        return PhotoThumbNail(photo: .sample, deletePhoto: dummyFunc(_:))
             .environmentObject(ImageCache())
+            .background(Color.black)
     }
 }
