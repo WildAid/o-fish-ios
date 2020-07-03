@@ -205,6 +205,7 @@
 		BCE488BC8F235F8BDEB8C5EB /* CatchOnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FCB06AC5B25AF1BCA74 /* CatchOnBoardView.swift */; };
 		BCE488F38035E437A264E0A5 /* KeyboardControllingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48AF913D1F963F18F6FAF /* KeyboardControllingScrollView.swift */; };
 		BCE4892DFF6094A55FFB507C /* ViolationCreateCrewMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4827EACF438010EAE5BA1 /* ViolationCreateCrewMemberView.swift */; };
+		BCE48943FDB4DE9E3C390D76 /* DutyReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489AF9A78548C0EB9656E /* DutyReportsView.swift */; };
 		BCE489798D6BE59419D46A83 /* SwiftUI+DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4888D0AB99F5CE3FA87DA /* SwiftUI+DebugPrint.swift */; };
 		BCE4899544B72DD8D04E3DA7 /* NavigationBarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FD1BBBF69F49C6EC765 /* NavigationBarViewModifier.swift */; };
 		BCE48998EA1E025783FB6D6F /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4892551FBCBFBE0C35C4B /* IconLabel.swift */; };
@@ -440,6 +441,7 @@
 		BCE488D24416A6BC37C41F71 /* ChooseViolationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseViolationsView.swift; sourceTree = "<group>"; };
 		BCE4892551FBCBFBE0C35C4B /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
 		BCE489430E879F75C5AAF84F /* ButtonField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonField.swift; sourceTree = "<group>"; };
+		BCE489AF9A78548C0EB9656E /* DutyReportsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DutyReportsView.swift; sourceTree = "<group>"; };
 		BCE489BFAF7761711B175260 /* WrappedShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrappedShadowView.swift; sourceTree = "<group>"; };
 		BCE489DDA8774B9D56F44157 /* SegmentedField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedField.swift; sourceTree = "<group>"; };
 		BCE489F610C0078AE3ED2944 /* TopTabBarContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTabBarContainerView.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				3013CA7B2424AF7A00D2FF60 /* PatrolBoatView.swift */,
 				497EBF1B2435D3AC00B01800 /* CoordsBoxView.swift */,
 				BCE485D2BA893C25D49E2A05 /* BoardButton.swift */,
+				BCE489AF9A78548C0EB9656E /* DutyReportsView.swift */,
 			);
 			path = PatrolBoat;
 			sourceTree = "<group>";
@@ -1492,6 +1495,7 @@
 				BCE485FB82E626571C19B582 /* RectangleButton.swift in Sources */,
 				BCE483016BC86FB511F7A3F5 /* View+NavigationStyle.swift in Sources */,
 				BCE4899544B72DD8D04E3DA7 /* NavigationBarViewModifier.swift in Sources */,
+				BCE48943FDB4DE9E3C390D76 /* DutyReportsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
