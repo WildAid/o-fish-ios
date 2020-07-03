@@ -7,16 +7,10 @@
 
 import SwiftUI
 
-class BasicInfoViewModel: ObservableObject {
-    @Published var date: Date = Date()
-}
-
 struct BasicInfoView: View {
 
     @ObservedObject var report: ReportViewModel
     @Binding var allFieldsComplete: Bool
-
-    @ObservedObject private var viewModel = BasicInfoViewModel()
     @State private var resetLocation: () -> Void = {}
 
     private enum Dimensions {
@@ -32,7 +26,7 @@ struct BasicInfoView: View {
                 wrappedShadowView {
                     VStack(spacing: Dimensions.padding) {
                         TitleLabel(title: "Date & Time")
-                        DateTimeView(date: self.viewModel.date)
+                        DateTimeView(date: self.$report.date)
                     }
                         .padding(.top, Dimensions.padding)
                         .padding(.bottom, Dimensions.bottomPadding)
