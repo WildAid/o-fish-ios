@@ -11,34 +11,36 @@ struct CrewMemberShortView: View {
     @ObservedObject var crewMember: CrewMemberViewModel
 
     var color = Color.main
-    let backgroundOpacity = 0.1
+    var showingLicenseNumber = true
 
     private enum Dimensions {
-        static let spacing: CGFloat = 8
         static let captainLabelVerticalPadding: CGFloat = 3
         static let captainLabelHorizontalPadding: CGFloat = 10
-        static let captainLabelRadius: CGFloat = 9.5
+        static let backgroundOpacity = 0.1
+        static let padding: CGFloat = 16
     }
 
     var body: some View {
 
-        HStack(spacing: Dimensions.spacing) {
-            VStack(spacing: Dimensions.spacing) {
+        HStack(alignment: .top) {
+            VStack(spacing: .zero) {
                 TextLabel(title: crewMember.name)
-                CaptionLabel(title: crewMember.license, color: .text)
+                if showingLicenseNumber {
+                    CaptionLabel(title: "Licence Number \( crewMember.license)", color: .text)
+                }
             }
 
             if crewMember.isCaptain {
                 HStack {
                     Text("Captain".uppercased())
-                        .font(.caption)
+                        .font(Font.caption.weight(.semibold))
                         .foregroundColor(color)
                         .padding(.vertical, Dimensions.captainLabelVerticalPadding)
                         .padding(.horizontal, Dimensions.captainLabelHorizontalPadding)
                 }
-
-                    .background(color.opacity(backgroundOpacity))
-                    .cornerRadius(Dimensions.captainLabelRadius)
+                    .background(color.opacity(Dimensions.backgroundOpacity))
+                    .cornerRadius(.infinity)
+                    .padding(.trailing, showingLicenseNumber ? Dimensions.padding : .zero)
             }
         }
     }
@@ -50,7 +52,7 @@ struct CrewMemberShortView_Previews: PreviewProvider {
         sampleCaptain.isCaptain = true
         return Group {
             CrewMemberShortView(crewMember: .sample)
-            CrewMemberShortView(crewMember: sampleCaptain)
+            CrewMemberShortView(crewMember: sampleCaptain, showingLicenseNumber: false)
         }
     }
 }

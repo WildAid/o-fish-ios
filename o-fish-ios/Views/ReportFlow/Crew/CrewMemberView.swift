@@ -35,9 +35,6 @@ struct CrewMemberView: View {
                     index: index,
                     isCaptain: crewMember.isCaptain,
                     editClicked: editClicked)
-                    .removable(isActive: !crewMember.isCaptain) {
-                        self.removeClicked?(self.crewMember)
-                }
             }
         }
     }

@@ -72,9 +72,10 @@ struct ViolationInputView: View {
                                 fieldButtonClicked: chooseCrewMemberClicked)
                 } else {
                     Button(action: chooseCrewMemberClicked) {
-                        VStack(spacing: Dimensions.spacing) {
+                        VStack(spacing: .zero) {
                             CaptionLabel(title: "Issued to")
-                            CrewMemberShortView(crewMember: violation.crewMember)
+                            CrewMemberShortView(crewMember: violation.crewMember, showingLicenseNumber: false)
+                                .padding(.bottom, Dimensions.spacing)
                             Divider()
                         }
                     }
@@ -113,9 +114,11 @@ struct ViolationInputView: View {
 
 struct ViolationItemInputView_Previews: PreviewProvider {
     static var previews: some View {
-        ViolationInputView(isViolationNonEmpty: .constant(true),
+        let sampleCaptain = CrewMemberViewModel.sample
+        sampleCaptain.isCaptain = true
+        return ViolationInputView(isViolationNonEmpty: .constant(true),
                            report: .sample,
-                           crew: [.sample, .sample],
+                           crew: [sampleCaptain, sampleCaptain],
                            violation: .sample, index: 1)
     }
 }

@@ -33,9 +33,6 @@ struct ViolationView: View {
                                     editClicked: { violation in
                                         self.currentEditingViolationId = violation.id
                 })
-                    .removable {
-                        self.removeClicked?(self.violation)
-                }
             }
         }
     }

@@ -21,9 +21,6 @@ struct NoteView: View {
                 NoteInputView(annotatedNote: annotatedNote, noteIndex: noteIndex, reportID: reportID, deleteClicked: deleteClicked)
             } else {
                 NoteStaticView(annotatedNote: annotatedNote, noteIndex: noteIndex, activeNoteId: $activeNoteId)
-                    .removable {
-                        self.deleteClicked?(self.annotatedNote)
-                }
             }
         }
     }

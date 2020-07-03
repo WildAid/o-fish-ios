@@ -16,7 +16,6 @@
 		3013CA802424B07300D2FF60 /* TextToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CA7F2424B07300D2FF60 /* TextToggle.swift */; };
 		3013CA842424B0E900D2FF60 /* LabeledDoubleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CA832424B0E900D2FF60 /* LabeledDoubleOutput.swift */; };
 		3013CA872424B13200D2FF60 /* ColoredToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CA862424B13200D2FF60 /* ColoredToggleStyle.swift */; };
-		301A17672484E2F300034CFC /* RemovableViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301A17662484E2F300034CFC /* RemovableViewModifier.swift */; };
 		30234A27244DAFEE00244997 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30234A26244DAFEE00244997 /* DeliveryView.swift */; };
 		30234A29244DAFF400244997 /* EMSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30234A28244DAFF400244997 /* EMSView.swift */; };
 		30234A2B244DAFFB00244997 /* VesselInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30234A2A244DAFFB00244997 /* VesselInformationView.swift */; };
@@ -248,7 +247,6 @@
 		3013CA7F2424B07300D2FF60 /* TextToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToggle.swift; sourceTree = "<group>"; };
 		3013CA832424B0E900D2FF60 /* LabeledDoubleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledDoubleOutput.swift; sourceTree = "<group>"; };
 		3013CA862424B13200D2FF60 /* ColoredToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredToggleStyle.swift; sourceTree = "<group>"; };
-		301A17662484E2F300034CFC /* RemovableViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemovableViewModifier.swift; sourceTree = "<group>"; };
 		30234A26244DAFEE00244997 /* DeliveryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
 		30234A28244DAFF400244997 /* EMSView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMSView.swift; sourceTree = "<group>"; };
 		30234A2A244DAFFB00244997 /* VesselInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselInformationView.swift; sourceTree = "<group>"; };
@@ -707,7 +705,6 @@
 				30EB886124ACA24600904894 /* ActionSheetButton.swift */,
 				30E5377524A4E945006017C9 /* LogoutModalView.swift */,
 				3099D47524A60AA90046E38E /* AddAttachmentsModalView.swift */,
-				301A17662484E2F300034CFC /* RemovableViewModifier.swift */,
 				308A75362476B99C00C10462 /* NoteFieldView.swift */,
 				30C112B52477E90D00DD13A8 /* NotesListView.swift */,
 				4946C0DD240D29DB009FB1D9 /* Pictures */,
@@ -1314,7 +1311,6 @@
 				493CE0162405495100516048 /* BackButton.swift in Sources */,
 				30234A2B244DAFFB00244997 /* VesselInformationView.swift in Sources */,
 				3093806024460A2A00E23350 /* PreboardingView.swift in Sources */,
-				301A17672484E2F300034CFC /* RemovableViewModifier.swift in Sources */,
 				49A3EC97242CBA0000055342 /* User.swift in Sources */,
 				30234A27244DAFEE00244997 /* DeliveryView.swift in Sources */,
 				49674E482451D6C80023ABC6 /* RemoteImageView.swift in Sources */,

@@ -25,9 +25,6 @@ struct EMSView: View {
                 EMSSummaryView(ems: ems, isEditable: true) {
                     self.activeEditableComponentId = self.ems.id
                 }
-                    .removable {
-                        self.deleteClicked?(self.ems.id)
-                    }
             }
         }
     }

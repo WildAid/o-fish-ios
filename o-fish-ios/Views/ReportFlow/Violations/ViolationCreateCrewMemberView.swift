@@ -26,6 +26,8 @@ struct ViolationCreateCrewMemberView: View {
 
     @State private var presentedAlert = PresentedAlert.notPresented
 
+    @State private var attachments = AttachmentsViewModel()
+
     private enum Dimensions {
         static let spacing: CGFloat = 16
         static let bottomPadding: CGFloat = 24
@@ -37,10 +39,7 @@ struct ViolationCreateCrewMemberView: View {
                 VStack(spacing: Dimensions.spacing) {
                     HStack {
                         TitleLabel(title: "Crew Member")
-
-                        Button(action: { /*TODO fixme connect attaches*/ }) {
-                            AddAttachmentIconView()
-                        }
+                        AddAttachmentsButton(attachments: attachments)
                     }
                         .padding(.vertical, Dimensions.spacing)
 
@@ -52,6 +51,8 @@ struct ViolationCreateCrewMemberView: View {
                         Spacer()
                         CheckBox(title: "Captain", value: self.$isCaptain)
                     }
+
+                    AttachmentsView(attachments: attachments)
 
                     CallToActionButton(title: "Add", action: addCrewMember)
                         .padding(.bottom, Dimensions.bottomPadding)
@@ -121,6 +122,7 @@ struct ViolationCreateCrewMemberView: View {
         crewMember.name = name
         crewMember.license = license
         crewMember.isCaptain = isCaptain
+        crewMember.attachments = attachments
         return crewMember
     }
 

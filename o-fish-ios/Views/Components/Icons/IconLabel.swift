@@ -13,6 +13,7 @@ struct IconLabel: View {
     let title: String
 
     var color = Color.main
+    var horizontalPadding: CGFloat = 16.0
 
     private enum Dimension {
         static let spacing: CGFloat = 10.0
@@ -27,7 +28,7 @@ struct IconLabel: View {
             }
                 .foregroundColor(color)
         }
-            .padding(.horizontal)
+            .padding(.horizontal, horizontalPadding)
     }
 }
 
