@@ -29,9 +29,6 @@ struct CatchOnBoardView: View {
                         editClicked: { violation in
                             self.currentEditingCatchId = violation.id
                         })
-                            .removable {
-                                self.removeClicked?(self.catchModel)
-                        }
                 }
             }
     }

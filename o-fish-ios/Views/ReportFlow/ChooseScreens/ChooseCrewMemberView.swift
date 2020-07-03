@@ -27,8 +27,8 @@ struct ChooseCrewMemberView: View {
 
     private enum Dimensions {
         static let spacing: CGFloat = 16
-        static let imageSize: CGFloat = 32
-        static let horizontalPadding: CGFloat = 16
+        static let imageSize: CGFloat = 40
+        static let cellSpacing: CGFloat = 8
     }
 
     var body: some View {
@@ -36,18 +36,18 @@ struct ChooseCrewMemberView: View {
             SearchBarView(searchText: $searchText, placeholder: "Search Crew")
 
             ScrollView {
-                VStack(spacing: 0) {
+                VStack(spacing: .zero) {
                     ForEach(items.filter {
                         $0.isMatch(search: searchText) || searchText == ""
                     }) { item in
 
-                        VStack(spacing: 0) {
+                        VStack(spacing: .zero) {
                             Button(action: { self.searchItemClicked(item: item) }) {
-                                HStack(spacing: Dimensions.spacing) {
+                                HStack(spacing: Dimensions.cellSpacing) {
                                     VStack {
                                         Image(systemName: "person.crop.circle.fill")
                                             .font(.system(size: Dimensions.imageSize))
-                                            .foregroundColor(.captainGray)
+                                            .foregroundColor(.removeAction)
                                     }
                                     CrewMemberShortView(crewMember: item)
                                 }
@@ -59,7 +59,7 @@ struct ChooseCrewMemberView: View {
 
                     VStack(spacing: 0) {
                         Button(action: { self.showingCreateCrewMember = true }) {
-                            IconLabel(imagePath: "plus", title: "Crew Member")
+                            IconLabel(imagePath: "plus", title: "Add Crew Member", color: .black, horizontalPadding: 0)
                         }
                             .padding(.vertical, Dimensions.spacing)
                         Divider()
@@ -67,7 +67,7 @@ struct ChooseCrewMemberView: View {
 
                     Spacer()
                 }
-                .padding(.horizontal, Dimensions.horizontalPadding)
+                .padding(.horizontal, Dimensions.spacing)
             }
         }
     }

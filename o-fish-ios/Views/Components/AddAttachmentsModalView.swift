@@ -34,6 +34,7 @@ struct AddAttachmentsModalView: View {
             ActionSheetButton(title: "Cancel", action: cancel)
                 .font(Font.title3.weight(.semibold))
         }
+            .padding(.bottom, Dimensions.bottomPadding)
             .edgesIgnoringSafeArea(.all)
     }
 }

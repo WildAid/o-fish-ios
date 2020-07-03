@@ -24,6 +24,7 @@ struct SegmentedField: View {
         static let lineWidth: CGFloat = 1
         static let lineLimit = 1
         static let scaleFactor: CGFloat = 0.7
+        static let heightButton: CGFloat = 32.0
     }
 
     var body: some View {
@@ -40,10 +41,11 @@ struct SegmentedField: View {
                                 .padding(.vertical, Dimensions.labelSpacing)
                                 .lineLimit(Dimensions.lineLimit)
                                 .foregroundColor(self.selectedItem == item ? self.secondaryColor : self.textColor)
-                                .font(self.selectedItem == item ? Font.body.weight(.semibold) : Font.body)
+                                .font(self.selectedItem == item ? Font.subheadline.weight(.semibold) : Font.subheadline)
                                 .minimumScaleFactor(Dimensions.scaleFactor)
                             Spacer(minLength: Dimensions.labelSpacing)
                         }
+                            .frame(height: Dimensions.heightButton)
                             .background(self.selectedItem == item ? self.activeColor : self.secondaryColor)
                             .cornerRadius(.infinity)
                             .overlay(

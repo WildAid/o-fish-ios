@@ -41,7 +41,7 @@ class CrewMemberViewModel: ObservableObject, Identifiable {
         self.init()
         name = crewMember.name
         license = crewMember.license
-        isCaptain = isCaptain
+        isCaptain = crewMember.isCaptain
     }
 
     func save() -> CrewMember? {
