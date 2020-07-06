@@ -57,7 +57,10 @@ struct PatrolBoatView: View {
     @State private var location = LocationViewModel(LocationHelper.currentLocation)
     @State private var showingPreboardingView = false
     @State private var showingSearchView = false
+    @State private var showingDutyReportsSheet = false
     @State private var resetLocation = {}
+
+    @State private var dutyReports = [ReportViewModel]()
 
     @State private var showingAlertItem: AlertItem?
 
@@ -117,6 +120,11 @@ struct PatrolBoatView: View {
                     isActive: self.$showingSearchView) {
                     EmptyView()
                 }
+
+                NavigationLink(destination: DutyReportsView(dutyReports: dutyReports, onDuty: onDuty),
+                    isActive: self.$showingDutyReportsSheet) {
+                    EmptyView()
+                }
             }
                 .edgesIgnoringSafeArea(.all)
                 .navigationBarItems(leading:
@@ -129,7 +137,16 @@ struct PatrolBoatView: View {
                                 .lineLimit(Dimensions.lineLimit)
                         }
                     }), trailing:
-                    TextToggle(isOn: $onDuty.onDuty, titleLabel: "", onLabel: "On Duty", offLabel: "Off Duty")
+                    TextToggle(isOn:
+                        Binding<Bool>(
+                            get: { self.onDuty.onDuty },
+                            set: {
+                                self.onDuty.onDuty = $0
+                                if !$0 {
+                                    self.showOffDutyReportsIfAny()
+                                }
+                        }),
+                        titleLabel: "", onLabel: "On Duty", offLabel: "Off Duty")
                 )
                 .navigationBarTitle(Text(""), displayMode: .inline)
                 .navigationBarBackButtonHidden(true)
@@ -188,14 +205,58 @@ struct PatrolBoatView: View {
                 hidePopover()
                 self.showLogoutAlert()
             },
-                            cancel: {
-                                hidePopover()
-            })
+                cancel: {
+                    hidePopover()
+                })
                 .background(Color.blackWithOpacity)
                 .onTapGesture {
                     hidePopover()
-            }
+                }
         }
+    }
+
+    private func showOffDutyReportsIfAny() {
+        dutyReports = dutyReportsForCurrentUser()
+        if dutyReports.count > 0 {
+            showingDutyReportsSheet = true
+        }
+    }
+
+    /// Logic
+
+    private func getDutyDatesForCurrentUser() -> (from: Date, to: Date)? {
+        let userEmail = RealmConnection.emailAddress
+        let predicate = NSPredicate(format: "user.email = %@", userEmail)
+
+        let realmDutyChanges = RealmConnection.realm?.objects(DutyChange.self).filter(predicate).sorted(byKeyPath: "date", ascending: false) ?? nil
+
+        guard let dutyChanges = realmDutyChanges else { return nil }
+
+        if dutyChanges.count < 2 { return nil }
+        let off = dutyChanges[0]
+        let on = dutyChanges[1]
+
+        return (from: on.date, to: off.date)
+    }
+
+    private func dutyReportsForCurrentUser() -> [ReportViewModel] {
+        let userEmail = RealmConnection.emailAddress
+        let dates = getDutyDatesForCurrentUser()
+
+        guard let dutyDates = dates else { return [] }
+
+        let predicate = NSPredicate(format: "timestamp > %@ AND timestamp < %@ AND reportingOfficer.email = %@",
+            dutyDates.from as NSDate, dutyDates.to as NSDate, userEmail)
+
+        let realmReports = RealmConnection.realm?.objects(Report.self).filter(predicate).sorted(byKeyPath: "timestamp", ascending: false) ?? nil
+
+        guard let reports = realmReports else { return [] }
+
+        var dutyReports = [ReportViewModel]()
+        for report in reports {
+            dutyReports.append(ReportViewModel(report))
+        }
+        return dutyReports
     }
 }
 
