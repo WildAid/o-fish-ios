@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DeliveryInputView: View {
     @ObservedObject var delivery: DeliveryViewModel
+    let reportId: String
     @Binding var activeEditableComponentId: String
     @Binding var informationComplete: Bool
     @Binding var showingWarningState: Bool
@@ -27,11 +28,13 @@ struct DeliveryInputView: View {
     }
 
     init(delivery: DeliveryViewModel,
+         reportId: String,
          activeEditableComponentId: Binding<String>,
          informationComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>) {
 
         self.delivery = delivery
+        self.reportId = reportId
         _activeEditableComponentId = activeEditableComponentId
         _informationComplete = informationComplete
         _showingWarningState = showingWarningState
@@ -45,7 +48,9 @@ struct DeliveryInputView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack {
                 TitleLabel(title: "Last Delivery")
-                AddAttachmentsButton(attachments: delivery.attachments)
+                AddAttachmentsButton(
+                    attachments: delivery.attachments,
+                    reportId: reportId)
             }
                 .padding(.top, Dimensions.spacing)
 
@@ -150,7 +155,9 @@ struct DeliveryInputView: View {
 
 struct DeliveryInputView_Previews: PreviewProvider {
     static var previews: some View {
-        DeliveryInputView(delivery: .sample,
+        DeliveryInputView(
+            delivery: .sample,
+            reportId: "TestId",
             activeEditableComponentId: .constant(""),
             informationComplete: .constant(false),
             showingWarningState: .constant(false))

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ViolationSeizureInputView: View {
     @ObservedObject var seizure: SeizuresViewModel
+    let reportId: String
 
     private enum Dimensions {
         static let spacing: CGFloat = 16
@@ -20,7 +21,7 @@ struct ViolationSeizureInputView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack {
                 TitleLabel(title: "Seizure")
-                AddAttachmentsButton(attachments: seizure.attachments)
+                AddAttachmentsButton(attachments: seizure.attachments, reportId: reportId)
             }
                 .padding(.top, Dimensions.spacing)
 
@@ -38,6 +39,6 @@ struct ViolationSeizureInputView: View {
 
 struct ViolationSeizureInputView_Previews: PreviewProvider {
     static var previews: some View {
-        ViolationSeizureInputView(seizure: .sample)
+        ViolationSeizureInputView(seizure: .sample, reportId: "testID")
     }
 }

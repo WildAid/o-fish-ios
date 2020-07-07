@@ -65,7 +65,7 @@ struct ViolationsView: View {
                 }
 
                 wrappedShadowView {
-                    ViolationSeizureInputView(seizure: self.summary.seizures)
+                    ViolationSeizureInputView(seizure: self.summary.seizures, reportId: self.report.id)
                 }
 
                 // TODO: Should be revisited after the June 2020 SwiftUI improvements

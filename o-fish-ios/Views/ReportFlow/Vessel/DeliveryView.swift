@@ -10,6 +10,7 @@ import SwiftUI
 struct DeliveryView: View {
 
     @ObservedObject var delivery: DeliveryViewModel
+    let reportId: String
     @Binding var activeEditableComponentId: String
     @Binding var informationComplete: Bool
     @Binding var showingWarningState: Bool
@@ -18,7 +19,9 @@ struct DeliveryView: View {
         wrappedShadowView {
             VStack {
                 if activeEditableComponentId == delivery.id || delivery.isEmtpy {
-                    DeliveryInputView(delivery: delivery,
+                    DeliveryInputView(
+                        delivery: delivery,
+                        reportId: reportId,
                         activeEditableComponentId: $activeEditableComponentId,
                         informationComplete: $informationComplete,
                         showingWarningState: $showingWarningState)
@@ -35,14 +38,18 @@ struct DeliveryView: View {
 struct DeliveryView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            DeliveryView(delivery: .sample,
+            DeliveryView(
+                delivery: .sample,
+                reportId: "TestId",
                 activeEditableComponentId: .constant(""),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false))
 
             Divider()
 
-            DeliveryView(delivery: .sample,
+            DeliveryView(
+                delivery: .sample,
+                reportId: "TestId",
                 activeEditableComponentId: .constant("123"),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false))

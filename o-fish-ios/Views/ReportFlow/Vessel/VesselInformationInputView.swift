@@ -9,6 +9,7 @@ import SwiftUI
 
 struct VesselInformationInputView: View {
     @ObservedObject var vessel: BoatViewModel
+    let reportId: String
     @Binding var activeEditableComponentId: String
     @Binding var informationComplete: Bool
     @Binding var showingWarningState: Bool
@@ -27,11 +28,13 @@ struct VesselInformationInputView: View {
     }
 
     init(vessel: BoatViewModel,
+         reportId: String,
          activeEditableComponentId: Binding<String>,
          informationComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>) {
 
         self.vessel = vessel
+        self.reportId = reportId
         _activeEditableComponentId = activeEditableComponentId
         _informationComplete = informationComplete
         _showingWarningState = showingWarningState
@@ -46,7 +49,7 @@ struct VesselInformationInputView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack(alignment: .center) {
                 TitleLabel(title: "Vessel Information")
-                AddAttachmentsButton(attachments: vessel.attachments)
+                AddAttachmentsButton(attachments: vessel.attachments, reportId: reportId)
             }
                 .padding(.top, Dimensions.spacing)
 
@@ -142,13 +145,17 @@ struct VesselInformationInputView: View {
 struct VesselInformationInputView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            VesselInformationInputView(vessel: .sample,
+            VesselInformationInputView(
+                vessel: .sample,
+                reportId: "TestId",
                 activeEditableComponentId: .constant(""),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false))
             .environment(\.locale, .init(identifier: "uk"))
 
-            VesselInformationInputView(vessel: .sample,
+            VesselInformationInputView(
+                vessel: .sample,
+                reportId: "TestId",
                 activeEditableComponentId: .constant(""),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(true))

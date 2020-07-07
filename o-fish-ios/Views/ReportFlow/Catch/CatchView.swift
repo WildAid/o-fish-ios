@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CatchView: View {
     @ObservedObject private var inspection: InspectionViewModel
+    let reportId: String
 
     @State private var currentlyEditingCatchId: String
     @State private var showingAddCatchButton: Bool
@@ -22,6 +23,7 @@ struct CatchView: View {
     }
 
     init(inspection: InspectionViewModel,
+         reportId: String,
          allFieldsComplete: Binding<Bool>) {
 
         _currentlyEditingCatchId = State(initialValue: inspection.actualCatch.last?.id ?? "")
@@ -30,6 +32,7 @@ struct CatchView: View {
         _allFieldsComplete = allFieldsComplete
 
         self.inspection = inspection
+        self.reportId = reportId
     }
 
     var body: some View {
@@ -39,6 +42,7 @@ struct CatchView: View {
                     CatchOnBoardView(currentEditingCatchId: self.$currentlyEditingCatchId,
                         isCatchNonEmpty: self.$showingAddCatchButton,
                         catchModel: catchModel,
+                        reportId: self.reportId,
                         index: index + 1,
                         removeClicked: self.removeFishOnBoardClicked
                     )
@@ -82,7 +86,9 @@ struct CatchView: View {
 
 struct CatchView_Previews: PreviewProvider {
     static var previews: some View {
-        CatchView(inspection: .sample,
+        CatchView(
+            inspection: .sample,
+            reportId: "TestId",
             allFieldsComplete: .constant(false))
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct VesselView: View {
     @ObservedObject var vessel: BoatViewModel
+    let reportId: String
 
     @State private var activeEditableComponentId: String
     @State private var showingAddEMSButton: Bool
@@ -23,11 +24,13 @@ struct VesselView: View {
     @Binding private var showingWarningState: Bool
 
     init(vessel: BoatViewModel,
+         reportId: String,
          prefilledVesselAvailable: Binding<Bool>,
          allFieldsComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>) {
 
         self.vessel = vessel
+        self.reportId = reportId
         _activeEditableComponentId = State(initialValue: vessel.id)
         _showingAddEMSButton = State(initialValue: vessel.ems.filter({ $0.isEmpty }).isEmpty)
         _showingPrefilledAlert = prefilledVesselAvailable
@@ -48,7 +51,9 @@ struct VesselView: View {
         KeyboardControllingScrollView {
             Group {
                 VStack(spacing: Dimensions.itemsSpacing) {
-                    VesselInformationView(vessel: self.vessel,
+                    VesselInformationView(
+                        vessel: self.vessel,
+                        reportId: self.reportId,
                         activeEditableComponentId: self.$activeEditableComponentId,
                         informationComplete:
                             Binding<Bool>(get: { self.informationComplete },
@@ -58,7 +63,9 @@ struct VesselView: View {
                                 }),
                         showingWarningState: self.$showingWarningState)
 
-                    DeliveryView(delivery: self.vessel.lastDelivery,
+                    DeliveryView(
+                        delivery: self.vessel.lastDelivery,
+                        reportId: self.reportId,
                         activeEditableComponentId: self.$activeEditableComponentId,
                         informationComplete:
                             Binding<Bool>(get: { self.deliveryComplete },
@@ -70,7 +77,9 @@ struct VesselView: View {
 
                     VStack(spacing: Dimensions.itemsSpacing) {
                         ForEach(self.vessel.ems) { ems in
-                            EMSView(ems: ems,
+                            EMSView(
+                                ems: ems,
+                                reportId: self.reportId,
                                 activeEditableComponentId: self.$activeEditableComponentId,
                                 isEmsNonEmpty: self.$showingAddEMSButton,
                                 deleteClicked: self.emsDeleteClicked)
@@ -146,9 +155,11 @@ struct VesselView: View {
 
 struct VesselView_Previews: PreviewProvider {
     static var previews: some View {
-        VesselView(vessel: .sample,
-                   prefilledVesselAvailable: .constant(true),
-                   allFieldsComplete: .constant(false),
-                   showingWarningState: .constant(false))
+        VesselView(
+            vessel: .sample,
+            reportId: "TestId",
+            prefilledVesselAvailable: .constant(true),
+            allFieldsComplete: .constant(false),
+            showingWarningState: .constant(false))
     }
 }

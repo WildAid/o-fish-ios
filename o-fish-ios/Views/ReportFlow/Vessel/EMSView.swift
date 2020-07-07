@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EMSView: View {
     @ObservedObject var ems: EMSViewModel
+    let reportId: String
 
     @Binding var activeEditableComponentId: String
     @Binding var isEmsNonEmpty: Bool
@@ -20,6 +21,7 @@ struct EMSView: View {
                 EMSInputView(ems: ems,
                              activeEditableComponentId: $activeEditableComponentId,
                              isEmsNonEmpty: $isEmsNonEmpty,
+                             reportId: reportId,
                              deleteClicked: deleteClicked)
             } else {
                 EMSSummaryView(ems: ems, isEditable: true) {
@@ -34,11 +36,13 @@ struct EMSView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             EMSView(ems: .sample,
+                    reportId: "TestId",
                     activeEditableComponentId: .constant("123"),
                     isEmsNonEmpty: .constant(true),
                     deleteClicked: nil)
             Divider()
             EMSView(ems: .sample,
+                    reportId: "TestId",
                     activeEditableComponentId: .constant(""),
                     isEmsNonEmpty: .constant(true),
                     deleteClicked: nil)
