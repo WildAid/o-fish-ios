@@ -10,6 +10,7 @@ import SwiftUI
 struct CatchInputView: View {
     @Binding var isCatchNonEmpty: Bool
     @ObservedObject var catchModel: CatchViewModel
+    let reportId: String
     let index: Int
     var removeClicked: ((CatchViewModel) -> Void)?
 
@@ -31,7 +32,7 @@ struct CatchInputView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack {
                 TitleLabel(title: NSLocalizedString("Catch", comment: "") + " \(self.index)")
-                AddAttachmentsButton(attachments: catchModel.attachments)
+                AddAttachmentsButton(attachments: catchModel.attachments, reportId: reportId)
             }
                 .padding(.top, Dimensions.spacing)
 
@@ -149,6 +150,6 @@ struct CatchInputView: View {
 
 struct CatchInputView_Previews: PreviewProvider {
     static var previews: some View {
-        CatchInputView(isCatchNonEmpty: .constant(true), catchModel: .sample, index: 1)
+        CatchInputView(isCatchNonEmpty: .constant(true), catchModel: .sample, reportId: "TestId", index: 1)
     }
 }

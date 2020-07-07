@@ -107,17 +107,23 @@ struct TopTabBarContainerView: View {
                 BasicInfoView(report: self.report, allFieldsComplete: allFieldsCompleteBinding)
 
             } else if self.isVesselSelected {
-                VesselView(vessel: report.vessel,
+                VesselView(
+                    vessel: report.vessel,
+                    reportId: report.id,
                     prefilledVesselAvailable: $prefilledVesselAvailable,
                     allFieldsComplete: allFieldsCompleteBinding,
                     showingWarningState: $showingNotCompleteState)
 
             } else if self.isWhatsOnBoardSelected {
-                CatchView(inspection: report.inspection,
+                CatchView(
+                    inspection: report.inspection,
+                    reportId: report.id,
                     allFieldsComplete: allFieldsCompleteBinding)
 
             } else if self.isActivitySelected {
-                ActivityView(inspection: report.inspection,
+                ActivityView(
+                    inspection: report.inspection,
+                    reportId: report.id,
                     allFieldsComplete: allFieldsCompleteBinding,
                     showingWarningState: $showingNotCompleteState)
 

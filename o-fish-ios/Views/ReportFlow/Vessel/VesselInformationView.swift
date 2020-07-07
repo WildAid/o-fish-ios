@@ -10,6 +10,7 @@ import SwiftUI
 struct VesselInformationView: View {
 
     @ObservedObject var vessel: BoatViewModel
+    let reportId: String
     @Binding var activeEditableComponentId: String
     @Binding var informationComplete: Bool
     @Binding var showingWarningState: Bool
@@ -17,7 +18,9 @@ struct VesselInformationView: View {
     var body: some View {
         wrappedShadowView {
             if activeEditableComponentId == vessel.id || vessel.isEmpty {
-                VesselInformationInputView(vessel: vessel,
+                VesselInformationInputView(
+                    vessel: vessel,
+                    reportId: reportId,
                     activeEditableComponentId: $activeEditableComponentId,
                     informationComplete: $informationComplete,
                     showingWarningState: $showingWarningState)
@@ -34,12 +37,16 @@ struct VesselInformationView: View {
 struct VesselInformationView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            VesselInformationView(vessel: .sample,
+            VesselInformationView(
+                vessel: .sample,
+                reportId: "TestId",
                 activeEditableComponentId: .constant(""),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false))
             Divider()
-            VesselInformationView(vessel: .sample,
+            VesselInformationView(
+                vessel: .sample,
+                reportId: "TestId",
                 activeEditableComponentId: .constant("123"),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false))

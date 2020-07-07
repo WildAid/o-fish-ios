@@ -33,7 +33,9 @@ struct ViolationInputView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack {
                 TitleLabel(title: NSLocalizedString("Violation", comment: "") + " \(index)")
-                AddAttachmentsButton(attachments: violation.attachments)
+                AddAttachmentsButton(
+                    attachments: violation.attachments,
+                    reportId: report.id)
             }
                 .padding(.top, Dimensions.spacing)
 

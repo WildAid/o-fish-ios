@@ -39,7 +39,9 @@ struct ViolationCreateCrewMemberView: View {
                 VStack(spacing: Dimensions.spacing) {
                     HStack {
                         TitleLabel(title: "Crew Member")
-                        AddAttachmentsButton(attachments: attachments)
+                        AddAttachmentsButton(
+                            attachments: attachments,
+                            reportId: report.id)
                     }
                         .padding(.vertical, Dimensions.spacing)
 

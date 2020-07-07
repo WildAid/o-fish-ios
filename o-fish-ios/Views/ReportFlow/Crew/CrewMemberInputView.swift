@@ -13,6 +13,7 @@ struct CrewMemberInputView: View {
     @Binding private var showingWarningState: Bool
 
     @ObservedObject private var crewMember: CrewMemberViewModel
+    let reportId: String
 
     private var index: Int = 0
     private var isCaptain: Bool = false
@@ -31,6 +32,7 @@ struct CrewMemberInputView: View {
          informationComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>,
          crewMember: CrewMemberViewModel,
+         reportId: String,
          index: Int = 0,
          isCaptain: Bool = false,
          removeClicked: ((CrewMemberViewModel) -> Void)? = nil) {
@@ -40,6 +42,7 @@ struct CrewMemberInputView: View {
         _showingWarningState = showingWarningState
 
         self.crewMember = crewMember
+        self.reportId = reportId
         self.index = index
         self.isCaptain = isCaptain
         self.removeClicked = removeClicked
@@ -52,7 +55,7 @@ struct CrewMemberInputView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack {
                 TitleLabel(title: isCaptain ? "Captain" : "Crew Member \(index)")
-                AddAttachmentsButton(attachments: crewMember.attachments)
+                AddAttachmentsButton(attachments: crewMember.attachments, reportId: reportId)
             }
                 .padding(.top, Dimensions.spacing)
 
@@ -108,18 +111,21 @@ struct CrewMemberInputView_Previews: PreviewProvider {
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false),
                 crewMember: .sample,
+                reportId: "TestID",
                 isCaptain: true)
 
             CrewMemberInputView(isCrewMemberNonEmpty: .constant(true),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false),
                 crewMember: .sample,
+                reportId: "TestID",
                 isCaptain: false)
 
             CrewMemberInputView(isCrewMemberNonEmpty: .constant(true),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(true),
                 crewMember: .sample,
+                reportId: "TestID",
                 isCaptain: false)
         }
     }

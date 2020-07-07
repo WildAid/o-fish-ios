@@ -16,6 +16,7 @@ enum ActivityItem: String {
 struct ActivityView: View {
 
     @ObservedObject private var inspection: InspectionViewModel
+    let reportId: String
     @Binding private var allFieldsComplete: Bool
     @Binding private var showingWarningState: Bool
 
@@ -26,10 +27,12 @@ struct ActivityView: View {
     private let spacing: CGFloat = 16
 
     init(inspection: InspectionViewModel,
+         reportId: String,
          allFieldsComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>) {
 
         self.inspection = inspection
+        self.reportId = reportId
 
         _allFieldsComplete = allFieldsComplete
         _showingWarningState = showingWarningState
@@ -46,17 +49,20 @@ struct ActivityView: View {
                 ActivityItemView(attachments: self.inspection.activity.attachments,
                                  name: self.activityNameBinding,
                                  showingWarningState: self.showingActivityWarning,
-                                 activityItem: .activity)
+                                 activityItem: .activity,
+                                 reportId: self.reportId)
 
                 ActivityItemView(attachments: self.inspection.fishery.attachments,
                                  name: self.fisheryNameBinding,
                                  showingWarningState: self.showingFisheryWarning,
-                                 activityItem: .fishery)
+                                 activityItem: .fishery,
+                                 reportId: self.reportId)
 
                 ActivityItemView(attachments: self.inspection.gearType.attachments,
                                  name: self.gearNameBinding,
                                  showingWarningState: self.showingGearWarning,
-                                 activityItem: .gear)
+                                 activityItem: .gear,
+                                 reportId: self.reportId)
             }
         }
     }
@@ -103,7 +109,9 @@ struct ActivityView: View {
 
 struct ActivityView_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityView(inspection: .sample,
+        ActivityView(
+            inspection: .sample,
+            reportId: "TestId",
             allFieldsComplete: .constant(false),
             showingWarningState: .constant(false))
     }

@@ -11,6 +11,7 @@ struct AddAttachmentsButton: View {
     @ObservedObject var attachments: AttachmentsViewModel
 
     @State private var popoverId = UUID().uuidString
+    let reportId: String
 
     var body: some View {
         Button(action: { self.showCustomActionSheet() }) {
@@ -20,7 +21,7 @@ struct AddAttachmentsButton: View {
 
     private func showPhotoTaker() {
         hidePopover()
-        PhotoCaptureController.show(reportID: self.attachments.id) { controller, photoId in
+        PhotoCaptureController.show(reportID: reportId) { controller, photoId in
             self.attachments.photoIDs.append(photoId)
             controller.hide()
         }
@@ -53,6 +54,6 @@ struct AddAttachmentsButton: View {
 
 struct AddAttachmentsButton_Previews: PreviewProvider {
     static var previews: some View {
-        AddAttachmentsButton(attachments: .sample)
+        AddAttachmentsButton(attachments: .sample, reportId: "TestID")
     }
 }

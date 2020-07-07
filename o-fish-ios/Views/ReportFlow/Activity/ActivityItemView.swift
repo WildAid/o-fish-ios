@@ -50,6 +50,7 @@ struct ActivityItemView: View {
     @Binding var name: String
     var showingWarningState: Bool
     var activityItem: ActivityItem
+    let reportId: String
 
     @State private var showingSheetItem: ActivityItem.SheetItem?
 
@@ -64,7 +65,7 @@ struct ActivityItemView: View {
                 VStack(spacing: Dimensions.spacing) {
                     HStack {
                         TitleLabel(title: title)
-                        AddAttachmentsButton(attachments: attachments)
+                        AddAttachmentsButton(attachments: attachments, reportId: reportId)
                     }
                         .padding(.top, Dimensions.spacing)
 
@@ -109,17 +110,20 @@ struct ActivityItemView_Previews: PreviewProvider {
             ActivityItemView(attachments: .sample,
                              name: .constant("Activity"),
                              showingWarningState: false,
-                             activityItem: .activity)
+                             activityItem: .activity,
+                             reportId: "TestId")
 
             ActivityItemView(attachments: .sample,
                                         name: .constant(""),
                                         showingWarningState: true,
-                                        activityItem: .fishery)
+                                        activityItem: .fishery,
+                                        reportId: "TestId")
 
             ActivityItemView(attachments: .sample,
                              name: .constant("Gear Type"),
                              showingWarningState: false,
-                             activityItem: .gear)
+                             activityItem: .gear,
+                             reportId: "TestId")
         }
     }
 }

@@ -25,7 +25,7 @@ struct RiskView: View {
                     HStack {
                         TitleLabel(title: "Risk")
                         Spacer()
-                        AddAttachmentsButton(attachments: self.report.inspection.attachments)
+                        AddAttachmentsButton(attachments: self.report.inspection.attachments, reportId: self.report.id)
                     }
                         .padding(.top, Dimensions.spacing)
 
@@ -46,7 +46,8 @@ struct RiskView: View {
 
 struct RiskView_Previews: PreviewProvider {
     static var previews: some View {
-        RiskView(report: .sample,
+        RiskView(
+            report: .sample,
             allFieldsComplete: .constant(false))
     }
 }

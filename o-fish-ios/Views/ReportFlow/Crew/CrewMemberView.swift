@@ -14,6 +14,7 @@ struct CrewMemberView: View {
     @Binding var showingWarningState: Bool
 
     @ObservedObject var crewMember: CrewMemberViewModel
+    let reportId: String
 
     var index: Int = 0
 
@@ -27,6 +28,7 @@ struct CrewMemberView: View {
                     informationComplete: $informationComplete,
                     showingWarningState: $showingWarningState,
                     crewMember: crewMember,
+                    reportId: reportId,
                     index: index,
                     isCaptain: crewMember.isCaptain,
                     removeClicked: removeClicked)
@@ -50,6 +52,7 @@ struct CrewMemberView_Previews: PreviewProvider {
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false),
                 crewMember: .sample,
+                reportId: "TestId",
                 index: 1
             )
             CrewMemberView(currentEditingCrewMemberId: .constant(crewMember.id),
@@ -57,6 +60,7 @@ struct CrewMemberView_Previews: PreviewProvider {
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false),
                 crewMember: crewMember,
+                reportId: "TestId",
                 index: 1
             )
         }

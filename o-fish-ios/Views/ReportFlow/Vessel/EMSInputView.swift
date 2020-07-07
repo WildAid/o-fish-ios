@@ -11,6 +11,7 @@ struct EMSInputView: View {
     @ObservedObject var ems: EMSViewModel
     @Binding var activeEditableComponentId: String
     @Binding var isEmsNonEmpty: Bool
+    let reportId: String
 
     var deleteClicked: ((String) -> Void)?
 
@@ -26,7 +27,7 @@ struct EMSInputView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack {
                 TitleLabel(title: "Electronic Monitoring System")
-                AddAttachmentsButton(attachments: ems.attachments)
+                AddAttachmentsButton(attachments: ems.attachments, reportId: reportId)
             }
                 .padding(.top, Dimensions.spacing)
 
@@ -83,7 +84,8 @@ struct EMSInputView_Previews: PreviewProvider {
         VStack {
             EMSInputView(ems: EMSViewModel.sample,
                          activeEditableComponentId: .constant("123"),
-                         isEmsNonEmpty: .constant(true))
+                         isEmsNonEmpty: .constant(true),
+                         reportId: "TestID")
         }
     }
 }

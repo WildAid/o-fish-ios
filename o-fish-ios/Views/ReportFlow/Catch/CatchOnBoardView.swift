@@ -12,6 +12,7 @@ struct CatchOnBoardView: View {
     @Binding var isCatchNonEmpty: Bool
 
     @ObservedObject var catchModel: CatchViewModel
+    let reportId: String
     let index: Int
 
     var removeClicked: ((CatchViewModel) -> Void)?
@@ -19,8 +20,10 @@ struct CatchOnBoardView: View {
     var body: some View {
             wrappedShadowView {
                 if catchModel.id == currentEditingCatchId {
-                    CatchInputView(isCatchNonEmpty: self.$isCatchNonEmpty,
+                    CatchInputView(
+                        isCatchNonEmpty: self.$isCatchNonEmpty,
                         catchModel: catchModel,
+                        reportId: reportId,
                         index: index,
                         removeClicked: removeClicked)
                 } else {
@@ -39,14 +42,18 @@ struct CatchOnBoard_Previews: PreviewProvider {
 
     static var previews: some View {
         VStack {
-            CatchOnBoardView(currentEditingCatchId: .constant("1"),
+            CatchOnBoardView(
+                currentEditingCatchId: .constant("1"),
                 isCatchNonEmpty: .constant(false),
                 catchModel: .sample,
+                reportId: "TestId",
                 index: 1
             )
-            CatchOnBoardView(currentEditingCatchId: .constant(catchModel.id),
+            CatchOnBoardView(
+                currentEditingCatchId: .constant(catchModel.id),
                 isCatchNonEmpty: .constant(false),
                 catchModel: catchModel,
+                reportId: "TestId",
                 index: 1
             )
         }

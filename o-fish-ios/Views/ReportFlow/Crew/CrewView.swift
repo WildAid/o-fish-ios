@@ -66,6 +66,7 @@ struct CrewView: View {
                                 }),
 
                         crewMember: member,
+                        reportId: self.report.id,
                         index: index + 1,
                         editClicked: self.editItemClicked,
                         removeClicked: self.removeItemClicked
