@@ -27,6 +27,7 @@ struct CallToActionButton: View {
                     .font(Font.body.weight(.semibold))
                 if showingArrow {
                     Image(systemName: "arrow.right")
+                        .font(Font.caption2.weight(.bold))
                 }
                 Spacer(minLength: Dimensions.labelSpacing)
             }
@@ -39,6 +40,6 @@ struct CallToActionButton: View {
 
 struct CallToActionButton_Previews: PreviewProvider {
     static var previews: some View {
-        CallToActionButton(title: "Button", action: {})
+        CallToActionButton(title: "Button", showingArrow: true, action: {})
     }
 }
