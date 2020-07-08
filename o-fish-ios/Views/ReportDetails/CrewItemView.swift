@@ -17,7 +17,7 @@ struct CrewItemView: View {
 
     var body: some View {
         VStack(spacing: Dimensions.spacing) {
-            HStack(spacing: Dimensions.spacing) {
+            HStack(alignment: .top, spacing: Dimensions.spacing) {
                 LabeledText(label: titleLabelName, text: crewMember.name)
                 LabeledText(label: "License Number", text: crewMember.license)
             }

@@ -31,12 +31,12 @@ struct VesselSummaryView: View {
             }
                 .padding(.top, Dimensions.spacing)
 
-            HStack(spacing: Dimensions.spacing) {
+            HStack(alignment: .top, spacing: Dimensions.spacing) {
                 LabeledText(label: "Vessel Name", text: "\(vessel.name)")
                 LabeledText(label: "Permit Number", text: "\(vessel.permitNumber)")
             }
 
-            HStack(spacing: Dimensions.spacing) {
+            HStack(alignment: .top, spacing: Dimensions.spacing) {
                 LabeledText(label: "Home Port", text: "\(vessel.homePort)")
                 LabeledText(label: "Flag State", text: "\(vessel.nationality)")
             }
