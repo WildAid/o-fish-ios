@@ -55,3 +55,10 @@ struct DutyReportsView: View {
         showingBoardingRecordView = true
     }
 }
+
+struct DutyReportsView_Previews: PreviewProvider {
+    static var previews: some View {
+        DutyReportsView(dutyReports: [.sample, .sample, .sample],
+                        onDuty: .sample)
+    }
+}

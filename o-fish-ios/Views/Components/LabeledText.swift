@@ -14,7 +14,7 @@ struct LabeledText: View {
     let lineLimit = 5
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(alignment: .leading, spacing: .zero) {
             CaptionLabel(title: label)
             Text("\(text)")
                 .lineLimit(lineLimit)
@@ -24,6 +24,9 @@ struct LabeledText: View {
 
 struct LabeledText_Previews: PreviewProvider {
     static var previews: some View {
-        LabeledText(label: "Label", text: "0.72367628765")
+        HStack(alignment: .top) {
+            LabeledText(label: "Label", text: "0.72367628765")
+            LabeledText(label: "Date", text: "")
+        }
     }
 }

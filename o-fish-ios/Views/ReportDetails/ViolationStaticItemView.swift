@@ -16,7 +16,7 @@ struct ViolationStaticItemView: View {
         VStack(spacing: spacing) {
             LabeledText(label: "Violation", text: violation.fullViolationDescription)
                 .fixedSize(horizontal: false, vertical: true)
-            HStack(spacing: spacing) {
+            HStack(alignment: .top, spacing: spacing) {
                 LabeledText(label: "Result of Violation",
                     text: NSLocalizedString(violation.disposition.rawValue, comment: "Violation result localized"))
                 LabeledText(label: "Issued to",

@@ -30,7 +30,7 @@ struct EMSSummaryView: View {
             }
                 .padding(.top, Dimensions.spacing)
 
-            HStack(spacing: Dimensions.spacing) {
+            HStack(alignment: .top, spacing: Dimensions.spacing) {
                 LabeledText(label: "Type", text: "\(ems.emsType)")
                 if ems.emsType == "Other" {
                     LabeledText(label: "Description", text: "\(ems.emsDescription)")

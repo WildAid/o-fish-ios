@@ -16,7 +16,7 @@ struct CatchItemView: View {
 
     var body: some View {
         VStack(spacing: Dimensions.spacing) {
-            HStack(spacing: Dimensions.spacing) {
+            HStack(alignment: .top, spacing: Dimensions.spacing) {
                 LabeledText(label: "Species", text: "\(fish.fish)")
                 LabeledText(label: "Weight", text: "\(fish.weightString) \(fish.unit.rawValue)").opacity(fish.weight > 0 ? 1 : 0)
                 LabeledText(label: "Count", text: "\(fish.number)").opacity(fish.number > 0 ? 1 : 0)

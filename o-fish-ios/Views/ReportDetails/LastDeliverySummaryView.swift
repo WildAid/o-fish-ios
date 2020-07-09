@@ -31,7 +31,7 @@ struct LastDeliverySummaryView: View {
             }
                 .padding(.top, Dimensions.padding)
 
-            HStack(spacing: Dimensions.padding) {
+            HStack(alignment: .top, spacing: Dimensions.padding) {
                 LabeledText(label: "Date", text: "\(delivery.date?.justLongDate() ?? "")")
                 LabeledText(label: "Business", text: "\(delivery.business)")
             }
