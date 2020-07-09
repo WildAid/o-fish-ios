@@ -8,20 +8,18 @@ import SwiftUI
 
 struct VesselIconView: View {
 
-    private enum Dimensions {
-        static let imageSize: CGFloat = 64.0
-        static let cornerRadius: CGFloat = 6.0
-    }
+    var imageSize: CGFloat = 64
+    var cornerRadius: CGFloat = 6.0
 
     var body: some View {
         Image("vesselIconItem")
             .resizable()
-            .frame(width: Dimensions.imageSize,
-                   height: Dimensions.imageSize,
-                   alignment: .center)
+            .frame(width: imageSize,
+                height: imageSize,
+                alignment: .center)
             .foregroundColor(.white)
-            .background( Color(UIColor.systemGray5))
-            .cornerRadius(Dimensions.cornerRadius)
+            .background(Color(UIColor.systemGray5))
+            .cornerRadius(cornerRadius)
     }
 }
 

@@ -11,9 +11,12 @@ struct VesselItemView: View {
 
     var report: ReportViewModel
 
+    @State private var vesselImage: PhotoViewModel?
+    private let photoQueryManager = PhotoQueryManager.shared
+
     private struct Dimensions {
-        static let noSpacing: CGFloat = 0.0
         static let leadingSpacing: CGFloat = 4.0
+        static let imageCornerRadius: CGFloat = 6
         static let imageSize: CGFloat = 64.0
         static let padding: CGFloat = 16.0
         static let heightDivider: CGFloat = 1.0
@@ -21,11 +24,13 @@ struct VesselItemView: View {
 
     var body: some View {
 
-        VStack(spacing: Dimensions.noSpacing) {
-            HStack(alignment: .top, spacing: Dimensions.noSpacing) {
-                VesselIconView() //TODO Need to add real image of the vessel.
+        VStack(spacing: .zero) {
+            HStack(alignment: .top, spacing: .zero) {
+                topView()
+                    .cornerRadius(Dimensions.imageCornerRadius)
                     .padding(.trailing, Dimensions.padding)
-                VStack(spacing: Dimensions.noSpacing) {
+
+                VStack(spacing: .zero) {
                     HStack {
                         Text(report.vessel.name)
                             .foregroundColor(.text)
@@ -48,7 +53,49 @@ struct VesselItemView: View {
                 .frame(height: Dimensions.heightDivider)
         }
             .padding([.horizontal, .top], Dimensions.padding)
+            .onAppear(perform: onAppear)
     }
+
+    func topView() -> AnyView {
+        if let image = vesselImage {
+            return imageView(for: image)
+        } else {
+            return AnyView(VesselIconView(imageSize: Dimensions.imageSize))
+        }
+    }
+
+    private func imageView(for photo: PhotoViewModel, imageSize: CGFloat = Dimensions.imageSize) -> AnyView {
+        AnyView(
+            Group {
+                if photo.thumbNail != nil || photo.picture != nil {
+                    Image(uiImage: photo.thumbNail ?? photo.picture ?? UIImage())
+                        .renderingMode(.original)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: imageSize, height: imageSize)
+                } else if photo.pictureURL != "" {
+                    RemoteImageView(
+                        imageURL: photo.pictureURL,
+                        height: imageSize,
+                        width: imageSize)
+                }
+            }
+        )
+    }
+
+    /// Actions
+
+    private func onAppear() {
+        let permitNumber = self.report.vessel.permitNumber
+        let photoIds = self.photoQueryManager.lastVesselImagesId(permitNumber: permitNumber)
+        let limit = 1
+        let limitedPhotoIds = Array(photoIds.prefix(limit))
+
+        let photos = self.photoQueryManager.photoViewModels(imagesId: limitedPhotoIds)
+
+        self.vesselImage = photos.first
+    }
+
 }
 
 struct VesselItemView_Previews: PreviewProvider {
