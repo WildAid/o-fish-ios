@@ -53,22 +53,6 @@ struct PreboardingView: View {
     private let searchDebouncer = Debouncer(delay: 0.5, handler: {})
     private let countOfRecentReportsShown = 5
 
-    private var title: String {
-        viewType == .searchRecords ? "Find Records" : "New Boarding"
-    }
-
-    private var searchbarPlaceholder: String {
-        viewType == .searchRecords ? "Search" : "Search Vessels"
-    }
-
-    private var showingAddVessel: Bool {
-        viewType == .searchRecords ? false : true
-    }
-
-    private var backButtonTitle: String {
-        viewType == .searchRecords ? "Back" : "Cancel"
-    }
-
     private enum Dimension {
         static let topPadding: CGFloat = 20.0
         static let noSpacing: CGFloat = 0.0
@@ -79,29 +63,11 @@ struct PreboardingView: View {
         case loading, empty, loaded
     }
 
+    /// Interface
+
     var body: some View {
-
         VStack {
-            SearchBarView(
-                searchText: Binding<String>(
-                    get: { self.searchText },
-                    set: { self.searchText = $0
-                        if !$0.isEmpty {
-                            self.state = .loading
-                            let debounceHandler: () -> Void = {
-                                self.loadReports(with: self.searchText)
-                            }
-                            self.searchDebouncer.invalidate()
-                            self.searchDebouncer.handler = debounceHandler
-                            self.searchDebouncer.call()
-
-                        } else {
-                            self.storedReports = []
-                            self.state = .loaded
-                        }
-                }),
-                placeholder: searchbarPlaceholder
-            )
+            searchBar
 
             if showingAddVessel {
                 NavigationLink(destination: ReportNavigationRootView()) {
@@ -121,9 +87,9 @@ struct PreboardingView: View {
             .onAppear(perform: loadRecentBoardings)
             .alert(isPresented: $showingDismissAlert) {
                 Alert(title: Text("Cancel boarding?"),
-                      message: Text("This boarding will not be saved"),
-                      primaryButton: .default(Text("Go back")),
-                      secondaryButton: .default(Text("Cancel")) {
+                    message: Text("This boarding will not be saved"),
+                    primaryButton: .default(Text("Go back")),
+                    secondaryButton: .default(Text("Cancel")) {
                         self.presentationMode.wrappedValue.dismiss()
                     })
             }
@@ -131,8 +97,74 @@ struct PreboardingView: View {
             .navigationBarItems(leading: Button(action: cancelTabBarClicked) {
                 Text(LocalizedStringKey(backButtonTitle))
             })
-                .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
+    }
+
+    private var searchBar: some View {
+        SearchBarView(
+            searchText: Binding<String>(
+                get: { self.searchText },
+                set: {
+                    self.searchText = $0
+                    if !$0.isEmpty {
+                        self.state = .loading
+                        let debounceHandler: () -> Void = {
+                            self.loadReports(with: self.searchText)
+                        }
+                        self.searchDebouncer.invalidate()
+                        self.searchDebouncer.handler = debounceHandler
+                        self.searchDebouncer.call()
+
+                    } else {
+                        self.storedReports = []
+                        self.state = .loaded
+                    }
+                }),
+            placeholder: searchbarPlaceholder
+        )
+    }
+
+    private func stateView() -> AnyView {
+        switch state {
+
+        case .loaded:
+            return AnyView(PreboardingLoadedStateView(
+                onDuty: onDuty,
+                storedReports: $storedReports,
+                showingRecentBoardings: $showingRecentBoardings)
+            )
+
+        case .loading:
+            return AnyView(ActivityIndicator(
+                isAnimating: Binding<Bool>(
+                    get: { self.state == .loading },
+                    set: { _ in }
+                ),
+                style: .medium)
+                .padding(.top, Dimension.topPadding))
+
+        case .empty:
+            return AnyView(EmptyStateView(searchWord: searchText))
         }
+    }
+
+    private var title: String {
+        viewType == .searchRecords ? "Find Records" : "New Boarding"
+    }
+
+    private var searchbarPlaceholder: String {
+        viewType == .searchRecords ? "Search" : "Search Vessels"
+    }
+
+    private var showingAddVessel: Bool {
+        viewType == .searchRecords ? false : true
+    }
+
+    private var backButtonTitle: String {
+        viewType == .searchRecords ? "Back" : "Cancel"
+    }
+
+    /// Actions
 
     private func cancelTabBarClicked() {
         if viewType == .preboarding {
@@ -181,30 +213,6 @@ struct PreboardingView: View {
             }
         }
         self.state = .loaded
-    }
-
-    private func stateView() -> AnyView {
-        switch state {
-
-        case .loaded:
-            return AnyView(LoadedStateView(
-                onDuty: onDuty,
-                storedReports: $storedReports,
-                showingRecentBoardings: $showingRecentBoardings)
-            )
-
-        case .loading:
-            return AnyView(ActivityIndicator(
-                isAnimating: Binding<Bool>(
-                    get: { self.state == .loading },
-                    set: { _ in }
-                ),
-                style: .medium)
-                    .padding(.top, Dimension.topPadding))
-
-        case .empty:
-            return AnyView(EmptyStateView(searchWord: searchText))
-        }
     }
 }
 

@@ -15,8 +15,12 @@ struct VesselRecordHeaderView: View {
     var warnings: Int
     var citations: Int
 
+    @State private var vesselImages: [AnyView] = []
+
     @State private var showingReportRootView = false
     @State private var showingGoOnDutyAlert = false
+
+    private let photoQueryManager = PhotoQueryManager.shared
 
     private var prefilledReport: ReportViewModel {
         let startReport = ReportViewModel()
@@ -34,16 +38,11 @@ struct VesselRecordHeaderView: View {
         static let noSpacing: CGFloat = 0.0
     }
 
+    /// Interface
+
     var body: some View {
         VStack(spacing: Dimensions.noSpacing) {
-
-            ZStack {
-                Rectangle()
-                    .fill(Color.appGray)
-                Image("BoatIcon")
-            }
-                .frame(height: Dimensions.imageSize)
-                .compositingGroup()
+           topView
 
             VStack {
                 Text(report.vessel.name)
@@ -73,6 +72,7 @@ struct VesselRecordHeaderView: View {
                                 .padding(.horizontal, Dimensions.padding)
             }
         }
+            .onAppear(perform: onAppear)
             .alert(isPresented: $showingGoOnDutyAlert) {
                 Alert(title: Text("You're currently off duty"),
                       message: Text("Change status to \"On Duty\" "),
@@ -84,6 +84,47 @@ struct VesselRecordHeaderView: View {
             }
     }
 
+    private var topView: some View {
+        Group {
+            if vesselImages.isEmpty {
+                ZStack {
+                    Rectangle()
+                        .fill(Color.appGray)
+                    Image("BoatIcon")
+                }
+            } else {
+                if vesselImages.count == 1 {
+                    vesselImages[0]
+                        .frame(height: Dimensions.imageSize)
+                        .clipped()
+                } else {
+                    PageView(views: vesselImages)
+                }
+            }
+        }
+            .frame(height: Dimensions.imageSize)
+            .compositingGroup()
+    }
+
+    private func view(for photo: PhotoViewModel) -> AnyView {
+        AnyView(
+            Group {
+                if photo.thumbNail != nil || photo.picture != nil {
+                    Image(uiImage: photo.thumbNail ?? photo.picture ?? UIImage())
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                } else if photo.pictureURL != "" {
+                    RemoteImageView(
+                        imageURL: photo.pictureURL,
+                        height: Dimensions.imageSize,
+                        width: Dimensions.imageSize)
+                }
+            }
+        )
+    }
+
+    /// Actions
+
     private func boardVesselButtonClicked() {
         if !onDuty.onDuty {
             showingGoOnDutyAlert.toggle()
@@ -91,6 +132,21 @@ struct VesselRecordHeaderView: View {
             return
         }
         showingReportRootView.toggle()
+    }
+
+    func onAppear() {
+        let permitNumber = report.vessel.permitNumber
+        let photoIds = photoQueryManager.lastVesselImagesId(permitNumber: permitNumber)
+        let limit = 10
+        let limitedPhotoIds = Array(photoIds.prefix(limit))
+
+        let photos = photoQueryManager.photoViewModels(imagesId: limitedPhotoIds)
+
+        let views: [AnyView] = photos.map { photo in
+            view(for: photo)
+        }
+
+        vesselImages = views
     }
 }
 

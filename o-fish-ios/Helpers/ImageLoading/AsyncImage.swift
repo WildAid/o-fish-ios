@@ -24,6 +24,7 @@ struct AsyncImage: View {
         Group {
             if loader.image != nil {
                 Image(uiImage: loader.image!)
+                    .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             } else {

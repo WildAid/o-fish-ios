@@ -7,10 +7,13 @@
 
 import SwiftUI
 
-struct LoadedStateView: View {
+struct PreboardingLoadedStateView: View {
     @ObservedObject var onDuty: DutyState
     @Binding var storedReports: [ReportViewModel]
     @Binding var showingRecentBoardings: Bool
+
+    @State private var showingReport: ReportViewModel = .sample
+    @State private var showingLoadingVesselRecordsView = false
 
     private enum Dimensions {
         static let padding: CGFloat = 16.0
@@ -27,26 +30,38 @@ struct LoadedStateView: View {
                         .font(Font.title3.weight(.semibold))
                     Spacer()
                 }
-                .padding([.top, .leading], Dimensions.padding)
-                .padding(.bottom, Dimensions.paddingBottom)
+                    .padding([.top, .leading], Dimensions.padding)
+                    .padding(.bottom, Dimensions.paddingBottom)
             }
 
             ScrollView {
                 VStack {
                     ForEach(storedReports) { item in
-                        NavigationLink(destination: LoadingVesselRecordView(
-                            report: item,
-                            onDuty: self.onDuty)) { VesselItemView(report: item) }
+                        Button(action: { self.vesselItemClicked(item) }) {
+                            VesselItemView(report: item)
+                        }
                     }
                 }
             }
+
+            NavigationLink(destination: LoadingVesselRecordView(report: showingReport, onDuty: self.onDuty),
+                isActive: $showingLoadingVesselRecordsView) {
+                EmptyView()
+            }
         }
+    }
+
+    /// Actions
+
+    func vesselItemClicked(_ item: ReportViewModel) {
+        showingLoadingVesselRecordsView = true
+        showingReport = item
     }
 }
 
-struct LoadedStateView_Previews: PreviewProvider {
+struct PreboardingLoadedStateView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadedStateView(
+        PreboardingLoadedStateView(
             onDuty: DutyState(user: UserViewModel()),
             storedReports: .constant([.sample, .sample]),
             showingRecentBoardings: .constant(true))
