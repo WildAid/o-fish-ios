@@ -17,31 +17,18 @@ struct VesselRecordHeaderView: View {
 
     @State private var vesselImages: [AnyView] = []
 
-    @State private var showingReportRootView = false
-    @State private var showingGoOnDutyAlert = false
-
     private let photoQueryManager = PhotoQueryManager.shared
-
-    private var prefilledReport: ReportViewModel {
-        let startReport = ReportViewModel()
-        startReport.vessel.name = report.vessel.name
-        startReport.vessel.homePort = report.vessel.homePort
-        startReport.vessel.permitNumber = report.vessel.permitNumber
-        startReport.vessel.nationality = report.vessel.nationality
-        return startReport
-    }
 
     private enum Dimensions {
         static let mainSpacing: CGFloat = 24.0
         static let padding: CGFloat = 16.0
         static let imageSize: CGFloat = 168.0
-        static let noSpacing: CGFloat = 0.0
     }
 
     /// Interface
 
     var body: some View {
-        VStack(spacing: Dimensions.noSpacing) {
+        VStack(spacing: .zero) {
            topView
 
             VStack {
@@ -54,7 +41,7 @@ struct VesselRecordHeaderView: View {
             }
                 .padding(.vertical, Dimensions.mainSpacing)
 
-            HStack {
+            HStack(spacing: .zero) {
                 ColumnText(title: "\(boardings)",
                     subtitle: NSLocalizedString((boardings > 1 ? "Boardings" : "Boarding"), comment: "").uppercased())
                 ColumnText(title: "\(warnings)",
@@ -64,24 +51,9 @@ struct VesselRecordHeaderView: View {
             }
                 .padding(.horizontal, Dimensions.padding)
 
-            NavigationLink(destination: ReportNavigationRootView(report: prefilledReport,
-                                                                 prefilledVesselAvailable: true),
-                           isActive: $showingReportRootView) {
-                            CallToActionButton(title: "Board Vessel", action: boardVesselButtonClicked)
-                                .padding(.vertical, Dimensions.mainSpacing)
-                                .padding(.horizontal, Dimensions.padding)
-            }
+            BoardVesselButton(onDuty: onDuty, report: report)
         }
             .onAppear(perform: onAppear)
-            .alert(isPresented: $showingGoOnDutyAlert) {
-                Alert(title: Text("You're currently off duty"),
-                      message: Text("Change status to \"On Duty\" "),
-                      primaryButton: .default(Text("Yes")) {
-                        self.onDuty.onDuty = true
-                        self.showingReportRootView.toggle()
-                    },
-                      secondaryButton: .cancel())
-            }
     }
 
     private var topView: some View {
@@ -125,16 +97,7 @@ struct VesselRecordHeaderView: View {
 
     /// Actions
 
-    private func boardVesselButtonClicked() {
-        if !onDuty.onDuty {
-            showingGoOnDutyAlert.toggle()
-
-            return
-        }
-        showingReportRootView.toggle()
-    }
-
-    func onAppear() {
+    private func onAppear() {
         let permitNumber = report.vessel.permitNumber
         let photoIds = photoQueryManager.lastVesselImagesId(permitNumber: permitNumber)
         let limit = 10

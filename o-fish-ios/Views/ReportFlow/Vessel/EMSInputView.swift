@@ -63,7 +63,9 @@ struct EMSInputView: View {
             }
             ))
 
-            AttachmentsView(attachments: ems.attachments)
+            if !ems.attachments.photoIDs.isEmpty || !ems.attachments.notes.isEmpty {
+                AttachmentsView(attachments: ems.attachments)
+            }
 
             SectionButton(title: "Remove EMS",
                           systemImageName: "minus",

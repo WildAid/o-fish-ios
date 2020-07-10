@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BoardingRecordView: View {
     @ObservedObject var report: ReportViewModel
+    @ObservedObject var onDuty: DutyState
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
@@ -71,6 +72,12 @@ struct BoardingRecordView: View {
                     }
                 }
             }
+
+            BoardVesselButton(onDuty: onDuty, report: report, onHeader: false)
+                .edgesIgnoringSafeArea(.bottom)
+                .background(Color.white)
+                .compositingGroup()
+                .bottomShadow()
         }
             .background(Color.backgroundGrey)
             .edgesIgnoringSafeArea(.bottom)
@@ -85,7 +92,7 @@ struct BoardingRecordView: View {
 struct BoardingRecordView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            BoardingRecordView(report: .sample)
+            BoardingRecordView(report: .sample, onDuty: .sample)
                 .environmentObject(Settings.shared)
         }
     }

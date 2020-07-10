@@ -95,7 +95,9 @@ struct ViolationInputView: View {
                     )
                 }
 
-            AttachmentsView(attachments: violation.attachments)
+            if !violation.attachments.photoIDs.isEmpty || !violation.attachments.notes.isEmpty {
+                AttachmentsView(attachments: violation.attachments)
+            }
 
             SectionButton(title: NSLocalizedString("Remove Violation", comment: "") + " \(index)",
                 systemImageName: "minus",

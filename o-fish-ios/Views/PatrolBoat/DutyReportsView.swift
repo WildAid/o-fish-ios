@@ -35,7 +35,7 @@ struct DutyReportsView: View {
                 }
             }
 
-            NavigationLink(destination: BoardingRecordView(report: selectedReport), isActive: $showingBoardingRecordView) {
+            NavigationLink(destination: BoardingRecordView(report: selectedReport, onDuty: onDuty), isActive: $showingBoardingRecordView) {
                 EmptyView()
             }
         }
