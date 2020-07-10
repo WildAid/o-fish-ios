@@ -35,6 +35,6 @@ extension DutyChangeViewModel: Samplable {
 
 extension DutyState: Samplable {
     static var sample: DutyState {
-        return DutyState(user: .sample)
+        return DutyState.shared
     }
 }

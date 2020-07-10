@@ -17,11 +17,13 @@ class DutyState: ObservableObject {
         }
     }
 
-    init() {
+    static let shared = DutyState()
+
+    private init() {
         user = nil
     }
 
-    init(user: UserViewModel) {
+    private init(user: UserViewModel) {
         self.user = user
         self._onDuty = Published(initialValue: loadOnDutyState(user: user))
     }
@@ -34,6 +36,11 @@ class DutyState: ObservableObject {
         }
         dutyChangeViewModel.user = user
         dutyChangeViewModel.status = onDuty ? .onDuty : .offDuty
+        if onDuty {
+            NotificationManager.shared.requestNotificationAfterStartDuty(hours: Constants.Notifications.hoursAfterStarting)
+        } else {
+            NotificationManager.shared.removeAllNotification()
+        }
         dutyChangeViewModel.save()
     }
 
@@ -52,7 +59,7 @@ class DutyState: ObservableObject {
 struct PatrolBoatView: View {
 
     @ObservedObject var user = UserViewModel()
-    @ObservedObject var onDuty = DutyState()
+    @ObservedObject var onDuty = DutyState.shared
     var isLoggedIn: Binding<Bool>
     @State private var location = LocationViewModel(LocationHelper.currentLocation)
     @State private var showingPreboardingView = false
