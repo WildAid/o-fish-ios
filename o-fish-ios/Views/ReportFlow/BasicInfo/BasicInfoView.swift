@@ -17,7 +17,7 @@ struct BasicInfoView: View {
         static let padding: CGFloat = 16.0
         static let bottomPadding: CGFloat = 24.0
         static let noSpacing: CGFloat = 0.0
-        static let minHeight: CGFloat = 400.0
+        static let minHeight: CGFloat = 305.0
     }
 
     var body: some View {

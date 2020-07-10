@@ -27,6 +27,7 @@ struct SectionButton: View {
                 Text(LocalizedStringKey(title))
             }
                 .foregroundColor(currentColor)
+                .font(.subheadline)
         }
     }
 

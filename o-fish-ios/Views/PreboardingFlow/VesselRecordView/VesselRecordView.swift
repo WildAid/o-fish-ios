@@ -83,7 +83,7 @@ struct VesselRecordView: View {
             }
 
             //TODO Need to replace to ForEach. For now it's unexpected behavior with showing mapViewImage.
-            NavigationLink(destination: BoardingRecordView(report: selectedReport), isActive: $showingBoardingRecordView) {
+            NavigationLink(destination: BoardingRecordView(report: selectedReport, onDuty: onDuty), isActive: $showingBoardingRecordView) {
                 EmptyView()
             }
         }

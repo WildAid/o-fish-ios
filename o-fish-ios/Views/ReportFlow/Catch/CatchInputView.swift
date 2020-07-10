@@ -103,7 +103,9 @@ struct CatchInputView: View {
                     .keyboardType(.numberPad)
             }
 
-            AttachmentsView(attachments: catchModel.attachments)
+            if !catchModel.attachments.photoIDs.isEmpty || !catchModel.attachments.notes.isEmpty {
+                AttachmentsView(attachments: catchModel.attachments)
+            }
 
             SectionButton(title: NSLocalizedString("Remove", comment: "") + " " +  buttonTitle,
                 systemImageName: "minus",
