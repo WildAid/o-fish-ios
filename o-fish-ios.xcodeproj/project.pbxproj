@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3004955C24B87E2A00906D35 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3004955B24B87E2A00906D35 /* NotificationManager.swift */; };
 		300C4AEB24190226000A2763 /* ActivityItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AE924190226000A2763 /* ActivityItemView.swift */; };
 		300C4AEC24190226000A2763 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AEA24190226000A2763 /* ActivityView.swift */; };
 		300C4AF4241904A1000A2763 /* CrewMemberInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AF0241904A1000A2763 /* CrewMemberInputView.swift */; };
@@ -244,6 +245,7 @@
 
 /* Begin PBXFileReference section */
 		01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_o_fish_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3004955B24B87E2A00906D35 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		300C4AE924190226000A2763 /* ActivityItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityItemView.swift; sourceTree = "<group>"; };
 		300C4AEA24190226000A2763 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		300C4AF0241904A1000A2763 /* CrewMemberInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrewMemberInputView.swift; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 		493CDFC723FEBA9300516048 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				3004955B24B87E2A00906D35 /* NotificationManager.swift */,
 				30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */,
 				30E9393824A225C500011305 /* Double+LocationDegrees.swift */,
 				493B5CDD245C1DDD00071740 /* Constants.swift */,
@@ -1374,6 +1377,7 @@
 				4946C108240D4C1B009FB1D9 /* PhotoCaptureController.swift in Sources */,
 				3013CA7C2424AF7A00D2FF60 /* PatrolBoatView.swift in Sources */,
 				BCE480D709F963CBC526C21F /* ButtonField.swift in Sources */,
+				3004955C24B87E2A00906D35 /* NotificationManager.swift in Sources */,
 				4977D0EB244864E700E3E409 /* NoteStaticView.swift in Sources */,
 				300C4AF7241904A1000A2763 /* CrewView.swift in Sources */,
 				BCE48C73EB16871E119986DC /* DatePickerWithButton.swift in Sources */,

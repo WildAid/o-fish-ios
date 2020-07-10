@@ -168,3 +168,6 @@
 "Type" = "Type";
 "You sure you want to logout?" = "You sure you want to logout?";
 "You can only log back in once you have cellular service or are connected to WIFI with internet" = "You can only log back in once you have cellular service or are connected to WIFI with internet";
+"Are you still on duty?" = "Are you still on duty?";
+"It has been %@ hours after closing the application" = "It has been %@ hours after closing the application";
+"It has been %@ hours after starting of your duty." = "It has been %@ hours after starting of your duty.";

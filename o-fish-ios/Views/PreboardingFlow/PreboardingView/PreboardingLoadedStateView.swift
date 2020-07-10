@@ -62,7 +62,7 @@ struct PreboardingLoadedStateView: View {
 struct PreboardingLoadedStateView_Previews: PreviewProvider {
     static var previews: some View {
         PreboardingLoadedStateView(
-            onDuty: DutyState(user: UserViewModel()),
+            onDuty: DutyState.shared,
             storedReports: .constant([.sample, .sample]),
             showingRecentBoardings: .constant(true))
     }
