@@ -16,6 +16,12 @@ extension Date {
         return formatter.string(from: date)
     }
 
+    func fullDateTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d yyyy h:mm a"
+        return formatter.string(from: self)
+    }
+
     func justDate() -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium

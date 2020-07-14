@@ -178,6 +178,7 @@
 		BCE48275C134A902EF0293D4 /* GlassIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48B8D8932DF568200B811 /* GlassIconView.swift */; };
 		BCE482FC535CCA17C9D9F30A /* EMSInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48E00667F973D59D7BEF1 /* EMSInputView.swift */; };
 		BCE483016BC86FB511F7A3F5 /* View+NavigationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D8DD8B8DF7DE800C8F4 /* View+NavigationStyle.swift */; };
+		BCE48324A3D831DED465C2D5 /* PatrolSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489FD715E47C868F5D581 /* PatrolSummaryView.swift */; };
 		BCE483F97684587434E8421E /* ReportNavigationRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE482077A38D1F61E84B2E2 /* ReportNavigationRootView.swift */; };
 		BCE4840F4C0C0F2758546FCF /* ViolationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48F5852801DEB5F962739 /* ViolationView.swift */; };
 		BCE484202B483EC9484CB5AB /* TopTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489F610C0078AE3ED2944 /* TopTabBarContainerView.swift */; };
@@ -189,6 +190,7 @@
 		BCE4854AADAFBC1B0BD9ECFB /* ChooseViolationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE488D24416A6BC37C41F71 /* ChooseViolationsView.swift */; };
 		BCE4856F6CE56291D9BCB13E /* VesselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D28C07E6FB0EA7DE384 /* VesselView.swift */; };
 		BCE485929167780EDC77D607 /* Color+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4856CC007A1EF1F4C7D48 /* Color+Design.swift */; };
+		BCE485F8B0B2A469B5FBAE61 /* PatrolReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48F47DE260733751A5314 /* PatrolReportView.swift */; };
 		BCE485FB82E626571C19B582 /* RectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4805F57C9DCAF47BCB4FE /* RectangleButton.swift */; };
 		BCE485FD5632C4C598D43309 /* ViolationCrewMemberSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4867F873ECC8BEEF0AF47 /* ViolationCrewMemberSelectView.swift */; };
 		BCE486016027CCB045AFECB5 /* VesselInformationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4869550ED589453572C7E /* VesselInformationInputView.swift */; };
@@ -200,16 +202,18 @@
 		BCE486F4F1B6668619180222 /* AddPhotoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D77EDFAB7319E0AEC9F /* AddPhotoIconView.swift */; };
 		BCE487057B14937DA5EEFCCB /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48842F04CE38CB4657424 /* PageView.swift */; };
 		BCE4871969B513CF57EB86CB /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4887849269C5010940019 /* TitleLabel.swift */; };
+		BCE48744C5AC97E42348905B /* StartStopDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE482F2C7BF11E33FA5E862 /* StartStopDatePicker.swift */; };
 		BCE4874916C7152950AF8F8F /* CaptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE481F6902A242DA2208F95 /* CaptionLabel.swift */; };
 		BCE487539BF5636C31077796 /* WrappedShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489BFAF7761711B175260 /* WrappedShadowView.swift */; };
 		BCE487701A2C97BF1CE46AF7 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489227F28EA1D37A753B7 /* PageViewController.swift */; };
 		BCE48781AEC57E09C5378783 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE484E6974BBB4F08413A3E /* InputField.swift */; };
 		BCE48793D3F22646BB3EDF51 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE488DC251151AA5EC6FAA0 /* PageControl.swift */; };
+		BCE4880D6DD1C2FEEFC2B9FC /* VesselImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48795B555C1389DD995DC /* VesselImageView.swift */; };
 		BCE488A523907BEEF4D6BEC9 /* ScrollableTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489F75FEB031E1F2AAC20 /* ScrollableTabBar.swift */; };
 		BCE488BC8F235F8BDEB8C5EB /* CatchOnBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FCB06AC5B25AF1BCA74 /* CatchOnBoardView.swift */; };
 		BCE488F38035E437A264E0A5 /* KeyboardControllingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48AF913D1F963F18F6FAF /* KeyboardControllingScrollView.swift */; };
 		BCE4892DFF6094A55FFB507C /* ViolationCreateCrewMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4827EACF438010EAE5BA1 /* ViolationCreateCrewMemberView.swift */; };
-		BCE48943FDB4DE9E3C390D76 /* DutyReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489AF9A78548C0EB9656E /* DutyReportsView.swift */; };
+		BCE48943FDB4DE9E3C390D76 /* PatrolSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489AF9A78548C0EB9656E /* PatrolSummaryView.swift */; };
 		BCE489798D6BE59419D46A83 /* SwiftUI+DebugPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4888D0AB99F5CE3FA87DA /* SwiftUI+DebugPrint.swift */; };
 		BCE4899544B72DD8D04E3DA7 /* NavigationBarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FD1BBBF69F49C6EC765 /* NavigationBarViewModifier.swift */; };
 		BCE48998EA1E025783FB6D6F /* IconLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4892551FBCBFBE0C35C4B /* IconLabel.swift */; };
@@ -418,6 +422,7 @@
 		BCE4824D90AA3E6903C93562 /* CountryPickerDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerDataView.swift; sourceTree = "<group>"; };
 		BCE4827EACF438010EAE5BA1 /* ViolationCreateCrewMemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationCreateCrewMemberView.swift; sourceTree = "<group>"; };
 		BCE482B62D2BFC22CCFF4ABA /* View+Shadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Shadow.swift"; sourceTree = "<group>"; };
+		BCE482F2C7BF11E33FA5E862 /* StartStopDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartStopDatePicker.swift; sourceTree = "<group>"; };
 		BCE483315BCBE777464D2FF4 /* ViolationPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationPickerView.swift; sourceTree = "<group>"; };
 		BCE483BB45A7BCD0ADC62551 /* PopoverManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverManager.swift; sourceTree = "<group>"; };
 		BCE483CAE164B70D857A62B0 /* ReportSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportSummaryView.swift; sourceTree = "<group>"; };
@@ -442,6 +447,7 @@
 		BCE486EF5A22D91EE1260968 /* MainNavigationRootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationRootView.swift; sourceTree = "<group>"; };
 		BCE4871B39646A85F047F256 /* TextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
 		BCE48759F5D54253D3302EED /* ChooseCrewMemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCrewMemberView.swift; sourceTree = "<group>"; };
+		BCE48795B555C1389DD995DC /* VesselImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselImageView.swift; sourceTree = "<group>"; };
 		BCE48842F04CE38CB4657424 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		BCE4887849269C5010940019 /* TitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		BCE4888D0AB99F5CE3FA87DA /* SwiftUI+DebugPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftUI+DebugPrint.swift"; sourceTree = "<group>"; };
@@ -450,12 +456,13 @@
 		BCE489227F28EA1D37A753B7 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		BCE4892551FBCBFBE0C35C4B /* IconLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconLabel.swift; sourceTree = "<group>"; };
 		BCE489430E879F75C5AAF84F /* ButtonField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonField.swift; sourceTree = "<group>"; };
-		BCE489AF9A78548C0EB9656E /* DutyReportsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DutyReportsView.swift; sourceTree = "<group>"; };
+		BCE489AF9A78548C0EB9656E /* PatrolSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PatrolSummaryView.swift; path = PatrolSummary/PatrolSummaryView.swift; sourceTree = "<group>"; };
 		BCE489BFAF7761711B175260 /* WrappedShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrappedShadowView.swift; sourceTree = "<group>"; };
 		BCE489DDA8774B9D56F44157 /* SegmentedField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedField.swift; sourceTree = "<group>"; };
 		BCE489E93BCA8E7B291D6830 /* PhotoQueryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoQueryManager.swift; sourceTree = "<group>"; };
 		BCE489F610C0078AE3ED2944 /* TopTabBarContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTabBarContainerView.swift; sourceTree = "<group>"; };
 		BCE489F75FEB031E1F2AAC20 /* ScrollableTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabBar.swift; sourceTree = "<group>"; };
+		BCE489FD715E47C868F5D581 /* PatrolSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatrolSummaryView.swift; sourceTree = "<group>"; };
 		BCE48A5038A2E43FE839DC80 /* ReportListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportListView.swift; sourceTree = "<group>"; };
 		BCE48AB036DA398FBFF3E3B4 /* SectionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionButton.swift; sourceTree = "<group>"; };
 		BCE48AB83BB50A193A6B4113 /* CallToActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallToActionButton.swift; sourceTree = "<group>"; };
@@ -477,6 +484,7 @@
 		BCE48EB9881C995C3F54D7AB /* swiftlint_config.yaml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftlint_config.yaml; sourceTree = "<group>"; };
 		BCE48EFBBE1997660C4F1EE6 /* Collection+EnumeratedArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+EnumeratedArray.swift"; sourceTree = "<group>"; };
 		BCE48F00468932867B086CA2 /* CrewMemberStaticView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrewMemberStaticView.swift; sourceTree = "<group>"; };
+		BCE48F47DE260733751A5314 /* PatrolReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatrolReportView.swift; sourceTree = "<group>"; };
 		BCE48F54CA4C3989E363C19A /* String+Identifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Identifiable.swift"; sourceTree = "<group>"; };
 		BCE48F582115EDDFFD929037 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		BCE48F5852801DEB5F962739 /* ViolationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationView.swift; sourceTree = "<group>"; };
@@ -532,7 +540,9 @@
 				3013CA7B2424AF7A00D2FF60 /* PatrolBoatView.swift */,
 				497EBF1B2435D3AC00B01800 /* CoordsBoxView.swift */,
 				BCE485D2BA893C25D49E2A05 /* BoardButton.swift */,
-				BCE489AF9A78548C0EB9656E /* DutyReportsView.swift */,
+				BCE489AF9A78548C0EB9656E /* PatrolSummaryView.swift */,
+				BCE483DE0B16C2C3C13D4BF3 /* PatrolSummary */,
+				BCE48795B555C1389DD995DC /* VesselImageView.swift */,
 			);
 			path = PatrolBoat;
 			sourceTree = "<group>";
@@ -765,6 +775,7 @@
 				BCE4805F57C9DCAF47BCB4FE /* RectangleButton.swift */,
 				BCE48FD1BBBF69F49C6EC765 /* NavigationBarViewModifier.swift */,
 				BCE4887EB3FE7199409B3311 /* PageView */,
+				BCE482F2C7BF11E33FA5E862 /* StartStopDatePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -956,6 +967,15 @@
 				FBE107B0247FFF87001DA29C /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		BCE483DE0B16C2C3C13D4BF3 /* PatrolSummary */ = {
+			isa = PBXGroup;
+			children = (
+				BCE489FD715E47C868F5D581 /* PatrolSummaryView.swift */,
+				BCE48F47DE260733751A5314 /* PatrolReportView.swift */,
+			);
+			path = PatrolSummary;
 			sourceTree = "<group>";
 		};
 		BCE483F917662257CAB7586F /* ReportFlow */ = {
@@ -1519,11 +1539,15 @@
 				BCE485FB82E626571C19B582 /* RectangleButton.swift in Sources */,
 				BCE483016BC86FB511F7A3F5 /* View+NavigationStyle.swift in Sources */,
 				BCE4899544B72DD8D04E3DA7 /* NavigationBarViewModifier.swift in Sources */,
-				BCE48943FDB4DE9E3C390D76 /* DutyReportsView.swift in Sources */,
+				BCE48943FDB4DE9E3C390D76 /* PatrolSummaryView.swift in Sources */,
 				BCE48793D3F22646BB3EDF51 /* PageControl.swift in Sources */,
 				BCE487701A2C97BF1CE46AF7 /* PageViewController.swift in Sources */,
 				BCE487057B14937DA5EEFCCB /* PageView.swift in Sources */,
 				BCE48F5083615CEB327EF9BD /* PhotoQueryManager.swift in Sources */,
+				BCE48324A3D831DED465C2D5 /* PatrolSummaryView.swift in Sources */,
+				BCE48744C5AC97E42348905B /* StartStopDatePicker.swift in Sources */,
+				BCE485F8B0B2A469B5FBAE61 /* PatrolReportView.swift in Sources */,
+				BCE4880D6DD1C2FEEFC2B9FC /* VesselImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

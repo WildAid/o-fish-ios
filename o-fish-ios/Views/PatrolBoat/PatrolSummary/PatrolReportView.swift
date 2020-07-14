@@ -1,13 +1,13 @@
 //
-//  VesselItemView.swift
+//  PatrolReportView.swift
 //
-//  Created on 3/23/20.
+//  Created on 10/07/20.
 //  Copyright © 2020 WildAid. All rights reserved.
 //
 
 import SwiftUI
 
-struct VesselItemView: View {
+struct PatrolReportView: View {
 
     var report: ReportViewModel
 
@@ -36,11 +36,8 @@ struct VesselItemView: View {
                         StatusSymbolView(risk: report.inspection.summary.safetyLevel.level)
                     }
                     VStack(spacing: Dimensions.leadingSpacing) {
-                        CaptionLabel(title: NSLocalizedString("Permit #", comment: "") + report.vessel.permitNumber, color: .gray)
-                        CaptionLabel(title: NSLocalizedString("Last Boarding", comment: "") + " " + (report.date as Date).justLongDate(),
-                                     color: .gray)
-                        CaptionLabel(title: "\(report.crew.count + 1)" + " " +  NSLocalizedString("Crew Members", comment: ""),
-                                     color: .gray)
+                        CaptionLabel(title: (report.date as Date).justDate(), color: .gray)
+                        CaptionLabel(title: (report.date as Date).justTime(), color: .gray)
                     }
                         .font(.subheadline)
                 }
@@ -49,7 +46,7 @@ struct VesselItemView: View {
             Divider()
                 .frame(height: Dimensions.heightDivider)
         }
-            .padding([.horizontal, .top], Dimensions.padding)
+            .padding([.top], Dimensions.padding)
             .onAppear(perform: onAppear)
     }
 
@@ -62,8 +59,8 @@ struct VesselItemView: View {
 
 }
 
-struct VesselItemView_Previews: PreviewProvider {
+struct PatrolReportView_Previews: PreviewProvider {
     static var previews: some View {
-        VesselItemView(report: .sample)
+        PatrolReportView(report: .sample)
     }
 }
