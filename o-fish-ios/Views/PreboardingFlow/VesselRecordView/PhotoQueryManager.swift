@@ -52,4 +52,12 @@ class PhotoQueryManager {
         }
         return photoViewModels
     }
+
+    func lastVesselImage(permitNumber: String) -> PhotoViewModel? {
+        let photoIds = self.lastVesselImagesId(permitNumber: permitNumber)
+        let limit = 1
+        let limitedPhotoIds = Array(photoIds.prefix(limit))
+        let photos = self.photoViewModels(imagesId: limitedPhotoIds)
+        return photos.first
+    }
 }

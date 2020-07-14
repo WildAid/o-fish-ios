@@ -9,16 +9,14 @@ import SwiftUI
 
 struct EditIconView: View {
 
-    private enum Dimensions {
-        static let padding: CGFloat = 5.0
-        static let imageSize: CGFloat = 20.0
-    }
+    var topPadding: CGFloat = 5.0
+    var imageSize: CGFloat = 20.0
 
     var body: some View {
         Image(systemName: "pencil")
-            .font(.system(size: Dimensions.imageSize))
+            .font(.system(size: imageSize))
             .foregroundColor(Color.lightGrayIcon)
-            .padding(.top, Dimensions.padding)
+            .padding(.top, topPadding)
     }
 }
 

@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct DatePickerWithButton: View {
+
+    @State var date = Date()
+
+    @State var from = Date.distantPast
+    @State var to = Date.distantFuture
+
     var selectButtonTitle: String = "Select"
     var selectButtonClicked: ((Date) -> Void)?
     var type: PickerType = .fullDate
@@ -16,7 +22,6 @@ struct DatePickerWithButton: View {
         case fullDate, onlyDate, hourAndMinute
     }
 
-    @State private var date = Date()
     private var displayedComponents: DatePickerComponents {
         switch type {
         case .fullDate: return [.hourAndMinute, .date]
@@ -28,7 +33,7 @@ struct DatePickerWithButton: View {
     var body: some View {
         VStack {
             RectangleButton(title: selectButtonTitle, action: { self.selectButtonClicked?(self.date) })
-            DatePicker("", selection: $date, displayedComponents: displayedComponents)
+            DatePicker("", selection: $date, in: from...to, displayedComponents: displayedComponents)
                 .labelsHidden()
         }
     }

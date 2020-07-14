@@ -13,6 +13,7 @@ class DutyChangeViewModel: ObservableObject {
     @Published var id = ObjectId.generate().stringValue
     @Published var user = UserViewModel()
     @Published var status: Status = .notSelected
+    @Published var date: Date = Date()
 
     enum Status: String {
         case notSelected = ""
@@ -24,9 +25,12 @@ class DutyChangeViewModel: ObservableObject {
 
     convenience init(dutyChange: DutyChange) {
         self.init()
-        id = dutyChange._id.stringValue
+
+        self.dutyChange = dutyChange
+        self.id = dutyChange._id.stringValue
         self.user = UserViewModel(dutyChange.user)
         self.status = Status(rawValue: dutyChange.status) ?? .notSelected
+        self.date = dutyChange.date
     }
 
     func save() {
@@ -43,6 +47,7 @@ class DutyChangeViewModel: ObservableObject {
                 guard let dutyChange = dutyChange else { return }
                 dutyChange.user = self.user.save()
                 dutyChange.status = self.status.rawValue
+                dutyChange.date = self.date
                 if isNew {
                     guard let realm = RealmConnection.realm else {
                         print("Can't access Realm")
@@ -51,8 +56,8 @@ class DutyChangeViewModel: ObservableObject {
                     realm.add(dutyChange)
                 }
             }
-            } catch {
-                print("Couldn't add report to Realm")
-            }
+        } catch {
+            print("Couldn't add duty change to Realm")
+        }
     }
 }

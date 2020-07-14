@@ -8,14 +8,18 @@
 import SwiftUI
 
 class DutyState: ObservableObject {
-
     var user: UserViewModel?
 
-    @Published var onDuty = false {
-        didSet {
-            recordOnDutyChange()
+    var onDuty: Bool {
+        get {
+            dutyState
+        }
+        set {
+            recordOnDutyChange(status: newValue)
         }
     }
+
+    @Published private var dutyState = false
 
     static let shared = DutyState()
 
@@ -25,18 +29,21 @@ class DutyState: ObservableObject {
 
     private init(user: UserViewModel) {
         self.user = user
-        self._onDuty = Published(initialValue: loadOnDutyState(user: user))
+        self._dutyState = Published(initialValue: loadOnDutyState(user: user))
     }
 
-    private func recordOnDutyChange() {
+    func recordOnDutyChange(status: Bool, date: Date = Date()) {
+        dutyState = status
+
         let dutyChangeViewModel = DutyChangeViewModel()
         guard let user = user else {
             print("User not set when trying to record onDuty change")
             return
         }
+        dutyChangeViewModel.date = date
         dutyChangeViewModel.user = user
-        dutyChangeViewModel.status = onDuty ? .onDuty : .offDuty
-        if onDuty {
+        dutyChangeViewModel.status = status ? .onDuty : .offDuty
+        if status {
             NotificationManager.shared.requestNotificationAfterStartDuty(hours: Constants.Notifications.hoursAfterStarting)
         } else {
             NotificationManager.shared.removeAllNotification()
@@ -64,10 +71,12 @@ struct PatrolBoatView: View {
     @State private var location = LocationViewModel(LocationHelper.currentLocation)
     @State private var showingPreboardingView = false
     @State private var showingSearchView = false
-    @State private var showingDutyReportsSheet = false
+    @State private var showingPatrolSummaryView = false
     @State private var resetLocation = {}
 
     @State private var dutyReports = [ReportViewModel]()
+    @State private var startDuty = DutyChangeViewModel()
+    @State private var plannedOffDutyTime = Date()
 
     @State private var showingAlertItem: AlertItem?
 
@@ -128,8 +137,13 @@ struct PatrolBoatView: View {
                     EmptyView()
                 }
 
-                NavigationLink(destination: DutyReportsView(dutyReports: dutyReports, onDuty: onDuty),
-                    isActive: self.$showingDutyReportsSheet) {
+                NavigationLink(destination:
+                   PatrolSummaryView(dutyReports: dutyReports,
+                       startDuty: startDuty,
+                       onDuty: onDuty,
+                       plannedOffDutyTime: plannedOffDutyTime),
+
+                    isActive: self.$showingPatrolSummaryView) {
                     EmptyView()
                 }
             }
@@ -148,9 +162,10 @@ struct PatrolBoatView: View {
                         Binding<Bool>(
                             get: { self.onDuty.onDuty },
                             set: {
-                                self.onDuty.onDuty = $0
                                 if !$0 {
-                                    self.showOffDutyReportsIfAny()
+                                    self.showOffDutyConfirmation()
+                                } else {
+                                    self.onDuty.onDuty = $0
                                 }
                         }),
                         titleLabel: "", onLabel: "On Duty", offLabel: "Off Duty")
@@ -222,38 +237,36 @@ struct PatrolBoatView: View {
         }
     }
 
-    private func showOffDutyReportsIfAny() {
-        dutyReports = dutyReportsForCurrentUser()
-        if dutyReports.count > 0 {
-            showingDutyReportsSheet = true
-        }
+    private func showOffDutyConfirmation() {
+        let endDutyTime = Date()
+        guard let startDuty = getDutyStartForCurrentUser(),
+              startDuty.status == .onDuty else { return }
+
+        self.startDuty = startDuty
+        self.plannedOffDutyTime = endDutyTime
+        dutyReports = dutyReportsForCurrentUser(startDutyTime: startDuty.date, endDutyTime: endDutyTime)
+        showingPatrolSummaryView = true
     }
 
     /// Logic
 
-    private func getDutyDatesForCurrentUser() -> (from: Date, to: Date)? {
+    private func getDutyStartForCurrentUser() -> DutyChangeViewModel? {
         let userEmail = RealmConnection.emailAddress
         let predicate = NSPredicate(format: "user.email = %@", userEmail)
 
         let realmDutyChanges = RealmConnection.realm?.objects(DutyChange.self).filter(predicate).sorted(byKeyPath: "date", ascending: false) ?? nil
 
-        guard let dutyChanges = realmDutyChanges else { return nil }
+        guard let dutyChanges = realmDutyChanges,
+              let dutyChange = dutyChanges.first else { return nil }
 
-        if dutyChanges.count < 2 { return nil }
-        let off = dutyChanges[0]
-        let on = dutyChanges[1]
-
-        return (from: on.date, to: off.date)
+        return DutyChangeViewModel(dutyChange: dutyChange)
     }
 
-    private func dutyReportsForCurrentUser() -> [ReportViewModel] {
+    private func dutyReportsForCurrentUser(startDutyTime: Date, endDutyTime: Date) -> [ReportViewModel] {
         let userEmail = RealmConnection.emailAddress
-        let dates = getDutyDatesForCurrentUser()
-
-        guard let dutyDates = dates else { return [] }
 
         let predicate = NSPredicate(format: "timestamp > %@ AND timestamp < %@ AND reportingOfficer.email = %@",
-            dutyDates.from as NSDate, dutyDates.to as NSDate, userEmail)
+            startDutyTime as NSDate, endDutyTime as NSDate, userEmail)
 
         let realmReports = RealmConnection.realm?.objects(Report.self).filter(predicate).sorted(byKeyPath: "timestamp", ascending: false) ?? nil
 
