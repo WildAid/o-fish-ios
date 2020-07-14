@@ -80,7 +80,8 @@ struct PageViewController: UIViewControllerRepresentable {
                                 previousViewControllers: [UIViewController],
                                 transitionCompleted completed: Bool) {
             if completed {
-                if let visibleViewController = pageViewController.viewControllers?.first, let index = parent.controllers.firstIndex(of: visibleViewController) {
+                if let visibleViewController = pageViewController.viewControllers?.first,
+                   let index = parent.controllers.firstIndex(of: visibleViewController) {
                     parent.currentPage = index
                 }
             }

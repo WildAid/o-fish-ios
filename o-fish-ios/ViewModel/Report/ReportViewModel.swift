@@ -109,7 +109,5 @@ class ReportViewModel: ObservableObject, Identifiable {
 }
 
 extension ReportViewModel: Equatable {
-    public static func ==(lhs: ReportViewModel, rhs: ReportViewModel) -> Bool {
-        lhs.id == rhs.id
-    }
+    public static func == (lhs: ReportViewModel, rhs: ReportViewModel) -> Bool { lhs.id == rhs.id }
 }

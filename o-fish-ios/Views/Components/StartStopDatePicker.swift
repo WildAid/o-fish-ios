@@ -39,17 +39,13 @@ struct StartStopDatePicker: View {
     /// Actions
 
     func startDateClicked() {
-        showDateEditor(date: startDate, to: endDate) {
-            newDate in
-
+        showDateEditor(date: startDate, to: endDate) { newDate in
             self.startDate = newDate
         }
     }
 
     func endDateClicked() {
-        showDateEditor(date: endDate, from: startDate) {
-            newDate in
-
+        showDateEditor(date: endDate, from: startDate) { newDate in
             self.endDate = newDate
         }
     }
