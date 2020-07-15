@@ -301,7 +301,7 @@
 		49076E3F2411850A00B3CF43 /* RiskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskView.swift; sourceTree = "<group>"; };
 		49076E412411867800B3CF43 /* TrafficLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLights.swift; sourceTree = "<group>"; };
 		49076E43241192D900B3CF43 /* TrafficLightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightButton.swift; sourceTree = "<group>"; };
-		490C0DA123F6B15800283307 /* WildAid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = WildAid.app; path = "O-FISH.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		490C0DA123F6B15800283307 /* O-FISH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "O-FISH.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		490C0DA423F6B15800283307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		490C0DA623F6B15800283307 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		490C0DAA23F6B15A00283307 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -641,7 +641,7 @@
 		490C0DA223F6B15800283307 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				490C0DA123F6B15800283307 /* WildAid.app */,
+				490C0DA123F6B15800283307 /* O-FISH.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1178,7 +1178,7 @@
 			);
 			name = "o-fish-ios";
 			productName = "o-fish-ios";
-			productReference = 490C0DA123F6B15800283307 /* WildAid.app */;
+			productReference = 490C0DA123F6B15800283307 /* O-FISH.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1696,6 +1696,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = PH747F3726;
 				ENABLE_PREVIEWS = YES;
@@ -1705,7 +1706,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.wildaid.ofish;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.wildaid.o-fish";
 				PRODUCT_NAME = "O-FISH";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1718,6 +1719,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = PH747F3726;
 				ENABLE_PREVIEWS = YES;
@@ -1727,7 +1729,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.wildaid.ofish;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.wildaid.o-fish";
 				PRODUCT_NAME = "O-FISH";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
