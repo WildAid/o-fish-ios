@@ -23,12 +23,9 @@ struct PatrolSummaryView: View {
     private enum Dimensions {
         static let spacing: CGFloat = 16
         static let bottomPadding: CGFloat = 24.0
-
-        enum Button {
-            static let topPadding: CGFloat = 16.0
-            static let bottomPadding: CGFloat = 45.0
-            static let leadingTrailingPadding: CGFloat = 16.0
-        }
+        static let buttonTopPadding: CGFloat = 16.0
+        static let buttonBottomPadding: CGFloat = 45.0
+        static let buttonLeadingTrailingPadding: CGFloat = 16.0
     }
 
     var body: some View {
@@ -62,9 +59,9 @@ struct PatrolSummaryView: View {
             VStack(spacing: .zero) {
                 CallToActionButton(title: "Go Off Duty",
                     action: self.goOffDutyClicked)
-                    .padding(.top, Dimensions.Button.topPadding)
-                    .padding(.bottom, Dimensions.Button.bottomPadding)
-                    .padding(.horizontal, Dimensions.Button.leadingTrailingPadding)
+                    .padding(.top, Dimensions.buttonTopPadding)
+                    .padding(.bottom, Dimensions.buttonBottomPadding)
+                    .padding(.horizontal, Dimensions.buttonLeadingTrailingPadding)
             }
                 .edgesIgnoringSafeArea(.bottom)
                 .background(Color.white)
