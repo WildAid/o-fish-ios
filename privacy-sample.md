@@ -1,0 +1,3 @@
+We are concerned about the privacy of our users. All User Content is subject to this Privacy Policy.
+
+You acknowledge that we have the right to monitor the Site, but do not regularly monitor or edit User Content. You agree that we may preserve User Content you provide to us and may disclose User Content if required to do so by law or in the good faith belief that such preservation or disclosure is reasonably necessary to: (a) comply with legal process; (b) respond to claims that any User Content violates the rights of third-parties; or (c) protect the rights, property, or personal safety of us or others.
