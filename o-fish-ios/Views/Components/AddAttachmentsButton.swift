@@ -14,14 +14,48 @@ struct AddAttachmentsButton: View {
     let reportId: String
 
     var body: some View {
-        Button(action: { self.showCustomActionSheet() }) {
+        Button(action: { self.showAttachmentTypeModal() }) {
             AddAttachmentIconView()
         }
     }
 
-    private func showPhotoTaker() {
+    private func hidePopover() {
+        PopoverManager.shared.hidePopover(id: popoverId)
+    }
+
+    private func showAttachmentTypeModal() {
+        // TODO: for some reason this works only from action and not from viewModifier
+        // TODO: review when viewModifier actions will be available
+
+        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
+                ModalView(buttons: [
+                    ModalViewButton(title: "Photo", action: showPhotoPickerTypeModal),
+                    ModalViewButton(title: "Note", action: addNote)
+                ],
+                    cancel: hidePopover)
+        }
+    }
+
+    private func showPhotoPickerTypeModal() {
         hidePopover()
-        PhotoCaptureController.show(reportID: reportId) { controller, photoId in
+
+        // TODO: for some reason this works only from action and not from viewModifier
+        // TODO: review when viewModifier actions will be available
+
+        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
+            ModalView(buttons: [
+                ModalViewButton(title: "Camera", action: { self.showPhotoTaker(source: .camera) }),
+                ModalViewButton(title: "Photo Library", action: { self.showPhotoTaker(source: .photoLibrary) })
+            ],
+                cancel: hidePopover)
+        }
+    }
+
+    /// Logic
+
+    private func showPhotoTaker(source: UIImagePickerController.SourceType) {
+        hidePopover()
+        PhotoCaptureController.show(reportID: reportId, source: source) { controller, photoId in
             self.attachments.photoIDs.append(photoId)
             controller.hide()
         }
@@ -30,25 +64,6 @@ struct AddAttachmentsButton: View {
     private func addNote() {
         hidePopover()
         attachments.notes.append(Note(text: ""))
-    }
-
-    private func hidePopover() {
-        PopoverManager.shared.hidePopover(id: popoverId)
-    }
-
-    private func showCustomActionSheet() {
-        // TODO: for some reason this works only from action and not from viewModifier
-        // TODO: review when viewModifier actions will be available
-
-        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
-            AddAttachmentsModalView(photo: showPhotoTaker,
-                                    note: addNote,
-                                    cancel: hidePopover)
-                .background(Color.blackWithOpacity)
-                .onTapGesture {
-                    self.hidePopover()
-            }
-        }
     }
 }
 

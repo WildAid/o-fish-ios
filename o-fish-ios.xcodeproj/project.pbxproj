@@ -36,7 +36,6 @@
 		3093806124460A2A00E23350 /* VesselItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093805B24460A2900E23350 /* VesselItemView.swift */; };
 		3093806324460A4C00E23350 /* ColumnText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093806224460A4C00E23350 /* ColumnText.swift */; };
 		3093806724460A6D00E23350 /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093806624460A6D00E23350 /* UIImage+resize.swift */; };
-		3099D47624A60AA90046E38E /* AddAttachmentsModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3099D47524A60AA90046E38E /* AddAttachmentsModalView.swift */; };
 		30BDE77E2472CD2D0058E401 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BDE77D2472CD2D0058E401 /* EmptyStateView.swift */; };
 		30BDE7822472D9CB0058E401 /* PreboardingLoadedStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BDE7812472D9CB0058E401 /* PreboardingLoadedStateView.swift */; };
 		30C112B62477E90D00DD13A8 /* NotesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C112B52477E90D00DD13A8 /* NotesListView.swift */; };
@@ -229,6 +228,7 @@
 		BCE48B9CAD5B8F1EB27C60BD /* ChooseEMSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48E42E19241E2A8EC419F /* ChooseEMSView.swift */; };
 		BCE48BFCEE413835DEB14DC0 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE481836AE46B8919574CA9 /* RowView.swift */; };
 		BCE48C73EB16871E119986DC /* DatePickerWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE481CB48F61489E76F8F47 /* DatePickerWithButton.swift */; };
+		BCE48C8A28AE75897D15AF75 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE486E471A682C466E106D0 /* ModalView.swift */; };
 		BCE48D2E131F3FF37B16527A /* AddAttachmentIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4859125E217E233F37FE1 /* AddAttachmentIconView.swift */; };
 		BCE48D2E80CF82657D03614D /* ExclamationIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48B94994CFA0A8C5C943F /* ExclamationIconView.swift */; };
 		BCE48D2FCD0F20F23AEC0EF4 /* ChooseNationalityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48554847307C2A23A9DEA /* ChooseNationalityView.swift */; };
@@ -277,7 +277,6 @@
 		3093805B24460A2900E23350 /* VesselItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselItemView.swift; sourceTree = "<group>"; };
 		3093806224460A4C00E23350 /* ColumnText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnText.swift; sourceTree = "<group>"; };
 		3093806624460A6D00E23350 /* UIImage+resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
-		3099D47524A60AA90046E38E /* AddAttachmentsModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAttachmentsModalView.swift; sourceTree = "<group>"; };
 		30BDE77D2472CD2D0058E401 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		30BDE7812472D9CB0058E401 /* PreboardingLoadedStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreboardingLoadedStateView.swift; sourceTree = "<group>"; };
 		30C112B52477E90D00DD13A8 /* NotesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListView.swift; sourceTree = "<group>"; };
@@ -443,6 +442,7 @@
 		BCE486BBFA7E770F010DA1AA /* AlertItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
 		BCE486BCBC428C8539A22A9D /* CountryPickerView.swif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerView.swif.swift; sourceTree = "<group>"; };
 		BCE486CABA40FF0D6D14E5F9 /* KeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
+		BCE486E471A682C466E106D0 /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		BCE486EF5A22D91EE1260968 /* MainNavigationRootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationRootView.swift; sourceTree = "<group>"; };
 		BCE4871B39646A85F047F256 /* TextLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
 		BCE48759F5D54253D3302EED /* ChooseCrewMemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCrewMemberView.swift; sourceTree = "<group>"; };
@@ -728,7 +728,6 @@
 				3093806224460A4C00E23350 /* ColumnText.swift */,
 				30EB886124ACA24600904894 /* ActionSheetButton.swift */,
 				30E5377524A4E945006017C9 /* LogoutModalView.swift */,
-				3099D47524A60AA90046E38E /* AddAttachmentsModalView.swift */,
 				308A75362476B99C00C10462 /* NoteFieldView.swift */,
 				30C112B52477E90D00DD13A8 /* NotesListView.swift */,
 				4946C0DD240D29DB009FB1D9 /* Pictures */,
@@ -773,6 +772,7 @@
 				BCE48FD1BBBF69F49C6EC765 /* NavigationBarViewModifier.swift */,
 				BCE4887EB3FE7199409B3311 /* PageView */,
 				BCE482F2C7BF11E33FA5E862 /* StartStopDatePicker.swift */,
+				BCE486E471A682C466E106D0 /* ModalView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1451,7 +1451,6 @@
 				30EB886224ACA24600904894 /* ActionSheetButton.swift in Sources */,
 				3093806324460A4C00E23350 /* ColumnText.swift in Sources */,
 				495AC6F9243F176C00EA11D3 /* SeizureViewModel.swift in Sources */,
-				3099D47624A60AA90046E38E /* AddAttachmentsModalView.swift in Sources */,
 				49674E442451D3960023ABC6 /* ImageLoader.swift in Sources */,
 				4980764E242E688B00D463F4 /* InspectionSummaryView.swift in Sources */,
 				BCE48A80D03CDC3B8C68F3CC /* UnitPickerWithButton.swift in Sources */,
@@ -1544,6 +1543,7 @@
 				BCE48744C5AC97E42348905B /* StartStopDatePicker.swift in Sources */,
 				BCE485F8B0B2A469B5FBAE61 /* PatrolReportView.swift in Sources */,
 				BCE4880D6DD1C2FEEFC2B9FC /* VesselImageView.swift in Sources */,
+				BCE48C8A28AE75897D15AF75 /* ModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

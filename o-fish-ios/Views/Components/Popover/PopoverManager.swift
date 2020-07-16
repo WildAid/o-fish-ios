@@ -22,12 +22,12 @@ class PopoverManager {
             if withButton {
                 Button(action: hidePopoverAction) {
                     Color.clear
-                        .edgesIgnoringSafeArea(.all)
                 }
                 Spacer(minLength: .zero)
             }
             content()
         }
+            .edgesIgnoringSafeArea(.all)
             .background(Color.clear)
 
         let hosting = UIHostingController(rootView: view)

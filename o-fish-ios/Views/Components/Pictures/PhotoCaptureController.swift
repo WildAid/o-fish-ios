@@ -25,7 +25,10 @@ class PhotoCaptureController: UIImagePickerController {
         .portrait
     }
 
-    static func show(reportID: String, photoTaken: ((PhotoCaptureController, String) -> Void)? = nil) {
+    static func show(reportID: String,
+                     source: UIImagePickerController.SourceType,
+                     photoTaken: ((PhotoCaptureController, String) -> Void)? = nil) {
+
         let picker = PhotoCaptureController()
         picker.setup()
         picker.reportID = reportID
