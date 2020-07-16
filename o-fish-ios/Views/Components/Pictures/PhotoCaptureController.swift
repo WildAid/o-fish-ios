@@ -15,6 +15,8 @@ class PhotoCaptureController: UIImagePickerController {
     var photo = PhotoViewModel()
     private let imageSizeThumbnails: CGFloat = 102
 
+    private let maximumImageSize = Constants.maximumImageSize
+
     override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         .portrait
     }
@@ -58,18 +60,38 @@ class PhotoCaptureController: UIImagePickerController {
         photo.save()
         photoTaken?(self, photo.id)
     }
+
+    private func compressImageIfNeeded(image: UIImage) -> UIImage? {
+        let resultImage = image
+
+        if let data = resultImage.jpegData(compressionQuality: 1) {
+            if data.count > maximumImageSize {
+
+                let neededQuality = CGFloat(maximumImageSize) / CGFloat(data.count)
+                if let resized = resultImage.jpegData(compressionQuality: neededQuality),
+                   let resultImage = UIImage(data: resized) {
+
+                    return resultImage
+                } else {
+                    print("Fail to resize image")
+                }
+            }
+        }
+        return resultImage
+    }
 }
 
 extension PhotoCaptureController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let uiImage = info[.editedImage] as? UIImage else {
+        guard let editedImage = info[.editedImage] as? UIImage,
+              let result = compressImageIfNeeded(image: editedImage) else {
             print("Could't get the camera/library image")
             return
         }
 
         photo.date = Date()
-        photo.picture = uiImage
-        photo.thumbNail = uiImage.thumbnail(size: imageSizeThumbnails)
+        photo.picture = result
+        photo.thumbNail = result.thumbnail(size: imageSizeThumbnails)
         savePhoto()
     }
 
