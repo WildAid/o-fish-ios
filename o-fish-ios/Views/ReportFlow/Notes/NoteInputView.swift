@@ -25,7 +25,7 @@ struct NoteInputView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack {
                 TitleLabel(title: NSLocalizedString("Note", comment: "") + " \(noteIndex + 1)")
-                Button(action: showPhotoTaker) {
+                Button(action: showPhotoPickerTypeModal) {
                     AddPhotoIconView()
                 }
             }
@@ -45,8 +45,33 @@ struct NoteInputView: View {
         }
     }
 
-    private func showPhotoTaker() {
-        PhotoCaptureController.show(reportID: self.reportID) { controller, photoId in
+    private func showPhotoPickerTypeModal() {
+        // TODO: for some reason this works only from action and not from viewModifier
+        // TODO: review when viewModifier actions will be available
+
+        let popoverId = UUID().uuidString
+
+        let hidePopover = {
+            PopoverManager.shared.hidePopover(id: popoverId)
+        }
+
+        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
+            ModalView(buttons: [
+                ModalViewButton(title: "Camera", action: {
+                    hidePopover()
+                    self.showPhotoTaker(source: .camera)
+                }),
+                ModalViewButton(title: "Photo Library", action: {
+                    hidePopover()
+                    self.showPhotoTaker(source: .photoLibrary)
+                })
+            ],
+                cancel: hidePopover)
+        }
+    }
+
+    private func showPhotoTaker(source: UIImagePickerController.SourceType) {
+        PhotoCaptureController.show(reportID: self.reportID, source: source) { controller, photoId in
             self.annotatedNote.photoIDs.append(photoId)
             controller.hide()
         }
