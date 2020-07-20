@@ -63,12 +63,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
+        NotificationManager.shared.removeNotificationWithIdentifier(NotificationManager.closingNotificationIdentifier)
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        if DutyState.shared.onDuty {
+        if DutyState.shared.onDuty && RealmConnection.loggedIn {
             NotificationManager.shared.requestNotificationAfterClosing(hours: Constants.Notifications.hoursAfterClosing)
         }
     }

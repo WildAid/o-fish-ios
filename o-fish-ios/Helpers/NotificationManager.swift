@@ -9,6 +9,7 @@ import UserNotifications
 
 class NotificationManager {
 
+    static let closingNotificationIdentifier = "Notification after closing"
     static let shared = NotificationManager()
 
     private let notificationCenter = UNUserNotificationCenter.current()
@@ -37,7 +38,7 @@ class NotificationManager {
     func requestNotificationAfterClosing(hours: Int) {
         let localizedString =   NSLocalizedString("It has been %@ hours after closing the application", comment: "")
         let title = String(format: localizedString, String(hours))
-        createNotification(title: title, hours: hours)
+        createNotification(title: title, hours: hours, id: NotificationManager.closingNotificationIdentifier)
     }
 
     func requestNotificationAfterStartDuty(hours: Int) {
@@ -46,7 +47,11 @@ class NotificationManager {
         createNotification(title: title, hours: hours)
     }
 
-    private func createNotification(title: String, hours: Int) {
+    func removeNotificationWithIdentifier(_ id: String) {
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
+    }
+
+    private func createNotification(title: String, hours: Int, id: String = UUID().uuidString) {
         let secondsInHour = 3600
         let seconds = TimeInterval(hours * secondsInHour)
         let content = UNMutableNotificationContent()
@@ -55,7 +60,7 @@ class NotificationManager {
         content.sound = UNNotificationSound.default
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         notificationCenter.add(request)
 
     }

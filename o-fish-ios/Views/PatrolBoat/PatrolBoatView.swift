@@ -211,6 +211,7 @@ struct PatrolBoatView: View {
     private func logoutAlertClicked() {
         RealmConnection.logout()
         isLoggedIn.wrappedValue = false
+        NotificationManager.shared.removeAllNotification()
     }
 
     private func showLogoutModal() {
