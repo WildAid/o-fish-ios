@@ -40,8 +40,13 @@ class LocationViewModel: ObservableObject, Identifiable {
         self.init()
         if let location = location {
             locationModel = location
-            latitude = location[1]
-            longitude = location[0]
+            if location.count == 2 {
+                latitude = location[1]
+                longitude = location[0]
+            } else {
+                latitude = 0
+                longitude = 0
+            }
         } else {
             locationModel = List<Double>()
         }
