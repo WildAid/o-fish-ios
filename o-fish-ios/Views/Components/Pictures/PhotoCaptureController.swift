@@ -30,14 +30,14 @@ class PhotoCaptureController: UIImagePickerController {
                      photoTaken: ((PhotoCaptureController, String) -> Void)? = nil) {
 
         let picker = PhotoCaptureController()
-        picker.setup()
+        picker.setup(source)
         picker.reportID = reportID
         picker.photoTaken = photoTaken
         picker.present()
     }
 
-    func setup() {
-        if PhotoCaptureController.isSourceTypeAvailable(.camera) {
+    func setup(_ requestedSource: UIImagePickerController.SourceType) {
+        if PhotoCaptureController.isSourceTypeAvailable(.camera) && requestedSource == .camera {
             sourceType = .camera
         } else {
             print("No camera found - using photo library instead")
