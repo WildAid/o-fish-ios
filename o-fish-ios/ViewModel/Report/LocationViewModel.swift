@@ -6,9 +6,10 @@
 //
 
 import MapKit
+import RealmSwift
 
 class LocationViewModel: ObservableObject, Identifiable {
-    private var locationModel: Location?
+    private var locationModel: List<Double>?
 
     @Published var id = UUID().uuidString
     @Published var latitude: Double
@@ -35,25 +36,14 @@ class LocationViewModel: ObservableObject, Identifiable {
         self.location = location
     }
 
-    convenience init(_ location: Location?) {
+    convenience init(_ location: List<Double>?) {
         self.init()
         if let location = location {
             locationModel = location
-            latitude = location.latitude
-            longitude = location.longitude
+            latitude = location[1]
+            longitude = location[0]
         } else {
-            locationModel = Location()
+            locationModel = List<Double>()
         }
-    }
-
-    func save() -> Location? {
-        let isNew = (locationModel == nil)
-        if isNew {
-            locationModel = Location()
-        }
-        guard let locationModel = locationModel else { return nil }
-        locationModel.latitude = latitude
-        locationModel.longitude = longitude
-        return locationModel
     }
 }

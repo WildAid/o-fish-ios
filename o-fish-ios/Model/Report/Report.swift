@@ -11,7 +11,7 @@ class Report: Object, Identifiable {
     @objc dynamic var _id: ObjectId = ObjectId.generate()
     @objc dynamic var reportingOfficer: User? = User()
     @objc dynamic var timestamp = NSDate()
-    @objc dynamic var location: Location? = Location()
+    let location = List<Double>()
     @objc dynamic var date: NSDate? = NSDate()
     @objc dynamic var vessel: Boat? = Boat()
     @objc dynamic var captain: CrewMember? = CrewMember()

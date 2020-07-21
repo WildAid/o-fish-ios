@@ -75,7 +75,8 @@ class ReportViewModel: ObservableObject, Identifiable {
                     print("Realm report not avaialable")
                     return
                 }
-                report.location = location.save()
+                report.location.append(location.longitude)
+                report.location.append(location.latitude)
                 report.date = date as NSDate
                 report.reportingOfficer = reportingOfficer.save()
                 report.vessel = vessel.save()
