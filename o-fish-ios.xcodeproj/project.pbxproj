@@ -126,7 +126,6 @@
 		49B83EDC2489546D00027B8C /* EMS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B83ED02489546C00027B8C /* EMS.swift */; };
 		49B83EDD2489546D00027B8C /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B83ECB2489546C00027B8C /* Delivery.swift */; };
 		49B83EDE2489546D00027B8C /* Catch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B83ED52489546C00027B8C /* Catch.swift */; };
-		49B83EE02489546D00027B8C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B83ED12489546C00027B8C /* Location.swift */; };
 		49B83EE12489546D00027B8C /* Boat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B83ED82489546D00027B8C /* Boat.swift */; };
 		49B83EE22489546D00027B8C /* GearType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B83ECE2489546C00027B8C /* GearType.swift */; };
 		49B83EE32489546D00027B8C /* Offence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B83ED42489546C00027B8C /* Offence.swift */; };
@@ -375,7 +374,6 @@
 		49B83ECE2489546C00027B8C /* GearType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearType.swift; sourceTree = "<group>"; };
 		49B83ECF2489546C00027B8C /* Fishery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fishery.swift; sourceTree = "<group>"; };
 		49B83ED02489546C00027B8C /* EMS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMS.swift; sourceTree = "<group>"; };
-		49B83ED12489546C00027B8C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		49B83ED32489546C00027B8C /* SafetyLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyLevel.swift; sourceTree = "<group>"; };
 		49B83ED42489546C00027B8C /* Offence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offence.swift; sourceTree = "<group>"; };
 		49B83ED52489546C00027B8C /* Catch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Catch.swift; sourceTree = "<group>"; };
@@ -899,7 +897,6 @@
 				49B83ECF2489546C00027B8C /* Fishery.swift */,
 				49B83ECE2489546C00027B8C /* GearType.swift */,
 				49B83ECA2489546B00027B8C /* Inspection.swift */,
-				49B83ED12489546C00027B8C /* Location.swift */,
 				49B83ED32489546C00027B8C /* SafetyLevel.swift */,
 				49B83ED72489546D00027B8C /* Seizures.swift */,
 				49B83ECD2489546C00027B8C /* Summary.swift */,
@@ -1366,7 +1363,6 @@
 				49FDCD57241D1CA300C00574 /* LocationViewModel.swift in Sources */,
 				4977D0E524484FC800E3E409 /* AnnotatedNoteViewModel.swift in Sources */,
 				4980765D242E82AB00D463F4 /* MapDisplayView.swift in Sources */,
-				49B83EE02489546D00027B8C /* Location.swift in Sources */,
 				49B83EEA2489546D00027B8C /* AnnotatedNote.swift in Sources */,
 				493CE01924054FD500516048 /* ReportSummary.swift in Sources */,
 				4977D0E92448570400E3E409 /* NoteInputView.swift in Sources */,
