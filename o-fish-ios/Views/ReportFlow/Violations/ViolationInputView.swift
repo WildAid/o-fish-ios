@@ -50,7 +50,8 @@ struct ViolationInputView: View {
                         Binding<ViolationPickerData>(
                             get: { .notSelected },
                             set: {
-                                self.violation.offence.code = [$0.caption, $0.title].joined(separator: "\n")
+                                self.violation.offence.location = $0.caption
+                                self.violation.offence.code = $0.title
                                 self.violation.offence.explanation = $0.description
                                 self.updateViolationStatus()
                         }

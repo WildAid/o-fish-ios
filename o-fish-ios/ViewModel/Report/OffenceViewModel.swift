@@ -10,6 +10,7 @@ import Foundation
 class OffenceViewModel: ObservableObject {
     private var offence: Offence?
 
+    @Published var location = "California" //TODO need remove after implementation MPA name
     @Published var code = ""
     @Published var explanation = ""
 
