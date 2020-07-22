@@ -92,7 +92,7 @@ struct DeliveryInputView: View {
                     showingWarning: showingBusinessWarning,
                     inputChanged: inputChanged)
 
-                InputField(title: "Location",
+                InputMultilineFieldCaption(title: "Location",
                     text: $delivery.location,
                     showingWarning: showingLocationWarning,
                     inputChanged: inputChanged)

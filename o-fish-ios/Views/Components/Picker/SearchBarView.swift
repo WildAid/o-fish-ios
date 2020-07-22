@@ -13,8 +13,9 @@ struct SearchBarView: View {
     var placeholder: String
     @State private var errorText = ""
     @State private var showingAlert = false
-    var onCommit: (() -> Void)?
-    var clickedDelete: (() -> Void)?
+    var onCommit: () -> Void = {}
+    var clickedDelete: () -> Void = {}
+    var onEditingChanged: (Bool) -> Void = { _ in }
 
     private enum Dimension {
         static let inset: CGFloat = 7.0
@@ -30,11 +31,10 @@ struct SearchBarView: View {
             HStack(alignment: .center) {
                 GlassIconView()
 
-                TextField(LocalizedStringKey(placeholder), text: $searchText, onEditingChanged: { _ in
-                    print("onEdit")
-                }, onCommit: {
-                    self.onCommit?()
-                })
+                TextField(LocalizedStringKey(placeholder),
+                    text: $searchText,
+                    onEditingChanged: onEditingChanged,
+                    onCommit: onCommit)
 
                 if searchText.isEmpty {
                     Button(action: {
@@ -49,7 +49,7 @@ struct SearchBarView: View {
                 } else {
                     Button(action: {
                         self.searchText = ""
-                        self.clickedDelete?()
+                        self.clickedDelete()
                     }) {
                         Image(systemName: "xmark.circle.fill")
                     }

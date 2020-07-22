@@ -11,11 +11,13 @@ struct InputMultilineField: View {
     @Binding var text: String
 
     private let spacing: CGFloat = 16.0
+    var dividerColor = Color.inactiveBar
 
     var body: some View {
         VStack(spacing: spacing) {
             MultilineTextView(text: $text)
             Divider()
+                .background(dividerColor)
         }
     }
 }

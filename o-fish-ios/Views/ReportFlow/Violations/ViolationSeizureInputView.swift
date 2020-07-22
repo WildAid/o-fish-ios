@@ -25,11 +25,9 @@ struct ViolationSeizureInputView: View {
             }
                 .padding(.top, Dimensions.spacing)
 
-            VStack(spacing: Dimensions.spacing) {
-                CaptionLabel(title: "Description")
-                InputMultilineField(text: $seizure.description)
-                    .frame(minHeight: Dimensions.textFrameHeight) // TODO: fixme size from count of lines * font
-            }
+            InputMultilineFieldCaption(title: "Description",
+                text: $seizure.description,
+                textInputHeight: Dimensions.textFrameHeight)
 
             AttachmentsView(attachments: seizure.attachments)
         }
