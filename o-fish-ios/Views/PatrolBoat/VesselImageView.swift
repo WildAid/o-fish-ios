@@ -16,31 +16,12 @@ struct VesselImageView: View {
     var body: some View {
         Group<AnyView> {
             if let image = vesselImage {
-                return imageView(for: image)
+                return AnyView(PhotoView(photo: image, imageSize: imageSize))
             } else {
                 return AnyView(VesselIconView(imageSize: imageSize))
             }
         }
             .cornerRadius(cornerRadius)
-    }
-
-    private func imageView(for photo: PhotoViewModel) -> AnyView {
-        AnyView(
-            Group {
-                if photo.thumbNail != nil || photo.picture != nil {
-                    Image(uiImage: photo.thumbNail ?? photo.picture ?? UIImage())
-                        .renderingMode(.original)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: imageSize, height: imageSize)
-                } else if photo.pictureURL != "" {
-                    RemoteImageView(
-                        imageURL: photo.pictureURL,
-                        height: imageSize,
-                        width: imageSize)
-                }
-            }
-        )
     }
 }
 

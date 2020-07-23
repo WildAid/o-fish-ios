@@ -74,6 +74,11 @@ class RealmConnection {
         return email
     }
 
+    static var profilePictureDocumentId: String? {
+        guard let user = user, case let .string(profilePic) = user.customData?["profilePic"] else { return nil }
+        return profilePic
+    }
+
     private static let app = RealmApp(id: Constants.realmAppId)
 
     static func logIn(username: String,

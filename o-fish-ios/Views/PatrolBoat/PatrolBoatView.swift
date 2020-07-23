@@ -7,67 +7,12 @@
 
 import SwiftUI
 
-class DutyState: ObservableObject {
-    var user: UserViewModel?
-
-    var onDuty: Bool {
-        get {
-            dutyState
-        }
-        set {
-            recordOnDutyChange(status: newValue)
-        }
-    }
-
-    @Published private var dutyState = false
-
-    static let shared = DutyState()
-
-    private init() {
-        user = nil
-    }
-
-    private init(user: UserViewModel) {
-        self.user = user
-        self._dutyState = Published(initialValue: loadOnDutyState(user: user))
-    }
-
-    func recordOnDutyChange(status: Bool, date: Date = Date()) {
-        dutyState = status
-
-        let dutyChangeViewModel = DutyChangeViewModel()
-        guard let user = user else {
-            print("User not set when trying to record onDuty change")
-            return
-        }
-        dutyChangeViewModel.date = date
-        dutyChangeViewModel.user = user
-        dutyChangeViewModel.status = status ? .onDuty : .offDuty
-        if status {
-            NotificationManager.shared.requestNotificationAfterStartDuty(hours: Constants.Notifications.hoursAfterStarting)
-        } else {
-            NotificationManager.shared.removeAllNotification()
-        }
-        dutyChangeViewModel.save()
-    }
-
-    private func loadOnDutyState(user: UserViewModel) -> Bool {
-        let predicate = NSPredicate(format: "user.email CONTAINS %@", user.email)
-
-        guard let dutyChange = RealmConnection.realm?.objects(DutyChange.self).filter(predicate)
-                                   .sorted(byKeyPath: "date", ascending: false).first ?? nil else {
-            return false
-        }
-
-        return DutyChangeViewModel(dutyChange: dutyChange).status == .onDuty ? true : false
-    }
-}
-
 struct PatrolBoatView: View {
 
     @ObservedObject var user = UserViewModel()
     @ObservedObject var onDuty = DutyState.shared
     var isLoggedIn: Binding<Bool>
+
     @State private var location = LocationViewModel(LocationHelper.currentLocation)
     @State private var showingPreboardingView = false
     @State private var showingSearchView = false
@@ -79,6 +24,9 @@ struct PatrolBoatView: View {
     @State private var plannedOffDutyTime = Date()
 
     @State private var showingAlertItem: AlertItem?
+    @State private var profilePicture: PhotoViewModel?
+
+    let photoQueryManager = PhotoQueryManager.shared
 
     private enum Dimensions {
         static let bottomPadding: CGFloat = 75
@@ -86,8 +34,6 @@ struct PatrolBoatView: View {
         static let coordPadding: CGFloat = 58.0
         static let coordTopPadding: CGFloat = 14.0
         static let allCoordPadding: CGFloat = 48.0
-        static let imagePadding: CGFloat = 8.0
-        static let lineLimit = 1
         static let trailingPadding: CGFloat = 16.0
         static let trailingCoordPadding: CGFloat = 12.0
     }
@@ -148,42 +94,35 @@ struct PatrolBoatView: View {
                 }
             }
                 .edgesIgnoringSafeArea(.all)
-                .navigationBarItems(leading:
-                    Button(action: showLogoutModal, label: {
-                        HStack {
-                            PersonIconView()
-                                .padding(.trailing, Dimensions.imagePadding)
-                            Text(user.name.fullName)
-                                .foregroundColor(.black)
-                                .lineLimit(Dimensions.lineLimit)
-                        }
-                    }), trailing:
-                    TextToggle(isOn:
-                        Binding<Bool>(
-                            get: { self.onDuty.onDuty },
-                            set: {
-                                if !$0 {
-                                    self.showOffDutyConfirmation()
-                                } else {
-                                    self.onDuty.onDuty = $0
-                                }
-                        }),
-                        titleLabel: "", onLabel: "On Duty", offLabel: "Off Duty")
+                .navigationBarItems(
+                    leading:
+                        PatrolBoatUserView(name: user.name.fullName,
+                            photo: profilePicture,
+                            action: showLogoutModal),
+
+                    trailing:
+                        TextToggle(isOn: dutyBinding,
+                            titleLabel: "",
+                            onLabel: "On Duty",
+                            offLabel: "Off Duty")
                 )
                 .navigationBarTitle(Text(""), displayMode: .inline)
                 .navigationBarBackButtonHidden(true)
         }
             .showingAlert(alertItem: $showingAlertItem)
-            .onAppear {
-                self.user.email = RealmConnection.emailAddress
-                self.user.name.first = RealmConnection.firstName
-                self.user.name.last = RealmConnection.lastName
-                self.onDuty.user = self.user
-                if self.isLoggedIn.wrappedValue && !RealmConnection.isConnected {
-                    print("Connecting to realm from patrol")
-                    RealmConnection.connect()
+            .onAppear(perform: onAppear)
+    }
+
+    private var dutyBinding: Binding<Bool> {
+        Binding<Bool>(
+            get: { self.onDuty.onDuty },
+            set: {
+                if !$0 {
+                    self.showOffDutyConfirmation()
+                } else {
+                    self.onDuty.onDuty = $0
                 }
-            }
+            })
     }
 
     /// Alerts
@@ -203,6 +142,20 @@ struct PatrolBoatView: View {
     }
 
     /// Actions
+
+    private func onAppear() {
+        if isLoggedIn.wrappedValue && !RealmConnection.isConnected {
+            print("Connecting to realm from patrol")
+            RealmConnection.connect()
+        }
+
+        user.email = RealmConnection.emailAddress
+        user.name.first = RealmConnection.firstName
+        user.name.last = RealmConnection.lastName
+        onDuty.user = user
+
+        profilePicture = getPicture(documentId: RealmConnection.profilePictureDocumentId)
+    }
 
     private func goOnDutyAlertClicked() {
         self.onDuty.onDuty = true
@@ -250,6 +203,12 @@ struct PatrolBoatView: View {
     }
 
     /// Logic
+
+    private func getPicture(documentId: String?) -> PhotoViewModel? {
+        guard let documentId = documentId else { return nil }
+        let photos = photoQueryManager.photoViewModels(imagesId: [documentId])
+        return photos.first
+    }
 
     private func getDutyStartForCurrentUser() -> DutyChangeViewModel? {
         let userEmail = RealmConnection.emailAddress
