@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var settings = Settings.shared
-    var locationHelper = LocationHelper()
+    var locationHelper = LocationHelper.shared
     var imageCache = ImageCache()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
