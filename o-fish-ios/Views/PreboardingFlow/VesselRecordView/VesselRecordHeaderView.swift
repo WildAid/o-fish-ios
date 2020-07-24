@@ -80,18 +80,7 @@ struct VesselRecordHeaderView: View {
 
     private func view(for photo: PhotoViewModel) -> AnyView {
         AnyView(
-            Group {
-                if photo.thumbNail != nil || photo.picture != nil {
-                    Image(uiImage: photo.thumbNail ?? photo.picture ?? UIImage())
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                } else if photo.pictureURL != "" {
-                    RemoteImageView(
-                        imageURL: photo.pictureURL,
-                        height: Dimensions.imageSize,
-                        width: Dimensions.imageSize)
-                }
-            }
+            PhotoVesselView(photo: photo)
         )
     }
 
