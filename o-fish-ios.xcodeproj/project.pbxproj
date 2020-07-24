@@ -46,6 +46,8 @@
 		30CBCE512475B8D7000AC61C /* LocationPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBCE502475B8D7000AC61C /* LocationPointView.swift */; };
 		30D6584224AF3E8100E38ECC /* BoardVesselButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D6584124AF3E8100E38ECC /* BoardVesselButton.swift */; };
 		30D82D842498E14100AB0E2E /* UIImage+Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */; };
+		30D8445924C98FE4001A5BC5 /* VesselAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8445824C98FE4001A5BC5 /* VesselAsyncImage.swift */; };
+		30D8445B24C99896001A5BC5 /* PhotoVesselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8445A24C99896001A5BC5 /* PhotoVesselView.swift */; };
 		30DBF2F824A34B6C00A364F1 /* Font+title2+titile3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */; };
 		30E31E8E243F36EA00B96A04 /* DeliveryInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */; };
 		30E5377624A4E945006017C9 /* LogoutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5377524A4E945006017C9 /* LogoutModalView.swift */; };
@@ -292,6 +294,8 @@
 		30CBCE502475B8D7000AC61C /* LocationPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPointView.swift; sourceTree = "<group>"; };
 		30D6584124AF3E8100E38ECC /* BoardVesselButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardVesselButton.swift; sourceTree = "<group>"; };
 		30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Thumbnail.swift"; sourceTree = "<group>"; };
+		30D8445824C98FE4001A5BC5 /* VesselAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesselAsyncImage.swift; sourceTree = "<group>"; };
+		30D8445A24C99896001A5BC5 /* PhotoVesselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVesselView.swift; sourceTree = "<group>"; };
 		30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+title2+titile3.swift"; sourceTree = "<group>"; };
 		30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInputView.swift; sourceTree = "<group>"; };
 		30E5377524A4E945006017C9 /* LogoutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutModalView.swift; sourceTree = "<group>"; };
@@ -820,6 +824,7 @@
 				49674E5524535E2A0023ABC6 /* PhotosDisplayView.swift */,
 				49976B432453652C00EF84CC /* PhotoFullSizeView.swift */,
 				49976B4524536F3300EF84CC /* PhotoIDsDisplayView.swift */,
+				30D8445A24C99896001A5BC5 /* PhotoVesselView.swift */,
 			);
 			path = Pictures;
 			sourceTree = "<group>";
@@ -829,6 +834,7 @@
 			children = (
 				49674E432451D3960023ABC6 /* ImageLoader.swift */,
 				49674E452451D3DE0023ABC6 /* AsyncImage.swift */,
+				30D8445824C98FE4001A5BC5 /* VesselAsyncImage.swift */,
 				49674E472451D6C80023ABC6 /* RemoteImageView.swift */,
 				49674E492451D7010023ABC6 /* ImageCache.swift */,
 			);
@@ -1426,6 +1432,7 @@
 				49807652242E709B00D463F4 /* StatusSymbolView.swift in Sources */,
 				49A3EC9E242CBA4E00055342 /* DutyChangeViewModel.swift in Sources */,
 				493B5CDE245C1DDD00071740 /* Constants.swift in Sources */,
+				30D8445B24C99896001A5BC5 /* PhotoVesselView.swift in Sources */,
 				49E385A12431EF9B000A6EC3 /* LastDeliverySummaryView.swift in Sources */,
 				30BDE77E2472CD2D0058E401 /* EmptyStateView.swift in Sources */,
 				300C4AF6241904A1000A2763 /* CrewMemberView.swift in Sources */,
@@ -1554,6 +1561,7 @@
 				BCE48D3F831CFB459F1F6F56 /* PopoverManager.swift in Sources */,
 				BCE4848AF540CA27E798B49F /* UIView+Constraings.swift in Sources */,
 				BCE485FB82E626571C19B582 /* RectangleButton.swift in Sources */,
+				30D8445924C98FE4001A5BC5 /* VesselAsyncImage.swift in Sources */,
 				BCE483016BC86FB511F7A3F5 /* View+NavigationStyle.swift in Sources */,
 				BCE4899544B72DD8D04E3DA7 /* NavigationBarViewModifier.swift in Sources */,
 				BCE48793D3F22646BB3EDF51 /* PageControl.swift in Sources */,

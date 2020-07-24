@@ -45,6 +45,11 @@ struct PageViewController: UIViewControllerRepresentable {
                 return nil
             }
 
+            if parent.controllers.count == 2,
+                parent.controllers.firstIndex(of: viewController) == 0 {
+                return nil
+            }
+
             let previousIndex = viewControllerIndex - 1
 
             guard previousIndex >= 0 else {
@@ -60,6 +65,11 @@ struct PageViewController: UIViewControllerRepresentable {
 
         func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
             guard let viewControllerIndex = parent.controllers.firstIndex(of: viewController) else {
+                return nil
+            }
+
+            if parent.controllers.count == 2,
+                parent.controllers.firstIndex(of: viewController) == 1 {
                 return nil
             }
 
