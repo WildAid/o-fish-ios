@@ -155,6 +155,7 @@ struct PatrolBoatView: View {
         onDuty.user = user
 
         profilePicture = getPicture(documentId: RealmConnection.profilePictureDocumentId)
+        location = LocationViewModel(LocationHelper.currentLocation)
     }
 
     private func goOnDutyAlertClicked() {
