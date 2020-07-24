@@ -168,6 +168,7 @@
 		BCE480EBBFF6B060DCE9C939 /* SearchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D0CEA55210FAC4BFC70 /* SearchableView.swift */; };
 		BCE480EEF0B2F0E6A189ECC6 /* ViolationPickerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48E834DC859834E1E01E4 /* ViolationPickerDataView.swift */; };
 		BCE4814543022D42A642CA4A /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE486CABA40FF0D6D14E5F9 /* KeyboardController.swift */; };
+		BCE4815F88C024AD476B8DE2 /* DutyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D936613848423BBAF33 /* DutyState.swift */; };
 		BCE4817B0B89F5D95768925A /* CountryPickerView.swif.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE486BCBC428C8539A22A9D /* CountryPickerView.swif.swift */; };
 		BCE481FC2E1771F65073C0A6 /* ReportSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE483CAE164B70D857A62B0 /* ReportSummaryView.swift */; };
 		BCE4820A7E5A15B8AA93DB4A /* TextPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48555D654177BE1259C7B /* TextPickerView.swift */; };
@@ -180,6 +181,7 @@
 		BCE483F97684587434E8421E /* ReportNavigationRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE482077A38D1F61E84B2E2 /* ReportNavigationRootView.swift */; };
 		BCE4840F4C0C0F2758546FCF /* ViolationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48F5852801DEB5F962739 /* ViolationView.swift */; };
 		BCE484202B483EC9484CB5AB /* TopTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489F610C0078AE3ED2944 /* TopTabBarContainerView.swift */; };
+		BCE4847641980BF415EC286C /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48E39591741EEEEE3DDCF /* PhotoView.swift */; };
 		BCE4848AF540CA27E798B49F /* UIView+Constraings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE485EA5EF8E62DFA007248 /* UIView+Constraings.swift */; };
 		BCE484BF3E04A46029372B13 /* CrewMemberStaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48F00468932867B086CA2 /* CrewMemberStaticView.swift */; };
 		BCE485037FD0F27E83D60FA2 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48F582115EDDFFD929037 /* CheckBox.swift */; };
@@ -220,6 +222,7 @@
 		BCE48A78BDAF72CB8DD84237 /* MainNavigationRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE486EF5A22D91EE1260968 /* MainNavigationRootView.swift */; };
 		BCE48A80D03CDC3B8C68F3CC /* UnitPickerWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D03A4281EA9ADA77D7B /* UnitPickerWithButton.swift */; };
 		BCE48A9CA5066F0F61BB29DF /* ChooseQuantityTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FD07A95AD6916693E79 /* ChooseQuantityTypeView.swift */; };
+		BCE48AE399A063A7D94860ED /* PatrolBoatUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FFF9C49070CE13E7B27 /* PatrolBoatUserView.swift */; };
 		BCE48B02D6D3331545500562 /* ChooseSpeciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FAB856639D53CABC76C /* ChooseSpeciesView.swift */; };
 		BCE48B088018D82ECFC5F7A9 /* MultiRowPickerWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4817C8B123F01E50A23D9 /* MultiRowPickerWithButton.swift */; };
 		BCE48B09547E88D2E76107BB /* Collection+EnumeratedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48EFBBE1997660C4F1EE6 /* Collection+EnumeratedArray.swift */; };
@@ -478,7 +481,9 @@
 		BCE48D44A5E464AA9AC620E8 /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		BCE48D77EDFAB7319E0AEC9F /* AddPhotoIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoIconView.swift; sourceTree = "<group>"; };
 		BCE48D8DD8B8DF7DE800C8F4 /* View+NavigationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+NavigationStyle.swift"; sourceTree = "<group>"; };
+		BCE48D936613848423BBAF33 /* DutyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DutyState.swift; sourceTree = "<group>"; };
 		BCE48E00667F973D59D7BEF1 /* EMSInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMSInputView.swift; sourceTree = "<group>"; };
+		BCE48E39591741EEEEE3DDCF /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		BCE48E42E19241E2A8EC419F /* ChooseEMSView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseEMSView.swift; sourceTree = "<group>"; };
 		BCE48E4AFD091905CA092C73 /* MultiRowPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiRowPicker.swift; sourceTree = "<group>"; };
 		BCE48E5B87FCD1126A5C26C4 /* CatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchView.swift; sourceTree = "<group>"; };
@@ -494,6 +499,7 @@
 		BCE48FCB06AC5B25AF1BCA74 /* CatchOnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchOnBoardView.swift; sourceTree = "<group>"; };
 		BCE48FD07A95AD6916693E79 /* ChooseQuantityTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseQuantityTypeView.swift; sourceTree = "<group>"; };
 		BCE48FD1BBBF69F49C6EC765 /* NavigationBarViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModifier.swift; sourceTree = "<group>"; };
+		BCE48FFF9C49070CE13E7B27 /* PatrolBoatUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatrolBoatUserView.swift; sourceTree = "<group>"; };
 		FBC9242D2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBC9242E2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBE107AF247FFF87001DA29C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -544,6 +550,8 @@
 				BCE485D2BA893C25D49E2A05 /* BoardButton.swift */,
 				BCE483DE0B16C2C3C13D4BF3 /* PatrolSummary */,
 				BCE48795B555C1389DD995DC /* VesselImageView.swift */,
+				BCE48D936613848423BBAF33 /* DutyState.swift */,
+				BCE48FFF9C49070CE13E7B27 /* PatrolBoatUserView.swift */,
 			);
 			path = PatrolBoat;
 			sourceTree = "<group>";
@@ -779,6 +787,7 @@
 				BCE482F2C7BF11E33FA5E862 /* StartStopDatePicker.swift */,
 				BCE486E471A682C466E106D0 /* ModalView.swift */,
 				BCE488B03B27A519E5271DC6 /* InputMultilineFieldCaption.swift */,
+				BCE48E39591741EEEEE3DDCF /* PhotoView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1560,6 +1569,9 @@
 				BCE48882086AB309951DC104 /* Debouncer.swift in Sources */,
 				BCE483BC70E34A1FCBAE3AB6 /* ChooseBusinessView.swift in Sources */,
 				BCE487BBDFA1988A2EF84294 /* BusinessPickerData.swift in Sources */,
+				BCE4815F88C024AD476B8DE2 /* DutyState.swift in Sources */,
+				BCE4847641980BF415EC286C /* PhotoView.swift in Sources */,
+				BCE48AE399A063A7D94860ED /* PatrolBoatUserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

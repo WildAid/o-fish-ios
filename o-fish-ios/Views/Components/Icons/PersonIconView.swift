@@ -9,12 +9,9 @@ import SwiftUI
 
 struct PersonIconView: View {
 
-    private let sizeImage: CGFloat = 32.0
-
     var body: some View {
         Image(systemName: "person.crop.circle.fill")
         .resizable()
-        .frame(width: sizeImage, height: sizeImage)
         .foregroundColor(.gray)
     }
 }
