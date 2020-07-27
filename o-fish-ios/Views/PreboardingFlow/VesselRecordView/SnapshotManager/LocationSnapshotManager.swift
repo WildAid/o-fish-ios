@@ -22,17 +22,18 @@ class LocationSnapshotManager {
 
     private var internalPicture: UIImage = UIImage()
 
+    let settings = Settings.shared
+
     private enum Factors {
-        static let regionScale: CGFloat = 10.0
         static let pinScale: CGFloat = 0.5
         static let pinWidthMultiplier: CGFloat = 0.25
     }
 
     func createImageFrom(_ location: CLLocationCoordinate2D, in size: CGFloat, execute: @escaping () -> Void) {
         let options = MKMapSnapshotter.Options()
-        let region = MKCoordinateRegion(center: location,
-                                        latitudinalMeters: CLLocationDistance(size * Factors.regionScale),
-                                        longitudinalMeters: CLLocationDistance(size * Factors.regionScale))
+        let radius = CLLocationDistance(settings.intialZoomLevel)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: radius, longitudinalMeters: radius)
+
         options.region = region
         options.size = CGSize(width: size, height: size)
 
@@ -61,6 +62,7 @@ class LocationSnapshotManager {
 
     private func drawMKPinAnnotation(for point: CGPoint) {
         let pinView = MKPinAnnotationView()
+
         let pinImage = pinView.image?.resize(scale: Factors.pinScale)
         guard let width = pinImage?.size.width,
             let height = pinImage?.size.height else { return }
