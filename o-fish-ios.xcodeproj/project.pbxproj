@@ -36,6 +36,7 @@
 		3093806124460A2A00E23350 /* VesselItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093805B24460A2900E23350 /* VesselItemView.swift */; };
 		3093806324460A4C00E23350 /* ColumnText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093806224460A4C00E23350 /* ColumnText.swift */; };
 		3093806724460A6D00E23350 /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093806624460A6D00E23350 /* UIImage+resize.swift */; };
+		30A4474724CAF84900CDF824 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A4474624CAF84900CDF824 /* KeychainWrapper.swift */; };
 		30BDE77E2472CD2D0058E401 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BDE77D2472CD2D0058E401 /* EmptyStateView.swift */; };
 		30BDE7822472D9CB0058E401 /* PreboardingLoadedStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BDE7812472D9CB0058E401 /* PreboardingLoadedStateView.swift */; };
 		30C112B62477E90D00DD13A8 /* NotesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C112B52477E90D00DD13A8 /* NotesListView.swift */; };
@@ -284,6 +285,7 @@
 		3093805B24460A2900E23350 /* VesselItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselItemView.swift; sourceTree = "<group>"; };
 		3093806224460A4C00E23350 /* ColumnText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnText.swift; sourceTree = "<group>"; };
 		3093806624460A6D00E23350 /* UIImage+resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
+		30A4474624CAF84900CDF824 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		30BDE77D2472CD2D0058E401 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		30BDE7812472D9CB0058E401 /* PreboardingLoadedStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreboardingLoadedStateView.swift; sourceTree = "<group>"; };
 		30C112B52477E90D00DD13A8 /* NotesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListView.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 		493CDFC723FEBA9300516048 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				30A4474624CAF84900CDF824 /* KeychainWrapper.swift */,
 				3004955B24B87E2A00906D35 /* NotificationManager.swift */,
 				30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */,
 				30E9393824A225C500011305 /* Double+LocationDegrees.swift */,
@@ -1540,6 +1543,7 @@
 				BCE48F10100DC3B1E448EFA5 /* CrewMemberShortView.swift in Sources */,
 				BCE486F4F1B6668619180222 /* AddPhotoIconView.swift in Sources */,
 				BCE486CD5E197C1D1A7FFDC5 /* VesselIconView.swift in Sources */,
+				30A4474724CAF84900CDF824 /* KeychainWrapper.swift in Sources */,
 				BCE48275C134A902EF0293D4 /* GlassIconView.swift in Sources */,
 				BCE4840F4C0C0F2758546FCF /* ViolationView.swift in Sources */,
 				BCE488BC8F235F8BDEB8C5EB /* CatchOnBoardView.swift in Sources */,

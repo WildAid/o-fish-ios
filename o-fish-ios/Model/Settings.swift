@@ -14,4 +14,7 @@ class Settings: ObservableObject {
     var menuData = MenuData()
 
     var intialZoomLevel = 322000 // Meters to show in map views, ~= 200 mi
+
+    var reuseDuration: TimeInterval = 10 //The duration for which Touch ID authentication reuse is allowable.
+
 }
