@@ -17,6 +17,8 @@ struct LoginView: View {
     @State private var errorMessage = ""
     @State private var showingLoading = false
 
+    private let keychain = KeychainWrapper.shared
+
     private enum Dimensions {
         static let topInputFieldPadding: CGFloat = 32.0
         static let buttonPadding: CGFloat = 24.0
@@ -45,12 +47,10 @@ struct LoginView: View {
                                     text: self.$username)
                                     .keyboardType(.emailAddress)
 
-                                //TODO need to implement Face id
-                                Button(action: { print("Face id") }) {
-                                    Image(systemName: "faceid")
+                                Button(action: self.getStoredCredentials) {
+                                    Image(systemName: self.keychain.getPictureName())
                                         .foregroundColor(.removeAction)
                                 }
-                                    .opacity(0) // TODO remove after implementing
                             }
                                 .padding(.top, Dimensions.topInputFieldPadding)
                                 .padding(.bottom, Dimensions.padding)
@@ -60,7 +60,9 @@ struct LoginView: View {
                                 showingSecureField: true)
 
                             CallToActionButton(title: "Log In",
-                                action: self.login)
+                                               action: {
+                                                self.login(username: self.username, password: self.password)
+                            })
                                 .opacity(self.username.isEmpty || self.password.isEmpty ? 0.5 : 1.0)
                                 .padding(.top, Dimensions.topInputFieldPadding)
                                 .padding(.bottom, Dimensions.buttonPadding)
@@ -94,7 +96,7 @@ struct LoginView: View {
             }
     }
 
-    private func login() {
+    private func login(username: String, password: String) {
         if username.isEmpty || password.isEmpty {
             return
         }
@@ -106,11 +108,32 @@ struct LoginView: View {
                 self.errorMessage = "Invalid email or password"
             case .success:
                 print("Logged in")
+
+                if let error = self.keychain.removeCredentials() as? KeychainError {
+                    print(error.localizedDescription)
+                }
+
+                if let error = self.keychain.addCredentials(Credentials(username: username, password: password)) as? KeychainError {
+                    print(error.localizedDescription)
+                }
+
                 self.loggedIn.wrappedValue = true
                 self.presentationMode.wrappedValue.dismiss()
             }
         }
     }
+
+    private func getStoredCredentials() {
+        let data = keychain.readCredentials()
+        if let credentials = data.credentials {
+            self.login(username: credentials.username, password: credentials.password)
+        }
+
+        if let error = data.error as? KeychainError {
+            self.errorMessage = error.localizedDescription
+        }
+    }
+
 }
 
 struct LoginView_Previews: PreviewProvider {

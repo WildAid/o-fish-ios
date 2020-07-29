@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Please allow the app to take pictures to include in your contact reports</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Access your login and password on the keychain</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please allow the app to include your current location in contact reports</string>
 	<key>NSPhotoLibraryUsageDescription</key>
