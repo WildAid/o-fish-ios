@@ -12,7 +12,7 @@ class PhotoCaptureController: UIImagePickerController {
     private var photoTaken: ((PhotoCaptureController, String) -> Void)?
     private var reportID: String = ""
 
-    var photo = PhotoViewModel()
+    private var photo = PhotoViewModel()
     private let imageSizeThumbnails: CGFloat = 102
 
     private let maximumImageSize = Constants.maximumImageSize
@@ -27,9 +27,11 @@ class PhotoCaptureController: UIImagePickerController {
 
     static func show(reportID: String,
                      source: UIImagePickerController.SourceType,
+                     photoToEdit: PhotoViewModel = PhotoViewModel(),
                      photoTaken: ((PhotoCaptureController, String) -> Void)? = nil) {
 
         let picker = PhotoCaptureController()
+        picker.photo = photoToEdit
         picker.setup(source)
         picker.reportID = reportID
         picker.photoTaken = photoTaken

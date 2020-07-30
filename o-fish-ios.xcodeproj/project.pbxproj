@@ -51,7 +51,6 @@
 		30D8445B24C99896001A5BC5 /* PhotoVesselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8445A24C99896001A5BC5 /* PhotoVesselView.swift */; };
 		30DBF2F824A34B6C00A364F1 /* Font+title2+titile3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */; };
 		30E31E8E243F36EA00B96A04 /* DeliveryInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */; };
-		30E5377624A4E945006017C9 /* LogoutModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5377524A4E945006017C9 /* LogoutModalView.swift */; };
 		30E9393924A225C500011305 /* Double+LocationDegrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E9393824A225C500011305 /* Double+LocationDegrees.swift */; };
 		30EB886224ACA24600904894 /* ActionSheetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EB886124ACA24600904894 /* ActionSheetButton.swift */; };
 		30F4D601245C725C00543F54 /* BusinessPickerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */; };
@@ -300,7 +299,6 @@
 		30D8445A24C99896001A5BC5 /* PhotoVesselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVesselView.swift; sourceTree = "<group>"; };
 		30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+title2+titile3.swift"; sourceTree = "<group>"; };
 		30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInputView.swift; sourceTree = "<group>"; };
-		30E5377524A4E945006017C9 /* LogoutModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutModalView.swift; sourceTree = "<group>"; };
 		30E9393824A225C500011305 /* Double+LocationDegrees.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+LocationDegrees.swift"; sourceTree = "<group>"; };
 		30EB886124ACA24600904894 /* ActionSheetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetButton.swift; sourceTree = "<group>"; };
 		30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessPickerDataView.swift; sourceTree = "<group>"; };
@@ -747,7 +745,6 @@
 			children = (
 				3093806224460A4C00E23350 /* ColumnText.swift */,
 				30EB886124ACA24600904894 /* ActionSheetButton.swift */,
-				30E5377524A4E945006017C9 /* LogoutModalView.swift */,
 				308A75362476B99C00C10462 /* NoteFieldView.swift */,
 				30C112B52477E90D00DD13A8 /* NotesListView.swift */,
 				4946C0DD240D29DB009FB1D9 /* Pictures */,
@@ -1347,7 +1344,6 @@
 				30BDE7822472D9CB0058E401 /* PreboardingLoadedStateView.swift in Sources */,
 				490C0DA523F6B15800283307 /* AppDelegate.swift in Sources */,
 				49063BCA240FEAAF00C54231 /* DisplayField.swift in Sources */,
-				30E5377624A4E945006017C9 /* LogoutModalView.swift in Sources */,
 				493CDFE624044AE700516048 /* LocationCoordsView.swift in Sources */,
 				49076E422411867800B3CF43 /* TrafficLights.swift in Sources */,
 				30DBF2F824A34B6C00A364F1 /* Font+title2+titile3.swift in Sources */,

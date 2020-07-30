@@ -98,7 +98,7 @@ struct PatrolBoatView: View {
                     leading:
                         PatrolBoatUserView(name: user.name.fullName,
                             photo: profilePicture,
-                            action: showLogoutModal),
+                            action: showOptionsModal),
 
                     trailing:
                         TextToggle(isOn: dutyBinding,
@@ -141,6 +141,76 @@ struct PatrolBoatView: View {
             secondaryButton: .cancel())
     }
 
+    /// Popovers
+
+    private func showOptionsModal() {
+        // TODO: for some reason this works only from action and not from viewModifier
+        // TODO: review when viewModifier actions will be available
+        let popoverId = UUID().uuidString
+        let hidePopover = {
+            PopoverManager.shared.hidePopover(id: popoverId)
+        }
+
+        var buttons = [
+            ModalViewButton(title: "Change profile picture", action: {
+                hidePopover()
+                self.showPhotoPickerTypeModal()
+            })
+        ]
+
+        if RealmConnection.profilePictureDocumentId != nil {
+            buttons.append(
+                ModalViewButton(title: "Log Out", action: {
+                    hidePopover()
+                    self.showLogoutAlert()
+                })
+            )
+        } else {
+            print("Error, no placeholder image, so not showing edit profile picture option")
+        }
+
+        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
+            ModalView(buttons: buttons, cancel: hidePopover)
+        }
+    }
+
+    private func showPhotoPickerTypeModal() {
+        // TODO: for some reason this works only from action and not from viewModifier
+        // TODO: review when viewModifier actions will be available
+
+        let popoverId = UUID().uuidString
+        let hidePopover = {
+            PopoverManager.shared.hidePopover(id: popoverId)
+        }
+        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
+            ModalView(buttons: [
+                ModalViewButton(title: "Camera", action: {
+                    hidePopover()
+                    self.showPhotoTaker(source: .camera)
+                }),
+
+                ModalViewButton(title: "Photo Library", action: {
+                    hidePopover()
+                    self.showPhotoTaker(source: .photoLibrary)
+                })
+            ],
+                cancel: hidePopover)
+        }
+    }
+
+    private func showPhotoTaker(source: UIImagePickerController.SourceType) {
+        guard let photo = profilePicture else {
+            print("Error, no placeholder image, so cannot edit picture")
+            return
+        }
+
+        PhotoCaptureController.show(reportID: "", source: source, photoToEdit: photo) { controller, pictureId in
+
+            self.profilePicture = self.getPicture(documentId: pictureId)
+            controller.hide()
+        }
+    }
+
     /// Actions
 
     private func onAppear() {
@@ -166,30 +236,6 @@ struct PatrolBoatView: View {
         RealmConnection.logout()
         isLoggedIn.wrappedValue = false
         NotificationManager.shared.removeAllNotification()
-    }
-
-    private func showLogoutModal() {
-        // TODO: for some reason this works only from action and not from viewModifier
-        // TODO: review when viewModifier actions will be available
-        let popoverId = UUID().uuidString
-
-        func hidePopover() {
-            PopoverManager.shared.hidePopover(id: popoverId)
-        }
-
-        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
-            LogoutModalView(logout: {
-                hidePopover()
-                self.showLogoutAlert()
-            },
-                cancel: {
-                    hidePopover()
-                })
-                .background(Color.blackWithOpacity)
-                .onTapGesture {
-                    hidePopover()
-                }
-        }
     }
 
     private func showOffDutyConfirmation() {
