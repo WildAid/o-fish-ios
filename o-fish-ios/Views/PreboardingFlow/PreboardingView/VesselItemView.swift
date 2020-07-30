@@ -39,7 +39,8 @@ struct VesselItemView: View {
                         CaptionLabel(title: NSLocalizedString("Permit #", comment: "") + report.vessel.permitNumber, color: .gray)
                         CaptionLabel(title: NSLocalizedString("Last Boarding", comment: "") + " " + (report.date as Date).justLongDate(),
                                      color: .gray)
-                        CaptionLabel(title: "\(report.crew.count + 1)" + " " +  NSLocalizedString("Crew Members", comment: ""),
+                        CaptionLabel(title: "\(report.crew.count)" + " "
+                            +  NSLocalizedString(report.crew.count > 1 ? "Crew Members" : "Crew Member", comment: ""),
                                      color: .gray)
                     }
                         .font(.subheadline)
