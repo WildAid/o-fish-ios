@@ -136,7 +136,7 @@ struct PatrolBoatView: View {
 
     private func showGoOnDutyAlert() {
         showingAlertItem = AlertItem(title: "You're currently off duty",
-            message: "Change status to \"On Duty\" ",
+            message: "Change status to \"On Duty\"?",
             primaryButton: .default(Text("Yes"), action: goOnDutyAlertClicked),
             secondaryButton: .cancel())
     }
