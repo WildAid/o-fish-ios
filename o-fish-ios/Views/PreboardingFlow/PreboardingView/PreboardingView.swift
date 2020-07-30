@@ -175,12 +175,13 @@ struct PreboardingView: View {
             if let realmReports = realmReports {
                 for report in realmReports {
                     if let vessel = report.vessel {
-                        if uniqueIdentifiers.filter({$0 == vessel.permitNumber }).isEmpty && !vessel.name.isEmpty {
-                            uniqueIdentifiers.append(vessel.permitNumber)
+                        if uniqueIdentifiers.filter({$0 == vessel.permitNumber || $0 == vessel.name }).isEmpty &&
+                            !vessel.name.isEmpty {
+                            uniqueIdentifiers.append(vessel.permitNumber.isEmpty ? vessel.name : vessel.permitNumber)
                             storedReports.append(ReportViewModel(report))
                             if storedReports.count > countOfRecentReportsShown - 1 {
-                              self.state = .loaded
-                              return
+                                self.state = .loaded
+                                return
                             }
                         }
                     }
