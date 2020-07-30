@@ -6,7 +6,7 @@
 "Cancel" = "Cancel";
 "Cannot access reports" = "Cannot access reports";
 "Captain" = "Captain";
-"Change status to \"On Duty\" " = "Change status to \"On Duty\" ";
+"Change status to \"On Duty\"?" = "Change status to \"On Duty\"?";
 "Continue editing" = "Continue editing";
 "Continue with empty fields?" = "Continue with empty fields?";
 "Date: " = "Date: ";
@@ -32,7 +32,7 @@
 "Skip" = "Skip";
 "Submit" = "Submit";
 "This crew member contained in violation(s)" = "This crew member contained in violation(s)";
-"This report already contains captain" = "This report already contains captain";
+"This report already contains a captain" = "This report already contains a captain";
 "Vessel: " = "Vessel: ";
 "Yes" = "Yes";
 "You'll still be able to edit fields" = "You'll still be able to edit fields";

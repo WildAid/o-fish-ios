@@ -14,7 +14,7 @@
 "Cancel" = "Скасувати";
 "Cannot access reports" = "Неможливо отримати доступ до звітів";
 "Captain" = "Капітан";
-"Change status to \"On Duty\" " = "Зміна статусу на \"на варті\"";
+"Change status to \"On Duty\"?" = "Зміна статусу на \"на варті\"?";
 "Continue editing" = "Продовжити редагування";
 "Continue with empty fields?" = "Продовжити з порожніми полями?";
 "Date: " = "Дата:";
@@ -40,7 +40,7 @@
 "Skip" = "Пропустити";
 "Submit" = "Подати";
 "This crew member contained in violation(s)" = "Цей член екіпажу, що міститься в порушенні(ях)";
-"This report already contains captain" = "Цей звіт уже містить капітана";
+"This report already contains a captain" = "Цей звіт уже містить капітана";
 "Vessel: " = "Судно: ";
 "Yes" = "Так";
 "You'll still be able to edit fields" = "Ви все ще будете в змозі редагувати поля";

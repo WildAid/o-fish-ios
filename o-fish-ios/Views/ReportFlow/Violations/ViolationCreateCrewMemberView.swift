@@ -70,7 +70,7 @@ struct ViolationCreateCrewMemberView: View {
                 )
             ) {
                 if self.presentedAlert == .replaceCaptain {
-                    return Alert(title: Text("This report already contains captain"),
+                    return Alert(title: Text("This report already contains a captain"),
                         message: Text("Are you sure you want to replace captain?"),
                         primaryButton: .cancel(Text("Yes"), action: replaceCaptainClicked),
                         secondaryButton: .default(Text("Continue editing")))
