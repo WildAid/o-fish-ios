@@ -46,6 +46,7 @@ struct LoginView: View {
                                 InputField(title: "Email/Username",
                                     text: self.$username)
                                     .keyboardType(.emailAddress)
+                                    .autocapitalization(.none)
 
                                 Button(action: self.getStoredCredentials) {
                                     Image(systemName: self.keychain.getPictureName())

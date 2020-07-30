@@ -16,7 +16,7 @@ This is the iOS Mobile app for O-FISH. To build and use the app, you must first 
 
 ## Building and running the app
 
-Set the Realm Application ID (find it for your app through the [MongoDB Realm UI](https://realm.mongodb.com)) in `o-fish/Helpers/Constant.swift`:
+Set the Realm Application ID (find it for your app through the [MongoDB Realm UI](https://realm.mongodb.com)) in `o-fish/Helpers/Constants.swift`:
 
 ```
 realm_app_id=your_app_id
