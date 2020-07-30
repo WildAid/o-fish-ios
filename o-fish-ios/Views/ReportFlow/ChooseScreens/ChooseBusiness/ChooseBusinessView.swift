@@ -195,6 +195,8 @@ struct ChooseBusinessView: View {
             }
         }
 
+        unique.removeAll { $0.business.isEmpty && $0.location.isEmpty }
+
         return unique
     }
 }
