@@ -8,3 +8,10 @@ target 'o-fish-ios' do
   pod 'RealmSwift', '= 10.0.0-beta.2'
   pod 'SwiftLint'
 end
+
+target 'O-FISHTests' do
+   use_frameworks!
+
+   pod 'RealmSwift', '= 10.0.0-beta.2'
+   pod 'SwiftLint'
+end
