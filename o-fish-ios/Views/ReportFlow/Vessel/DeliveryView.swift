@@ -18,7 +18,7 @@ struct DeliveryView: View {
     var body: some View {
         wrappedShadowView {
             VStack {
-                if activeEditableComponentId == delivery.id || delivery.isEmtpy {
+                if activeEditableComponentId == delivery.id || delivery.isEmpty {
                     DeliveryInputView(
                         delivery: delivery,
                         reportId: reportId,

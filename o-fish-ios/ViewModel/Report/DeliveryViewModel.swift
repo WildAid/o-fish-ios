@@ -47,5 +47,5 @@ class DeliveryViewModel: ObservableObject, Identifiable {
         return delivery
     }
 
-    var isEmtpy: Bool { date == nil && location.isEmpty && business.isEmpty }
+    var isEmpty: Bool { date == nil && location.isEmpty && business.isEmpty }
 }

@@ -30,7 +30,7 @@ struct BoardingRecordView: View {
                     wrappedShadowView {
                         VesselSummaryView(vessel: report.vessel)
                     }
-                    if !report.vessel.lastDelivery.isEmtpy {
+                    if !report.vessel.lastDelivery.isEmpty {
                         wrappedShadowView {
                             LastDeliverySummaryView(delivery: report.vessel.lastDelivery)
                         }
