@@ -152,18 +152,19 @@ struct PatrolBoatView: View {
         }
 
         var buttons = [
-            ModalViewButton(title: "Change profile picture", action: {
+            ModalViewButton(title: "Log Out", action: {
                 hidePopover()
-                self.showPhotoPickerTypeModal()
+                self.showLogoutAlert()
             })
         ]
 
         if RealmConnection.profilePictureDocumentId != nil {
-            buttons.append(
-                ModalViewButton(title: "Log Out", action: {
+            buttons.insert(
+                ModalViewButton(title: "Change profile picture", action: {
                     hidePopover()
-                    self.showLogoutAlert()
-                })
+                    self.showPhotoPickerTypeModal()
+                }),
+                at: 0
             )
         } else {
             print("Error, no placeholder image, so not showing edit profile picture option")
