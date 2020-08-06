@@ -39,8 +39,8 @@ struct VesselItemView: View {
                         CaptionLabel(title: NSLocalizedString("Permit #", comment: "") + report.vessel.permitNumber, color: .gray)
                         CaptionLabel(title: NSLocalizedString("Last Boarding", comment: "") + " " + (report.date as Date).justLongDate(),
                                      color: .gray)
-                        CaptionLabel(title: "\(report.crew.count)" + " "
-                            +  NSLocalizedString(report.crew.count > 1 ? "Crew Members" : "Crew Member", comment: ""),
+                        CaptionLabel(title: "\(crewCount)" + " "
+                            +  NSLocalizedString(crewCount == 1 ? "Crew Member" : "Crew Members", comment: ""),
                                      color: .gray)
                     }
                         .font(.subheadline)
@@ -52,6 +52,11 @@ struct VesselItemView: View {
         }
             .padding([.horizontal, .top], Dimensions.padding)
             .onAppear(perform: onAppear)
+    }
+
+    private var crewCount: Int {
+        let captainCount = report.captain.isEmpty ? 0 : 1
+        return report.crew.count + captainCount
     }
 
     /// Actions
