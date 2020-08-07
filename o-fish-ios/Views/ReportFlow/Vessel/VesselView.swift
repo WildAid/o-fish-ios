@@ -19,7 +19,7 @@ struct VesselView: View {
 
     @State private var informationComplete: Bool
     @State private var deliveryComplete: Bool
-    @State private var emsComplete: Bool
+    @State private var emsComplete: [String: Bool]
 
     @Binding private var showingWarningState: Bool
 
@@ -38,7 +38,7 @@ struct VesselView: View {
 
         _informationComplete = State(initialValue: false)
         _deliveryComplete = State(initialValue: false)
-        _emsComplete = State(initialValue: false)
+        _emsComplete = State(initialValue: [:])
         _showingWarningState = showingWarningState
     }
 
@@ -55,24 +55,14 @@ struct VesselView: View {
                         vessel: self.vessel,
                         reportId: self.reportId,
                         activeEditableComponentId: self.$activeEditableComponentId,
-                        informationComplete:
-                            Binding<Bool>(get: { self.informationComplete },
-                                set: {
-                                    self.informationComplete = $0
-                                    self.checkAllInput()
-                                }),
+                        informationComplete: self.informationCompleteBinding,
                         showingWarningState: self.$showingWarningState)
 
                     DeliveryView(
                         delivery: self.vessel.lastDelivery,
                         reportId: self.reportId,
                         activeEditableComponentId: self.$activeEditableComponentId,
-                        informationComplete:
-                            Binding<Bool>(get: { self.deliveryComplete },
-                                set: {
-                                    self.deliveryComplete = $0
-                                    self.checkAllInput()
-                                }),
+                        informationComplete: self.deliveryCompleteBinding,
                         showingWarningState: self.$showingWarningState)
 
                     VStack(spacing: Dimensions.itemsSpacing) {
@@ -82,6 +72,8 @@ struct VesselView: View {
                                 reportId: self.reportId,
                                 activeEditableComponentId: self.$activeEditableComponentId,
                                 isEmsNonEmpty: self.$showingAddEMSButton,
+                                informationComplete: self.emsInformationCompleteBinding(ems: ems),
+                                showingWarningState: self.$showingWarningState,
                                 deleteClicked: self.emsDeleteClicked)
                         }
                     }
@@ -109,47 +101,86 @@ struct VesselView: View {
             .onAppear(perform: self.onAppear)
     }
 
+    /// Bindings
+
+    private var informationCompleteBinding: Binding<Bool> {
+        Binding<Bool>(get: { self.informationComplete },
+            set: {
+                self.informationComplete = $0
+                self.checkAllInput()
+            })
+    }
+
+    private var deliveryCompleteBinding: Binding<Bool> {
+        Binding<Bool>(get: { self.deliveryComplete },
+            set: {
+                self.deliveryComplete = $0
+                self.checkAllInput()
+            })
+    }
+
+    private func emsInformationCompleteBinding(ems: EMSViewModel) -> Binding<Bool> {
+        Binding<Bool>(get: { self.emsComplete[ems.id] ?? false },
+            set: {
+                self.emsComplete[ems.id] = $0
+                self.checkAllInput()
+            })
+    }
+
     /// Actions
 
     private func onAppear() {
-        if self.showingPrefilledAlert {
-            self.initialVessel.name = self.vessel.name.copy() as? String ?? ""
-            self.initialVessel.permitNumber = self.vessel.permitNumber.copy() as? String ?? ""
-            self.initialVessel.nationality = self.vessel.nationality.copy() as? String ?? ""
-            self.initialVessel.homePort = self.vessel.homePort.copy() as? String ?? ""
+        if showingPrefilledAlert {
+            initialVessel.name = vessel.name.copy() as? String ?? ""
+            initialVessel.permitNumber = vessel.permitNumber.copy() as? String ?? ""
+            initialVessel.nationality = vessel.nationality.copy() as? String ?? ""
+            initialVessel.homePort = vessel.homePort.copy() as? String ?? ""
 
-            self.vessel.name = ""
-            self.vessel.nationality = ""
-            self.vessel.permitNumber = ""
-            self.vessel.homePort = ""
+            vessel.name = ""
+            vessel.nationality = ""
+            vessel.permitNumber = ""
+            vessel.homePort = ""
+
+            if vessel.ems.isEmpty {
+                let model = EMSViewModel()
+                vessel.ems.append(model)
+                emsComplete[model.id] = false
+                showingAddEMSButton = false
+            }
         }
     }
 
     private func emsDeleteClicked(_ id: String) {
-        self.vessel.ems.removeAll(where: { $0.id == id })
-        self.showingAddEMSButton = self.vessel.ems.filter({ $0.isEmpty }).isEmpty
+        emsComplete.removeValue(forKey: id)
+        vessel.ems.removeAll(where: { $0.id == id })
+        showingAddEMSButton = vessel.ems.filter({ $0.isEmpty }).isEmpty
+        checkAllInput()
     }
 
     private func addEMSClicked() {
-        self.showingAddEMSButton = false
+        showingAddEMSButton = false
         let emsModel = EMSViewModel()
-        self.activeEditableComponentId = emsModel.id
-        self.vessel.ems.append(emsModel)
+        activeEditableComponentId = emsModel.id
+        vessel.ems.append(emsModel)
+        emsComplete[emsModel.id] = false
+        checkAllInput()
     }
 
     private func prefillVesselInformationClicked() {
-        self.vessel.name = self.initialVessel.name
-        self.vessel.permitNumber = self.initialVessel.permitNumber
-        self.vessel.homePort = self.initialVessel.homePort
-        self.vessel.nationality = self.initialVessel.nationality
-        self.showingPrefilledAlert = false
+        vessel.name = initialVessel.name
+        vessel.permitNumber = initialVessel.permitNumber
+        vessel.homePort = initialVessel.homePort
+        vessel.nationality = initialVessel.nationality
+        showingPrefilledAlert = false
         informationComplete = !vessel.isEmpty
     }
 
     /// Logic
 
     private func checkAllInput() {
-        allFieldsComplete = informationComplete && deliveryComplete
+        allFieldsComplete = informationComplete
+            && deliveryComplete
+            && emsComplete.values.filter { $0 == false }.isEmpty
     }
 }
 

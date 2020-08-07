@@ -19,14 +19,13 @@ struct CrewView: View {
     @State private var currentEditingCrewMemberId: String
     @State private var isCurrentEditingCrewNonEmpty: Bool
 
-    private var allCrew: [CrewMemberViewModel] {
-        [report.captain] + report.crew
-    }
+    @State private var crewMembersComplete: [String: Bool]
 
     private enum Dimensions {
         static let topPadding: CGFloat = 8.0
         static let spacing: CGFloat = 16.0
     }
+
     init(report: ReportViewModel,
          allFieldsComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>) {
@@ -39,6 +38,8 @@ struct CrewView: View {
 
         _allFieldsComplete = allFieldsComplete
         _showingWarningState = showingWarningState
+
+        _crewMembersComplete = State(initialValue: [:])
     }
 
     var body: some View {
@@ -47,24 +48,8 @@ struct CrewView: View {
                 ForEach(self.allCrew.enumeratedArray(), id: \.element.id) { (index, member) in
                     CrewMemberView(currentEditingCrewMemberId: self.$currentEditingCrewMemberId,
                         isCrewMemberNonEmpty: self.$isCurrentEditingCrewNonEmpty,
-                        informationComplete:
-                            Binding<Bool>(
-                                get: { member.isCaptain ? self.allFieldsComplete : true },
-                                set: {
-                                    if member.isCaptain {
-                                        self.allFieldsComplete = $0
-                                    }
-                                }),
-
-                        showingWarningState:
-                            Binding<Bool>(
-                                get: { member.isCaptain ? self.showingWarningState : false },
-                                set: {
-                                    if member.isCaptain {
-                                        self.showingWarningState = $0
-                                    }
-                                }),
-
+                        informationComplete: self.informationCompleteBinding(member),
+                        showingWarningState: self.$showingWarningState,
                         crewMember: member,
                         reportId: self.report.id,
                         index: index + 1,
@@ -97,9 +82,37 @@ struct CrewView: View {
                     }
             }
         }
+            .onAppear(perform: self.onAppear)
+    }
+
+    private func informationCompleteBinding(_ member: CrewMemberViewModel) -> Binding<Bool> {
+        Binding<Bool>(
+            get: { self.crewMembersComplete[member.id] ?? false },
+            set: {
+                self.crewMembersComplete[member.id] = $0
+                self.checkAllInput()
+            }
+        )
+    }
+
+    private var allCrew: [CrewMemberViewModel] {
+        [report.captain] + report.crew
     }
 
     /// Actions
+
+    private func onAppear() {
+        if report.crew.isEmpty {
+            let model = CrewMemberViewModel()
+            report.crew.append(model)
+        }
+
+        crewMembersComplete.removeAll()
+        for member in report.crew {
+            crewMembersComplete[member.id] = member.isComplete
+        }
+        checkAllInput()
+    }
 
     private func removeCrewMemberFromViolationsClicked() {
         guard let member = crewMemberWaitingRemoveConfirmation else { return }
@@ -113,6 +126,7 @@ struct CrewView: View {
     private func addCrewMemberClicked() {
         let newMember = CrewMemberViewModel()
         report.crew.append(newMember)
+        crewMembersComplete[newMember.id] = false
 
         updateCurrentCrewMemberStatus(newMember)
     }
@@ -125,6 +139,8 @@ struct CrewView: View {
         let violationsWithThisCrew = report.inspection.summary
             .violations.filter { $0.crewMember.id == crewViewModel.id }
 
+        crewMembersComplete.removeValue(forKey: crewViewModel.id)
+
         if !violationsWithThisCrew.isEmpty {
             self.showingRemoveConfirmationAlert = true
             self.crewMemberWaitingRemoveConfirmation = crewViewModel
@@ -136,9 +152,14 @@ struct CrewView: View {
 
     /// Logic
 
+    private func checkAllInput() {
+        allFieldsComplete = crewMembersComplete.values.filter { $0 == false }.isEmpty
+    }
+
     private func updateCurrentCrewMemberStatus(_ crewMember: CrewMemberViewModel?) {
         currentEditingCrewMemberId = crewMember?.id ?? ""
         isCurrentEditingCrewNonEmpty = !(crewMember?.isEmpty ?? true)
+        checkAllInput()
     }
 
     private func removeCrewMemberFromCrewMemberList(_ crewViewModel: CrewMemberViewModel) {

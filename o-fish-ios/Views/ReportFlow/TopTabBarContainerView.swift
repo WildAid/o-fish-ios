@@ -118,7 +118,8 @@ struct TopTabBarContainerView: View {
                 CatchView(
                     inspection: report.inspection,
                     reportId: report.id,
-                    allFieldsComplete: allFieldsCompleteBinding)
+                    allFieldsComplete: allFieldsCompleteBinding,
+                    showingWarningState: $showingNotCompleteState)
 
             } else if self.isActivitySelected {
                 ActivityView(

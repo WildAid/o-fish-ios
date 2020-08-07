@@ -100,7 +100,7 @@ struct CrewMemberInputView: View {
         showingNameWarning = showingWarningState && crewMember.name.isEmpty
         showingNumberWarning = showingWarningState && crewMember.license.isEmpty
 
-        informationComplete = !crewMember.name.isEmpty && !crewMember.license.isEmpty
+        informationComplete = crewMember.isComplete
     }
 }
 
