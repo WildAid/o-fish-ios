@@ -61,6 +61,53 @@ class EMSViewModelTests: XCTestCase {
         XCTAssertEqual(emsIn?.emsDescription, description)
         XCTAssertEqual(emsIn?.registryNumber, registryNumber)
     }
+
+    func testIsComplete() {
+        //given
+        let sut = EMSViewModel()
+
+        // when
+        sut.emsType = "Some type"
+        sut.registryNumber = "12345789"
+
+        //then
+        XCTAssertTrue(sut.isComplete, "If name and licence is filled then crew should be complete")
+
+        // when
+        sut.emsType = "Other"
+        sut.registryNumber = "12345789"
+        sut.emsDescription = "Some description"
+
+        //then
+        XCTAssertTrue(sut.isComplete, "For other type should be an additional description")
+    }
+
+    func testIsNotComplete() {
+        //given
+        let sut = EMSViewModel()
+
+        // when
+        sut.emsType = ""
+        sut.registryNumber = "12345789"
+
+        //then
+        XCTAssertFalse(sut.isComplete, "EMS type mandatory")
+
+        // when
+        sut.emsType = "Other"
+        sut.registryNumber = "12345789"
+        sut.emsDescription = ""
+
+        //then
+        XCTAssertFalse(sut.isComplete, "For Other type should be an additional description")
+
+        // when
+        sut.emsType = "Type"
+        sut.registryNumber = ""
+
+        //then
+        XCTAssertFalse(sut.isComplete, "Registry number mandatory")
+    }
     
     func testSaveEMSNil() {
         //given

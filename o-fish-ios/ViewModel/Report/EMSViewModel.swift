@@ -20,6 +20,12 @@ class EMSViewModel: ObservableObject, Identifiable {
         emsType == "" && registryNumber.isEmpty
     }
 
+    var isComplete: Bool {
+        !emsType.isEmpty
+            && !registryNumber.isEmpty
+            && !(emsType == "Other" ? emsDescription.isEmpty : false)
+    }
+
     convenience init(_ eMS: EMS?) {
         self.init()
         if let eMS = eMS {

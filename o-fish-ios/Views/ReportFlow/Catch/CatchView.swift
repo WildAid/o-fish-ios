@@ -13,8 +13,10 @@ struct CatchView: View {
 
     @State private var currentlyEditingCatchId: String
     @State private var showingAddCatchButton: Bool
+    @State private var catchComplete: [String: Bool]
 
     @Binding private var allFieldsComplete: Bool
+    @Binding private var showingWarningState: Bool
 
     private enum Dimensions {
         static let spacing: CGFloat = 16
@@ -24,12 +26,16 @@ struct CatchView: View {
 
     init(inspection: InspectionViewModel,
          reportId: String,
-         allFieldsComplete: Binding<Bool>) {
+         allFieldsComplete: Binding<Bool>,
+         showingWarningState: Binding<Bool>) {
 
         _currentlyEditingCatchId = State(initialValue: inspection.actualCatch.last?.id ?? "")
         _showingAddCatchButton = State(initialValue: !(inspection.actualCatch.last?.isEmpty ?? true))
 
         _allFieldsComplete = allFieldsComplete
+        _showingWarningState = showingWarningState
+
+        _catchComplete = State(initialValue: [:])
 
         self.inspection = inspection
         self.reportId = reportId
@@ -41,6 +47,8 @@ struct CatchView: View {
                 ForEach(self.inspection.actualCatch.enumeratedArray(), id: \.element.id) { (index, catchModel) in
                     CatchOnBoardView(currentEditingCatchId: self.$currentlyEditingCatchId,
                         isCatchNonEmpty: self.$showingAddCatchButton,
+                        informationComplete: self.informationCompleteBinding(catchModel),
+                        showingWarningState: self.$showingWarningState,
                         catchModel: catchModel,
                         reportId: self.reportId,
                         index: index + 1,
@@ -63,24 +71,52 @@ struct CatchView: View {
                 Spacer()
             }
         }
-            .onAppear(perform: { self.allFieldsComplete = true })
+            .onAppear(perform: onAppear)
     }
 
-    private func updateEditingCatch() {
-        currentlyEditingCatchId = inspection.actualCatch.last?.id ?? ""
-        showingAddCatchButton = !(inspection.actualCatch.last?.isEmpty ?? true)
+    private func informationCompleteBinding(_ catchModel: CatchViewModel) -> Binding<Bool> {
+        Binding<Bool>(
+            get: { self.catchComplete[catchModel.id] ?? false },
+            set: {
+                self.catchComplete[catchModel.id] = $0
+                self.checkAllInput()
+            }
+        )
     }
 
-    /// Action handlers
+    /// Actions
+
+    private func onAppear() {
+        allFieldsComplete = true
+
+        if inspection.actualCatch.isEmpty {
+            addNewCatch()
+        }
+    }
+
     private func removeFishOnBoardClicked(_ catchViewModel: CatchViewModel) {
         inspection.actualCatch.removeAll { $0.id == catchViewModel.id }
         updateEditingCatch()
+        catchComplete.removeValue(forKey: catchViewModel.id)
     }
 
     private func addNewCatch() {
         let catchModel = CatchViewModel()
         inspection.actualCatch.append(catchModel)
+        catchComplete[catchModel.id] = false
         updateEditingCatch()
+    }
+
+    /// Logic
+
+    private func updateEditingCatch() {
+        currentlyEditingCatchId = inspection.actualCatch.last?.id ?? ""
+        showingAddCatchButton = !(inspection.actualCatch.last?.isEmpty ?? true)
+        checkAllInput()
+    }
+
+    private func checkAllInput() {
+        allFieldsComplete = catchComplete.values.filter { $0 == false }.isEmpty
     }
 }
 
@@ -89,6 +125,6 @@ struct CatchView_Previews: PreviewProvider {
         CatchView(
             inspection: .sample,
             reportId: "TestId",
-            allFieldsComplete: .constant(false))
+            allFieldsComplete: .constant(false), showingWarningState: .constant(false))
     }
 }

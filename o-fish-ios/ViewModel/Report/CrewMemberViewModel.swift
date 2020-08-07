@@ -23,6 +23,10 @@ class CrewMemberViewModel: ObservableObject, Identifiable {
         name.isEmpty && license.isEmpty
     }
 
+    var isComplete: Bool {
+        !name.isEmpty && !license.isEmpty
+    }
+
     convenience init(_ crewMember: CrewMember?, isCaptain: Bool = false) {
         self.init()
         if let crewMember = crewMember {

@@ -55,6 +55,19 @@ class CatchViewModel: ObservableObject, Identifiable {
         fish.isEmpty && quantityType.contains(.notSelected) && number == 0 && weight == 0 && unit == .notSelected
     }
 
+    var isComplete: Bool {
+        var result = false
+
+        result = !fish.isEmpty
+        result = result && !(quantityType == [.notSelected])
+
+        result = result && !(quantityType.contains(.weight) && weight == 0)
+        result = result && !(quantityType.contains(.weight) && unit == .notSelected)
+        result = result && !(quantityType.contains(.count) && number == 0)
+
+        return result
+    }
+
     convenience init(_ fishCatch: Catch?) {
         self.init()
         if let fishCatch = fishCatch {

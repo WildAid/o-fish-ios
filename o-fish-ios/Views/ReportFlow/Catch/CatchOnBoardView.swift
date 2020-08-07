@@ -10,7 +10,8 @@ import SwiftUI
 struct CatchOnBoardView: View {
     @Binding var currentEditingCatchId: String
     @Binding var isCatchNonEmpty: Bool
-
+    @Binding var informationComplete: Bool
+    @Binding var showingWarningState: Bool
     @ObservedObject var catchModel: CatchViewModel
     let reportId: String
     let index: Int
@@ -20,8 +21,9 @@ struct CatchOnBoardView: View {
     var body: some View {
             wrappedShadowView {
                 if catchModel.id == currentEditingCatchId {
-                    CatchInputView(
-                        isCatchNonEmpty: self.$isCatchNonEmpty,
+                    CatchInputView(isCatchNonEmpty: self.$isCatchNonEmpty,
+                        informationComplete: self.$informationComplete,
+                        showingWarningState: self.$showingWarningState,
                         catchModel: catchModel,
                         reportId: reportId,
                         index: index,
@@ -45,6 +47,8 @@ struct CatchOnBoard_Previews: PreviewProvider {
             CatchOnBoardView(
                 currentEditingCatchId: .constant("1"),
                 isCatchNonEmpty: .constant(false),
+                informationComplete: .constant(false),
+                showingWarningState: .constant(false),
                 catchModel: .sample,
                 reportId: "TestId",
                 index: 1
@@ -52,6 +56,8 @@ struct CatchOnBoard_Previews: PreviewProvider {
             CatchOnBoardView(
                 currentEditingCatchId: .constant(catchModel.id),
                 isCatchNonEmpty: .constant(false),
+                informationComplete: .constant(false),
+                showingWarningState: .constant(false),
                 catchModel: catchModel,
                 reportId: "TestId",
                 index: 1

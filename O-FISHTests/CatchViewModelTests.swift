@@ -110,6 +110,67 @@ class CatchViewModelTests: XCTestCase {
         //then
         XCTAssertNotNil(fish)
     }
+
+
+    func testIsComplete() {
+        //given
+        let sut = CatchViewModel()
+        sut.fish = "Some fish"
+
+        // when
+        sut.quantityType = [.weight, .count]
+        sut.weight = 1
+        sut.unit = .pound
+        sut.number = 10
+
+        //then
+        XCTAssertTrue(sut.isComplete)
+
+        // when
+        sut.quantityType = [.count]
+        sut.weight = 0
+        sut.unit = .notSelected
+        sut.number = 10
+
+        //then
+        XCTAssertTrue(sut.isComplete)
+
+        // when
+        sut.quantityType = [.weight]
+        sut.weight = 1
+        sut.unit = .kilograms
+        sut.number = 0
+
+        //then
+        XCTAssertTrue(sut.isComplete)
+    }
+
+    func testIsNotComplete() {
+        //given
+        let sut = CatchViewModel()
+
+        //then
+        XCTAssertFalse(sut.isComplete)
+
+        // when
+        sut.fish = "Some fish"
+        sut.weight = 1
+        sut.unit = .kilograms
+        sut.number = 1
+
+        // then
+        XCTAssertFalse(sut.isComplete, "QuantityType mandatory")
+
+        // when
+        sut.fish = ""
+        sut.weight = 1
+        sut.unit = .kilograms
+        sut.number = 1
+        sut.quantityType = [.weight, .count]
+
+        // then
+        XCTAssertFalse(sut.isComplete, "Fish type mandatory")
+    }
     
     func testInitWithCatch() {
         //given

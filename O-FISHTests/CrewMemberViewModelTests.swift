@@ -87,7 +87,39 @@ class CrewMemberViewModelTests: XCTestCase {
         XCTAssertEqual(crew?.name, name)
         XCTAssertEqual(crew?.license, license)
     }
-    
+
+    func testIsComplete() {
+        //given
+        let sut = CrewMemberViewModel()
+
+        // when
+        sut.name = "Name"
+        sut.license = "Licence number"
+
+        //then
+        XCTAssertTrue(sut.isComplete, "If name and licence is filled then crew should be complete")
+    }
+
+    func testIsNotComplete() {
+        //given
+        let sut = CrewMemberViewModel()
+
+        // when
+        sut.name = "Name"
+        sut.license = ""
+
+        //then
+        XCTAssertFalse(sut.isComplete, "Should not be complete if only name exists")
+
+        sut.name = ""
+        sut.license = "Licence"
+        XCTAssertFalse(sut.isComplete, "Should not be complete if only license exists")
+
+        sut.name = ""
+        sut.license = ""
+        XCTAssertFalse(sut.isComplete, "Should not be complete if no data")
+    }
+
     func testSaveCrewNil() {
         //given
         let crewMember: CrewMember? = nil
