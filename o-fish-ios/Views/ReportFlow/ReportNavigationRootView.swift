@@ -38,7 +38,7 @@ struct ReportNavigationRootView: View {
             .background(Color.backgroundGrey)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(
-                leading: Button(action: discardReport) {
+                leading: Button(action: showCancelAlert) {
                     Text("Cancel")
                 }, trailing: Button(action: submitNavBarClicked) {
                     Text("Submit")
@@ -63,6 +63,13 @@ struct ReportNavigationRootView: View {
             message: "Are you sure you want to submit the boarding?",
             primaryButton: .default(Text("Keep Editing")),
             secondaryButton: .cancel(Text("Submit"), action: saveAlertClicked))
+    }
+
+    private func showCancelAlert() {
+        showingAlertItem = AlertItem(title: NSLocalizedString("Cancel boarding?", comment: ""),
+        message: "This boarding will not be saved.",
+        primaryButton: .default(Text("Keep Editing")),
+        secondaryButton: .cancel(Text("Cancel"), action: discardReport))
     }
 
     private func showFinalAlert() {
