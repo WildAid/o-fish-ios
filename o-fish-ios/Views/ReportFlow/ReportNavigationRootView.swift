@@ -11,14 +11,16 @@ struct ReportNavigationRootView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @ObservedObject var report: ReportViewModel
+    @Binding var rootIsActive: Bool
 
     private var prefilledVesselAvailable: Bool
     @State private var showingAlertItem: AlertItem?
     @State private var notFilledScreens: [String] = TopTabBarItems.allCases.map { $0.rawValue }
 
-    init(report: ReportViewModel? = nil, prefilledVesselAvailable: Bool = false) {
+    init(report: ReportViewModel? = nil, prefilledVesselAvailable: Bool = false, rootIsActive: Binding<Bool>) {
         self.report = report ?? ReportViewModel()
         self.prefilledVesselAvailable = prefilledVesselAvailable
+        _rootIsActive = rootIsActive
         if let menuData = RealmConnection.realm?.objects(MenuData.self).first {
             Settings.shared.menuData = menuData
         } else {
@@ -87,19 +89,20 @@ struct ReportNavigationRootView: View {
 
     private func discardReport() {
         report.discard()
-        presentationMode.wrappedValue.dismiss()
+        rootIsActive.toggle()
     }
 
     private func saveAlertClicked() {
         print("Saving report in Realm")
         report.save()
-        presentationMode.wrappedValue.dismiss()
+        rootIsActive.toggle()
     }
 }
 
 struct ReportNavigationRootView_Previews: PreviewProvider {
     static var previews: some View {
-        ReportNavigationRootView(report: ReportViewModel.sample)
+        ReportNavigationRootView(report: ReportViewModel.sample,
+                                 rootIsActive: .constant(true))
             .environmentObject(Settings.shared)
     }
 }

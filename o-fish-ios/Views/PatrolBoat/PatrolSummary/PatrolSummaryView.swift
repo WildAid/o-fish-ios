@@ -14,6 +14,7 @@ struct PatrolSummaryView: View {
     @ObservedObject var startDuty: DutyChangeViewModel
     @ObservedObject var onDuty: DutyState
     @State var plannedOffDutyTime: Date
+    @Binding var rootIsActive: Bool
 
     @State private var showingBoardingRecordView = false
     @State private var selectedReport = ReportViewModel()
@@ -68,7 +69,10 @@ struct PatrolSummaryView: View {
                 .compositingGroup()
                 .bottomShadow()
 
-            NavigationLink(destination: BoardingRecordView(report: selectedReport, onDuty: onDuty), isActive: $showingBoardingRecordView) {
+            NavigationLink(destination: BoardingRecordView(report: selectedReport,
+                                                           onDuty: onDuty,
+                                                           rootIsActive: $rootIsActive),
+                           isActive: $showingBoardingRecordView) {
                 EmptyView()
             }
         }
@@ -103,6 +107,7 @@ struct PatrolSummaryView_Previews: PreviewProvider {
         PatrolSummaryView(dutyReports: [.sample, .sample, .sample],
             startDuty: .sample,
             onDuty: .sample,
-            plannedOffDutyTime: Date())
+            plannedOffDutyTime: Date(),
+            rootIsActive: .constant(true))
     }
 }

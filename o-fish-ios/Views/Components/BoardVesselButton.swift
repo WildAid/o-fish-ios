@@ -12,6 +12,7 @@ struct BoardVesselButton: View {
     @ObservedObject var onDuty: DutyState
     var report = ReportViewModel()
     var onHeader = true
+    @Binding var rootIsActive: Bool
 
     @State private var showingReportRootView = false
     @State private var showingGoOnDutyAlert = false
@@ -49,7 +50,8 @@ struct BoardVesselButton: View {
             }
 
             NavigationLink(destination: ReportNavigationRootView(report: prefilledReport,
-                                                                 prefilledVesselAvailable: true),
+                                                                 prefilledVesselAvailable: true,
+                                                                 rootIsActive: $rootIsActive),
                            isActive: $showingReportRootView) {
                             EmptyView()
             }
@@ -69,6 +71,7 @@ struct BoardVesselButton: View {
 
 struct BoardVesselButton_Previews: PreviewProvider {
     static var previews: some View {
-        BoardVesselButton(onDuty: .sample)
+        BoardVesselButton(onDuty: .sample,
+                          rootIsActive: .constant(true))
     }
 }
