@@ -11,6 +11,7 @@ struct PreboardingLoadedStateView: View {
     @ObservedObject var onDuty: DutyState
     @Binding var storedReports: [ReportViewModel]
     @Binding var showingRecentBoardings: Bool
+    @Binding var rootIsActive: Bool
 
     @State private var showingReport: ReportViewModel = .sample
     @State private var showingLoadingVesselRecordsView = false
@@ -44,7 +45,7 @@ struct PreboardingLoadedStateView: View {
                 }
             }
 
-            NavigationLink(destination: LoadingVesselRecordView(report: showingReport, onDuty: self.onDuty),
+            NavigationLink(destination: LoadingVesselRecordView(report: showingReport, onDuty: self.onDuty, rootIsActive: $rootIsActive),
                 isActive: $showingLoadingVesselRecordsView) {
                 EmptyView()
             }
@@ -64,6 +65,7 @@ struct PreboardingLoadedStateView_Previews: PreviewProvider {
         PreboardingLoadedStateView(
             onDuty: DutyState.shared,
             storedReports: .constant([.sample, .sample]),
-            showingRecentBoardings: .constant(true))
+            showingRecentBoardings: .constant(true),
+            rootIsActive: .constant(true))
     }
 }

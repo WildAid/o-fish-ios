@@ -19,6 +19,7 @@ struct PreboardingView: View {
 
     var viewType: ViewType = .preboarding
     @ObservedObject var onDuty: DutyState
+    @Binding var rootIsActive: Bool
 
     @State private var searchText = ""
     @State private var showingDismissAlert = false
@@ -45,7 +46,7 @@ struct PreboardingView: View {
             searchBar
 
             if showingAddVessel {
-                NavigationLink(destination: ReportNavigationRootView()) {
+                NavigationLink(destination: ReportNavigationRootView(rootIsActive: $rootIsActive)) {
                     VStack(spacing: Dimension.noSpacing) {
                         IconLabel(imagePath: "plus", title: "Add New Vessel")
                             .padding(.vertical, Dimension.padding)
@@ -106,7 +107,8 @@ struct PreboardingView: View {
             return AnyView(PreboardingLoadedStateView(
                 onDuty: onDuty,
                 storedReports: $storedReports,
-                showingRecentBoardings: $showingRecentBoardings)
+                showingRecentBoardings: $showingRecentBoardings,
+                rootIsActive: $rootIsActive)
             )
 
         case .loading:
@@ -196,10 +198,12 @@ struct PreboardingView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             PreboardingView(viewType: .preboarding,
-                            onDuty: .sample)
+                            onDuty: .sample,
+                            rootIsActive: .constant(true))
             Divider()
             PreboardingView(viewType: .searchRecords,
-                            onDuty: .sample)
+                            onDuty: .sample,
+                            rootIsActive: .constant(true))
         }
     }
 }

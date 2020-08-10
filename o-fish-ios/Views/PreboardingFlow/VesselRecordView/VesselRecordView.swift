@@ -11,6 +11,7 @@ struct VesselRecordView: View {
 
     @State var reports: [ReportViewModel]
     @ObservedObject var onDuty: DutyState
+    @Binding var rootIsActive: Bool
     @State private var showingBoardingRecordView = false
     @State private var selectedReport = ReportViewModel()
     @State private var stillLoading = true
@@ -55,7 +56,8 @@ struct VesselRecordView: View {
                     onDuty: onDuty,
                     boardings: numberOfBoardings,
                     warnings: numberOfWarnings,
-                    citations: numberOfCitations)
+                    citations: numberOfCitations,
+                    rootIsActive: $rootIsActive)
                     .background(Color.white)
                     .compositingGroup()
                     .defaultShadow()
@@ -83,7 +85,10 @@ struct VesselRecordView: View {
             }
 
             //TODO Need to replace to ForEach. For now it's unexpected behavior with showing mapViewImage.
-            NavigationLink(destination: BoardingRecordView(report: selectedReport, onDuty: onDuty), isActive: $showingBoardingRecordView) {
+            NavigationLink(destination: BoardingRecordView(report: selectedReport,
+                                                           onDuty: onDuty,
+                                                           rootIsActive: $rootIsActive),
+                           isActive: $showingBoardingRecordView) {
                 EmptyView()
             }
         }
@@ -102,7 +107,8 @@ struct VesselRecordView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             VesselRecordView(reports: [.sample, .sample, .sample],
-                onDuty: .sample)
+                onDuty: .sample,
+                rootIsActive: .constant(true))
         }
     }
 }

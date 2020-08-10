@@ -13,6 +13,7 @@ struct LoadingVesselRecordView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var report: ReportViewModel
     @ObservedObject var onDuty: DutyState
+    @Binding var rootIsActive: Bool
     @State private var storedReports: [ReportViewModel] = []
     @State private var loading = true
 
@@ -23,7 +24,7 @@ struct LoadingVesselRecordView: View {
             if loading {
                 LoadingIndicatorView(isAnimating: self.$loading, style: .large)
             } else {
-                VesselRecordView(reports: storedReports, onDuty: onDuty)
+                VesselRecordView(reports: storedReports, onDuty: onDuty, rootIsActive: $rootIsActive)
             }
         }
             .navigationBarTitle("Vessel", displayMode: .inline)
@@ -52,6 +53,7 @@ struct LoadingVesselRecordView: View {
 struct LoadingVesselRecordView_Previews: PreviewProvider {
     static var previews: some View {
         LoadingVesselRecordView(report: .sample,
-                                onDuty: .sample)
+                                onDuty: .sample,
+                                rootIsActive: .constant(true))
     }
 }

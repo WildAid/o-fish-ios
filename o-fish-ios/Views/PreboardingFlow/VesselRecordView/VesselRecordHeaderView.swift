@@ -14,6 +14,7 @@ struct VesselRecordHeaderView: View {
     var boardings: Int
     var warnings: Int
     var citations: Int
+    @Binding var rootIsActive: Bool
 
     @State private var vesselImages: [AnyView] = []
 
@@ -51,7 +52,7 @@ struct VesselRecordHeaderView: View {
             }
                 .padding(.horizontal, Dimensions.padding)
 
-            BoardVesselButton(onDuty: onDuty, report: report)
+            BoardVesselButton(onDuty: onDuty, report: report, rootIsActive: $rootIsActive)
         }
             .onAppear(perform: onAppear)
     }
@@ -108,6 +109,7 @@ struct VesselRecordHeaderView_Previews: PreviewProvider {
                                onDuty: .sample,
                                boardings: 5,
                                warnings: 0,
-                               citations: 2)
+                               citations: 2,
+                               rootIsActive: .constant(true))
     }
 }

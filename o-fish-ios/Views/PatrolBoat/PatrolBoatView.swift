@@ -14,9 +14,9 @@ struct PatrolBoatView: View {
     var isLoggedIn: Binding<Bool>
 
     @State private var location = LocationViewModel(LocationHelper.currentLocation)
-    @State private var showingPreboardingView = false
-    @State private var showingSearchView = false
-    @State private var showingPatrolSummaryView = false
+    @State private var isActiveRootFromPreboardingView  = false
+    @State private var isActiveRootFromSearchView = false
+    @State private var isActiveRootFromShowingPatrolSummaryView = false
     @State private var resetLocation = {}
 
     @State private var dutyReports = [ReportViewModel]()
@@ -41,9 +41,17 @@ struct PatrolBoatView: View {
     var body: some View {
         VStack {
             SearchBarButton(title: "Find records", action: {
-                self.showingSearchView.toggle()
+                self.isActiveRootFromSearchView.toggle()
             })
                 .padding(.vertical, Dimensions.topPadding)
+
+            NavigationLink(destination: PreboardingView(viewType: .searchRecords,
+                                                        onDuty: onDuty,
+                                                        rootIsActive: $isActiveRootFromSearchView),
+                           isActive: $isActiveRootFromSearchView) {
+                            EmptyView()
+            }
+                .isDetailLink(false)
 
             ZStack(alignment: .bottom) {
                 MapComponentView(location: self.$location,
@@ -62,7 +70,7 @@ struct PatrolBoatView: View {
                     Spacer()
                     BoardButtonView {
                         if self.onDuty.onDuty {
-                            self.showingPreboardingView.toggle()
+                            self.isActiveRootFromPreboardingView.toggle()
                         } else {
                             self.showGoOnDutyAlert()
                         }
@@ -71,27 +79,25 @@ struct PatrolBoatView: View {
                         .padding(.horizontal, Dimensions.allCoordPadding)
 
                     NavigationLink(
-                        destination: PreboardingView(viewType: .preboarding, onDuty: onDuty),
-                        isActive: self.$showingPreboardingView) {
-                        EmptyView()
+                        destination: PreboardingView(viewType: .preboarding,
+                                                     onDuty: onDuty,
+                                                     rootIsActive: $isActiveRootFromPreboardingView),
+                        isActive: self.$isActiveRootFromPreboardingView) {
+                            EmptyView()
                     }
-                }
-
-                NavigationLink(destination: PreboardingView(viewType: .searchRecords,
-                    onDuty: onDuty),
-                    isActive: self.$showingSearchView) {
-                    EmptyView()
+                        .isDetailLink(false)
                 }
 
                 NavigationLink(destination:
                    PatrolSummaryView(dutyReports: dutyReports,
                        startDuty: startDuty,
                        onDuty: onDuty,
-                       plannedOffDutyTime: plannedOffDutyTime),
-
-                    isActive: self.$showingPatrolSummaryView) {
+                       plannedOffDutyTime: plannedOffDutyTime,
+                       rootIsActive: $isActiveRootFromShowingPatrolSummaryView),
+                    isActive: $isActiveRootFromShowingPatrolSummaryView) {
                     EmptyView()
                 }
+                    .isDetailLink(false)
             }
                 .edgesIgnoringSafeArea(.all)
                 .navigationBarItems(
@@ -247,7 +253,7 @@ struct PatrolBoatView: View {
         self.startDuty = startDuty
         self.plannedOffDutyTime = endDutyTime
         dutyReports = dutyReportsForCurrentUser(startDutyTime: startDuty.date, endDutyTime: endDutyTime)
-        showingPatrolSummaryView = true
+        isActiveRootFromShowingPatrolSummaryView = true
     }
 
     /// Logic

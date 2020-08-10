@@ -193,7 +193,6 @@
 		BCE4814543022D42A642CA4A /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE486CABA40FF0D6D14E5F9 /* KeyboardController.swift */; };
 		BCE4815F88C024AD476B8DE2 /* DutyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D936613848423BBAF33 /* DutyState.swift */; };
 		BCE4817B0B89F5D95768925A /* CountryPickerView.swif.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE486BCBC428C8539A22A9D /* CountryPickerView.swif.swift */; };
-		BCE481FC2E1771F65073C0A6 /* ReportSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE483CAE164B70D857A62B0 /* ReportSummaryView.swift */; };
 		BCE4820A7E5A15B8AA93DB4A /* TextPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48555D654177BE1259C7B /* TextPickerView.swift */; };
 		BCE4825F4A971D6F6F24D571 /* CatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48E5B87FCD1126A5C26C4 /* CatchView.swift */; };
 		BCE48275C134A902EF0293D4 /* GlassIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48B8D8932DF568200B811 /* GlassIconView.swift */; };
@@ -249,7 +248,6 @@
 		BCE48B02D6D3331545500562 /* ChooseSpeciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FAB856639D53CABC76C /* ChooseSpeciesView.swift */; };
 		BCE48B088018D82ECFC5F7A9 /* MultiRowPickerWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4817C8B123F01E50A23D9 /* MultiRowPickerWithButton.swift */; };
 		BCE48B09547E88D2E76107BB /* Collection+EnumeratedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48EFBBE1997660C4F1EE6 /* Collection+EnumeratedArray.swift */; };
-		BCE48B31FB9BEA734058DAA9 /* ReportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48A5038A2E43FE839DC80 /* ReportListView.swift */; };
 		BCE48B41FAB47CB8B9B0AE61 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D44A5E464AA9AC620E8 /* SearchBarView.swift */; };
 		BCE48B59A51E4AF79D2FAEE1 /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4871B39646A85F047F256 /* TextLabel.swift */; };
 		BCE48B9CAD5B8F1EB27C60BD /* ChooseEMSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48E42E19241E2A8EC419F /* ChooseEMSView.swift */; };
@@ -491,7 +489,6 @@
 		BCE482F2C7BF11E33FA5E862 /* StartStopDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartStopDatePicker.swift; sourceTree = "<group>"; };
 		BCE483315BCBE777464D2FF4 /* ViolationPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationPickerView.swift; sourceTree = "<group>"; };
 		BCE483BB45A7BCD0ADC62551 /* PopoverManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverManager.swift; sourceTree = "<group>"; };
-		BCE483CAE164B70D857A62B0 /* ReportSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportSummaryView.swift; sourceTree = "<group>"; };
 		BCE48456167E25D77C838694 /* CrewMemberShortView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrewMemberShortView.swift; sourceTree = "<group>"; };
 		BCE484CE2776AE6F4E5A5791 /* ChooseBusinessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseBusinessView.swift; sourceTree = "<group>"; };
 		BCE484E6974BBB4F08413A3E /* InputField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
@@ -531,7 +528,6 @@
 		BCE489F610C0078AE3ED2944 /* TopTabBarContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopTabBarContainerView.swift; sourceTree = "<group>"; };
 		BCE489F75FEB031E1F2AAC20 /* ScrollableTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabBar.swift; sourceTree = "<group>"; };
 		BCE489FD715E47C868F5D581 /* PatrolSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatrolSummaryView.swift; sourceTree = "<group>"; };
-		BCE48A5038A2E43FE839DC80 /* ReportListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportListView.swift; sourceTree = "<group>"; };
 		BCE48AB036DA398FBFF3E3B4 /* SectionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionButton.swift; sourceTree = "<group>"; };
 		BCE48AB83BB50A193A6B4113 /* CallToActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallToActionButton.swift; sourceTree = "<group>"; };
 		BCE48AF913D1F963F18F6FAF /* KeyboardControllingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardControllingScrollView.swift; sourceTree = "<group>"; };
@@ -807,7 +803,6 @@
 				493CDFB923FEB86D00516048 /* LoginView.swift */,
 				3013CA782424AF1300D2FF60 /* PatrolBoat */,
 				BCE483F917662257CAB7586F /* ReportFlow */,
-				BCE48B378C5953371739F735 /* ReportList */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1194,15 +1189,6 @@
 				BCE4824D90AA3E6903C93562 /* CountryPickerDataView.swift */,
 			);
 			path = Country;
-			sourceTree = "<group>";
-		};
-		BCE48B378C5953371739F735 /* ReportList */ = {
-			isa = PBXGroup;
-			children = (
-				BCE48A5038A2E43FE839DC80 /* ReportListView.swift */,
-				BCE483CAE164B70D857A62B0 /* ReportSummaryView.swift */,
-			);
-			path = ReportList;
 			sourceTree = "<group>";
 		};
 		BCE48B73700857DD26654AED /* Popover */ = {
@@ -1711,9 +1697,7 @@
 				3013CA802424B07300D2FF60 /* TextToggle.swift in Sources */,
 				BCE48BFCEE413835DEB14DC0 /* RowView.swift in Sources */,
 				BCE48B59A51E4AF79D2FAEE1 /* TextLabel.swift in Sources */,
-				BCE48B31FB9BEA734058DAA9 /* ReportListView.swift in Sources */,
 				49B83EDB2489546D00027B8C /* SafetyLevel.swift in Sources */,
-				BCE481FC2E1771F65073C0A6 /* ReportSummaryView.swift in Sources */,
 				BCE4856F6CE56291D9BCB13E /* VesselView.swift in Sources */,
 				BCE483F97684587434E8421E /* ReportNavigationRootView.swift in Sources */,
 				BCE482FC535CCA17C9D9F30A /* EMSInputView.swift in Sources */,
