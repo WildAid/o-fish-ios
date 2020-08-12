@@ -28,15 +28,12 @@ class CatchViewModel: ObservableObject, Identifiable {
 
         static var allCases: [CatchViewModel.UnitSpecification] {
             let locale = Locale.current
-            guard let languageCode = locale.languageCode,
-                let regionCode = locale.regionCode else {return [kilograms, tonnes, pound, tons]}
-            if languageCode == "en" && regionCode == "US" {
-                return [pound, kilograms, tons, tonnes]
-            } else {
-                return [kilograms, tonnes, pound, tons]
+            var cases = [kilograms, tonnes, pound, tons]
+            if locale.regionCode == "US" {
+                cases = [pound, tonnes, kilograms, tons]
             }
+            return cases
         }
-
     }
 
     enum QuantityType: String {
