@@ -11,22 +11,25 @@ struct AlertItem: Identifiable {
     var id = UUID()
     var title: String
     var message: String?
-    var primaryButton: Alert.Button
+    var primaryButton: Alert.Button?
     var secondaryButton: Alert.Button = .default(Text("Keep Editing"))
 }
 
 extension View {
     func showingAlert(alertItem: Binding<AlertItem?>) -> some View {
         alert(item: alertItem) { alertItem in
-            if let message = alertItem.message {
+            if let primaryButton = alertItem.primaryButton {
+                if let message = alertItem.message {
+                    return Alert(title: Text(LocalizedStringKey(alertItem.title)),
+                                 message: Text(LocalizedStringKey(message)),
+                                 primaryButton: primaryButton,
+                                 secondaryButton: alertItem.secondaryButton)
+                }
                 return Alert(title: Text(LocalizedStringKey(alertItem.title)),
-                    message: Text(LocalizedStringKey(message)),
-                    primaryButton: alertItem.primaryButton,
-                    secondaryButton: alertItem.secondaryButton)
+                             primaryButton: primaryButton,
+                             secondaryButton: alertItem.secondaryButton)
             } else {
-                return Alert(title: Text(LocalizedStringKey(alertItem.title)),
-                    primaryButton: alertItem.primaryButton,
-                    secondaryButton: alertItem.secondaryButton)
+                return Alert(title: Text(LocalizedStringKey(alertItem.title)), message: Text(""), dismissButton: alertItem.secondaryButton)
             }
         }
     }
