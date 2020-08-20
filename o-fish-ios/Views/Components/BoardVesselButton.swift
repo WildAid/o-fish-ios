@@ -40,7 +40,7 @@ struct BoardVesselButton: View {
                 .padding(.bottom, onHeader ? Dimensions.mainSpacing : Dimensions.bottomPadding)
                 .padding(.horizontal, Dimensions.padding)
                 .alert(isPresented: $showingGoOnDutyAlert) {
-                     Alert(title: Text("You're currently off duty"),
+                    Alert(title: Text("You're currently off duty"),
                           message: Text("Change status to \"On Duty\"?"),
                           primaryButton: .default(Text("Yes"), action: {
                             self.onDuty.onDuty = true
