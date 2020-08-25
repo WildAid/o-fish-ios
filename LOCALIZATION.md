@@ -1,4 +1,4 @@
-Localization files are in Localization/CODE.lkproj/Localizable.strings
+Localization files are in Localization/CODE.lproj/Localizable.strings
 e.g.
 Localization/es-419/Localizable.strings
 Localization/fr/Localizable.strings
