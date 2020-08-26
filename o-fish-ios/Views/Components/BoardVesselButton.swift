@@ -42,20 +42,20 @@ struct BoardVesselButton: View {
                 .alert(isPresented: $showingGoOnDutyAlert) {
                     Alert(title: Text("You're currently off duty"),
                           message: Text("Change status to \"On Duty\"?"),
-                          primaryButton: .default(Text("Yes")) {
+                          primaryButton: .default(Text("Yes"), action: {
                             self.onDuty.onDuty = true
-                            self.showingReportRootView.toggle()
-                        },
+                            self.showingReportRootView = true
+                          }),
                           secondaryButton: .cancel())
             }
-
+            
             NavigationLink(destination: ReportNavigationRootView(report: prefilledReport,
                                                                  prefilledVesselAvailable: true,
                                                                  rootIsActive: $rootIsActive),
                            isActive: $showingReportRootView) {
                             EmptyView()
             }
-
+            
         }
     }
 
@@ -65,7 +65,7 @@ struct BoardVesselButton: View {
 
             return
         }
-        showingReportRootView.toggle()
+        showingReportRootView = true
     }
 }
 

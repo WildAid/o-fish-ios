@@ -237,6 +237,7 @@ struct PatrolBoatView: View {
 
     private func goOnDutyAlertClicked() {
         self.onDuty.onDuty = true
+        self.isActiveRootFromPreboardingView.toggle()
     }
 
     private func logoutAlertClicked() {
