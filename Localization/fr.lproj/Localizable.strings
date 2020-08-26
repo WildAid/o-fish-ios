@@ -106,11 +106,11 @@
 "Skip the following sections?" = "Sauter les sections suivantes?";
 "On Duty" = "En mer";
 "Off Duty" = "À terre";
-"Patrol Summary" = "Patrol Summary"
-"Go Off Duty" = "Go Off Duty"
-"Time On Duty" = "Time On Duty"
-"Start Time" = "Start Time"
-"End Time" = "End Time"
+"Patrol Summary" = "PatrolSummary";
+"Go Off Duty" = "GoOffDuty";
+"Time On Duty" = "TimeOnDuty";
+"Start Time" = "StartTime";
+"End Time" = "EndTime";
 "Find records" = "Recherche le registre";
 "Red" = "Rouge";
 "Amber" = "Ambre";
