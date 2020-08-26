@@ -44,18 +44,18 @@ struct BoardVesselButton: View {
                           message: Text("Change status to \"At Sea\"?"),
                           primaryButton: .default(Text("Yes"), action: {
                             self.onDuty.onDuty = true
-                            self.showingReportRootView.toggle()
-                        }),
+                            self.showingReportRootView = true
+                          }),
                           secondaryButton: .cancel())
             }
-
+            
             NavigationLink(destination: ReportNavigationRootView(report: prefilledReport,
                                                                  prefilledVesselAvailable: true,
                                                                  rootIsActive: $rootIsActive),
                            isActive: $showingReportRootView) {
                             EmptyView()
             }
-
+            
         }
     }
 
@@ -65,7 +65,7 @@ struct BoardVesselButton: View {
 
             return
         }
-        showingReportRootView.toggle()
+        showingReportRootView = true
     }
 }
 
