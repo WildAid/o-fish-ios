@@ -32,7 +32,6 @@ struct ReportNavigationRootView: View {
         TopTabBarContainerView(report: report,
             prefilledVesselAvailable: prefilledVesselAvailable,
             showingAlertItem: $showingAlertItem,
-            showSubmitAlert: showFinalAlert,
             notFilledScreens: $notFilledScreens
         )
 
@@ -82,6 +81,10 @@ struct ReportNavigationRootView: View {
         }
     }
 
+    private func showSubmittedAlert() {
+        self.showingAlertItem = AlertItem(title: "Boarding Submitted!", secondaryButton: .default(Text("Ok")))
+    }
+
     /// Actions
     private func submitNavBarClicked() {
         showFinalAlert()
@@ -95,6 +98,9 @@ struct ReportNavigationRootView: View {
     private func saveAlertClicked() {
         print("Saving report in Realm")
         report.save()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.showSubmittedAlert()
+        }
         rootIsActive.toggle()
     }
 }
