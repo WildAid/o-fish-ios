@@ -4,7 +4,6 @@
 "Are you sure you want to replace captain?" = "Confirmez que vous voulez changer de capitaine";
 "Board Vessel" = "Inspecter Vaisseau";
 "Cancel" = "Annuler";
-"Cannot access reports" = "Cannot access reports";
 "Captain" = "Capitaine";
 "Change status to \"At Sea\"?" = "Changer le statut";
 "Continue editing" = "Continuer la modification";
@@ -22,7 +21,7 @@
 "No Results for “%@“" = "Pas de résultats “%@“";
 "Ok" = "OK";
 "Permit #" = "Permis n°";
-"Please, input name or license" = "Please, input name or license";
+"Please, input name or license" = "Ajouter un nom ou numéro de permis";
 "Prefill" = "Pré-remplir";
 "Prefill Vessel Information From Previous Boarding?" = "Pré-remplir la rubrique à partir de la dernière inspection? ";
 "Previous Boardings" = "Inspections précédentes";
@@ -68,7 +67,7 @@
 "Add" = "Ajouter";
 "Violation" = "Infraction";
 "Result of Violation" = "Conséquence de l'infraction";
-"Issued to" = "Issued to";
+"Issued to" = "Délivré à";
 "Seizure" = "Saisie";
 "Add Violation" = "Ajouter une infraction";
 "Basic information" = "Données de base";
@@ -105,11 +104,11 @@
 "Skip the following sections?" = "Sauter les sections suivantes?";
 "At Sea" = "En mer";
 "On Land" = "À terre";
-"Patrol Summary" = "PatrolSummary";
-"Continue" = "Continue";
-"Time At Sea" = "TimeAtSea";
-"Start Time" = "StartTime";
-"End Time" = "EndTime";
+"Patrol Summary" = "Résumé des inspections";
+"Continue" = "Continuer";
+"Time At Sea" = "Temps écoulé en mer";
+"Start Time" = "Début";
+"End Time" = "Fin";
 "Find records" = "Recherche le registre";
 "Red" = "Rouge";
 "Amber" = "Ambre";
@@ -150,9 +149,9 @@
 "You sure you want to logout?" = "Confirmez que vous voulez vous déconnecter";
 "You can only log back in once you have cellular service or are connected to WIFI with internet" = "Vous ne pourrez vous reconnecter que si vous disposez d'un service mobile ou d'unne connexion wifi";
 "Are you still at sea?" = "Etes-vous encore en mer?";
-"It has been %@ hours after closing the application" = "It has been %@ hours after closing the application";
-"It has been %@ hours since you went to sea." = "It has been %@ hours since you went to sea.";
+"It has been %@ hours after closing the application" = "%@ heures se sont écoulées depuis la fermeture de l'application."
+"It has been %@ hours since you went to sea." = "%@ heures se sont écoulées depuis votre départ en mer";
 "Camera" = "Prendre une photo";
 "Photo Library" = "Choisir une photo";
-"Change profile picture" = "Change profile picture";
-"Access your login and password on the keychain" = "Access your login and password on the keychain";
+"Change profile picture" = "Changer de photo de profil";
+"Access your login and password on the keychain" = "Accéder à l'identifiant et mot de passe";
