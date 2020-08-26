@@ -42,10 +42,10 @@ struct BoardVesselButton: View {
                 .alert(isPresented: $showingGoOnDutyAlert) {
                     Alert(title: Text("You're currently on land"),
                           message: Text("Change status to \"At Sea\"?"),
-                          primaryButton: .default(Text("Yes")) {
+                          primaryButton: .default(Text("Yes"), action: {
                             self.onDuty.onDuty = true
                             self.showingReportRootView.toggle()
-                        },
+                        }),
                           secondaryButton: .cancel())
             }
 

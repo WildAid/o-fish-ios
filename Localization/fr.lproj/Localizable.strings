@@ -2,8 +2,8 @@
 "Add Report" = "Ajouter un rapport";
 "Are you sure you want to remove this crew member?" = "Confirmez que vous voulez supprimer ce membre d'équipage";
 "Are you sure you want to replace captain?" = "Confirmez que vous voulez changer de capitaine";
-"Board Vessel" = "Inspecter le vaisseau";
-"Cancel" = "Cancel";
+"Board Vessel" = "Inspecter Vaisseau";
+"Cancel" = "Annuler";
 "Cannot access reports" = "Cannot access reports";
 "Captain" = "Capitaine";
 "Change status to \"At Sea\"?" = "Changer le statut";
@@ -92,7 +92,6 @@
 "Search" = "Recherche";
 "Search Vessels" = "Recherche de vaisseau";
 "Back" = "Retour";
-"Cancel" = "Annuler";
 "Last Boarding" = "Dernière inspection";
 "Crew Members" = "Membres d'equipage";
 "Boardings" = "Inspections";
@@ -138,7 +137,7 @@
 "Photo" = "Photo";
 "Photos:" = "Photos:";
 "Remove Violation" = "Supprimer une infraction";
-"Remove" = "Remove";
+"Remove" = "Supprimer";
 "Are you sure you want to submit the boarding?" = "Confirmez l'enregistrement";
 "Email/Username" = "Email/Identifiant";
 "Password" = "Mot de passe";
@@ -152,7 +151,7 @@
 "You can only log back in once you have cellular service or are connected to WIFI with internet" = "Vous ne pourrez vous reconnecter que si vous disposez d'un service mobile ou d'unne connexion wifi";
 "Are you still at sea?" = "Etes-vous encore en mer?";
 "It has been %@ hours after closing the application" = "It has been %@ hours after closing the application";
-"It has been %@ hours since you went to sea." = "It has been %@ hours since you went to sea."
+"It has been %@ hours since you went to sea." = "It has been %@ hours since you went to sea.";
 "Camera" = "Prendre une photo";
 "Photo Library" = "Choisir une photo";
 "Change profile picture" = "Change profile picture";
