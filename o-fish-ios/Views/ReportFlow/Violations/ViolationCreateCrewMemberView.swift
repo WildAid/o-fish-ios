@@ -76,7 +76,7 @@ struct ViolationCreateCrewMemberView: View {
                         secondaryButton: .default(Text("Continue editing")))
 
                 } else if self.presentedAlert == .emptyInput {
-                    return Alert(title: Text("Empty fields"), message: Text("Please, input name or licence"))
+                    return Alert(title: Text("Empty fields"), message: Text("Please, input name or license"))
                 }
 
                 assertionFailure("Should never reach this option")

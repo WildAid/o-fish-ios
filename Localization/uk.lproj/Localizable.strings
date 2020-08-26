@@ -30,7 +30,7 @@
 "No Results for “%@“" = "Немає результатів для «%@»";
 "Ok" = "Добре";
 "Permit #" = "Дозвіл #";
-"Please, input name or licence" = "Будь ласка, ім'я входу або ліцензії";
+"Please, input name or license" = "Будь ласка, ім'я входу або ліцензії";
 "Prefill" = "Попереднє заповнення";
 "Prefill Vessel Information From Previous Boarding?" = "Заповнити судову інформацію від попередньої посадки?";
 "Previous Boardings" = "Попередні прибуття";
@@ -111,6 +111,11 @@
 "Skip the following sections?" = "Пропустити наступні розділи?";
 "On Duty" = "На Варті";
 "Off Duty" = "Вільно";
+"Patrol Summary" = "Patrol Summary"
+"Go Off Duty" = "Go Off Duty"
+"Time On Duty" = "Time On Duty"
+"Start Time" = "Start Time"
+"End Time" = "End Time"
 "Find records" = "Знайти звіти";
 "Red" = "Червоний";
 "Amber" = "Бурштиновий";

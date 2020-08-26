@@ -22,7 +22,7 @@
 "No Results for “%@“" = "Pas de résultats “%@“";
 "Ok" = "OK";
 "Permit #" = "Permis n°";
-"Please, input name or licence" = "Please, input name or licence";
+"Please, input name or license" = "Please, input name or license";
 "Prefill" = "Pré-remplir";
 "Prefill Vessel Information From Previous Boarding?" = "Pré-remplir la rubrique à partir de la dernière inspection? ";
 "Previous Boardings" = "Inspections précédentes";
@@ -106,6 +106,11 @@
 "Skip the following sections?" = "Sauter les sections suivantes?";
 "On Duty" = "En mer";
 "Off Duty" = "À terre";
+"Patrol Summary" = "Patrol Summary"
+"Go Off Duty" = "Go Off Duty"
+"Time On Duty" = "Time On Duty"
+"Start Time" = "Start Time"
+"End Time" = "End Time"
 "Find records" = "Recherche le registre";
 "Red" = "Rouge";
 "Amber" = "Ambre";
