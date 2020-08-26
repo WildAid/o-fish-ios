@@ -17,8 +17,8 @@ class DutyChangeViewModel: ObservableObject {
 
     enum Status: String {
         case notSelected = ""
-        case onDuty = "On Duty"
-        case offDuty = "Off Duty"
+        case onDuty = "At Sea"
+        case offDuty = "On Land"
     }
 
     private var dutyChange: DutyChange?
