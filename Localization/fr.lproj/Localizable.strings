@@ -149,9 +149,9 @@
 "You sure you want to logout?" = "Confirmez que vous voulez vous déconnecter";
 "You can only log back in once you have cellular service or are connected to WIFI with internet" = "Vous ne pourrez vous reconnecter que si vous disposez d'un service mobile ou d'unne connexion wifi";
 "Are you still at sea?" = "Etes-vous encore en mer?";
-"It has been %@ hours after closing the application" = "%@ heures se sont écoulées depuis la fermeture de l'application."
+"It has been %@ hours after closing the application" = "%@ heures se sont écoulées depuis la fermeture de l'application.";
 "It has been %@ hours since you went to sea." = "%@ heures se sont écoulées depuis votre départ en mer";
 "Camera" = "Prendre une photo";
 "Photo Library" = "Choisir une photo";
 "Change profile picture" = "Changer de photo de profil";
-"Access your login and password on the keychain" = "Accéder à l'identifiant et mot de passe à l'aide du trousseau iCloud"
+"Access your login and password on the keychain" = "Accéder à l'identifiant et mot de passe à l'aide du trousseau iCloud";
