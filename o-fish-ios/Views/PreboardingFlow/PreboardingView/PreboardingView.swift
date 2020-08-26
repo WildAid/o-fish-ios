@@ -64,8 +64,8 @@ struct PreboardingView: View {
             .alert(isPresented: $showingDismissAlert) {
                 Alert(title: Text("Cancel boarding?"),
                     message: Text("This boarding will not be saved"),
-                    primaryButton: .default(Text("Go back")),
-                    secondaryButton: .default(Text("Cancel")) {
+                    primaryButton: .default(Text("Keep Editing")),
+                    secondaryButton: .default(Text("Cancel Boarding")) {
                         self.presentationMode.wrappedValue.dismiss()
                     })
             }
