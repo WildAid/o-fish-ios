@@ -29,7 +29,7 @@
 "Refresh" = "Actualiser";
 "Skip" = "Sauter";
 "Submit" = "Enregistrer";
-"This crew member contained in violation(s)" = "Supprimer le membre d'équipage";
+"This crew member contained in violation(s)" = "Ce membre d’équipage est  déjà associé à une infraction";
 "This report already contains a captain" = "Ce rapport comprend déjà un capitaine";
 "Vessel: " = "Vaisseau: ";
 "Yes" = "Oui";
@@ -38,7 +38,7 @@
 "Other"  = "Autres" ;
 "Search Crew" = "Rechercher un équipage";
 "Electronic Monitoring System" = "Système de surveillance électronique";
-"Search EMS's" = "Rechercher dans les SSE";
+"Search EMS's" = "Rechercher dans un EMS";
 "Flag State" = "Etat du Pavillon";
 "Search Flag State" = "Rechercher l'Etat du Pavillon";
 "Species" = "Espèces";
@@ -55,10 +55,10 @@
 "Select" = "Sélectionner";
 "Business" = "Entreprise";
 "Location" = "Localisation";
-"EMS Type" = "Type de SSE";
+"EMS Type" = "Type de EMS";
 "Description" = "Description";
 "Registry Number" = "Numéro de registre";
-"Remove EMS" = "Enlever le système de surveillance électronique";
+"Remove EMS" = "Enlever un EMS";
 "Vessel Information" = "Détails du vaisseau";
 "Vessel Name" = "Nom du vaisseau";
 "Permit Number" = "Numéro de permis";
@@ -92,7 +92,7 @@
 "Search Vessels" = "Recherche de vaisseau";
 "Back" = "Retour";
 "Last Boarding" = "Dernière inspection";
-"Crew Members" = "Membres d'equipage";
+"Crew Members" = "Membres d'équipage";
 "Boardings" = "Inspections";
 "Boarding" = "Inspection";
 "Warnings" = "Avertissements";

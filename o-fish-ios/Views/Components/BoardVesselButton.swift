@@ -48,14 +48,14 @@ struct BoardVesselButton: View {
                           }),
                           secondaryButton: .cancel())
             }
-            
+
             NavigationLink(destination: ReportNavigationRootView(report: prefilledReport,
                                                                  prefilledVesselAvailable: true,
                                                                  rootIsActive: $rootIsActive),
                            isActive: $showingReportRootView) {
                             EmptyView()
             }
-            
+
         }
     }
 
