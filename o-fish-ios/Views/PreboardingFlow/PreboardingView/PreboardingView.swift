@@ -155,7 +155,11 @@ struct PreboardingView: View {
         storedReports = []
         showingRecentBoardings = false
         let predicate = NSPredicate(format: "vessel.name CONTAINS[cd] %@", searchText)
-        let realmReports = RealmConnection.realm?.objects(Report.self).filter(predicate).sorted(byKeyPath: "timestamp", ascending: false) ?? nil
+        let realmReports = app.currentUser()?
+            .agencyRealm()?
+            .objects(Report.self)
+            .filter(predicate)
+            .sorted(byKeyPath: "timestamp", ascending: false) ?? nil
         var uniqueIdentifiers = [String]()
         if let realmReports = realmReports {
             for report in realmReports {
@@ -172,7 +176,10 @@ struct PreboardingView: View {
 
     private func loadRecentBoardings() {
         if storedReports.isEmpty {
-            let realmReports = RealmConnection.realm?.objects(Report.self).sorted(byKeyPath: "timestamp", ascending: false) ?? nil
+            let realmReports = app.currentUser()?
+                .agencyRealm()?
+                .objects(Report.self)
+                .sorted(byKeyPath: "timestamp", ascending: false) ?? nil
             var uniqueIdentifiers = [String]()
             if let realmReports = realmReports {
                 for report in realmReports {

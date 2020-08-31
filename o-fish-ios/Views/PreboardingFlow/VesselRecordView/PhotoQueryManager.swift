@@ -13,17 +13,16 @@ class PhotoQueryManager {
 
     func lastVesselImagesId(permitNumber: String) -> [String] {
         let predicate = NSPredicate(format: "vessel.permitNumber = %@", permitNumber)
-        let realmReports = RealmConnection.realm?.objects(Report.self)
-                               .filter(predicate)
-                               .sorted(byKeyPath: "timestamp", ascending: false) ?? nil
+        guard let reports = app.currentUser()?.agencyRealm()?.objects(Report.self)
+                .filter(predicate)
+                .sorted(byKeyPath: "timestamp", ascending: false) else {
+            return []
+        }
 
-        guard let reports = realmReports else { return [] }
+        guard let photos = reports.filter({ report in
+            return report.vessel?.attachments?.photoIDs.count ?? 0 > 0
+        }).first?.vessel?.attachments?.photoIDs else { return [] }
 
-        let photoIds = reports
-            .filter { ($0.vessel?.attachments?.photoIDs.count ?? 0) > 0}
-            .first?.vessel?.attachments?.photoIDs
-
-        guard let photos = photoIds else { return [] }
         return Array(photos)
     }
 
@@ -40,17 +39,11 @@ class PhotoQueryManager {
         }
 
         let predicate = NSPredicate(format: "_id IN %@", indexes)
-        let realmPhotos = RealmConnection.realm?.objects(Photo.self).filter(predicate)
-
-        guard let photos = realmPhotos else { return [] }
-
-        var photoViewModels = [PhotoViewModel]()
-
-        for photo in photos {
-            let photo = PhotoViewModel(photo: photo)
-            photoViewModels.append(photo)
+        guard let photos = app.currentUser()?.agencyRealm()?.objects(Photo.self).filter(predicate) else {
+            return []
         }
-        return photoViewModels
+
+        return photos.map { PhotoViewModel(photo: $0) }
     }
 
     func lastVesselImage(permitNumber: String) -> PhotoViewModel? {

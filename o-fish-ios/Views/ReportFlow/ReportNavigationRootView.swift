@@ -21,7 +21,7 @@ struct ReportNavigationRootView: View {
         self.report = report ?? ReportViewModel()
         self.prefilledVesselAvailable = prefilledVesselAvailable
         _rootIsActive = rootIsActive
-        if let menuData = RealmConnection.realm?.objects(MenuData.self).first {
+        if let menuData = app.currentUser()?.agencyRealm()?.objects(MenuData.self).first {
             Settings.shared.menuData = menuData
         } else {
             print("Failed to read menus")

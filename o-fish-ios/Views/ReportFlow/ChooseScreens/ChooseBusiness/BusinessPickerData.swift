@@ -13,7 +13,7 @@ struct BusinessPickerData {
 }
 
 extension BusinessPickerData: Equatable {
-    static func ==(lhs: BusinessPickerData, rhs: BusinessPickerData) -> Bool {
+    static func == (lhs: BusinessPickerData, rhs: BusinessPickerData) -> Bool {
         lhs.business == rhs.business && lhs.location == rhs.location
     }
 }

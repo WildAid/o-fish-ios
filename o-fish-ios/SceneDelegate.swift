@@ -67,7 +67,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        if DutyState.shared.onDuty && RealmConnection.loggedIn {
+        if DutyState.shared.onDuty && app.currentUser()?.state == .loggedIn {
             NotificationManager.shared.requestNotificationAfterClosing(hours: Constants.Notifications.hoursAfterClosing)
         }
     }

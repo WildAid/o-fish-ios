@@ -17,7 +17,7 @@ struct ModalViewButton: Identifiable {
 }
 
 extension ModalViewButton: Equatable {
-    public static func ==(lhs: ModalViewButton, rhs: ModalViewButton) -> Bool {
+    public static func == (lhs: ModalViewButton, rhs: ModalViewButton) -> Bool {
         lhs.id == rhs.id
     }
 }

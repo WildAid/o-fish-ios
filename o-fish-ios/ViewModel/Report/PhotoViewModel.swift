@@ -41,7 +41,7 @@ class PhotoViewModel: ObservableObject, Identifiable {
         print("Saving photo")
         let isNew = photo == nil
         do {
-            guard let realm = RealmConnection.realm else {
+            guard let realm = app.currentUser()?.agencyRealm() else {
                 print("Can't access Realm")
                 return
             }
@@ -57,10 +57,6 @@ class PhotoViewModel: ObservableObject, Identifiable {
                 photo.date = date as NSDate
                 photo.referencingReportID = referencingReportID
                 if isNew {
-                    guard let realm = RealmConnection.realm else {
-                        print("Can't access Realm")
-                        return
-                    }
                     print("Adding photo to Realm")
                     realm.add(photo)
                 }
@@ -73,7 +69,7 @@ class PhotoViewModel: ObservableObject, Identifiable {
 
     func delete() {
         do {
-            guard let realm = RealmConnection.realm else {
+            guard let realm = app.currentUser()?.agencyRealm() else {
                 print("Can't access Realm to delete photo")
                 return
             }
@@ -92,7 +88,7 @@ class PhotoViewModel: ObservableObject, Identifiable {
 
     static func delete(photoID: String) {
         do {
-            guard let realm = RealmConnection.realm else {
+            guard let realm = app.currentUser()?.agencyRealm() else {
                 print("Can't access Realm to delete photo")
                 return
             }
@@ -109,7 +105,7 @@ class PhotoViewModel: ObservableObject, Identifiable {
 
     static func delete(reportID: String) {
         do {
-            guard let realm = RealmConnection.realm else {
+            guard let realm = app.currentUser()?.agencyRealm() else {
                 print("Can't access Realm to delete photos")
                 return
             }
