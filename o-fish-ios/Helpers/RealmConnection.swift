@@ -79,7 +79,7 @@ class RealmConnection {
         return profilePic
     }
 
-    private static let app = RealmApp(id: Constants.realmAppId)
+    private static let app = App(id: Constants.realmAppId)
 
     static func logIn(username: String,
                       password: String,
@@ -89,14 +89,15 @@ class RealmConnection {
             print("Already logged in")
             completion(.success("User already logged in"))
         } else {
-            let appCredentials = AppCredentials(username: username.lowercased(), password: password)
-            app.login(withCredential: appCredentials) { (user, error) in
+            let credentials = RealmSwift.Credentials(username: username.lowercased(), password: password)
+            app.login(credentials: credentials) { (user, error) in
                 if let error = error {
                     self.user = nil
                     print("\(RealmConnectionError.cannotLogin.localizedDescription) : \(error.localizedDescription)")
                     completion(.failure(RealmConnectionError.cannotLogin))
                     return
                 }
+
                 self.user = user
                 print("Logged into Realm")
                 completion(.success("Logged into Realm"))
@@ -124,11 +125,15 @@ class RealmConnection {
     }
 
     static func logout() {
-        app.logOut { error in
+        guard let user = user else {
+            print("Attempting to logout when no user logged in")
+            return
+        }
+        user.logOut { error in
             if let error = error {
                 print("Failed to logout of Realm: \(error.localizedDescription)")
             } else {
-                user = nil
+                self.user = nil
                 realm = nil
             }
         }
