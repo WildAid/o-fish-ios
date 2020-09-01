@@ -109,8 +109,8 @@ struct PatrolBoatView: View {
                     trailing:
                         TextToggle(isOn: dutyBinding,
                             titleLabel: "",
-                            onLabel: "On Duty",
-                            offLabel: "Off Duty")
+                            onLabel: "At Sea",
+                            offLabel: "On Land")
                 )
                 .navigationBarTitle(Text(""), displayMode: .inline)
                 .navigationBarBackButtonHidden(true)
@@ -141,8 +141,8 @@ struct PatrolBoatView: View {
     }
 
     private func showGoOnDutyAlert() {
-        showingAlertItem = AlertItem(title: "You're currently off duty",
-            message: "Change status to \"On Duty\"?",
+        showingAlertItem = AlertItem(title: "You're currently on land",
+            message: "Change status to \"At Sea\"?",
             primaryButton: .default(Text("Yes"), action: goOnDutyAlertClicked),
             secondaryButton: .cancel())
     }

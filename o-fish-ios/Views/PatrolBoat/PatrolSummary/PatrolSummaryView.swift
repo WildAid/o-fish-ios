@@ -33,7 +33,7 @@ struct PatrolSummaryView: View {
         VStack(spacing: .zero) {
             ScrollView {
                 wrappedShadowView {
-                    StartStopDatePicker(title: "Time On Duty",
+                    StartStopDatePicker(title: "Time At Sea",
                         startDate: $startDuty.date,
                         endDate: $plannedOffDutyTime)
                 }
@@ -58,7 +58,7 @@ struct PatrolSummaryView: View {
             }
 
             VStack(spacing: .zero) {
-                CallToActionButton(title: "Go Off Duty",
+                CallToActionButton(title: "Continue",
                     action: self.goOffDutyClicked)
                     .padding(.top, Dimensions.buttonTopPadding)
                     .padding(.bottom, Dimensions.buttonBottomPadding)
@@ -83,7 +83,7 @@ struct PatrolSummaryView: View {
             .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                 Text("Cancel")
             }, trailing: Button(action: self.goOffDutyClicked) {
-                Text("Go Off Duty")
+                Text("Continue")
             })
     }
 

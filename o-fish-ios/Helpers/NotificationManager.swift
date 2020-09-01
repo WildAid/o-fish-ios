@@ -42,7 +42,7 @@ class NotificationManager {
     }
 
     func requestNotificationAfterStartDuty(hours: Int) {
-        let localizedString = NSLocalizedString("It has been %@ hours after starting of your duty.", comment: "")
+        let localizedString = NSLocalizedString("It has been %@ hours since you went to sea.", comment: "")
         let title = String(format: localizedString, String(hours))
         createNotification(title: title, hours: hours)
     }
@@ -56,7 +56,7 @@ class NotificationManager {
         let seconds = TimeInterval(hours * secondsInHour)
         let content = UNMutableNotificationContent()
         content.title = title
-        content.subtitle = NSLocalizedString("Are you still on duty?", comment: "")
+        content.subtitle = NSLocalizedString("Are you still at sea?", comment: "")
         content.sound = UNNotificationSound.default
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: seconds, repeats: false)

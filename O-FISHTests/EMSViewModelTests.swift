@@ -71,7 +71,7 @@ class EMSViewModelTests: XCTestCase {
         sut.registryNumber = "12345789"
 
         //then
-        XCTAssertTrue(sut.isComplete, "If name and licence is filled then crew should be complete")
+        XCTAssertTrue(sut.isComplete, "If name and license is filled then crew should be complete")
 
         // when
         sut.emsType = "Other"
