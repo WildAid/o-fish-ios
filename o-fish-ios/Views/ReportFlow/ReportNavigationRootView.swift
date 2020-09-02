@@ -13,13 +13,13 @@ struct ReportNavigationRootView: View {
     @ObservedObject var report: ReportViewModel
     @Binding var rootIsActive: Bool
 
-    private var prefilledVesselAvailable: Bool
+    private var prefilledAvailable: Bool
     @State private var showingAlertItem: AlertItem?
     @State private var notFilledScreens: [String] = TopTabBarItems.allCases.map { $0.rawValue }
 
-    init(report: ReportViewModel? = nil, prefilledVesselAvailable: Bool = false, rootIsActive: Binding<Bool>) {
+    init(report: ReportViewModel? = nil, prefilledAvailable: Bool = false, rootIsActive: Binding<Bool>) {
         self.report = report ?? ReportViewModel()
-        self.prefilledVesselAvailable = prefilledVesselAvailable
+        self.prefilledAvailable = prefilledAvailable
         _rootIsActive = rootIsActive
         if let menuData = RealmConnection.realm?.objects(MenuData.self).first {
             Settings.shared.menuData = menuData
@@ -30,7 +30,7 @@ struct ReportNavigationRootView: View {
 
     var body: some View {
         TopTabBarContainerView(report: report,
-            prefilledVesselAvailable: prefilledVesselAvailable,
+            prefilledAvailable: prefilledAvailable,
             showingAlertItem: $showingAlertItem,
             notFilledScreens: $notFilledScreens
         )

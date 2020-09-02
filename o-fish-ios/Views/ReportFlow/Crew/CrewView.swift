@@ -9,12 +9,15 @@ import SwiftUI
 
 struct CrewView: View {
     @ObservedObject var report: ReportViewModel
+    @Binding private var showingPrefilledAlert: Bool
 
     @Binding private var allFieldsComplete: Bool
     @Binding private var showingWarningState: Bool
 
     @State private var crewMemberWaitingRemoveConfirmation: CrewMemberViewModel?
     @State private var showingRemoveConfirmationAlert: Bool
+    @State private var initialCaptain = CrewMemberViewModel()
+    @State private var initialCrew = [CrewMemberViewModel]()
 
     @State private var currentEditingCrewMemberId: String
     @State private var isCurrentEditingCrewNonEmpty: Bool
@@ -27,12 +30,16 @@ struct CrewView: View {
     }
 
     init(report: ReportViewModel,
+         prefilledCrewAvailable: Binding<Bool>,
          allFieldsComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>) {
 
         self.report = report
 
-        _currentEditingCrewMemberId = State(initialValue: report.captain.id)
+        _showingPrefilledAlert = prefilledCrewAvailable
+        _currentEditingCrewMemberId = report.crew.filter({ $0.isEmpty }).count != 0 ?
+            State(initialValue: report.crew.filter({ $0.isEmpty }).first?.id ?? "") :
+            State(initialValue: report.captain.id)
         _isCurrentEditingCrewNonEmpty = State(initialValue: !report.captain.isEmpty)
         _showingRemoveConfirmationAlert = State(initialValue: false)
 
@@ -81,6 +88,15 @@ struct CrewView: View {
                             secondaryButton: .default(Text("Continue editing")))
                     }
             }
+            .alert(isPresented: self.$showingPrefilledAlert) {
+                Alert(title: Text("Prefill Crew Information From Previous Boarding?"),
+                    message: Text("You'll still be able to edit fields"),
+                    primaryButton: .default(Text("No")) {
+                        self.showingPrefilledAlert = false
+                    },
+                    secondaryButton: .default(Text("Prefill"), action: self.prefillCrewClicked)
+                )
+            }
         }
             .onAppear(perform: self.onAppear)
     }
@@ -102,16 +118,35 @@ struct CrewView: View {
     /// Actions
 
     private func onAppear() {
+        if showingPrefilledAlert {
+
+            initialCaptain = report.captain.clone()
+            initialCaptain.isCaptain = true
+
+            for member in report.crew {
+                let element = member.clone()
+                initialCrew.append(element)
+            }
+
+            let emptyCaptain = CrewMemberViewModel()
+            emptyCaptain.isCaptain = true
+            report.captain = emptyCaptain
+            currentEditingCrewMemberId = report.captain.id
+            report.crew = [CrewMemberViewModel]()
+        }
         if report.crew.isEmpty {
             let model = CrewMemberViewModel()
             report.crew.append(model)
         }
+        checkingForComplete()
+        checkAllInput()
+    }
 
+    private func checkingForComplete() {
         crewMembersComplete.removeAll()
         for member in report.crew {
             crewMembersComplete[member.id] = member.isComplete
         }
-        checkAllInput()
     }
 
     private func removeCrewMemberFromViolationsClicked() {
@@ -150,6 +185,14 @@ struct CrewView: View {
         removeCrewMemberFromCrewMemberList(crewViewModel)
     }
 
+    private func prefillCrewClicked() {
+        report.captain = initialCaptain
+        report.crew = initialCrew
+        currentEditingCrewMemberId = report.crew.last?.id ?? ""
+        checkingForComplete()
+        checkAllInput()
+    }
+
     /// Logic
 
     private func checkAllInput() {
@@ -171,6 +214,7 @@ struct CrewView: View {
 struct CrewView_Previews: PreviewProvider {
     static var previews: some View {
         CrewView(report: .sample,
+            prefilledCrewAvailable: .constant(false),
             allFieldsComplete: .constant(false),
             showingWarningState: .constant(false))
     }

@@ -32,6 +32,7 @@
 "Please, input name or license" = "Будь ласка, ім'я входу або ліцензії";
 "Prefill" = "Попереднє заповнення";
 "Prefill Vessel Information From Previous Boarding?" = "Заповнити судову інформацію від попередньої посадки?";
+"Prefill Crew Information From Previous Boarding?" = "Заповнити інформацію про екіпаж від попередньої посадки?";
 "Previous Boardings" = "Попередні прибуття";
 "Recently Boarded" = "Нещодавні прибуття";
 "Refresh" = "Оновити";
