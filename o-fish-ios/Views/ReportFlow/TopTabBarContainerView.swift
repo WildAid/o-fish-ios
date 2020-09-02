@@ -57,12 +57,14 @@ struct TopTabBarContainerView: View {
     init(report: ReportViewModel,
          prefilledAvailable: Bool,
          showingAlertItem: Binding<AlertItem?>,
+         showSubmitAlert: (() -> Void)? = nil,
          notFilledScreens: Binding<[String]>) {
 
         self.report = report
         self._prefilledVesselAvailable = State(initialValue: prefilledAvailable)
         self._prefilledCrewAvailable = State(initialValue: prefilledAvailable)
         self._showingAlertItem = showingAlertItem
+        self.showSubmitAlert = showSubmitAlert
         self._notFilledScreens = notFilledScreens
 
         let basicInfoItem = TabBarItem(title: TopTabBarItems.basicInformation.rawValue)

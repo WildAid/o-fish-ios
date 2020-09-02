@@ -32,6 +32,7 @@ struct ReportNavigationRootView: View {
         TopTabBarContainerView(report: report,
             prefilledAvailable: prefilledAvailable,
             showingAlertItem: $showingAlertItem,
+            showSubmitAlert: showFinalAlert,
             notFilledScreens: $notFilledScreens
         )
 
