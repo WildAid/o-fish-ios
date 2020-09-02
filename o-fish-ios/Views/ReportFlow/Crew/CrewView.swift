@@ -120,12 +120,11 @@ struct CrewView: View {
     private func onAppear() {
         if showingPrefilledAlert {
 
-            initialCaptain = report.captain.clone()
+            initialCaptain = report.captain
             initialCaptain.isCaptain = true
 
             for member in report.crew {
-                let element = member.clone()
-                initialCrew.append(element)
+                initialCrew.append(member)
             }
 
             let emptyCaptain = CrewMemberViewModel()

@@ -135,11 +135,13 @@ struct VesselView: View {
             initialVessel.permitNumber = vessel.permitNumber.copy() as? String ?? ""
             initialVessel.nationality = vessel.nationality.copy() as? String ?? ""
             initialVessel.homePort = vessel.homePort.copy() as? String ?? ""
+            initialVessel.attachments = vessel.attachments
 
             vessel.name = ""
             vessel.nationality = ""
             vessel.permitNumber = ""
             vessel.homePort = ""
+            vessel.attachments = AttachmentsViewModel()
 
             if vessel.ems.isEmpty {
                 let model = EMSViewModel()
@@ -171,6 +173,7 @@ struct VesselView: View {
         vessel.permitNumber = initialVessel.permitNumber
         vessel.homePort = initialVessel.homePort
         vessel.nationality = initialVessel.nationality
+        vessel.attachments = initialVessel.attachments
         showingPrefilledAlert = false
         informationComplete = !vessel.isEmpty
     }
