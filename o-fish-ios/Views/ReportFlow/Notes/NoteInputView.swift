@@ -57,11 +57,11 @@ struct NoteInputView: View {
 
         PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
             ModalView(buttons: [
-                ModalViewButton(title: "Camera", action: {
+                ModalViewButton(title: NSLocalizedString("Camera", comment: ""), action: {
                     hidePopover()
                     self.showPhotoTaker(source: .camera)
                 }),
-                ModalViewButton(title: "Photo Library", action: {
+                ModalViewButton(title: NSLocalizedString("Photo Library", comment: ""), action: {
                     hidePopover()
                     self.showPhotoTaker(source: .photoLibrary)
                 })

@@ -29,8 +29,8 @@ struct AddAttachmentsButton: View {
 
         PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
                 ModalView(buttons: [
-                    ModalViewButton(title: "Photo", action: showPhotoPickerTypeModal),
-                    ModalViewButton(title: "Note", action: addNote)
+                    ModalViewButton(title: NSLocalizedString("Photo", comment: ""), action: showPhotoPickerTypeModal),
+                    ModalViewButton(title: NSLocalizedString("Note", comment: ""), action: addNote)
                 ],
                     cancel: hidePopover)
         }
@@ -44,8 +44,8 @@ struct AddAttachmentsButton: View {
 
         PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
             ModalView(buttons: [
-                ModalViewButton(title: "Camera", action: { self.showPhotoTaker(source: .camera) }),
-                ModalViewButton(title: "Photo Library", action: { self.showPhotoTaker(source: .photoLibrary) })
+                ModalViewButton(title: NSLocalizedString("Camera", comment: ""), action: { self.showPhotoTaker(source: .camera) }),
+                ModalViewButton(title: NSLocalizedString("Photo Library", comment: ""), action: { self.showPhotoTaker(source: .photoLibrary) })
             ],
                 cancel: hidePopover)
         }

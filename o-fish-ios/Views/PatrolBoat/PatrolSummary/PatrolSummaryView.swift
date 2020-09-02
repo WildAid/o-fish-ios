@@ -41,7 +41,7 @@ struct PatrolSummaryView: View {
                 wrappedShadowView {
                     VStack(spacing: .zero) {
 
-                        TitleLabel(title: "\(self.dutyReports.count) Boardings")
+                        TitleLabel(title: titleLabel)
                             .padding(.top, Dimensions.spacing)
                             .padding(.bottom, self.dutyReports.count > 0 ? (Dimensions.spacing / 2.0) : Dimensions.spacing)
 
@@ -85,6 +85,12 @@ struct PatrolSummaryView: View {
             }, trailing: Button(action: self.goOffDutyClicked) {
                 Text("Continue")
             })
+    }
+
+    private var titleLabel: String {
+        let boardingCount = dutyReports.count
+        let boardingsString = NSLocalizedString((boardingCount == 1 ? "Boarding" : "Boardings"), comment: "")
+        return "\(boardingCount) \(boardingsString)"
     }
 
     /// Actions

@@ -56,7 +56,7 @@ struct ModalView: View {
                 .cornerRadius(Dimensions.radius)
                 .padding(.horizontal, Dimensions.padding)
 
-            ActionSheetButton(title: "Cancel", action: cancel)
+            ActionSheetButton(title: NSLocalizedString("Cancel", comment: ""), action: cancel)
                 .font(Font.title3.weight(.semibold))
         }
             .padding(.bottom, Dimensions.bottomPadding)
