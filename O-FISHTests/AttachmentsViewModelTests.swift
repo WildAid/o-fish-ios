@@ -22,7 +22,7 @@ class AttachmentsViewModelTests: XCTestCase {
     
     func testSaveAttachmentsNotNil() {
         //given
-        let notes = [ Note(text: "Note1"), Note(text: "Note2")]
+        let notes = [Note(text: "Note1"), Note(text: "Note2")]
         let photoIDs = ["photoID1", "phototID2"]
         sut?.notes = notes
         sut?.photoIDs = photoIDs
@@ -45,5 +45,20 @@ class AttachmentsViewModelTests: XCTestCase {
         
         //then
         XCTAssertNotNil(attachmentsIn)
+    }
+    
+    func testClone() {
+        //given
+        let notes = [Note(text: "Note1"), Note(text: "Note2")]
+        let photoIDs = ["photoID1", "phototID2"]
+        sut?.notes = notes
+        sut?.photoIDs = photoIDs
+        
+        //when
+        let attachments = sut?.clone()
+        
+        //then
+        XCTAssertNotNil(attachments)
+        XCTAssertNotEqual(sut?.id, attachments?.id)
     }
 }

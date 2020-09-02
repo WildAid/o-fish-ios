@@ -29,6 +29,8 @@ struct BoardVesselButton: View {
         startReport.vessel.homePort = report.vessel.homePort
         startReport.vessel.permitNumber = report.vessel.permitNumber
         startReport.vessel.nationality = report.vessel.nationality
+        startReport.crew = report.crew
+        startReport.captain = report.captain
         return startReport
     }
 
@@ -50,7 +52,7 @@ struct BoardVesselButton: View {
             }
 
             NavigationLink(destination: ReportNavigationRootView(report: prefilledReport,
-                                                                 prefilledVesselAvailable: true,
+                                                                 prefilledAvailable: true,
                                                                  rootIsActive: $rootIsActive),
                            isActive: $showingReportRootView) {
                             EmptyView()

@@ -58,4 +58,13 @@ class CrewMemberViewModel: ObservableObject, Identifiable {
         crewMember.attachments = attachments.save()
         return crewMember
     }
+
+    func clone() -> CrewMemberViewModel {
+        let clone = CrewMemberViewModel()
+        clone.name = crewMember?.name ?? ""
+        clone.license = crewMember?.license ?? ""
+        clone.attachments = attachments.clone()
+
+        return clone
+    }
 }

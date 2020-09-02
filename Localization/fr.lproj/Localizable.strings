@@ -24,6 +24,7 @@
 "Please, input name or license" = "Ajouter un nom ou numéro de permis";
 "Prefill" = "Pré-remplir";
 "Prefill Vessel Information From Previous Boarding?" = "Pré-remplir la rubrique à partir de la dernière inspection? ";
+"Prefill Crew Information From Previous Boarding?" = "Prefill Crew Information From Previous Boarding?";
 "Previous Boardings" = "Inspections précédentes";
 "Recently Boarded" = "Récemment inspectés";
 "Refresh" = "Actualiser";
