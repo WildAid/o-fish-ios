@@ -1,11 +1,3 @@
-/* 
-  Localizable.strings
-
-  Created on 28/05/2020.
-  Copyright © 2020 WildAid. All rights reserved.
-*/
-
-
 " Search" = "Пошук";
 "Add Report" = "Додати звіт";
 "Are you sure you want to remove this crew member?" = "Ви впевнені, що хочете видалити цього члена екіпажу?";
@@ -13,7 +5,7 @@
 "Board Vessel" = "Прибути на судно";
 "Cancel" = "Скасувати";
 "Captain" = "Капітан";
-"Change status to \"At Sea\"?" = "Зміна статусу на \"на варті\"?";
+"Change status to \"At Sea\"?" = "Зміна статусу на \"на морі\"?";
 "Continue editing" = "Продовжити редагування";
 "Continue with empty fields?" = "Продовжити з порожніми полями?";
 "Date: " = "Дата:";
@@ -42,11 +34,15 @@
 "Vessel: " = "Судно: ";
 "Yes" = "Так";
 "You'll still be able to edit fields" = "Ви все ще будете в змозі редагувати поля";
-"You're currently on land" = "Ви в даний час не на службi";
+"You're currently on land" = "Ви в даний час на суші";
 "Other"  = "Інший";
 "Search Crew" = "Пошук екіпажа";
 "Electronic Monitoring System" = "Електронна мониторингова система";
 "Search EMS's" = "Пошук ЕМС";
+"Flag State" = "Флаг країни";
+"Search Flag State" = "Знайти флаг країни";
+"Species" = "Види";
+"Search Species" = "Знайти види";
 "Crew Member" = "Член команди";
 "Captain's Name" = "Ім'я капітана";
 "Crew Member Name" = "Ім'я Члену Екіпажу";
@@ -85,7 +81,6 @@
 "Fishery" = "Рибальство";
 "Gear" = "Спорядження";
 "Note" = "Примітка";
-"Boarding" = "Прибуття";
 "Weight" = "Вага";
 "Count" = "Кількість";
 "Latitude" = "Широта";
@@ -98,7 +93,7 @@
 "Back" = "Назад";
 "Last Boarding" = "Останнє Прибуття";
 "Crew Members" = "Члени екіпажу";
-"Boardings" = "Висадкок";
+"Boardings" = "Висадки";
 "Boarding" = "Висадка";
 "Warnings" = "Попередженнь";
 "Warning" = "Попередження";
@@ -107,13 +102,13 @@
 "Date & Time" = "Дата та час";
 "Time" = "Час";
 "Skip the following sections?" = "Пропустити наступні розділи?";
-"At Sea" = "На Варті";
-"On Land" = "Вільно";
-"Patrol Summary" = "Patrol Summary";
-"Continue" = "Continue";
-"Time At Sea" = "Time At Sea";
-"Start Time" = "Start Time";
-"End Time" = "End Time";
+"At Sea" = "На Морі";
+"On Land" = "На Суші";
+"Patrol Summary" = "Загальний Звіт";
+"Continue" = "Продовжити";
+"Time At Sea" = "Час На Морі";
+"Start Time" = "Початок";
+"End Time" = "Кінець";
 "Find records" = "Знайти звіти";
 "Red" = "Червоний";
 "Amber" = "Бурштиновий";
@@ -146,16 +141,16 @@
 "Email/Username" = "Е-Мейл/Ім'я користувача";
 "Password" = "Пароль";
 "Cancel boarding?" = "Скасувати прибуття?";
-"This boarding will not be saved." = "Це прибуття не буде збережено";
+"This boarding will not be saved." = "Це прибуття не буде збережено.";
 "Cancel Boarding" = "Повернутися";
 "Log In" = "Увійти";
 "Name" = "Ім'я";
 "Type" = "Тип";
 "You sure you want to logout?" = "Ви впевнені що хочете вийти?";
 "You can only log back in once you have cellular service or are connected to WIFI with internet" = "Ви зможете зайти тільки коли у вас з\'явиться інтернет";
-"Are you still at sea?" = "Ви все ще на чергуванні?";
+"Are you still at sea?" = "Ви все ще на морі?";
 "It has been %@ hours after closing the application" = "Пройшло %@ години після зачинення додатку";
-"It has been %@ hours since you went to sea." = "Пройшло %@ годин після початку чергування";
+"It has been %@ hours since you went to sea." = "Пройшло %@ годин після початку виходу у море";
 "Camera" = "Камера";
 "Photo Library" = "Бібліотека Фотографій";
 "Change profile picture" = "Змінити фотографію";
