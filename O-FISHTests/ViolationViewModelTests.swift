@@ -24,11 +24,9 @@ class ViolationViewModelTests: XCTestCase {
         //given
         let offenceCode = "125"
         let offenceExplanation = "Explanation"
-        let offenceLocation = "Location"
         let offenceModel = OffenceViewModel()
         offenceModel.code = offenceCode
         offenceModel.explanation = offenceExplanation
-        offenceModel.location = offenceLocation
         sut?.offence = offenceModel
         
         //when
@@ -59,11 +57,9 @@ class ViolationViewModelTests: XCTestCase {
         //given
         let offenceCode = "125"
         let offenceExplanation = "Explanation"
-        let offenceLocation = "Location"
         let offenceModel = OffenceViewModel()
         offenceModel.code = offenceCode
         offenceModel.explanation = offenceExplanation
-        offenceModel.location = offenceLocation
         sut?.offence = offenceModel
         
         //when

@@ -26,7 +26,7 @@ class SafetyLevelViewModelTests: XCTestCase {
         let amberReason = "Reason"
         let attachments = AttachmentsViewModel()
         sut?.level = level
-        sut?.amberReason = amberReason
+        sut?.reason = amberReason
         sut?.attachments = attachments
         
         //when
