@@ -29,8 +29,13 @@ struct BoardVesselButton: View {
         startReport.vessel.homePort = report.vessel.homePort
         startReport.vessel.permitNumber = report.vessel.permitNumber
         startReport.vessel.nationality = report.vessel.nationality
-        startReport.crew = report.crew
-        startReport.captain = report.captain
+        startReport.vessel.attachments = report.vessel.attachments.clone()
+
+        for crewMember in report.crew {
+            startReport.crew.append(crewMember.clone())
+        }
+        startReport.captain = report.captain.clone()
+
         return startReport
     }
 
