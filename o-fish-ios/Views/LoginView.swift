@@ -102,25 +102,25 @@ struct LoginView: View {
             return
         }
         showingLoading = true
-        RealmConnection.logIn( username: username, password: password) { result in
+        app.login(credentials: .init(username: username, password: password)) { user, error in
             self.showingLoading = false
-            switch result {
-            case .failure:
+            guard user != nil else {
                 self.errorMessage = "Invalid email or password"
-            case .success:
-                print("Logged in")
-
-                if let error = self.keychain.removeCredentials() as? KeychainError {
-                    print(error.localizedDescription)
-                }
-
-                if let error = self.keychain.addCredentials(Credentials(username: username, password: password)) as? KeychainError {
-                    print(error.localizedDescription)
-                }
-
-                self.loggedIn.wrappedValue = true
-                self.presentationMode.wrappedValue.dismiss()
+                return
             }
+
+            print("Logged in")
+
+            if let error = self.keychain.removeCredentials() as? KeychainError {
+                print(error.localizedDescription)
+            }
+
+            if let error = self.keychain.addCredentials(Credentials(username: username, password: password)) as? KeychainError {
+                print(error.localizedDescription)
+            }
+
+            self.loggedIn.wrappedValue = true
+            self.presentationMode.wrappedValue.dismiss()
         }
     }
 

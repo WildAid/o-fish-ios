@@ -8,7 +8,6 @@
 import RealmSwift
 
 class ReportViewModel: ObservableObject, Identifiable {
-
     private var report: Report?
 
     var id = ObjectId.generate().stringValue
@@ -23,9 +22,12 @@ class ReportViewModel: ObservableObject, Identifiable {
 
     init() {
         self.captain.isCaptain = true
-        self.reportingOfficer.email = RealmConnection.emailAddress
-        self.reportingOfficer.name.first = RealmConnection.firstName
-        self.reportingOfficer.name.last = RealmConnection.lastName
+        guard let user = app.currentUser() else {
+            return
+        }
+        self.reportingOfficer.email = user.emailAddress
+        self.reportingOfficer.name.first = user.firstName
+        self.reportingOfficer.name.last = user.lastName
     }
 
     convenience init (_ report: Report) {
@@ -64,17 +66,13 @@ class ReportViewModel: ObservableObject, Identifiable {
 
     func save() {
         let isNewReport = (report == nil)
+        guard let realm = app.currentUser()?.agencyRealm(),
+              let report = isNewReport ? Report(id: id) : report else {
+            print("Realm not available")
+            return
+        }
         do {
-            guard let realm = RealmConnection.realm else {
-                print("Realm not avaialable")
-                return
-            }
             try realm.write {
-                if isNewReport { report = Report(id: id) }
-                guard let report = report else {
-                    print("Realm report not avaialable")
-                    return
-                }
                 report.location.append(location.longitude)
                 report.location.append(location.latitude)
                 report.date = date as NSDate
@@ -89,12 +87,9 @@ class ReportViewModel: ObservableObject, Identifiable {
                     }
                 }
                 report.inspection = inspection.save()
-                notes.forEach { item in
-                    if !item.isEmpty {
-                        guard let modelItem = item.save() else { return }
-                        report.notes.append(modelItem)
-                    }
-                }
+                report.notes.append(objectsIn: notes.compactMap {
+                    $0.isEmpty ? nil : $0.save()
+                })
                 if isNewReport {
                     realm.add(report)
                 }

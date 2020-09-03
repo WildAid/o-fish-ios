@@ -8,7 +8,6 @@
 import Foundation
 
 extension Date {
-
     static func getPrintStringFromDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium

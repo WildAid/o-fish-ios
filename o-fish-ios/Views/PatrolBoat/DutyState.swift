@@ -53,10 +53,12 @@ class DutyState: ObservableObject {
     private func loadOnDutyState(user: UserViewModel) -> Bool {
         let predicate = NSPredicate(format: "user.email = %@", user.email)
 
-        guard let dutyChange = RealmConnection.realm?.objects(DutyChange.self)
-                                   .filter(predicate)
-                                   .sorted(byKeyPath: "date", ascending: false)
-                                   .first ?? nil else {
+        guard let dutyChange = app.currentUser()?
+                .agencyRealm()?
+                .objects(DutyChange.self)
+                .filter(predicate)
+                .sorted(byKeyPath: "date", ascending: false)
+                .first ?? nil else {
             return false
         }
 

@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct PatrolBoatView: View {
+    var isLoggedIn: Binding<Bool>
 
     @ObservedObject var user = UserViewModel()
     @ObservedObject var onDuty = DutyState.shared
-    var isLoggedIn: Binding<Bool>
 
     @State private var location = LocationViewModel(LocationHelper.currentLocation)
     @State private var isActiveRootFromPreboardingView  = false
@@ -131,8 +131,6 @@ struct PatrolBoatView: View {
             })
     }
 
-    /// Alerts
-
     private func showLogoutAlert() {
         showingAlertItem = AlertItem(title: "You sure you want to logout?",
             message: "You can only log back in once you have cellular service or are connected to WIFI with internet",
@@ -147,10 +145,12 @@ struct PatrolBoatView: View {
             secondaryButton: .cancel())
     }
 
-    /// Popovers
-
     private func showOptionsModal() {
-        // TODO: for some reason this works only from action and not from viewModifier
+        guard let user = app.currentUser() else {
+            self.isLoggedIn.wrappedValue = false
+            return
+        }
+
         // TODO: review when viewModifier actions will be available
         let popoverId = UUID().uuidString
         let hidePopover = {
@@ -164,7 +164,7 @@ struct PatrolBoatView: View {
             })
         ]
 
-        if RealmConnection.profilePictureDocumentId != nil {
+        if user.profilePictureDocumentId != nil {
             buttons.insert(
                 ModalViewButton(title: NSLocalizedString("Change profile picture", comment: ""), action: {
                     hidePopover()
@@ -221,17 +221,16 @@ struct PatrolBoatView: View {
     /// Actions
 
     private func onAppear() {
-        if isLoggedIn.wrappedValue && !RealmConnection.isConnected {
-            print("Connecting to realm from patrol")
-            RealmConnection.connect()
+        guard let user = app.currentUser() else {
+            self.isLoggedIn.wrappedValue = false
+            return
         }
+        self.user.email = user.emailAddress
+        self.user.name.first = user.firstName
+        self.user.name.last = user.lastName
+        onDuty.user = self.user
 
-        user.email = RealmConnection.emailAddress
-        user.name.first = RealmConnection.firstName
-        user.name.last = RealmConnection.lastName
-        onDuty.user = user
-
-        profilePicture = getPicture(documentId: RealmConnection.profilePictureDocumentId)
+        profilePicture = getPicture(documentId: user.profilePictureDocumentId)
         location = LocationViewModel(LocationHelper.currentLocation)
     }
 
@@ -241,9 +240,15 @@ struct PatrolBoatView: View {
     }
 
     private func logoutAlertClicked() {
-        RealmConnection.logout()
-        isLoggedIn.wrappedValue = false
-        NotificationManager.shared.removeAllNotification()
+        guard let user = app.currentUser() else {
+            print("Attempting to logout when no user logged in")
+            return
+        }
+
+        user.logOut { _ in
+            self.isLoggedIn.wrappedValue = false
+            NotificationManager.shared.removeAllNotification()
+        }
     }
 
     private func showOffDutyConfirmation() {
@@ -266,10 +271,18 @@ struct PatrolBoatView: View {
     }
 
     private func getDutyStartForCurrentUser() -> DutyChangeViewModel? {
-        let userEmail = RealmConnection.emailAddress
+        guard let user = app.currentUser() else {
+            print("Bad state")
+            return nil
+        }
+        let userEmail = user.emailAddress
         let predicate = NSPredicate(format: "user.email = %@", userEmail)
 
-        let realmDutyChanges = RealmConnection.realm?.objects(DutyChange.self).filter(predicate).sorted(byKeyPath: "date", ascending: false) ?? nil
+        let realmDutyChanges = app.currentUser()?
+            .agencyRealm()?
+            .objects(DutyChange.self)
+            .filter(predicate)
+            .sorted(byKeyPath: "date", ascending: false) ?? nil
 
         guard let dutyChanges = realmDutyChanges,
               let dutyChange = dutyChanges.first else { return nil }
@@ -278,12 +291,20 @@ struct PatrolBoatView: View {
     }
 
     private func dutyReportsForCurrentUser(startDutyTime: Date, endDutyTime: Date) -> [ReportViewModel] {
-        let userEmail = RealmConnection.emailAddress
+        guard let user = app.currentUser() else {
+            print("Bad state")
+            return []
+        }
+        let userEmail = user.emailAddress
 
         let predicate = NSPredicate(format: "timestamp > %@ AND timestamp < %@ AND reportingOfficer.email = %@",
             startDutyTime as NSDate, endDutyTime as NSDate, userEmail)
 
-        let realmReports = RealmConnection.realm?.objects(Report.self).filter(predicate).sorted(byKeyPath: "timestamp", ascending: false) ?? nil
+        let realmReports = app.currentUser()?
+            .agencyRealm()?
+            .objects(Report.self)
+            .filter(predicate)
+            .sorted(byKeyPath: "timestamp", ascending: false) ?? nil
 
         guard let reports = realmReports else { return [] }
 

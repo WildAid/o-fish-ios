@@ -36,7 +36,7 @@ class DutyChangeViewModel: ObservableObject {
     func save() {
         let isNew = (dutyChange == nil)
         do {
-            guard let realm = RealmConnection.realm else {
+            guard let realm = app.currentUser()?.agencyRealm() else {
                 print("Realm not avaialable")
                 return
             }
@@ -49,10 +49,6 @@ class DutyChangeViewModel: ObservableObject {
                 dutyChange.status = self.status.rawValue
                 dutyChange.date = self.date
                 if isNew {
-                    guard let realm = RealmConnection.realm else {
-                        print("Can't access Realm")
-                        return
-                    }
                     realm.add(dutyChange)
                 }
             }

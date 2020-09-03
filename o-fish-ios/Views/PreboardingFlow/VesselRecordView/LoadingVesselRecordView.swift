@@ -40,7 +40,11 @@ struct LoadingVesselRecordView: View {
     private func loadReports() {
         storedReports = []
         let predicate = NSPredicate(format: "vessel.name == %@ AND vessel.permitNumber == %@", report.vessel.name, report.vessel.permitNumber)
-        let realmReports = RealmConnection.realm?.objects(Report.self).filter(predicate).sorted(byKeyPath: "timestamp", ascending: false)
+        let realmReports = app.currentUser()?
+            .agencyRealm()?
+            .objects(Report.self)
+            .filter(predicate)
+            .sorted(byKeyPath: "timestamp", ascending: false)
         if let realmReports = realmReports {
             for report in realmReports {
                 storedReports.append(ReportViewModel(report))
