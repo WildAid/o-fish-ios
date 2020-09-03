@@ -47,4 +47,22 @@ class AttachmentsViewModel: ObservableObject, Identifiable {
         }
         return attachments
     }
+
+    func clone() -> AttachmentsViewModel {
+        let clone = AttachmentsViewModel()
+
+        if let photoIDs = attachments?.photoIDs {
+            for index in photoIDs.indices {
+                clone.photoIDs.append(photoIDs[index])
+            }
+        }
+
+        if let notes = attachments?.notes {
+            for index in notes.indices {
+                clone.notes.append(Note(text: notes[index]))
+            }
+        }
+
+        return clone
+    }
 }

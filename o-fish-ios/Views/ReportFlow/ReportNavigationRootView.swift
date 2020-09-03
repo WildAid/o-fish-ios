@@ -13,25 +13,29 @@ struct ReportNavigationRootView: View {
     @ObservedObject var report: ReportViewModel
     @Binding var rootIsActive: Bool
 
-    private var prefilledVesselAvailable: Bool
+    private var prefilledAvailable: Bool
     @State private var showingAlertItem: AlertItem?
     @State private var notFilledScreens: [String] = TopTabBarItems.allCases.map { $0.rawValue }
+    @State private var prefilledCrewAvailable: Bool
 
-    init(report: ReportViewModel? = nil, prefilledVesselAvailable: Bool = false, rootIsActive: Binding<Bool>) {
+    init(report: ReportViewModel? = nil, prefilledAvailable: Bool = false, rootIsActive: Binding<Bool>) {
         self.report = report ?? ReportViewModel()
-        self.prefilledVesselAvailable = prefilledVesselAvailable
+        self.prefilledAvailable = prefilledAvailable
         _rootIsActive = rootIsActive
         if let menuData = app.currentUser()?.agencyRealm()?.objects(MenuData.self).first {
             Settings.shared.menuData = menuData
         } else {
             print("Failed to read menus")
         }
+        _prefilledCrewAvailable = State(initialValue: prefilledAvailable)
     }
 
     var body: some View {
         TopTabBarContainerView(report: report,
-            prefilledVesselAvailable: prefilledVesselAvailable,
+            prefilledAvailable: prefilledAvailable,
+            prefilledCrewAvailable: $prefilledCrewAvailable,
             showingAlertItem: $showingAlertItem,
+            showSubmitAlert: showFinalAlert,
             notFilledScreens: $notFilledScreens
         )
 
@@ -96,6 +100,12 @@ struct ReportNavigationRootView: View {
     }
 
     private func saveAlertClicked() {
+        if prefilledCrewAvailable {
+            let captain = CrewMemberViewModel()
+            captain.isCaptain = true
+            report.captain = captain
+            report.crew = [CrewMemberViewModel]()
+        }
         print("Saving report in Realm")
         report.save()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

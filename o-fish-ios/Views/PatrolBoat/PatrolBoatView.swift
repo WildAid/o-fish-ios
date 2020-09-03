@@ -109,8 +109,8 @@ struct PatrolBoatView: View {
                     trailing:
                         TextToggle(isOn: dutyBinding,
                             titleLabel: "",
-                            onLabel: "On Duty",
-                            offLabel: "Off Duty")
+                            onLabel: "At Sea",
+                            offLabel: "On Land")
                 )
                 .navigationBarTitle(Text(""), displayMode: .inline)
                 .navigationBarBackButtonHidden(true)
@@ -139,8 +139,8 @@ struct PatrolBoatView: View {
     }
 
     private func showGoOnDutyAlert() {
-        showingAlertItem = AlertItem(title: "You're currently off duty",
-            message: "Change status to \"On Duty\"?",
+        showingAlertItem = AlertItem(title: "You're currently on land",
+            message: "Change status to \"At Sea\"?",
             primaryButton: .default(Text("Yes"), action: goOnDutyAlertClicked),
             secondaryButton: .cancel())
     }
@@ -158,7 +158,7 @@ struct PatrolBoatView: View {
         }
 
         var buttons = [
-            ModalViewButton(title: "Log Out", action: {
+            ModalViewButton(title: NSLocalizedString("Log Out", comment: ""), action: {
                 hidePopover()
                 self.showLogoutAlert()
             })
@@ -166,7 +166,7 @@ struct PatrolBoatView: View {
 
         if user.profilePictureDocumentId != nil {
             buttons.insert(
-                ModalViewButton(title: "Change profile picture", action: {
+                ModalViewButton(title: NSLocalizedString("Change profile picture", comment: ""), action: {
                     hidePopover()
                     self.showPhotoPickerTypeModal()
                 }),
@@ -191,12 +191,12 @@ struct PatrolBoatView: View {
         }
         PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
             ModalView(buttons: [
-                ModalViewButton(title: "Camera", action: {
+                ModalViewButton(title: NSLocalizedString("Camera", comment: ""), action: {
                     hidePopover()
                     self.showPhotoTaker(source: .camera)
                 }),
 
-                ModalViewButton(title: "Photo Library", action: {
+                ModalViewButton(title: NSLocalizedString("Photo Library", comment: ""), action: {
                     hidePopover()
                     self.showPhotoTaker(source: .photoLibrary)
                 })

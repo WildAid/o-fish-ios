@@ -11,7 +11,7 @@ class SafetyLevelViewModel: ObservableObject, Identifiable {
     private var safetyLevel: SafetyLevel?
 
     @Published var level: LevelColor = .green
-    @Published var amberReason = ""
+    @Published var reason = ""
     @Published var attachments = AttachmentsViewModel()
 
     enum LevelColor: String {
@@ -25,7 +25,7 @@ class SafetyLevelViewModel: ObservableObject, Identifiable {
         if let safetyLevel = safetyLevel {
             self.safetyLevel = safetyLevel
             level = LevelColor(rawValue: safetyLevel.level) ?? .green
-            amberReason = safetyLevel.amberReason
+            reason = safetyLevel.amberReason
             attachments = AttachmentsViewModel(safetyLevel.attachments)
         } else {
             self.safetyLevel = SafetyLevel()
@@ -39,7 +39,7 @@ class SafetyLevelViewModel: ObservableObject, Identifiable {
         guard let safetyLevel = safetyLevel else { return nil }
 
         safetyLevel.level = level.rawValue
-        safetyLevel.amberReason = amberReason
+        safetyLevel.amberReason = reason
         safetyLevel.attachments = attachments.save()
         return safetyLevel
     }

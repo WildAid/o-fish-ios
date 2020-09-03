@@ -33,6 +33,7 @@ enum TopTabBarItems: String {
 struct TopTabBarContainerView: View {
     @ObservedObject private var report: ReportViewModel
     @State private var prefilledVesselAvailable: Bool
+    @Binding private var prefilledCrewAvailable: Bool
 
     @Binding private var showingAlertItem: AlertItem?
     private var showSubmitAlert: (() -> Void)?
@@ -54,13 +55,17 @@ struct TopTabBarContainerView: View {
     }
 
     init(report: ReportViewModel,
-         prefilledVesselAvailable: Bool,
+         prefilledAvailable: Bool,
+         prefilledCrewAvailable: Binding<Bool>,
          showingAlertItem: Binding<AlertItem?>,
+         showSubmitAlert: (() -> Void)? = nil,
          notFilledScreens: Binding<[String]>) {
 
         self.report = report
-        self._prefilledVesselAvailable = State(initialValue: prefilledVesselAvailable)
+        self._prefilledVesselAvailable = State(initialValue: prefilledAvailable)
+        self._prefilledCrewAvailable = prefilledCrewAvailable
         self._showingAlertItem = showingAlertItem
+        self.showSubmitAlert = showSubmitAlert
         self._notFilledScreens = notFilledScreens
 
         let basicInfoItem = TabBarItem(title: TopTabBarItems.basicInformation.rawValue)
@@ -131,7 +136,9 @@ struct TopTabBarContainerView: View {
                     allFieldsComplete: allFieldsCompleteBinding)
 
             } else if self.isCrewSelected {
-                CrewView(report: self.report,
+                CrewView(
+                    report: self.report,
+                    prefilledCrewAvailable: $prefilledCrewAvailable,
                     allFieldsComplete: allFieldsCompleteBinding,
                     showingWarningState: $showingNotCompleteState)
 
@@ -338,7 +345,8 @@ struct TopTabBarContainerView: View {
 struct TopTabBarContainerView_Previews: PreviewProvider {
     static var previews: some View {
         TopTabBarContainerView(report: .sample,
-            prefilledVesselAvailable: true,
+            prefilledAvailable: true,
+            prefilledCrewAvailable: .constant(true),
             showingAlertItem: .constant(nil),
             notFilledScreens: .constant([])
         )

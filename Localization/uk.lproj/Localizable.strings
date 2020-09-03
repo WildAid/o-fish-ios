@@ -1,20 +1,11 @@
-/* 
-  Localizable.strings
-
-  Created on 28/05/2020.
-  Copyright © 2020 WildAid. All rights reserved.
-*/
-
-
 " Search" = "Пошук";
 "Add Report" = "Додати звіт";
 "Are you sure you want to remove this crew member?" = "Ви впевнені, що хочете видалити цього члена екіпажу?";
 "Are you sure you want to replace captain?" = "Ви впевнені, що Ви хочете замінити капітана?";
 "Board Vessel" = "Прибути на судно";
 "Cancel" = "Скасувати";
-"Cannot access reports" = "Неможливо отримати доступ до звітів";
 "Captain" = "Капітан";
-"Change status to \"On Duty\"?" = "Зміна статусу на \"на варті\"?";
+"Change status to \"At Sea\"?" = "Зміна статусу на \"на морі\"?";
 "Continue editing" = "Продовжити редагування";
 "Continue with empty fields?" = "Продовжити з порожніми полями?";
 "Date: " = "Дата:";
@@ -30,9 +21,10 @@
 "No Results for “%@“" = "Немає результатів для «%@»";
 "Ok" = "Добре";
 "Permit #" = "Дозвіл #";
-"Please, input name or licence" = "Будь ласка, ім'я входу або ліцензії";
+"Please, input name or license" = "Будь ласка, ім'я входу або ліцензії";
 "Prefill" = "Попереднє заповнення";
 "Prefill Vessel Information From Previous Boarding?" = "Заповнити судову інформацію від попередньої посадки?";
+"Prefill Crew Information From Previous Boarding?" = "Заповнити інформацію про екіпаж від попередньої посадки?";
 "Previous Boardings" = "Попередні прибуття";
 "Recently Boarded" = "Нещодавні прибуття";
 "Refresh" = "Оновити";
@@ -43,43 +35,23 @@
 "Vessel: " = "Судно: ";
 "Yes" = "Так";
 "You'll still be able to edit fields" = "Ви все ще будете в змозі редагувати поля";
-"You're currently off duty" = "Ви в даний час не на службi";
-"Fishing" = "Рибальство";
-"Transiting" = "Транзит";
-"Offloading" = "Розвантаження";
+"You're currently on land" = "Ви в даний час на суші";
 "Other"  = "Інший";
 "Search Crew" = "Пошук екіпажа";
 "Electronic Monitoring System" = "Електронна мониторингова система";
 "Search EMS's" = "Пошук ЕМС";
-"Tuna" = "Тунець";
-"Groundfish" = "Камбала";
-"Bluefish" = "Блакитна риба";
-"Trawl" = "Траловий лов";
-"Long-line" = "Ярусний лов";
-"Nets" = "Ciточний лов";
-"Flag State" = "Держава прапора";
-"Search Flag State" = "Пошук Держави Прапора";
-"Species" = "Вид";
-"Search Species" = "Пошук по виду";
-"Tuna" = "Тунець";
-"Swordfish" = "Риба-меч";
-"Clownfish" = "Риба-клоун";
-"Fish and Game code 7850(a)" = "Риба і дичина, код 7850 (а)";
-"No commercial license" = "Немає Комерційної Ліцензії";
-"Fish and Game code 7145(a)" = "Риба і дичина код 7145 (а)";
-"Fishing without a license" = "Риболовля без ліцензії";
-"Take/Possess undersize Dungeness crab" = "Ловля/зберігання підрозмірних крабів Магістр";
-"Take in violation of Federal Regulations" = "Порушення федеральних правил";
-"California" = "Каліфорнія";
-"Use barbed hooks for Salmon" = "Використовуйє колючі гачки для лосося";
+"Flag State" = "Флаг країни";
+"Search Flag State" = "Знайти флаг країни";
+"Species" = "Види";
+"Search Species" = "Знайти види";
 "Crew Member" = "Член команди";
 "Captain's Name" = "Ім'я капітана";
 "Crew Member Name" = "Ім'я Члену Екіпажу";
 "License Number" = "Номер ліцензії";
 "Remove Note" = "Видалити Примітку";
 "Add Note" = "Додати Примітку";
-"Risk" = "Ризик";
 "Reason for amber" = "Причина для бурштинового";
+"Reason for red" = "Причина для червоного";
 "Last Delivery" = "Остання поставка";
 "Date" = "Дата";
 "Select" = "Вибрати";
@@ -111,7 +83,6 @@
 "Fishery" = "Рибальство";
 "Gear" = "Спорядження";
 "Note" = "Примітка";
-"Boarding" = "Прибуття";
 "Weight" = "Вага";
 "Count" = "Кількість";
 "Latitude" = "Широта";
@@ -122,10 +93,9 @@
 "Search" = "Пошук";
 "Search Vessels" = "Пошук судів";
 "Back" = "Назад";
-"Cancel" = "Скасувати";
 "Last Boarding" = "Останнє Прибуття";
 "Crew Members" = "Члени екіпажу";
-"Boardings" = "Висадкок";
+"Boardings" = "Висадки";
 "Boarding" = "Висадка";
 "Warnings" = "Попередженнь";
 "Warning" = "Попередження";
@@ -134,8 +104,13 @@
 "Date & Time" = "Дата та час";
 "Time" = "Час";
 "Skip the following sections?" = "Пропустити наступні розділи?";
-"On Duty" = "На Варті";
-"Off Duty" = "Вільно";
+"At Sea" = "На Морі";
+"On Land" = "На Суші";
+"Patrol Summary" = "Загальний Звіт";
+"Continue" = "Продовжити";
+"Time At Sea" = "Час На Морі";
+"Start Time" = "Початок";
+"End Time" = "Кінець";
 "Find records" = "Знайти звіти";
 "Red" = "Червоний";
 "Amber" = "Бурштиновий";
@@ -156,7 +131,7 @@
 "Tonnes" = "Метричні Тонни";
 "Weight & Count" = "Вага і Кількість";
 "Search Activities" = "Пошук Діяльності";
-"Search Fishery" = "Пошук Рибальства";
+"Search Fisheries" = "Пошук Рибальства";
 "Search Gear" = "Пошук Спорядження";
 "Gear Type" = "Тип Спорядження";
 "Search Violations" = "Пошук Порушеннь";
@@ -168,16 +143,16 @@
 "Email/Username" = "Е-Мейл/Ім'я користувача";
 "Password" = "Пароль";
 "Cancel boarding?" = "Скасувати прибуття?";
-"This boarding will not be saved" = "Це прибуття не буде збережено";
+"This boarding will not be saved." = "Це прибуття не буде збережено.";
 "Cancel Boarding" = "Повернутися";
 "Log In" = "Увійти";
 "Name" = "Ім'я";
 "Type" = "Тип";
 "You sure you want to logout?" = "Ви впевнені що хочете вийти?";
 "You can only log back in once you have cellular service or are connected to WIFI with internet" = "Ви зможете зайти тільки коли у вас з\'явиться інтернет";
-"Are you still on duty?" = "Ви все ще на чергуванні?";
+"Are you still at sea?" = "Ви все ще на морі?";
 "It has been %@ hours after closing the application" = "Пройшло %@ години після зачинення додатку";
-"It has been %@ hours after starting of your duty." = "Пройшло %@ годин після початку чергування";
+"It has been %@ hours since you went to sea." = "Пройшло %@ годин після початку виходу у море";
 "Camera" = "Камера";
 "Photo Library" = "Бібліотека Фотографій";
 "Change profile picture" = "Змінити фотографію";

@@ -32,7 +32,11 @@ struct RiskView: View {
                     TrafficLights(color: self.$report.inspection.summary.safetyLevel.level)
                         .padding(.bottom, Dimensions.trafficLightPadding)
                     if self.report.inspection.summary.safetyLevel.level == .amber {
-                        InputField(title: "Reason for amber", text: self.$report.inspection.summary.safetyLevel.amberReason)
+                        InputField(title: "Reason for amber", text: self.$report.inspection.summary.safetyLevel.reason)
+                    }
+
+                    if self.report.inspection.summary.safetyLevel.level == .red {
+                        InputField(title: "Reason for red", text: self.$report.inspection.summary.safetyLevel.reason)
                     }
 
                     AttachmentsView(attachments: self.report.inspection.attachments)

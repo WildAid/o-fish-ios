@@ -29,6 +29,13 @@ struct BoardVesselButton: View {
         startReport.vessel.homePort = report.vessel.homePort
         startReport.vessel.permitNumber = report.vessel.permitNumber
         startReport.vessel.nationality = report.vessel.nationality
+        startReport.vessel.attachments = report.vessel.attachments.clone()
+
+        for crewMember in report.crew {
+            startReport.crew.append(crewMember.clone())
+        }
+        startReport.captain = report.captain.clone()
+
         return startReport
     }
 
@@ -40,8 +47,8 @@ struct BoardVesselButton: View {
                 .padding(.bottom, onHeader ? Dimensions.mainSpacing : Dimensions.bottomPadding)
                 .padding(.horizontal, Dimensions.padding)
                 .alert(isPresented: $showingGoOnDutyAlert) {
-                    Alert(title: Text("You're currently off duty"),
-                          message: Text("Change status to \"On Duty\"?"),
+                    Alert(title: Text("You're currently on land"),
+                          message: Text("Change status to \"At Sea\"?"),
                           primaryButton: .default(Text("Yes"), action: {
                             self.onDuty.onDuty = true
                             self.showingReportRootView = true
@@ -50,7 +57,7 @@ struct BoardVesselButton: View {
             }
 
             NavigationLink(destination: ReportNavigationRootView(report: prefilledReport,
-                                                                 prefilledVesselAvailable: true,
+                                                                 prefilledAvailable: true,
                                                                  rootIsActive: $rootIsActive),
                            isActive: $showingReportRootView) {
                             EmptyView()

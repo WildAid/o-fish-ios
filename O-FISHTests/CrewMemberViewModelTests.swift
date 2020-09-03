@@ -97,7 +97,7 @@ class CrewMemberViewModelTests: XCTestCase {
         sut.license = "Licence number"
 
         //then
-        XCTAssertTrue(sut.isComplete, "If name and licence is filled then crew should be complete")
+        XCTAssertTrue(sut.isComplete, "If name and license is filled then crew should be complete")
     }
 
     func testIsNotComplete() {
@@ -130,5 +130,23 @@ class CrewMemberViewModelTests: XCTestCase {
         
         //then
         XCTAssertNotNil(crew)
+    }
+    
+    func testClone() {
+        //given
+        let name = "name"
+        let license = "lisence"
+        let crewMember = CrewMember()
+        crewMember.name = name
+        crewMember.license = license
+        sut = CrewMemberViewModel(crewMember)
+        
+        //when
+        let crew = sut?.clone()
+        
+        //then
+        XCTAssertEqual(crew?.name, name)
+        XCTAssertEqual(crew?.license, license)
+        XCTAssertNotEqual(sut?.id, crew?.id)
     }
 }
