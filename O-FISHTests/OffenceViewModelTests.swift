@@ -14,10 +14,8 @@ class OffenceViewModelTests: XCTestCase {
       
 
     override func setUpWithError() throws {
-        let location = "California"
         let offence = Offence()
         sut = OffenceViewModel(offence)
-        sut?.location = location
     }
 
     override func tearDownWithError() throws {

@@ -10,16 +10,15 @@ import SwiftUI
 struct ViolationPickerData {
     var id = UUID()
 
-    let caption: String
     let title: String
     let description: String
 }
 
 extension ViolationPickerData: SearchableDataProtocol {
-    static let notSelected = ViolationPickerData(caption: "", title: "", description: "")
+    static let notSelected = ViolationPickerData(title: "", description: "")
 
     var searchKey: String {
-        title + caption + description
+        title + description
     }
 }
 
@@ -35,24 +34,20 @@ struct ViolationPickerView: View {
             title: title,
             searchBarPlaceholder: searchBarPlaceholder) { (item: ViolationPickerData) in
 
-            ViolationPickerDataView(caption: item.caption, title: item.title, description: item.description)
+                ViolationPickerDataView(title: item.title, description: item.description)
         }
     }
 }
 
 struct ViolationPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        let testItems = [ViolationPickerData(caption: "California",
-                                             title: "Fish and game",
+        let testItems = [ViolationPickerData(title: "Fish and game",
                                              description: "No license"),
-                         ViolationPickerData(caption: "California",
-                                             title: "Fish and game",
+                         ViolationPickerData(title: "Fish and game",
                                              description: "Use barbed hooks for Salmon"),
-                         ViolationPickerData(caption: "California",
-                                             title: "Fish and game",
+                         ViolationPickerData(title: "Fish and game",
                                              description: "Take in violation of Federal Regulations")]
-        return ViolationPickerView(selectedItem: .constant(ViolationPickerData(caption: "",
-                                                                               title: "Title",
+        return ViolationPickerView(selectedItem: .constant(ViolationPickerData(title: "Title",
                                                                                description: "Description")),
                                    items: testItems,
                                    title: "Title",

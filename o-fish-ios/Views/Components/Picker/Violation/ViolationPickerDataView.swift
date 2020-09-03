@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ViolationPickerDataView: View {
-    let caption: String
     let title: String
     let description: String
 
@@ -18,7 +17,7 @@ struct ViolationPickerDataView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: spacing) {
-            Text([NSLocalizedString(caption, comment: ""), NSLocalizedString(title, comment: "")].joined(separator: " "))
+            Text(NSLocalizedString(title, comment: ""))
                 .foregroundColor(.text)
             Text(LocalizedStringKey(description))
                 .foregroundColor(.text)
@@ -33,8 +32,7 @@ struct ViolationPickerDataView: View {
 
 struct ViolationRow_Previews: PreviewProvider {
     static var previews: some View {
-        ViolationPickerDataView(caption: "California",
-                title: "Fish and Game Code 7857",
-                description: "No Commercial License")
+        ViolationPickerDataView(title: "Fish and Game Code 7857",
+                                description: "No Commercial License")
     }
 }

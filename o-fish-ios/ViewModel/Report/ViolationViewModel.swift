@@ -28,9 +28,8 @@ class ViolationViewModel: ObservableObject, Identifiable {
         if self.offence.code.isEmpty && self.offence.explanation.isEmpty {
             return ""
         } else {
-            return [[NSLocalizedString(self.offence.location, comment: ""),
-                     NSLocalizedString(self.offence.code, comment: "")].joined(separator: " "),
-                    NSLocalizedString(self.offence.explanation, comment: "")].joined(separator: "\n")
+            return [NSLocalizedString(self.offence.code, comment: ""),
+                     NSLocalizedString(self.offence.explanation, comment: "")].joined(separator: "\n")
         }
     }
 
