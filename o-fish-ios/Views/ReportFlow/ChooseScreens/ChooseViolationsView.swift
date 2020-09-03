@@ -13,7 +13,7 @@ struct ChooseViolationsView: View {
         if Settings.shared.menuData.violationCodes.count == Settings.shared.menuData.violationDescriptions.count {
             for index in Settings.shared.menuData.violationCodes.indices {
                 let violation = ViolationPickerData(
-                    caption: "California",  // TODO: Remove once agreed with design
+                    caption: "",
                     title: Settings.shared.menuData.violationCodes[index],
                     description: Settings.shared.menuData.violationDescriptions[index]
                 )
