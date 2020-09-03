@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 // Only MainNavigationRootView should include a NavigationView, that NavigationView
 // will embed all of the other views
@@ -15,7 +14,7 @@ struct MainNavigationRootView: View {
 
     var body: some View {
         NavigationView {
-            if let user = app.currentUser(), user.state == .loggedIn {
+            if isLoggedIn {
                 PatrolBoatView(isLoggedIn: $isLoggedIn)
             } else {
                 LoginView(loggedIn: self.$isLoggedIn)

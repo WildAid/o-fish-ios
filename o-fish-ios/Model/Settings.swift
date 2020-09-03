@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-let app = RealmApp(id: Constants.realmAppId)
+let app = App(id: Constants.realmAppId)
 
 class Settings: ObservableObject {
     static let shared = Settings()
@@ -23,7 +23,7 @@ class Settings: ObservableObject {
     var reuseDuration: TimeInterval = 10 //The duration for which Touch ID authentication reuse is allowable.
 }
 
-extension SyncUser {
+extension RealmSwift.User {
     var partition: String {
         guard case let .document(agency) = self.customData?["agency"],
               case let .string(partition) = agency["name"] else {

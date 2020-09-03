@@ -23,7 +23,6 @@ class ReportViewModel: ObservableObject, Identifiable {
     init() {
         self.captain.isCaptain = true
         guard let user = app.currentUser() else {
-            print("Bad state")
             return
         }
         self.reportingOfficer.email = user.emailAddress

@@ -102,7 +102,7 @@ struct LoginView: View {
             return
         }
         showingLoading = true
-        app.login(withCredential: .init(username: username, password: password)) { user, error in
+        app.login(credentials: .init(username: username, password: password)) { user, error in
             self.showingLoading = false
             guard user != nil else {
                 self.errorMessage = "Invalid email or password"

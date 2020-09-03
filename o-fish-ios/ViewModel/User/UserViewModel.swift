@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 class UserViewModel: ObservableObject {
     var user: User?

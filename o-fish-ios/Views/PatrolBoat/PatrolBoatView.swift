@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct PatrolBoatView: View {
     var isLoggedIn: Binding<Bool>
@@ -132,8 +131,6 @@ struct PatrolBoatView: View {
             })
     }
 
-    /// Alerts
-
     private func showLogoutAlert() {
         showingAlertItem = AlertItem(title: "You sure you want to logout?",
             message: "You can only log back in once you have cellular service or are connected to WIFI with internet",
@@ -148,15 +145,12 @@ struct PatrolBoatView: View {
             secondaryButton: .cancel())
     }
 
-    /// Popovers
-
     private func showOptionsModal() {
         guard let user = app.currentUser() else {
             self.isLoggedIn.wrappedValue = false
             return
         }
 
-        // TODO: for some reason this works only from action and not from viewModifier
         // TODO: review when viewModifier actions will be available
         let popoverId = UUID().uuidString
         let hidePopover = {
@@ -246,8 +240,13 @@ struct PatrolBoatView: View {
     }
 
     private func logoutAlertClicked() {
-        app.logOut { _ in
-            isLoggedIn.wrappedValue = false
+        guard let user = app.currentUser() else {
+            print("Attempting to logout when no user logged in")
+            return
+        }
+
+        user.logOut { _ in
+            self.isLoggedIn.wrappedValue = false
             NotificationManager.shared.removeAllNotification()
         }
     }
