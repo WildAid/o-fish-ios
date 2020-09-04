@@ -25,6 +25,7 @@ struct SearchBarButton: View {
                 GlassIconView()
                     .padding(.leading, Dimensions.paddingLeadingImage)
                 Text(LocalizedStringKey(title))
+                    .font(.body)
                 Spacer()
             }
                 .frame(height: Dimensions.height)

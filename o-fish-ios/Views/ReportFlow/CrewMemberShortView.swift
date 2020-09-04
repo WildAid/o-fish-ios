@@ -26,14 +26,14 @@ struct CrewMemberShortView: View {
             VStack(spacing: .zero) {
                 TextLabel(title: crewMember.name)
                 if showingLicenseNumber {
-                    CaptionLabel(title: "Licence Number \( crewMember.license)", color: .text)
+                    CaptionLabel(title: "Licence Number \( crewMember.license)", color: .text, font: .footnote)
                 }
             }
 
             if crewMember.isCaptain {
                 HStack {
                     Text("Captain".uppercased())
-                        .font(Font.caption.weight(.semibold))
+                        .font(Font.caption1.weight(.semibold))
                         .foregroundColor(color)
                         .padding(.vertical, Dimensions.captainLabelVerticalPadding)
                         .padding(.horizontal, Dimensions.captainLabelHorizontalPadding)

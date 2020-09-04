@@ -35,6 +35,7 @@ struct SearchBarView: View {
                     text: $searchText,
                     onEditingChanged: onEditingChanged,
                     onCommit: onCommit)
+                    .font(.body)
 
                 if searchText.isEmpty {
                     Button(action: {

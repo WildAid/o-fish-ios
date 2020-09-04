@@ -36,12 +36,12 @@ struct VesselItemView: View {
                         StatusSymbolView(risk: report.inspection.summary.safetyLevel.level)
                     }
                     VStack(spacing: Dimensions.leadingSpacing) {
-                        CaptionLabel(title: NSLocalizedString("Permit #", comment: "") + report.vessel.permitNumber, color: .gray)
+                        CaptionLabel(title: NSLocalizedString("Permit #", comment: "") + report.vessel.permitNumber, color: .gray, font: .subheadline)
                         CaptionLabel(title: NSLocalizedString("Last Boarding", comment: "") + " " + (report.date as Date).justLongDate(),
-                                     color: .gray)
+                                     color: .gray, font: .subheadline)
                         CaptionLabel(title: "\(crewCount)" + " "
                             +  NSLocalizedString(crewCount == 1 ? "Crew Member" : "Crew Members", comment: ""),
-                                     color: .gray)
+                                     color: .gray, font: .subheadline)
                     }
                         .font(.subheadline)
                 }

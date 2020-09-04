@@ -24,6 +24,7 @@ struct IconLabel: View {
             HStack(spacing: Dimension.spacing) {
                 Image(systemName: imagePath)
                 Text(LocalizedStringKey(title))
+                    .font(.body)
                 Spacer()
             }
                 .foregroundColor(color)

@@ -17,6 +17,7 @@ struct LabeledText: View {
         VStack(alignment: .leading, spacing: .zero) {
             CaptionLabel(title: label)
             Text("\(text)")
+                .font(.body)
                 .lineLimit(lineLimit)
         }
     }

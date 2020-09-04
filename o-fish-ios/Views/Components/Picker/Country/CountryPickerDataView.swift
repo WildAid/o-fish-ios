@@ -27,6 +27,7 @@ struct CountryPickerDataView: View {
             Text(item.title)
                 .lineLimit(2)
                 .foregroundColor(.text)
+                .font(.body)
             Spacer()
         }
             .padding(.top, Dimensions.spacing)

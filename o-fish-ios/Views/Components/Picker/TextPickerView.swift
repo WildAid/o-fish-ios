@@ -35,6 +35,7 @@ struct TextPickerView: View {
                 Text(LocalizedStringKey(item))
                     .lineLimit(2)
                     .foregroundColor(.text)
+                    .font(.body)
                 Spacer()
             }
                 .padding(.vertical, self.verticalPadding)

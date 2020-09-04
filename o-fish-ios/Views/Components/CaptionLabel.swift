@@ -10,7 +10,7 @@ import SwiftUI
 struct CaptionLabel: View {
     var title = "Title"
     var color: Color = .removeAction
-    var font: Font = .caption
+    var font: Font = .caption1
 
     var body: some View {
         HStack {

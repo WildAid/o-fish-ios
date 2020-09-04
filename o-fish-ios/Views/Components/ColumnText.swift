@@ -19,9 +19,8 @@ struct ColumnText: View {
         VStack {
             Text(title)
                 .font(Font.title.weight(.semibold))
-                .bold()
             Text(subtitle)
-                .font(.callout)
+                .font(.caption1)
         }
             .padding([.horizontal], Dimensions.padding)
     }

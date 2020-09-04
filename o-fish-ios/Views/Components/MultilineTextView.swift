@@ -13,7 +13,7 @@ struct MultilineTextView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> UITextView {
         let view = UITextView()
-        view.font = .systemFont(ofSize: 17)
+        view.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
         view.isScrollEnabled = true
         view.isEditable = true
         view.isUserInteractionEnabled = true

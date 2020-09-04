@@ -71,6 +71,7 @@ struct VesselRecordItemView: View {
                 VStack(alignment: .leading, spacing: Dimensions.stackSpacing) {
                     Text(report.date.justDate())
                         .foregroundColor(.text)
+                        .font(.body)
 
                     CaptionLabel(title: violationsTitle,
                         color: .gray,

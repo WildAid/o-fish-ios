@@ -22,7 +22,7 @@ struct EmptyStateView: View {
                 .font(.system(size: Dimensions.imageSize))
                 .foregroundColor(Color.iconsGray)
             Text("No Results for “\(searchWord)“")
-                .font(.title)
+                .font(Font.title3.weight(.semibold))
         }
             .padding(.top, Dimensions.topPadding)
     }
