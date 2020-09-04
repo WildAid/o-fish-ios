@@ -74,7 +74,7 @@ struct ReportNavigationRootView: View {
         showingAlertItem = AlertItem(title: NSLocalizedString("Cancel boarding?", comment: ""),
         message: "This boarding will not be saved.",
         primaryButton: .default(Text("Keep Editing")),
-        secondaryButton: .cancel(Text("Cancel"), action: discardReport))
+        secondaryButton: .cancel(Text("Cancel Boarding"), action: discardReport))
     }
 
     private func showFinalAlert() {

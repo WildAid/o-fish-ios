@@ -135,7 +135,9 @@ struct VesselView: View {
             initialVessel.permitNumber = vessel.permitNumber.copy() as? String ?? ""
             initialVessel.nationality = vessel.nationality.copy() as? String ?? ""
             initialVessel.homePort = vessel.homePort.copy() as? String ?? ""
-            initialVessel.attachments = vessel.attachments
+            if !vessel.attachments.photoIDs.isEmpty || !vessel.attachments.notes.isEmpty {
+                initialVessel.attachments = vessel.attachments
+            }
 
             vessel.name = ""
             vessel.nationality = ""

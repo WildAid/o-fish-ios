@@ -50,8 +50,8 @@
 "License Number" = "Номер ліцензії";
 "Remove Note" = "Видалити Примітку";
 "Add Note" = "Додати Примітку";
-"Reason for amber" = "Причина для бурштинового";
-"Reason for red" = "Причина для червоного";
+"Reason for Amber" = "Причина для Бурштинового";
+"Reason for Red" = "Причина для Червоного";
 "Last Delivery" = "Остання поставка";
 "Date" = "Дата";
 "Select" = "Вибрати";
@@ -158,3 +158,4 @@
 "Change profile picture" = "Змінити фотографію";
 "Access your login and password on the keychain" = "Доступ до вашого логіну та паролю через кейчейн";
 "Boarding Submitted!" = "Прибуття Збережено!";
+"No Notes or Photos for Risk" = "Немає збережених нотатків чи фотографій для ризика";

@@ -25,21 +25,20 @@ struct RiskView: View {
                     HStack {
                         TitleLabel(title: "Risk")
                         Spacer()
-                        AddAttachmentsButton(attachments: self.report.inspection.attachments, reportId: self.report.id)
+                        AddAttachmentsButton(attachments: self.report.inspection.summary.safetyLevel.attachments, reportId: self.report.id)
                     }
                         .padding(.top, Dimensions.spacing)
 
                     TrafficLights(color: self.$report.inspection.summary.safetyLevel.level)
                         .padding(.bottom, Dimensions.trafficLightPadding)
                     if self.report.inspection.summary.safetyLevel.level == .amber {
-                        InputField(title: "Reason for amber", text: self.$report.inspection.summary.safetyLevel.reason)
+                        InputField(title: "Reason for Amber", text: self.$report.inspection.summary.safetyLevel.reason)
                     }
 
                     if self.report.inspection.summary.safetyLevel.level == .red {
-                        InputField(title: "Reason for red", text: self.$report.inspection.summary.safetyLevel.reason)
+                        InputField(title: "Reason for Red", text: self.$report.inspection.summary.safetyLevel.reason)
                     }
-
-                    AttachmentsView(attachments: self.report.inspection.attachments)
+                    AttachmentsView(attachments: self.report.inspection.summary.safetyLevel.attachments)
                 }
                     .padding(.bottom, Dimensions.bottomPadding)
             }

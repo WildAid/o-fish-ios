@@ -23,6 +23,7 @@
 		303A3F10241A4EAE000DCADB /* ViolationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A3F0F241A4EAE000DCADB /* ViolationInputView.swift */; };
 		303A3F14241A4ECB000DCADB /* ViolationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A3F13241A4ECB000DCADB /* ViolationsView.swift */; };
 		303A3F18241A9591000DCADB /* ViolationStaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A3F17241A9591000DCADB /* ViolationStaticView.swift */; };
+		303DFB652500E81B00AC063D /* RiskSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303DFB642500E81B00AC063D /* RiskSummaryView.swift */; };
 		3075348A24D7F8CD000257D1 /* AnnotatedNoteViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3075348924D7F8CD000257D1 /* AnnotatedNoteViewModelTests.swift */; };
 		3075348C24D7FC8E000257D1 /* AttachmentsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3075348B24D7FC8E000257D1 /* AttachmentsViewModelTests.swift */; };
 		307F47BC247C5362003D46B4 /* CrewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307F47BB247C5362003D46B4 /* CrewItemView.swift */; };
@@ -300,6 +301,7 @@
 		303A3F0F241A4EAE000DCADB /* ViolationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationInputView.swift; sourceTree = "<group>"; };
 		303A3F13241A4ECB000DCADB /* ViolationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationsView.swift; sourceTree = "<group>"; };
 		303A3F17241A9591000DCADB /* ViolationStaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViolationStaticView.swift; sourceTree = "<group>"; };
+		303DFB642500E81B00AC063D /* RiskSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskSummaryView.swift; sourceTree = "<group>"; };
 		3075348924D7F8CD000257D1 /* AnnotatedNoteViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotatedNoteViewModelTests.swift; sourceTree = "<group>"; };
 		3075348B24D7FC8E000257D1 /* AttachmentsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsViewModelTests.swift; sourceTree = "<group>"; };
 		307F47BB247C5362003D46B4 /* CrewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewItemView.swift; sourceTree = "<group>"; };
@@ -941,6 +943,7 @@
 				4980764D242E688B00D463F4 /* InspectionSummaryView.swift */,
 				4980764F242E6DFF00D463F4 /* DateTimeStackView.swift */,
 				49807651242E709B00D463F4 /* StatusSymbolView.swift */,
+				303DFB642500E81B00AC063D /* RiskSummaryView.swift */,
 				49E3859E2431E932000A6EC3 /* VesselSummaryView.swift */,
 				49E385A02431EF9B000A6EC3 /* LastDeliverySummaryView.swift */,
 				49E385A22431F1EC000A6EC3 /* EMSSummaryView.swift */,
@@ -1710,6 +1713,7 @@
 				BCE4865AA1D910A5D49A0471 /* ActivityIndicator.swift in Sources */,
 				49674E52245322980023ABC6 /* PhotoThumbNailGrid.swift in Sources */,
 				BCE48DD44979CC96F9372607 /* LoadingIndicatorView.swift in Sources */,
+				303DFB652500E81B00AC063D /* RiskSummaryView.swift in Sources */,
 				30C112B62477E90D00DD13A8 /* NotesListView.swift in Sources */,
 				BCE48509E0E079B8621F7794 /* CatchStaticView.swift in Sources */,
 				49669331243E365200AC4D87 /* GearTypeViewModel.swift in Sources */,
