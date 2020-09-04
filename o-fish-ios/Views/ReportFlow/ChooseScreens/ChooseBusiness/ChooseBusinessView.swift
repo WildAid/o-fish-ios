@@ -32,6 +32,19 @@ struct ChooseBusinessView: View {
 
     var body: some View {
         VStack(spacing: Dimensions.padding / 2) {
+            HStack {
+                ZStack {
+                    Text("Business")
+                        .font(Font.callout.weight(.semibold))
+                    HStack {
+                        Button(action: dismiss) {
+                            Text("Cancel")
+                        }
+                        Spacer()
+                    }
+                }
+            }
+            .padding([.top, .horizontal])
 
             SearchBarView(searchText: searchTextBinding, placeholder: "Choose Business")
 
