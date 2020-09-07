@@ -33,6 +33,20 @@ struct ChooseCrewMemberView: View {
 
     var body: some View {
         VStack {
+            HStack {
+                ZStack {
+                    Text("Crew")
+                        .font(Font.callout.weight(.semibold))
+                    HStack {
+                        Button(action: dismiss) {
+                            Text("Cancel")
+                        }
+                        Spacer()
+                    }
+                }
+            }
+            .padding([.top, .horizontal])
+
             SearchBarView(searchText: $searchText, placeholder: "Search Crew")
 
             ScrollView {
@@ -57,9 +71,9 @@ struct ChooseCrewMemberView: View {
                         }
                     }
 
-                    VStack(spacing: 0) {
+                    VStack(spacing: .zero) {
                         Button(action: { self.showingCreateCrewMember = true }) {
-                            IconLabel(imagePath: "plus", title: "Add Crew Member", color: .black, horizontalPadding: 0)
+                            IconLabel(imagePath: "plus", title: "Add Crew Member", color: .black, horizontalPadding: .zero)
                         }
                             .padding(.vertical, Dimensions.spacing)
                         Divider()

@@ -45,6 +45,20 @@ struct SearchableView<SearchableData: SearchableDataProtocol,
 
     var body: some View {
         VStack {
+            HStack {
+                ZStack {
+                    Text("\(title)")
+                        .font(Font.callout.weight(.semibold))
+                    HStack {
+                        Button(action: cancelTabBarClicked) {
+                            Text("Cancel")
+                        }
+                        Spacer()
+                    }
+                }
+            }
+            .padding([.top, .horizontal])
+
             if isSearchBarVisible {
                 SearchBarView(searchText: $searchText, placeholder: searchBarPlaceholder)
             }
