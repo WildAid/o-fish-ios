@@ -26,6 +26,7 @@ struct PreboardingView: View {
     @State private var storedReports = [ReportViewModel]()
     @State private var showingRecentBoardings = true
     @State private var state: States = .loading
+    private let emptyReport = ReportViewModel()
     private let searchDebouncer = Debouncer(delay: 0.5, handler: {})
     private let countOfRecentReportsShown = 5
 
@@ -46,7 +47,7 @@ struct PreboardingView: View {
             searchBar
 
             if showingAddVessel {
-                NavigationLink(destination: ReportNavigationRootView(rootIsActive: $rootIsActive)) {
+                NavigationLink(destination: ReportNavigationRootView(report: self.emptyReport, rootIsActive: $rootIsActive)) {
                     VStack(spacing: Dimension.noSpacing) {
                         IconLabel(imagePath: "plus", title: "Add New Vessel")
                             .padding(.vertical, Dimension.padding)
