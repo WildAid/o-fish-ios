@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 struct LoadingVesselRecordView: View {
 
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var settings: Settings
     @ObservedObject var report: ReportViewModel
     @ObservedObject var onDuty: DutyState
     @Binding var rootIsActive: Bool
@@ -40,7 +40,7 @@ struct LoadingVesselRecordView: View {
     private func loadReports() {
         storedReports = []
         let predicate = NSPredicate(format: "vessel.name == %@ AND vessel.permitNumber == %@", report.vessel.name, report.vessel.permitNumber)
-        let realmReports = app.currentUser()?
+        let realmReports = settings.realmUser?
             .agencyRealm()?
             .objects(Report.self)
             .filter(predicate)
@@ -55,9 +55,11 @@ struct LoadingVesselRecordView: View {
 }
 
 struct LoadingVesselRecordView_Previews: PreviewProvider {
+    static var settings = Settings()
     static var previews: some View {
         LoadingVesselRecordView(report: .sample,
                                 onDuty: .sample,
                                 rootIsActive: .constant(true))
+        .environmentObject(settings)
     }
 }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ReportNavigationRootView: View {
     @Environment(\.presentationMode) var presentationMode
-
     @ObservedObject var report: ReportViewModel
     @Binding var rootIsActive: Bool
 
