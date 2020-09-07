@@ -93,6 +93,7 @@ extension SafetyLevelViewModel: Samplable {
         let safetyLevel = SafetyLevelViewModel()
         safetyLevel.level = .amber
         safetyLevel.attachments = .sample
+        safetyLevel.reason = "The captain had a gun stashed in the wheelhouse. He was unfriendly, argumentative, and uncooperative"
         return safetyLevel
     }
 }

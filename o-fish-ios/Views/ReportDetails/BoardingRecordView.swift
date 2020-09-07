@@ -23,11 +23,16 @@ struct BoardingRecordView: View {
             Color.inactiveBar.frame(height: 0.5)
             ScrollView {
                 VStack(spacing: Dimensions.spacing) {
-                    InspectionSummaryView(report: report)
-                        .background(Color.white)
-                        .compositingGroup()
-                        .defaultShadow()
+                    Group {
+                        InspectionSummaryView(report: report)
+                            .background(Color.white)
+                            .compositingGroup()
+                            .defaultShadow()
 
+                        wrappedShadowView {
+                            RiskSummaryView(risk: report.inspection.summary.safetyLevel)
+                        }
+                    }
                     wrappedShadowView {
                         VesselSummaryView(vessel: report.vessel)
                     }

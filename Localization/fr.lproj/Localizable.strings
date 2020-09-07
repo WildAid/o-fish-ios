@@ -50,8 +50,8 @@
 "License Number" = "Numéro de license";
 "Remove Note" = "Enlever la remarque";
 "Add Note" = "Ajouter une remarque";
-"Reason for amber" = "Explication";
-"Reason for red" = "Reason for red";
+"Reason for Amber" = "Explication";
+"Reason for Red" = "Reason for Red";
 "Last Delivery" = "Dernière livraison";
 "Date" = "Date";
 "Select" = "Sélectionner";
@@ -158,3 +158,4 @@
 "Change profile picture" = "Changer de photo de profil";
 "Access your login and password on the keychain" = "Accéder à l'identifiant et mot de passe à l'aide du trousseau iCloud";
 "Boarding Submitted!" = "Inspection enregistrée!";
+"No Notes or Photos for Risk" = "No Notes or Photos for Risk";
