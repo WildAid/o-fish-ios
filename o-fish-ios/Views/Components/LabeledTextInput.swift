@@ -14,7 +14,7 @@ struct LabeledTextInput: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(label)
-                .font(.caption)
+                .font(.caption1)
                 .foregroundColor(.gray)
             TextField(label, text: $text)
         }

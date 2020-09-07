@@ -52,7 +52,7 @@ struct StatusSymbolView: View {
     }
 
     private var font: Font {
-        size == .small ? Font.caption1.weight(.semibold) : Font.headline.weight(.semibold)
+        size == .small ? Font.caption1.weight(.semibold) : Font.body.weight(.semibold)
     }
 }
 

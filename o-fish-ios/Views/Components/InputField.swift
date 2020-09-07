@@ -36,10 +36,12 @@ struct InputField: View {
                     TextField("", text: textBinding)
                         .padding(.bottom, Dimensions.bottomPadding)
                         .foregroundColor(.text)
+                        .font(.body)
                 } else {
                     SecureField("", text: textBinding)
                         .padding(.bottom, Dimensions.bottomPadding)
                         .foregroundColor(.text)
+                        .font(.body)
                 }
 
                 if showingWarning {

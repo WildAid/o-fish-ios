@@ -12,11 +12,11 @@ struct LabeledDoubleOutput: View {
     var value: Double
 
     var body: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: .zero) {
             Text(LocalizedStringKey(coordinate.rawValue))
-                .font(.caption)
+                .font(.caption1)
             Text(value.locationDegrees(self.coordinate))
-                .foregroundColor(.black)
+                .font(.body)
         }
             .multilineTextAlignment(.center)
             .padding(.horizontal)

@@ -34,6 +34,7 @@ struct ButtonField: View {
                     TextLabel(title: text)
                         .frame(minHeight: Dimensions.textMinHeight)
                         .padding(.bottom, Dimensions.bottomPadding)
+                        .font(.body)
 
                     if showingWarning {
                         ExclamationIconView()

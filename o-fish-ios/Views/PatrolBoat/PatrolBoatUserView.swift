@@ -26,6 +26,7 @@ struct PatrolBoatUserView: View {
                 Text(name)
                     .foregroundColor(.black)
                     .lineLimit(1)
+                    .font(.body)
             }
         }
     }
@@ -44,7 +45,7 @@ struct PatrolBoatUserView: View {
 struct PatrolBoatUserView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PatrolBoatUserView(name: "First Second", photo: .sample)
+            PatrolBoatUserView(name: "First Second")
         }
     }
 }

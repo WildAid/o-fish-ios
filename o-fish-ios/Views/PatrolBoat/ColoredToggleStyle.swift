@@ -13,8 +13,7 @@ struct ColoredToggleStyle: ToggleStyle {
         static let rectangleWidth: CGFloat = 80
         static let rectangleHeight: CGFloat = 25
         static let rectangleCornerRadius: CGFloat = 16
-        static let textInsideFont: CGFloat = 8
-        static let textInsideOffset: CGFloat = 10
+        static let textInsideOffset: CGFloat = 12
         static let thumbOffset: CGFloat = 25
         static let thumbPadding: CGFloat = 1.5
         static let radius: CGFloat = 1.0
@@ -41,8 +40,7 @@ struct ColoredToggleStyle: ToggleStyle {
                     .frame(width: Dimensions.rectangleWidth, height: Dimensions.rectangleHeight)
                     .overlay(
                         Text(configuration.isOn ? LocalizedStringKey(onInsideLabel) : LocalizedStringKey(offInsideLabel))
-                            .font(.system(size: Dimensions.textInsideFont))
-                            .bold()
+                            .font(Font.caption1.weight(.semibold))
                             .foregroundColor(configuration.isOn ? .white : .black)
                             .offset(x: configuration.isOn ? -Dimensions.textInsideOffset : Dimensions.textInsideOffset))
                     .overlay(

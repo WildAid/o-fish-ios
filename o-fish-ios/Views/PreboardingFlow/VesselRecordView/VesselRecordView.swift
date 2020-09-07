@@ -20,7 +20,6 @@ struct VesselRecordView: View {
 
     private enum Dimensions {
         static let spacing: CGFloat = 24.0
-        static let titleFontSize: CGFloat = 20.0
         static let spacingBackButton: CGFloat = 1.0
         static let topPadding: CGFloat = 16.0
         static let bottomPadding: CGFloat = 5.0
@@ -66,8 +65,7 @@ struct VesselRecordView: View {
 
                     VStack(alignment: .leading, spacing: Dimensions.noSpacing) {
                         Text("Previous Boardings")
-                            .font(.system(size: Dimensions.titleFontSize))
-                            .bold()
+                            .font(Font.title3.weight(.semibold))
                             .padding(.top, Dimensions.topPadding)
                             .padding(.bottom, Dimensions.bottomPadding)
                         VStack(spacing: Dimensions.noSpacing) {

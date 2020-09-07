@@ -72,6 +72,7 @@ struct LoginView: View {
                             Button(action: { print("Forgot password") }) {
                                 Text("Forgot Password?")
                                     .foregroundColor(.removeAction)
+                                    .font(.subheadline)
                             }
                                 .opacity(0) // TODO remove after implementing
                         }

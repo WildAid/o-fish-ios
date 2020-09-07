@@ -15,6 +15,7 @@ struct DateTimeStackView: View {
             TitleLabel(title: date.justLongDate())
             HStack {
                 Text(date.justTime())
+                    .font(.body)
                 Spacer()
             }
         }
