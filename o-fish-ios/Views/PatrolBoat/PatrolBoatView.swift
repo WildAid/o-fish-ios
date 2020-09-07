@@ -149,7 +149,6 @@ struct PatrolBoatView: View {
 
     private func showOptionsModal() {
         guard let user = settings.realmUser else {
-//            self.isLoggedIn.wrappedValue = false
             print("realmUser not set")
             return
         }
@@ -225,7 +224,6 @@ struct PatrolBoatView: View {
 
     private func onAppear() {
         guard let user = settings.realmUser else {
-//            self.isLoggedIn.wrappedValue = false
             print("realmUser not set")
             return
         }
@@ -253,7 +251,6 @@ struct PatrolBoatView: View {
             DispatchQueue.main.async {
                 self.settings.realmUser = nil
             }
-//            self.isLoggedIn.wrappedValue = false
             NotificationManager.shared.removeAllNotification()
         }
     }
