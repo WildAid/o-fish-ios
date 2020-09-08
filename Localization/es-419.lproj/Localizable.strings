@@ -5,7 +5,7 @@
 "Board Vessel" = "Embarcación a bordo";
 "Cancel" = "Cancelar";
 "Captain" = "Capitán";
-"Change status to \"At Sea\"?" = "Changer le statut"; CHANGE
+"Change status to \"At Sea\"?" = "¿Cambiar de estado a en el mar?";
 "Continue editing" = "Continua editando";
 "Continue with empty fields?" = "¿Continuar con campos vacíos?";
 "Date: " = "Fecha: ";
@@ -21,7 +21,7 @@
 "No Results for “%@“" = "No hay resultados para “%@“";
 "Ok" = "Okay";
 "Permit #" = "Permiso #";
-"Please, input name or license" = "Ajouter un nom ou numéro de permis"; CHANGE
+"Please, input name or license" = "Agregar un nombre o número de licencia";
 "Prefill" = "Prellenado";
 "Prefill Vessel Information From Previous Boarding?" = "¿Pre-ingresar la informacion de la embarcacion desde la ultima inspeccion?";
 "Prefill Crew Information From Previous Boarding?" = "¿Pre-ingresar la informacion de tripulación desde la ultima inspeccion?";
@@ -140,7 +140,7 @@
 "Remove Violation" = "Remover Violación";
 "Remove" = "Quita";
 "Are you sure you want to submit the boarding?" = "¿Estás seguro de que deseas enviar el embarque?";
-"Email/Username" = "Correo Electrónico/Nombre de Usuario"
+"Email/Username" = "Correo Electrónico/Nombre de Usuario";
 "Password" = "Contraseña";
 "Cancel boarding?" = "¿Cancelar embarque?";
 "This boarding will not be saved." = "Este embarque no se guardará.";
