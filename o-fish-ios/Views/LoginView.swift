@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @Environment(\.presentationMode) var presentationMode
-
-    var loggedIn: Binding<Bool>
+    @EnvironmentObject var settings: Settings
 
     @State private var username = ""
     @State private var password = ""
@@ -119,9 +117,9 @@ struct LoginView: View {
             if let error = self.keychain.addCredentials(Credentials(username: username, password: password)) as? KeychainError {
                 print(error.localizedDescription)
             }
-
-            self.loggedIn.wrappedValue = true
-            self.presentationMode.wrappedValue.dismiss()
+            DispatchQueue.main.async {
+                self.settings.realmUser = user
+            }
         }
     }
 
@@ -139,9 +137,11 @@ struct LoginView: View {
 }
 
 struct LoginView_Previews: PreviewProvider {
+    static var settings = Settings()
+
     static var previews: some View {
         NavigationView {
-            LoginView(loggedIn: .constant(true))
+            LoginView().environmentObject(settings)
         }
     }
 }

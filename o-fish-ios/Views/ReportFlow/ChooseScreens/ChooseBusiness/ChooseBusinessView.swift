@@ -14,6 +14,7 @@ struct ChooseBusinessView: View {
     @Binding var isAutofillItem: Bool
     @State private var searchText = ""
     @Environment(\.presentationMode) private var presentationMode
+    @EnvironmentObject var settings: Settings
 
     @State private var state: States<BusinessPickerData> = .loaded([])
     @State private var notificationTokenSearch: NotificationToken?
@@ -133,7 +134,7 @@ struct ChooseBusinessView: View {
     /// Logic
 
     private func loadFilteredData(searchText: String) {
-        let realmFilteredReports = app.currentUser()?.agencyRealm()?.objects(Report.self)
+        let realmFilteredReports = settings.realmUser?.agencyRealm()?.objects(Report.self)
         var result = realmFilteredReports
 
         if searchText != "" {
@@ -209,15 +210,15 @@ struct ChooseBusinessView: View {
         }
 
         unique.removeAll { $0.business.isEmpty && $0.location.isEmpty }
-
         return unique
     }
 }
 
 struct ChooseBusinessView_Previews: PreviewProvider {
+    static var settings = Settings()
     static var previews: some View {
         let selectedItem = BusinessPickerData(business: "P. Sherman", location: "Location")
         return ChooseBusinessView(selectedItem: .constant(selectedItem),
-            isAutofillItem: .constant(true))
+            isAutofillItem: .constant(true)).environmentObject(settings)
     }
 }

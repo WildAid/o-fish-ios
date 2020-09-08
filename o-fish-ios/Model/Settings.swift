@@ -13,10 +13,8 @@ let app = App(id: Constants.realmAppId)
 class Settings: ObservableObject {
     static let shared = Settings()
 
-    private init() {
-    }
-
-    var menuData = MenuData()
+    @Published var realmUser: RealmSwift.User?
+    @Published var menuData = MenuData()
 
     var intialZoomLevel = 322000 // Meters to show in map views, ~= 200 mi
 

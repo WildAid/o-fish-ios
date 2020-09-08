@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import RealmSwift
 
 enum ViewType {
     case searchRecords
@@ -16,6 +15,7 @@ enum ViewType {
 struct PreboardingView: View {
 
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var settings: Settings
 
     var viewType: ViewType = .preboarding
     @ObservedObject var onDuty: DutyState
@@ -93,7 +93,7 @@ struct PreboardingView: View {
                         self.searchDebouncer.call()
 
                     } else {
-                        self.storedReports = []
+                        self.storedReports.removeAll(keepingCapacity: true)
                         self.state = .loaded
                     }
                 }),
@@ -153,10 +153,10 @@ struct PreboardingView: View {
     }
 
     private func loadReports(with searchText: String) {
-        storedReports = []
+        storedReports.removeAll(keepingCapacity: true)
         showingRecentBoardings = false
         let predicate = NSPredicate(format: "vessel.name CONTAINS[cd] %@", searchText)
-        let realmReports = app.currentUser()?
+        let realmReports = settings.realmUser?
             .agencyRealm()?
             .objects(Report.self)
             .filter(predicate)
@@ -176,23 +176,22 @@ struct PreboardingView: View {
     }
 
     private func loadRecentBoardings() {
-        if storedReports.isEmpty {
-            let realmReports = app.currentUser()?
-                .agencyRealm()?
-                .objects(Report.self)
-                .sorted(byKeyPath: "timestamp", ascending: false) ?? nil
-            var uniqueIdentifiers = [String]()
-            if let realmReports = realmReports {
-                for report in realmReports {
-                    if let vessel = report.vessel {
-                        if uniqueIdentifiers.filter({$0 == vessel.permitNumber || $0 == vessel.name }).isEmpty &&
-                            !vessel.name.isEmpty {
-                            uniqueIdentifiers.append(vessel.permitNumber.isEmpty ? vessel.name : vessel.permitNumber)
-                            storedReports.append(ReportViewModel(report))
-                            if storedReports.count > countOfRecentReportsShown - 1 {
-                                self.state = .loaded
-                                return
-                            }
+        let realmReports = settings.realmUser?
+            .agencyRealm()?
+            .objects(Report.self)
+            .sorted(byKeyPath: "timestamp", ascending: false) ?? nil
+        var uniqueIdentifiers = [String]()
+        storedReports.removeAll(keepingCapacity: true)
+        if let realmReports = realmReports {
+            for report in realmReports {
+                if let vessel = report.vessel {
+                    if uniqueIdentifiers.filter({$0 == vessel.permitNumber || $0 == vessel.name }).isEmpty &&
+                        !vessel.name.isEmpty {
+                        uniqueIdentifiers.append(vessel.permitNumber.isEmpty ? vessel.name : vessel.permitNumber)
+                        storedReports.append(ReportViewModel(report))
+                        if storedReports.count > countOfRecentReportsShown - 1 {
+                            self.state = .loaded
+                            return
                         }
                     }
                 }
@@ -203,15 +202,18 @@ struct PreboardingView: View {
 }
 
 struct PreboardingView_Previews: PreviewProvider {
+    static var settings = Settings()
     static var previews: some View {
         VStack {
             PreboardingView(viewType: .preboarding,
                             onDuty: .sample,
                             rootIsActive: .constant(true))
+                .environmentObject(settings)
             Divider()
             PreboardingView(viewType: .searchRecords,
                             onDuty: .sample,
                             rootIsActive: .constant(true))
+                .environmentObject(settings)
         }
     }
 }

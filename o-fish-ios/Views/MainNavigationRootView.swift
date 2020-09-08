@@ -10,21 +10,27 @@ import SwiftUI
 // Only MainNavigationRootView should include a NavigationView, that NavigationView
 // will embed all of the other views
 struct MainNavigationRootView: View {
-    @State private var isLoggedIn = (app.currentUser()?.state == .loggedIn)
+    @EnvironmentObject var settings: Settings
 
     var body: some View {
-        NavigationView {
-            if isLoggedIn {
-                PatrolBoatView(isLoggedIn: $isLoggedIn)
+        if settings.realmUser == nil && app.currentUser()?.state == .loggedIn {
+            print("Using same user as when last running the app")
+            settings.realmUser = app.currentUser()
+        }
+        return NavigationView {
+            if settings.realmUser != nil {
+                PatrolBoatView()
             } else {
-                LoginView(loggedIn: self.$isLoggedIn)
+                LoginView()
             }
         }
     }
 }
 
 struct MainNavigationRootView_Previews: PreviewProvider {
+    static var settings = Settings()
     static var previews: some View {
         MainNavigationRootView()
+            .environmentObject(settings)
     }
 }

@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct PatrolBoatView: View {
-    var isLoggedIn: Binding<Bool>
+//    var isLoggedIn: Binding<Bool>
+
+    @EnvironmentObject var settings: Settings
 
     @ObservedObject var user = UserViewModel()
     @ObservedObject var onDuty = DutyState.shared
@@ -146,8 +148,8 @@ struct PatrolBoatView: View {
     }
 
     private func showOptionsModal() {
-        guard let user = app.currentUser() else {
-            self.isLoggedIn.wrappedValue = false
+        guard let user = settings.realmUser else {
+            print("realmUser not set")
             return
         }
 
@@ -221,8 +223,8 @@ struct PatrolBoatView: View {
     /// Actions
 
     private func onAppear() {
-        guard let user = app.currentUser() else {
-            self.isLoggedIn.wrappedValue = false
+        guard let user = settings.realmUser else {
+            print("realmUser not set")
             return
         }
         self.user.email = user.emailAddress
@@ -240,13 +242,15 @@ struct PatrolBoatView: View {
     }
 
     private func logoutAlertClicked() {
-        guard let user = app.currentUser() else {
+        guard let user = settings.realmUser else {
             print("Attempting to logout when no user logged in")
             return
         }
 
         user.logOut { _ in
-            self.isLoggedIn.wrappedValue = false
+            DispatchQueue.main.async {
+                self.settings.realmUser = nil
+            }
             NotificationManager.shared.removeAllNotification()
         }
     }
@@ -271,14 +275,14 @@ struct PatrolBoatView: View {
     }
 
     private func getDutyStartForCurrentUser() -> DutyChangeViewModel? {
-        guard let user = app.currentUser() else {
+        guard let user = settings.realmUser else {
             print("Bad state")
             return nil
         }
         let userEmail = user.emailAddress
         let predicate = NSPredicate(format: "user.email = %@", userEmail)
 
-        let realmDutyChanges = app.currentUser()?
+        let realmDutyChanges = settings.realmUser?
             .agencyRealm()?
             .objects(DutyChange.self)
             .filter(predicate)
@@ -291,7 +295,7 @@ struct PatrolBoatView: View {
     }
 
     private func dutyReportsForCurrentUser(startDutyTime: Date, endDutyTime: Date) -> [ReportViewModel] {
-        guard let user = app.currentUser() else {
+        guard let user = settings.realmUser else {
             print("Bad state")
             return []
         }
@@ -300,7 +304,7 @@ struct PatrolBoatView: View {
         let predicate = NSPredicate(format: "timestamp > %@ AND timestamp < %@ AND reportingOfficer.email = %@",
             startDutyTime as NSDate, endDutyTime as NSDate, userEmail)
 
-        let realmReports = app.currentUser()?
+        let realmReports = settings.realmUser?
             .agencyRealm()?
             .objects(Report.self)
             .filter(predicate)
@@ -319,7 +323,7 @@ struct PatrolBoatView: View {
 struct PatrolBoatView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PatrolBoatView(isLoggedIn: .constant(true))
+            PatrolBoatView()
                 .environmentObject(Settings.shared)
         }
     }
