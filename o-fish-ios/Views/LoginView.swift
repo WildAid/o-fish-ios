@@ -102,7 +102,6 @@ struct LoginView: View {
         }
         showingLoading = true
         app.login(credentials: .init(username: username, password: password)) { user, error in
-            self.showingLoading = false
             guard user != nil else {
                 self.errorMessage = "Invalid email or password"
                 return
@@ -119,6 +118,7 @@ struct LoginView: View {
             }
             DispatchQueue.main.async {
                 self.settings.realmUser = user
+                self.showingLoading = false
             }
         }
     }
