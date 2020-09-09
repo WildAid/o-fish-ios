@@ -15,6 +15,8 @@ class AttachmentsViewModel: ObservableObject, Identifiable {
     @Published var photoIDs: [String] = []
     @Published var notes: [Note] = []
 
+    var isEmpty: Bool { photoIDs.isEmpty && notes.isEmpty }
+
     convenience init (_ attachments: Attachments?) {
         self.init()
         if let attachments = attachments {

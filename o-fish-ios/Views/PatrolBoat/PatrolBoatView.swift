@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PatrolBoatView: View {
-//    var isLoggedIn: Binding<Bool>
 
     @EnvironmentObject var settings: Settings
 

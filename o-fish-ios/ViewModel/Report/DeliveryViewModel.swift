@@ -16,10 +16,14 @@ class DeliveryViewModel: ObservableObject, Identifiable {
     @Published var business = ""
     @Published var attachments = AttachmentsViewModel()
 
+    var isEmpty: Bool { date == nil && location.isEmpty && business.isEmpty && attachments.isEmpty }
+
     convenience init(_ delivery: Delivery?) {
         self.init()
         if let delivery = delivery {
             self.delivery = delivery
+
+            // TODO: Remove this when the legacy documents have been removed from the Atlas data
             if delivery.date == NSDate(timeIntervalSince1970: 0) {
                 date = nil
             } else {
@@ -34,18 +38,21 @@ class DeliveryViewModel: ObservableObject, Identifiable {
     }
 
     func save() -> Delivery? {
-        if delivery == nil {
-            delivery = Delivery()
+        if isEmpty {
+            print("No delivery to save")
+            delivery = nil
+        } else {
+            if delivery == nil {
+                delivery = Delivery()
+            }
+            guard let delivery = delivery else { return nil }
+            if let deliveryDate = date {
+                delivery.date = deliveryDate as NSDate
+            }
+            delivery.location = location
+            delivery.business = business
+            delivery.attachments = attachments.save()
         }
-        guard let delivery = delivery else { return nil }
-        if let deliveryDate = date {
-            delivery.date = deliveryDate as NSDate
-        }
-        delivery.location = location
-        delivery.business = business
-        delivery.attachments = attachments.save()
         return delivery
     }
-
-    var isEmpty: Bool { date == nil && location.isEmpty && business.isEmpty }
 }
