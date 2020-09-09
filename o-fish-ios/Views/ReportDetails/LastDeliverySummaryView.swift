@@ -52,9 +52,8 @@ struct LastDeliverySummaryView: View {
 
 struct LastDeliverySummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
+        Group {
             LastDeliverySummaryView(delivery: .sample, isEditable: true)
-            Divider()
             LastDeliverySummaryView(delivery: .sample, isEditable: false)
         }
     }

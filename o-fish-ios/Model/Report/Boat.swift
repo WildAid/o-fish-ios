@@ -13,6 +13,6 @@ class Boat: EmbeddedObject, ObservableObject {
     @objc dynamic var nationality = ""
     @objc dynamic var permitNumber = ""
     let ems = List<EMS>()
-    @objc dynamic var lastDelivery: Delivery? = Delivery()
+    @objc dynamic var lastDelivery: Delivery?
     @objc dynamic var attachments: Attachments? = Attachments()
 }

@@ -134,7 +134,7 @@ struct ChooseBusinessView: View {
     /// Logic
 
     private func loadFilteredData(searchText: String) {
-        let realmFilteredReports = settings.realmUser?.agencyRealm()?.objects(Report.self)
+        let realmFilteredReports = app.currentUser()?.agencyRealm()?.objects(Report.self)
         var result = realmFilteredReports
 
         if searchText != "" {
