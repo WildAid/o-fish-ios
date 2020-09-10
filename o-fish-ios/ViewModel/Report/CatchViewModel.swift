@@ -16,8 +16,6 @@ class CatchViewModel: ObservableObject, Identifiable {
     @Published var unit: UnitSpecification = .notSelected
     @Published var attachments = AttachmentsViewModel()
 
-    @Published var quantityType: [QuantityType] = [.notSelected]
-
     enum UnitSpecification: String {
         case notSelected = ""
 
@@ -36,14 +34,6 @@ class CatchViewModel: ObservableObject, Identifiable {
         }
     }
 
-    enum QuantityType: String {
-        case notSelected = ""
-        case weight = "Weight"
-        case count = "Count"
-
-        static let separator = " & "
-    }
-
     var weightString: String {
         if weight > 0 {
             return "\(weight)"
@@ -52,25 +42,16 @@ class CatchViewModel: ObservableObject, Identifiable {
         }
     }
 
-    var quantityTypeString: String {
-        quantityType.map {
-            $0.rawValue
-        }.joined(separator: CatchViewModel.QuantityType.separator)
-    }
-
     var isEmpty: Bool {
-        fish.isEmpty && quantityType.contains(.notSelected) && number == 0 && weight == 0 && unit == .notSelected
+        fish.isEmpty && number == 0 && weight == 0 && unit == .notSelected
     }
 
     var isComplete: Bool {
         var result = false
 
         result = !fish.isEmpty
-        result = result && !(quantityType == [.notSelected])
-
-        result = result && !(quantityType.contains(.weight) && weight == 0)
-        result = result && !(quantityType.contains(.weight) && unit == .notSelected)
-        result = result && !(quantityType.contains(.count) && number == 0)
+        result = result && ((weight != 0 && unit != .notSelected) || !(number == 0))
+        result = result && !(weight != 0 && unit == .notSelected)
 
         return result
     }

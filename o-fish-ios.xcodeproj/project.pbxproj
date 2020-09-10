@@ -244,7 +244,6 @@
 		BCE4899BD7A859DA2985D1E3 /* ChooseCrewMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48759F5D54253D3302EED /* ChooseCrewMemberView.swift */; };
 		BCE48A78BDAF72CB8DD84237 /* MainNavigationRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE486EF5A22D91EE1260968 /* MainNavigationRootView.swift */; };
 		BCE48A80D03CDC3B8C68F3CC /* UnitPickerWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D03A4281EA9ADA77D7B /* UnitPickerWithButton.swift */; };
-		BCE48A9CA5066F0F61BB29DF /* ChooseQuantityTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FD07A95AD6916693E79 /* ChooseQuantityTypeView.swift */; };
 		BCE48AE399A063A7D94860ED /* PatrolBoatUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FFF9C49070CE13E7B27 /* PatrolBoatUserView.swift */; };
 		BCE48B02D6D3331545500562 /* ChooseSpeciesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48FAB856639D53CABC76C /* ChooseSpeciesView.swift */; };
 		BCE48B088018D82ECFC5F7A9 /* MultiRowPickerWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4817C8B123F01E50A23D9 /* MultiRowPickerWithButton.swift */; };
@@ -558,7 +557,6 @@
 		BCE48F5852801DEB5F962739 /* ViolationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationView.swift; sourceTree = "<group>"; };
 		BCE48FAB856639D53CABC76C /* ChooseSpeciesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseSpeciesView.swift; sourceTree = "<group>"; };
 		BCE48FCB06AC5B25AF1BCA74 /* CatchOnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchOnBoardView.swift; sourceTree = "<group>"; };
-		BCE48FD07A95AD6916693E79 /* ChooseQuantityTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseQuantityTypeView.swift; sourceTree = "<group>"; };
 		BCE48FD1BBBF69F49C6EC765 /* NavigationBarViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModifier.swift; sourceTree = "<group>"; };
 		BCE48FFF9C49070CE13E7B27 /* PatrolBoatUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatrolBoatUserView.swift; sourceTree = "<group>"; };
 		FBC9242D2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -1230,7 +1228,6 @@
 				BCE48FAB856639D53CABC76C /* ChooseSpeciesView.swift */,
 				BCE48554847307C2A23A9DEA /* ChooseNationalityView.swift */,
 				BCE488D24416A6BC37C41F71 /* ChooseViolationsView.swift */,
-				BCE48FD07A95AD6916693E79 /* ChooseQuantityTypeView.swift */,
 				BCE48759F5D54253D3302EED /* ChooseCrewMemberView.swift */,
 				BCE481076E1A52DD61E441D9 /* ChooseBusiness */,
 			);
@@ -1695,7 +1692,6 @@
 				3093805C24460A2A00E23350 /* VesselRecordHeaderView.swift in Sources */,
 				49674E5624535E2A0023ABC6 /* PhotosDisplayView.swift in Sources */,
 				49B83EDA2489546D00027B8C /* Violation.swift in Sources */,
-				BCE48A9CA5066F0F61BB29DF /* ChooseQuantityTypeView.swift in Sources */,
 				BCE484202B483EC9484CB5AB /* TopTabBarContainerView.swift in Sources */,
 				3013CA802424B07300D2FF60 /* TextToggle.swift in Sources */,
 				BCE48BFCEE413835DEB14DC0 /* RowView.swift in Sources */,

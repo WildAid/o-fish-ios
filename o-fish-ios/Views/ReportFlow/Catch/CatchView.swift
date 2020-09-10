@@ -87,7 +87,6 @@ struct CatchView: View {
     /// Actions
 
     private func onAppear() {
-        allFieldsComplete = true
 
         if inspection.actualCatch.isEmpty {
             addNewCatch()
