@@ -18,14 +18,12 @@ struct CatchInputView: View {
 
     /// Warning state
     @Binding private var showingSpeciesWarning: Bool
-    @Binding private var showingAmountWarning: Bool
     @Binding private var showingWeightWarning: Bool
     @Binding private var showingUnitWarning: Bool
     @Binding private var showingCountWarning: Bool
 
-    /// Navigation states
+    /// Navigation state
     @State private var showingSpeciesPicker = false
-    @State private var showingQunatityTypePicker = false
 
     private enum Dimensions {
         static let spacing: CGFloat = 16
@@ -49,15 +47,10 @@ struct CatchInputView: View {
         self.removeClicked = removeClicked
 
         _showingSpeciesWarning = .constant(showingWarningState.wrappedValue && catchModel.fish.isEmpty)
-        _showingAmountWarning = .constant(showingWarningState.wrappedValue && catchModel.quantityType == [.notSelected])
+        _showingWeightWarning = .constant(showingWarningState.wrappedValue && catchModel.weight == 0)
+        _showingUnitWarning = .constant(showingWarningState.wrappedValue && catchModel.unit == .notSelected)
 
-        _showingWeightWarning = .constant(showingWarningState.wrappedValue
-            && catchModel.quantityType.contains(.weight) && catchModel.weight == 0)
-        _showingUnitWarning = .constant(showingWarningState.wrappedValue
-            && catchModel.quantityType.contains(.weight) && catchModel.unit == .notSelected)
-
-        _showingCountWarning = .constant(showingWarningState.wrappedValue
-            && catchModel.quantityType.contains(.count) && catchModel.number == 0)
+        _showingCountWarning = .constant(showingWarningState.wrappedValue && catchModel.number == 0)
     }
 
     var body: some View {
@@ -75,33 +68,23 @@ struct CatchInputView: View {
                     ChooseSpeciesView(selectedSpecies: self.selectedSpeciesBinding)
             }
 
-            ButtonField(title: "Amount",
-                text: NSLocalizedString(catchModel.quantityTypeString, comment: "Amount type localized"),
-                showingWarning: self.showingAmountWarning,
-                fieldButtonClicked: { self.showingQunatityTypePicker.toggle() })
-                .sheet(isPresented: $showingQunatityTypePicker) {
-                    ChooseQuantityTypeView(selectedItem: self.selectedQuantityTypeBinding)
-            }
-
-            if weightQuantitySelected {
-                HStack(spacing: Dimensions.offset) {
-                    InputField(title: "Weight", text: weightBinding,
-                        showingWarning: self.showingWeightWarning)
-                        .keyboardType(.numberPad)
-
-                    ButtonField(title: "Unit",
-                        text: NSLocalizedString(self.catchModel.unit.rawValue, comment: "Units localized"),
-                        showingWarning: self.showingUnitWarning,
-                        fieldButtonClicked: self.showUnitPickerClicked)
-                }
-            }
-
-            if countQuantitySelected {
-                InputField(title: "Count",
-                    text: countBinding,
-                    showingWarning: self.showingCountWarning)
+            
+            HStack(spacing: Dimensions.offset) {
+                InputField(title: "Weight", text: weightBinding,
+                           showingWarning: self.showingWeightWarning)
                     .keyboardType(.numberPad)
+                
+                ButtonField(title: "Unit",
+                            text: NSLocalizedString(self.catchModel.unit.rawValue, comment: "Units localized"),
+                            showingWarning: self.showingUnitWarning,
+                            fieldButtonClicked: self.showUnitPickerClicked)
             }
+            
+            InputField(title: "Count",
+                       text: countBinding,
+                       showingWarning: self.showingCountWarning)
+                .keyboardType(.numberPad)
+
 
             if !catchModel.attachments.photoIDs.isEmpty || !catchModel.attachments.notes.isEmpty {
                 AttachmentsView(attachments: catchModel.attachments)
@@ -146,35 +129,11 @@ struct CatchInputView: View {
             })
     }
 
-    private var selectedQuantityTypeBinding: Binding<[CatchViewModel.QuantityType]> {
-        Binding<[CatchViewModel.QuantityType]>(
-            get: { self.catchModel.quantityType },
-            set: {
-                self.catchModel.quantityType = $0
-                if !$0.contains(.count) {
-                    self.catchModel.number = 0
-                }
-                if !$0.contains(.weight) {
-                    self.catchModel.unit = .notSelected
-                    self.catchModel.weight = 0
-                }
-                self.checkAllInput()
-            })
-    }
-
     /// Interface data
 
     private var buttonTitle: String {
         catchModel.fish.isEmpty ? (NSLocalizedString("Catch", comment: "") + " \(self.index)")
                                 : NSLocalizedString(catchModel.fish, comment: "Fish type")
-    }
-
-    private var weightQuantitySelected: Bool {
-        catchModel.quantityType.contains(.weight)
-    }
-
-    private var countQuantitySelected: Bool {
-        catchModel.quantityType.contains(.count)
     }
 
     /// Actions
@@ -203,15 +162,9 @@ struct CatchInputView: View {
         isCatchNonEmpty = !catchModel.isEmpty
 
         showingSpeciesWarning = showingWarningState && catchModel.fish.isEmpty
-        showingAmountWarning = showingWarningState && catchModel.quantityType == [.notSelected]
-
-        showingWeightWarning = showingWarningState
-            && catchModel.quantityType.contains(.weight) && catchModel.weight == 0
-        showingUnitWarning = showingWarningState
-            && catchModel.quantityType.contains(.weight) && catchModel.unit == .notSelected
-
-        showingCountWarning = showingWarningState
-            && catchModel.quantityType.contains(.count) && catchModel.number == 0
+        showingWeightWarning = showingWarningState && catchModel.weight == 0
+        showingUnitWarning = showingWarningState && catchModel.unit == .notSelected
+        showingCountWarning = showingWarningState && catchModel.number == 0
 
         informationComplete = catchModel.isComplete
     }
