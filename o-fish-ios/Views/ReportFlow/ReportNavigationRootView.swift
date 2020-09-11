@@ -85,7 +85,7 @@ struct ReportNavigationRootView: View {
     }
 
     private func showSubmittedAlert() {
-        self.showingAlertItem = AlertItem(title: "Boarding Submitted!", secondaryButton: .default(Text("Ok")))
+        self.showingAlertItem = AlertItem(title: "Boarding Submitted!", secondaryButton: .cancel(Text("Ok"), action: { self.rootIsActive.toggle() }))
     }
 
     /// Actions
@@ -110,7 +110,6 @@ struct ReportNavigationRootView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.showSubmittedAlert()
         }
-        rootIsActive.toggle()
     }
 }
 

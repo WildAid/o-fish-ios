@@ -71,7 +71,8 @@ struct PatrolSummaryView: View {
 
             NavigationLink(destination: BoardingRecordView(report: selectedReport,
                                                            onDuty: onDuty,
-                                                           rootIsActive: $rootIsActive),
+                                                           rootIsActive: $rootIsActive,
+                                                           showingBoardingButton: false),
                            isActive: $showingBoardingRecordView) {
                 EmptyView()
             }

@@ -147,8 +147,6 @@
 "Log In" = "Iniciar sesión";
 "Name" = "Nom";
 "Type" = "Tipo";
-"You sure you want to logout?" = "¿Seguro que quieres cerrar la sesión?";
-"You can only log back in once you have cellular service or are connected to WIFI with internet" = "Solo puede volver a iniciar sesión una vez que tenga servicio de celular o esté conectado a WIFI con Internet";
 "Are you still at sea?" = "¿Sigues en el mar?";
 "It has been %@ hours after closing the application" = "Han pasado %@ horas después de cerrar la aplicación";
 "It has been %@ hours since you went to sea." = "Han pasado% @ horas desde su salida al mar.";
@@ -157,4 +155,9 @@
 "Change profile picture" = "Cambiar foto de perfil";
 "Access your login and password on the keychain" = "Accede al nombre de usuario y la contraseña usando llavero iCloud";
 "Boarding Submitted!" = "¡Embarque enviado!";
-"No Notes or Photos for Risk" = "Sin notas ni fotos por riesgo"; 
+"No Notes or Photos for Risk" = "Sin notas ni fotos por riesgo";
+"Draft Boardings" = "Draft Boardings";
+"Close" = "Close";
+"Log Out?" = "Log Out?";
+"All draft boardings will be deleted!" = "All draft boardings will be deleted!";
+"Edit" = "Edit";

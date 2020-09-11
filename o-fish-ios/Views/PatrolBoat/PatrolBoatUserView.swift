@@ -8,27 +8,34 @@
 import SwiftUI
 
 struct PatrolBoatUserView: View {
-    var name: String
     var photo: PhotoViewModel?
-
+    @Binding var onSea: Bool
+    var size: Size = .small
     var action: () -> Void = {}
-
-    var padding: CGFloat = 8
-    private let imageSize: CGFloat = 32.0
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: padding) {
+            ZStack {
                 image
                     .cornerRadius(.infinity)
-                    .padding(.trailing, padding)
-
-                Text(name)
-                    .foregroundColor(.black)
-                    .lineLimit(1)
-                    .font(.body)
+                HStack {
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        OnOffCircleView(onSea: $onSea, size: size)
+                    }
+                }
             }
         }
+            .frame(width: buttonSize, height: buttonSize)
+    }
+
+    private var imageSize: CGFloat {
+        size == .small ? 30.0 : 52.0
+    }
+
+    private var buttonSize: CGFloat {
+        size == .small ? 36.0 : 62.0
     }
 
     var image: some View {
@@ -44,8 +51,9 @@ struct PatrolBoatUserView: View {
 
 struct PatrolBoatUserView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            PatrolBoatUserView(name: "First Second")
+        Group {
+            PatrolBoatUserView(onSea: .constant(true), size: .small)
+            PatrolBoatUserView(onSea: .constant(false), size: .large)
         }
     }
 }
