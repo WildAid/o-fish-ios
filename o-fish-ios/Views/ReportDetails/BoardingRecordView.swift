@@ -11,6 +11,7 @@ struct BoardingRecordView: View {
     @ObservedObject var report: ReportViewModel
     @ObservedObject var onDuty: DutyState
     @Binding var rootIsActive: Bool
+    var showingBoardingButton = true
 
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
@@ -78,20 +79,25 @@ struct BoardingRecordView: View {
                     }
                 }
             }
-
-            BoardVesselButton(onDuty: onDuty, report: report, onHeader: false, rootIsActive: $rootIsActive)
-                .edgesIgnoringSafeArea(.bottom)
-                .background(Color.white)
-                .compositingGroup()
-                .bottomShadow()
+            if showingBoardingButton {
+                BoardVesselButton(onDuty: onDuty, report: report, onHeader: false, rootIsActive: $rootIsActive)
+                    .edgesIgnoringSafeArea(.bottom)
+                    .background(Color.white)
+                    .compositingGroup()
+                    .bottomShadow()
+            }
         }
             .background(Color.backgroundGrey)
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("Boarding", displayMode: .inline)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                BackButton(label: "\(report.vessel.name)")
-            })
+                if showingBoardingButton {
+                    BackButton(label: "\(report.vessel.name)")
+                } else {
+                    Text("Back")
+                }
+        })
     }
 }
 

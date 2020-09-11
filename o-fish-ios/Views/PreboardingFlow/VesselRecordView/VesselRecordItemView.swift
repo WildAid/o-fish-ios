@@ -22,16 +22,20 @@ struct VesselRecordItemView: View {
         let citations = report.inspection.summary.violations.filter({ $0.disposition == .citation }).count
 
         if warnings > 0 {
-            warningString = "\(warnings) \(warnings == 1 ? "Warning" : "Warnings")"
+            let localizedWarning =  NSLocalizedString("Warning", comment: "localized Warning")
+            let localizedWarnings = NSLocalizedString("Warnings", comment: "localized Warnings")
+            warningString = "\(warnings) \(warnings == 1 ? localizedWarning : localizedWarnings)"
         }
 
         if citations > 0 {
-            citationString = "\(citations) \(citations == 1 ? "Citation" : "Citations")"
+            let localizedCitation =  NSLocalizedString("Citation", comment: "localized Citation")
+            let localizedCitations = NSLocalizedString("Citations", comment: "localized Citations")
+            citationString = "\(citations) \(citations == 1 ? localizedCitation : localizedCitations)"
         }
 
         if warningString.isEmpty && citationString.isEmpty {
 
-            return "0 Violations"
+            return "0 \(NSLocalizedString("Violations", comment: ""))"
         }
 
         return "\(warningString)\(warnings > 0 && citations > 0 ? " • " : "")\(citationString)"

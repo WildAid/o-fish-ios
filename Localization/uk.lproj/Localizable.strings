@@ -147,8 +147,6 @@
 "Log In" = "Увійти";
 "Name" = "Ім'я";
 "Type" = "Тип";
-"You sure you want to logout?" = "Ви впевнені що хочете вийти?";
-"You can only log back in once you have cellular service or are connected to WIFI with internet" = "Ви зможете зайти тільки коли у вас з\'явиться інтернет";
 "Are you still at sea?" = "Ви все ще на морі?";
 "It has been %@ hours after closing the application" = "Пройшло %@ години після зачинення додатку";
 "It has been %@ hours since you went to sea." = "Пройшло %@ годин після початку виходу у море";
@@ -158,3 +156,8 @@
 "Access your login and password on the keychain" = "Доступ до вашого логіну та паролю через кейчейн";
 "Boarding Submitted!" = "Прибуття Збережено!";
 "No Notes or Photos for Risk" = "Немає збережених нотатків чи фотографій для ризика";
+"Draft Boardings" = "Не збережені висадки";
+"Close" = "Зачинити";
+"Log Out?" = "Вийти?";
+"All draft boardings will be deleted!" = "Всі не збережені висадки будуть видалені";
+"Edit" = "Редагувати";

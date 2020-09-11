@@ -14,9 +14,7 @@
 		300C4AF6241904A1000A2763 /* CrewMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AF2241904A1000A2763 /* CrewMemberView.swift */; };
 		300C4AF7241904A1000A2763 /* CrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AF3241904A1000A2763 /* CrewView.swift */; };
 		3013CA7C2424AF7A00D2FF60 /* PatrolBoatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CA7B2424AF7A00D2FF60 /* PatrolBoatView.swift */; };
-		3013CA802424B07300D2FF60 /* TextToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CA7F2424B07300D2FF60 /* TextToggle.swift */; };
 		3013CA842424B0E900D2FF60 /* LabeledDoubleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CA832424B0E900D2FF60 /* LabeledDoubleOutput.swift */; };
-		3013CA872424B13200D2FF60 /* ColoredToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CA862424B13200D2FF60 /* ColoredToggleStyle.swift */; };
 		30234A27244DAFEE00244997 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30234A26244DAFEE00244997 /* DeliveryView.swift */; };
 		30234A29244DAFF400244997 /* EMSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30234A28244DAFF400244997 /* EMSView.swift */; };
 		30234A2B244DAFFB00244997 /* VesselInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30234A2A244DAFFB00244997 /* VesselInformationView.swift */; };
@@ -39,6 +37,7 @@
 		3093806124460A2A00E23350 /* VesselItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093805B24460A2900E23350 /* VesselItemView.swift */; };
 		3093806324460A4C00E23350 /* ColumnText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093806224460A4C00E23350 /* ColumnText.swift */; };
 		3093806724460A6D00E23350 /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093806624460A6D00E23350 /* UIImage+resize.swift */; };
+		3093E8E42508E48100C6D481 /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3093E8E32508E48100C6D481 /* ProfilePageView.swift */; };
 		309CD28F24D41C3C002636C1 /* CrewMemberViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CD28E24D41C3C002636C1 /* CrewMemberViewModelTests.swift */; };
 		309CD29124D42012002636C1 /* EMSViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CD29024D42012002636C1 /* EMSViewModelTests.swift */; };
 		309CD29324D421E1002636C1 /* BoatViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309CD29224D421E1002636C1 /* BoatViewModelTests.swift */; };
@@ -69,6 +68,11 @@
 		30DAA62424D80311003848FB /* SafetyLevelViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DAA62324D80311003848FB /* SafetyLevelViewModelTests.swift */; };
 		30DAA62624D804C1003848FB /* SeizuresViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DAA62524D804C1003848FB /* SeizuresViewModelTests.swift */; };
 		30DBF2F824A34B6C00A364F1 /* Font+title2+titile3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */; };
+		30E315CD25079A1C0037235E /* OnOffCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E315CC25079A1C0037235E /* OnOffCircleView.swift */; };
+		30E315CF2507AB830037235E /* BottomPatrolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E315CE2507AB830037235E /* BottomPatrolView.swift */; };
+		30E315D12507B8050037235E /* FindRecordsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E315D02507B8050037235E /* FindRecordsButtonView.swift */; };
+		30E315D32507BF170037235E /* BoardVesselButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E315D22507BF170037235E /* BoardVesselButtonView.swift */; };
+		30E315D62507C3610037235E /* DraftBoardingsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E315D52507C3610037235E /* DraftBoardingsButtonView.swift */; };
 		30E31E8E243F36EA00B96A04 /* DeliveryInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */; };
 		30E5D5CF24D2F1A00049CEC9 /* NameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5D5CE24D2F1A00049CEC9 /* NameViewModelTests.swift */; };
 		30E5D5D124D30D360049CEC9 /* UserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E5D5D024D30D360049CEC9 /* UserViewModelTests.swift */; };
@@ -220,7 +224,6 @@
 		BCE48602B111BBC1D7148B41 /* CountryPickerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4824D90AA3E6903C93562 /* CountryPickerDataView.swift */; };
 		BCE48636CB4B6415762754EC /* ViolationSeizureInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48C72B8AD4A7FA640229B /* ViolationSeizureInputView.swift */; };
 		BCE4865AA1D910A5D49A0471 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4851E0E0038ED3A7714B4 /* ActivityIndicator.swift */; };
-		BCE4867D6AFA9A75C3D1A5CB /* BoardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE485D2BA893C25D49E2A05 /* BoardButton.swift */; };
 		BCE486CD5E197C1D1A7FFDC5 /* VesselIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4861F5EE6F1A6E55D35D4 /* VesselIconView.swift */; };
 		BCE486F4F1B6668619180222 /* AddPhotoIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D77EDFAB7319E0AEC9F /* AddPhotoIconView.swift */; };
 		BCE487057B14937DA5EEFCCB /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48842F04CE38CB4657424 /* PageView.swift */; };
@@ -291,9 +294,7 @@
 		300C4AF2241904A1000A2763 /* CrewMemberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrewMemberView.swift; sourceTree = "<group>"; };
 		300C4AF3241904A1000A2763 /* CrewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrewView.swift; sourceTree = "<group>"; };
 		3013CA7B2424AF7A00D2FF60 /* PatrolBoatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatrolBoatView.swift; sourceTree = "<group>"; };
-		3013CA7F2424B07300D2FF60 /* TextToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToggle.swift; sourceTree = "<group>"; };
 		3013CA832424B0E900D2FF60 /* LabeledDoubleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledDoubleOutput.swift; sourceTree = "<group>"; };
-		3013CA862424B13200D2FF60 /* ColoredToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredToggleStyle.swift; sourceTree = "<group>"; };
 		30234A26244DAFEE00244997 /* DeliveryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
 		30234A28244DAFF400244997 /* EMSView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMSView.swift; sourceTree = "<group>"; };
 		30234A2A244DAFFB00244997 /* VesselInformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselInformationView.swift; sourceTree = "<group>"; };
@@ -316,6 +317,7 @@
 		3093805B24460A2900E23350 /* VesselItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselItemView.swift; sourceTree = "<group>"; };
 		3093806224460A4C00E23350 /* ColumnText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnText.swift; sourceTree = "<group>"; };
 		3093806624460A6D00E23350 /* UIImage+resize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
+		3093E8E32508E48100C6D481 /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
 		309CD28E24D41C3C002636C1 /* CrewMemberViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMemberViewModelTests.swift; sourceTree = "<group>"; };
 		309CD29024D42012002636C1 /* EMSViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMSViewModelTests.swift; sourceTree = "<group>"; };
 		309CD29224D421E1002636C1 /* BoatViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatViewModelTests.swift; sourceTree = "<group>"; };
@@ -349,6 +351,11 @@
 		30DAA62324D80311003848FB /* SafetyLevelViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyLevelViewModelTests.swift; sourceTree = "<group>"; };
 		30DAA62524D804C1003848FB /* SeizuresViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeizuresViewModelTests.swift; sourceTree = "<group>"; };
 		30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+title2+titile3.swift"; sourceTree = "<group>"; };
+		30E315CC25079A1C0037235E /* OnOffCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnOffCircleView.swift; sourceTree = "<group>"; };
+		30E315CE2507AB830037235E /* BottomPatrolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPatrolView.swift; sourceTree = "<group>"; };
+		30E315D02507B8050037235E /* FindRecordsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindRecordsButtonView.swift; sourceTree = "<group>"; };
+		30E315D22507BF170037235E /* BoardVesselButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardVesselButtonView.swift; sourceTree = "<group>"; };
+		30E315D52507C3610037235E /* DraftBoardingsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBoardingsButtonView.swift; sourceTree = "<group>"; };
 		30E31E8D243F36EA00B96A04 /* DeliveryInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInputView.swift; sourceTree = "<group>"; };
 		30E5D5C424D2CF8A0049CEC9 /* O-FISHTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "O-FISHTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30E5D5C824D2CF8A0049CEC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -499,7 +506,6 @@
 		BCE48555D654177BE1259C7B /* TextPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextPickerView.swift; sourceTree = "<group>"; };
 		BCE4856CC007A1EF1F4C7D48 /* Color+Design.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Design.swift"; sourceTree = "<group>"; };
 		BCE4859125E217E233F37FE1 /* AddAttachmentIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAttachmentIconView.swift; sourceTree = "<group>"; };
-		BCE485D2BA893C25D49E2A05 /* BoardButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardButton.swift; sourceTree = "<group>"; };
 		BCE485E3BAF07E6F7052F9FB /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
 		BCE485E9BD233698DEE6D897 /* ScrollableTabBarItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabBarItemView.swift; sourceTree = "<group>"; };
 		BCE485EA5EF8E62DFA007248 /* UIView+Constraings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraings.swift"; sourceTree = "<group>"; };
@@ -610,15 +616,13 @@
 			isa = PBXGroup;
 			children = (
 				308AA0B52428EB1E0066370A /* SearchBarButton.swift */,
-				3013CA7F2424B07300D2FF60 /* TextToggle.swift */,
-				3013CA862424B13200D2FF60 /* ColoredToggleStyle.swift */,
 				3013CA7B2424AF7A00D2FF60 /* PatrolBoatView.swift */,
 				497EBF1B2435D3AC00B01800 /* CoordsBoxView.swift */,
-				BCE485D2BA893C25D49E2A05 /* BoardButton.swift */,
 				BCE483DE0B16C2C3C13D4BF3 /* PatrolSummary */,
 				BCE48795B555C1389DD995DC /* VesselImageView.swift */,
 				BCE48D936613848423BBAF33 /* DutyState.swift */,
 				BCE48FFF9C49070CE13E7B27 /* PatrolBoatUserView.swift */,
+				3093E8E32508E48100C6D481 /* ProfilePageView.swift */,
 			);
 			path = PatrolBoat;
 			sourceTree = "<group>";
@@ -676,6 +680,17 @@
 				3093805B24460A2900E23350 /* VesselItemView.swift */,
 			);
 			path = PreboardingView;
+			sourceTree = "<group>";
+		};
+		30E315D42507C3200037235E /* PatrolBoatView */ = {
+			isa = PBXGroup;
+			children = (
+				30E315D02507B8050037235E /* FindRecordsButtonView.swift */,
+				30E315D52507C3610037235E /* DraftBoardingsButtonView.swift */,
+				30E315D22507BF170037235E /* BoardVesselButtonView.swift */,
+				30E315CE2507AB830037235E /* BottomPatrolView.swift */,
+			);
+			path = PatrolBoatView;
 			sourceTree = "<group>";
 		};
 		30E5D5C524D2CF8A0049CEC9 /* O-FISHTests */ = {
@@ -835,6 +850,7 @@
 		493CDFD52403CB8900516048 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				30E315CC25079A1C0037235E /* OnOffCircleView.swift */,
 				3093806224460A4C00E23350 /* ColumnText.swift */,
 				30EB886124ACA24600904894 /* ActionSheetButton.swift */,
 				308A75362476B99C00C10462 /* NoteFieldView.swift */,
@@ -884,6 +900,7 @@
 				BCE486E471A682C466E106D0 /* ModalView.swift */,
 				BCE488B03B27A519E5271DC6 /* InputMultilineFieldCaption.swift */,
 				BCE48E39591741EEEEE3DDCF /* PhotoView.swift */,
+				30E315D42507C3200037235E /* PatrolBoatView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1586,11 +1603,11 @@
 				493CDFCA23FEBAD500516048 /* RealmConnection.swift in Sources */,
 				3013CA842424B0E900D2FF60 /* LabeledDoubleOutput.swift in Sources */,
 				30F4D601245C725C00543F54 /* BusinessPickerDataView.swift in Sources */,
-				3013CA872424B13200D2FF60 /* ColoredToggleStyle.swift in Sources */,
 				493CDFC023FEB87600516048 /* Settings.swift in Sources */,
 				49807659242E7B3000D463F4 /* LabeledText.swift in Sources */,
 				49FDCD66241D1F3700C00574 /* BoatViewModel.swift in Sources */,
 				49674E3F2450AD190023ABC6 /* Array_OptionalAppend.swift in Sources */,
+				30E315D12507B8050037235E /* FindRecordsButtonView.swift in Sources */,
 				30C112B82478311D00DD13A8 /* AttachmentsView.swift in Sources */,
 				490C0DBC23F6E6F700283307 /* Report.swift in Sources */,
 				BCE48781AEC57E09C5378783 /* InputField.swift in Sources */,
@@ -1671,6 +1688,7 @@
 				49FDCD70241D206D00C00574 /* SummaryViewModel.swift in Sources */,
 				49976B4624536F3300EF84CC /* PhotoIDsDisplayView.swift in Sources */,
 				49A3EC9D242CBA4E00055342 /* NameViewModel.swift in Sources */,
+				30E315CD25079A1C0037235E /* OnOffCircleView.swift in Sources */,
 				49E385B124320705000A6EC3 /* ViolationsSummaryView.swift in Sources */,
 				49FDCD61241D1EA400C00574 /* CrewMemberViewModel.swift in Sources */,
 				308A753B2476C7E900C10462 /* AddAttachmentsButton.swift in Sources */,
@@ -1693,7 +1711,6 @@
 				49674E5624535E2A0023ABC6 /* PhotosDisplayView.swift in Sources */,
 				49B83EDA2489546D00027B8C /* Violation.swift in Sources */,
 				BCE484202B483EC9484CB5AB /* TopTabBarContainerView.swift in Sources */,
-				3013CA802424B07300D2FF60 /* TextToggle.swift in Sources */,
 				BCE48BFCEE413835DEB14DC0 /* RowView.swift in Sources */,
 				BCE48B59A51E4AF79D2FAEE1 /* TextLabel.swift in Sources */,
 				49B83EDB2489546D00027B8C /* SafetyLevel.swift in Sources */,
@@ -1735,14 +1752,15 @@
 				BCE485037FD0F27E83D60FA2 /* CheckBox.swift in Sources */,
 				BCE485FD5632C4C598D43309 /* ViolationCrewMemberSelectView.swift in Sources */,
 				BCE484BF3E04A46029372B13 /* CrewMemberStaticView.swift in Sources */,
-				BCE4867D6AFA9A75C3D1A5CB /* BoardButton.swift in Sources */,
 				BCE488A523907BEEF4D6BEC9 /* ScrollableTabBar.swift in Sources */,
+				30E315CF2507AB830037235E /* BottomPatrolView.swift in Sources */,
 				BCE48D3B49087F1687BB71D2 /* ScrollableTabBarItemView.swift in Sources */,
 				BCE48ECFBCDE115D3867DAC4 /* AlertItem.swift in Sources */,
 				49B83EE32489546D00027B8C /* Offence.swift in Sources */,
 				BCE48D2E80CF82657D03614D /* ExclamationIconView.swift in Sources */,
 				BCE4814543022D42A642CA4A /* KeyboardController.swift in Sources */,
 				BCE488F38035E437A264E0A5 /* KeyboardControllingScrollView.swift in Sources */,
+				30E315D62507C3610037235E /* DraftBoardingsButtonView.swift in Sources */,
 				BCE48D3F831CFB459F1F6F56 /* PopoverManager.swift in Sources */,
 				BCE4848AF540CA27E798B49F /* UIView+Constraings.swift in Sources */,
 				BCE485FB82E626571C19B582 /* RectangleButton.swift in Sources */,
@@ -1753,11 +1771,13 @@
 				BCE487701A2C97BF1CE46AF7 /* PageViewController.swift in Sources */,
 				BCE487057B14937DA5EEFCCB /* PageView.swift in Sources */,
 				BCE48F5083615CEB327EF9BD /* PhotoQueryManager.swift in Sources */,
+				30E315D32507BF170037235E /* BoardVesselButtonView.swift in Sources */,
 				BCE48324A3D831DED465C2D5 /* PatrolSummaryView.swift in Sources */,
 				BCE48744C5AC97E42348905B /* StartStopDatePicker.swift in Sources */,
 				BCE485F8B0B2A469B5FBAE61 /* PatrolReportView.swift in Sources */,
 				BCE4880D6DD1C2FEEFC2B9FC /* VesselImageView.swift in Sources */,
 				BCE48C8A28AE75897D15AF75 /* ModalView.swift in Sources */,
+				3093E8E42508E48100C6D481 /* ProfilePageView.swift in Sources */,
 				BCE48BB3CF6EE23B71F7A818 /* InputMultilineFieldCaption.swift in Sources */,
 				BCE48882086AB309951DC104 /* Debouncer.swift in Sources */,
 				BCE483BC70E34A1FCBAE3AB6 /* ChooseBusinessView.swift in Sources */,
