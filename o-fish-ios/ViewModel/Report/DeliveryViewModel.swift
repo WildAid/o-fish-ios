@@ -39,7 +39,6 @@ class DeliveryViewModel: ObservableObject, Identifiable {
 
     func save() -> Delivery? {
         if isEmpty {
-            print("No delivery to save")
             delivery = nil
         } else {
             if delivery == nil {

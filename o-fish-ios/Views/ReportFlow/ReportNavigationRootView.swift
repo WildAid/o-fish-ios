@@ -105,7 +105,6 @@ struct ReportNavigationRootView: View {
             report.captain = captain
             report.crew = [CrewMemberViewModel]()
         }
-        print("Saving report in Realm")
         report.save()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.showSubmittedAlert()

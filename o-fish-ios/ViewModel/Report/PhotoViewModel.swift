@@ -38,7 +38,6 @@ class PhotoViewModel: ObservableObject, Identifiable {
     }
 
     func save() {
-        print("Saving photo")
         let isNew = photo == nil
         do {
             guard let realm = app.currentUser()?.agencyRealm() else {
@@ -47,7 +46,6 @@ class PhotoViewModel: ObservableObject, Identifiable {
             }
             try realm.write {
                 if isNew {
-                    print("New photo")
                     photo = Photo(id: id)
                 }
                 guard let photo = photo else { return }
@@ -57,7 +55,6 @@ class PhotoViewModel: ObservableObject, Identifiable {
                 photo.date = date as NSDate
                 photo.referencingReportID = referencingReportID
                 if isNew {
-                    print("Adding photo to Realm")
                     realm.add(photo)
                 }
             }

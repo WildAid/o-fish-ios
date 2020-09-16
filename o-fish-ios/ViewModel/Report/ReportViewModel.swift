@@ -11,6 +11,7 @@ class ReportViewModel: ObservableObject, Identifiable {
     private var report: Report?
 
     var id = ObjectId.generate().stringValue
+    @Published var draft = false
     @Published var location = LocationViewModel()
     @Published var date = Date()
     @Published var reportingOfficer = UserViewModel()
@@ -33,6 +34,7 @@ class ReportViewModel: ObservableObject, Identifiable {
     convenience init (_ report: Report) {
         self.init()
         self.report = report
+        draft = report.draft.value ?? false
         id = report._id.stringValue
         location = LocationViewModel(report.location)
         if let reportDate = report.date {
@@ -73,6 +75,7 @@ class ReportViewModel: ObservableObject, Identifiable {
         }
         do {
             try realm.write {
+                report.draft.value = draft
                 report.location.append(location.longitude)
                 report.location.append(location.latitude)
                 report.date = date as NSDate
