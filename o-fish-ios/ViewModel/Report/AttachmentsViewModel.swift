@@ -38,15 +38,13 @@ class AttachmentsViewModel: ObservableObject, Identifiable {
         }
         guard let attachments = attachments else { return nil }
         attachments.photoIDs.removeAll()
-        photoIDs.forEach { photoID in
-            attachments.photoIDs.append(photoID)
-        }
+        attachments.photoIDs.append(objectsIn: photoIDs.compactMap {
+            $0.isEmpty ? nil : $0
+        })
         attachments.notes.removeAll()
-        notes.forEach { note in
-            if !note.isEmpty {
-                attachments.notes.append(note.text)
-            }
-        }
+        attachments.notes.append(objectsIn: notes.compactMap {
+            $0.isEmpty ? nil : $0.text
+        })
         return attachments
     }
 

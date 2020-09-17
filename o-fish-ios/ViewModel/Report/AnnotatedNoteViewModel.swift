@@ -38,9 +38,9 @@ class AnnotatedNoteViewModel: ObservableObject, Identifiable {
         }
         guard let annotatedNote = annotatedNote else { return nil }
         annotatedNote.photoIDs.removeAll()
-        photoIDs.forEach { photoID in
-            annotatedNote.photoIDs.append(photoID)
-        }
+        annotatedNote.photoIDs.append(objectsIn: photoIDs.compactMap {
+            $0.isEmpty ? nil : $0
+        })
         annotatedNote.note = note
         return annotatedNote
     }

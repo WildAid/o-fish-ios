@@ -36,12 +36,9 @@ class SummaryViewModel: ObservableObject, Identifiable {
         guard let summary = summary else { return nil }
         summary.safetyLevel = safetyLevel.save()
         summary.violations.removeAll()
-        self.violations.forEach { item in
-            if !item.isEmpty {
-                guard let itemModel = item.save() else { return }
-                summary.violations.append(itemModel)
-            }
-        }
+        summary.violations.append(objectsIn: violations.compactMap {
+            $0.isEmpty ? nil : $0.save()
+        })
         summary.seizures = seizures.save()
         return summary
     }

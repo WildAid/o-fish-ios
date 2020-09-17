@@ -14,12 +14,9 @@ class CrewMemberViewModel: ObservableObject, Identifiable {
     @Published var name = ""
     @Published var license = ""
     @Published var attachments = AttachmentsViewModel()
-
-    // TODO: Possible schema change will works better
     @Published var isCaptain = false
 
     var isEmpty: Bool {
-        // TODO: Add attachment and photos isEmpty check
         name.isEmpty && license.isEmpty
     }
 
