@@ -9,6 +9,8 @@ import RealmSwift
 
 class Report: Object, Identifiable {
     @objc dynamic var _id: ObjectId = ObjectId.generate()
+    // To write to this, set `.value`
+    let draft = RealmOptional<Bool>()
     @objc dynamic var reportingOfficer: User? = User()
     @objc dynamic var timestamp = NSDate()
     let location = List<Double>()
