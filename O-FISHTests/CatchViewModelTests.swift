@@ -31,30 +31,16 @@ class CatchViewModelTests: XCTestCase {
         let number = 10
         let weight = 25.0
         let unit: CatchViewModel.UnitSpecification = .kilograms
-        let quantityType: [CatchViewModel.QuantityType] = [.count]
         
         //when
         sut?.fish = fish
         sut?.number = number
         sut?.weight = weight
         sut?.unit = unit
-        sut?.quantityType = quantityType
         let isEmpty = sut?.isEmpty ?? true
         
         //then
         XCTAssertFalse(isEmpty)
-    }
-    
-    func testQuantityTypeString() {
-        //given
-        let quantityType: [CatchViewModel.QuantityType] = [.count, .weight]
-        sut?.quantityType = quantityType
-        
-        //when
-        let string = sut?.quantityTypeString
-        
-        //then
-        XCTAssertEqual(string, "\(CatchViewModel.QuantityType.count.rawValue) & \(CatchViewModel.QuantityType.weight.rawValue)")
     }
     
     func testWeightStringNotEmpty() {
@@ -82,14 +68,12 @@ class CatchViewModelTests: XCTestCase {
         let number = 10
         let weight = 25.0
         let unit: CatchViewModel.UnitSpecification = .pound
-        let quantityType: [CatchViewModel.QuantityType] = [.count, .weight]
-        
+
         //when
         sut?.fish = fish
         sut?.number = number
         sut?.weight = weight
         sut?.unit = unit
-        sut?.quantityType = quantityType
         let catchFish = sut?.save()
 
         //then
@@ -118,7 +102,6 @@ class CatchViewModelTests: XCTestCase {
         sut.fish = "Some fish"
 
         // when
-        sut.quantityType = [.weight, .count]
         sut.weight = 1
         sut.unit = .pound
         sut.number = 10
@@ -127,7 +110,6 @@ class CatchViewModelTests: XCTestCase {
         XCTAssertTrue(sut.isComplete)
 
         // when
-        sut.quantityType = [.count]
         sut.weight = 0
         sut.unit = .notSelected
         sut.number = 10
@@ -136,7 +118,6 @@ class CatchViewModelTests: XCTestCase {
         XCTAssertTrue(sut.isComplete)
 
         // when
-        sut.quantityType = [.weight]
         sut.weight = 1
         sut.unit = .kilograms
         sut.number = 0
@@ -166,7 +147,6 @@ class CatchViewModelTests: XCTestCase {
         sut.weight = 1
         sut.unit = .kilograms
         sut.number = 1
-        sut.quantityType = [.weight, .count]
 
         // then
         XCTAssertFalse(sut.isComplete, "Fish type mandatory")

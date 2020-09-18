@@ -8,7 +8,8 @@
 import RealmSwift
 
 class ReportViewModel: ObservableObject, Identifiable {
-    private var report: Report?
+    // Not making this private as it's used by the unit tests
+    var report: Report?
 
     var id = ObjectId.generate().stringValue
     @Published var draft = false
@@ -72,7 +73,10 @@ class ReportViewModel: ObservableObject, Identifiable {
             print("Realm not available")
             return
         }
-        guard let report = isNewReport ? Report(id: id) : report else { return }
+        guard let report = isNewReport ? Report(id: id) : report else {
+            print("report not set")
+            return
+        }
         do {
             try realm.write {
                 report.draft.value = draft
@@ -92,6 +96,7 @@ class ReportViewModel: ObservableObject, Identifiable {
                 report.notes.append(objectsIn: notes.compactMap {
                     $0.isEmpty ? nil : $0.save()
                 })
+                self.report = report
                 if isNewReport {
                     realm.add(report)
                 }
@@ -102,7 +107,24 @@ class ReportViewModel: ObservableObject, Identifiable {
     }
 
     func discard() {
-        PhotoViewModel.delete(reportID: id)
+        guard let realm = app.currentUser()?.agencyRealm() else {
+            print("Realm not available")
+            return
+        }
+        PhotoViewModel.delete(reportID: id, realm: realm)
+        guard let report = report else {
+            print("Deleting, but report not set")
+            return
+        }
+        print("Report has already been saved to Realm and so deleting it")
+        do {
+            try realm.write {
+                realm.delete(report)
+            }
+            self.report = nil
+        } catch let error {
+            print("Couldn't delete report from Realm: \(error.localizedDescription)")
+        }
     }
 }
 

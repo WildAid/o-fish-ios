@@ -100,12 +100,8 @@ class PhotoViewModel: ObservableObject, Identifiable {
         }
     }
 
-    static func delete(reportID: String) {
+    static func delete(reportID: String, realm: Realm ) {
         do {
-            guard let realm = app.currentUser()?.agencyRealm() else {
-                print("Can't access Realm to delete photos")
-                return
-            }
             let predicate = NSPredicate(format: "referencingReportID == %@", reportID)
             try realm.write {
                 realm.delete(realm.objects(Photo.self).filter(predicate))

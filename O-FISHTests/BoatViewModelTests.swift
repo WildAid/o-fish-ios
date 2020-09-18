@@ -44,37 +44,6 @@ class BoatViewModelTests: XCTestCase {
         XCTAssertFalse(isEmpty)
     }
     
-    
-    func testSaveVesselNotNil() {
-        //given
-        let name = "Vessel"
-        let homePort = "Sydney"
-        let nationality = "Australia"
-        let permitNumber = "1245"
-        let vessel = Boat()
-        let emsList = List<EMS>()
-        emsList.append(EMS())
-        emsList.append(EMS())
-        vessel.name = name
-        vessel.homePort = homePort
-        vessel.nationality = nationality
-        vessel.permitNumber = permitNumber
-        sut = BoatViewModel(vessel)
-        sut?.ems.append(EMSViewModel.sample)
-        sut?.ems.append(EMSViewModel.sample)
-        
-        //when
-        let boat = sut?.save()
-        
-        //then
-        XCTAssertEqual(boat?.name, name)
-        XCTAssertEqual(boat?.homePort, homePort)
-        XCTAssertEqual(boat?.nationality, nationality)
-        XCTAssertEqual(boat?.permitNumber, permitNumber)
-        XCTAssertEqual(boat?.ems.first?.emsType, EMSViewModel.sample.emsType)
-        XCTAssertEqual(boat?.ems.first?.registryNumber, EMSViewModel.sample.registryNumber)
-    }
-    
     func testSaveVesselNil() {
         //given
         let boat: Boat? = nil
