@@ -25,9 +25,9 @@ class UserViewModel: ObservableObject {
     }
 
     func save() -> User? {
-        // Always want to create a new instance of User because you can't embed the same embeddable object
-        // in more than one Object
-        user = User()
+        if user == nil {
+            user = User()
+        }
         guard let user = user else { return nil }
         user.name = name.save()
         user.email = email

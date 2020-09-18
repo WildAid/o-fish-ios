@@ -46,14 +46,9 @@ class InspectionViewModel: ObservableObject, Identifiable {
         inspection.summary = summary.save()
         inspection.gearType = gearType.save()
         inspection.actualCatch.removeAll()
-        actualCatch.forEach { item in
-            if !item.isEmpty {
-                guard let modelItem = item.save() else {
-                    return
-                }
-                inspection.actualCatch.append(modelItem)
-            }
-        }
+        inspection.actualCatch.append(objectsIn: actualCatch.compactMap {
+            $0.isEmpty ? nil : $0.save()
+        })
         inspection.attachments = attachments.save()
 
         return inspection

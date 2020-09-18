@@ -68,14 +68,15 @@ class ReportViewModel: ObservableObject, Identifiable {
 
     func save() {
         let isNewReport = (report == nil)
-        guard let realm = app.currentUser()?.agencyRealm(),
-              let report = isNewReport ? Report(id: id) : report else {
+        guard let realm = app.currentUser()?.agencyRealm() else {
             print("Realm not available")
             return
         }
+        guard let report = isNewReport ? Report(id: id) : report else { return }
         do {
             try realm.write {
                 report.draft.value = draft
+                report.location.removeAll()
                 report.location.append(location.longitude)
                 report.location.append(location.latitude)
                 report.date = date as NSDate
@@ -83,13 +84,11 @@ class ReportViewModel: ObservableObject, Identifiable {
                 report.vessel = vessel.save()
                 report.captain = captain.save()
                 report.crew.removeAll()
-                crew.forEach { item in
-                    if !item.isEmpty {
-                        guard let modelItem = item.save() else { return }
-                        report.crew.append(modelItem)
-                    }
-                }
+                report.crew.append(objectsIn: crew.compactMap {
+                    $0.isEmpty ? nil : $0.save()
+                })
                 report.inspection = inspection.save()
+                report.notes.removeAll()
                 report.notes.append(objectsIn: notes.compactMap {
                     $0.isEmpty ? nil : $0.save()
                 })
@@ -97,8 +96,8 @@ class ReportViewModel: ObservableObject, Identifiable {
                     realm.add(report)
                 }
             }
-        } catch {
-            print("Couldn't add report to Realm")
+        } catch let error {
+            print("Couldn't write report to Realm: \(error.localizedDescription)")
         }
     }
 

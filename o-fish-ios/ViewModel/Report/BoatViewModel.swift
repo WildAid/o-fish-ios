@@ -52,10 +52,9 @@ class BoatViewModel: ObservableObject, Identifiable {
         boat.permitNumber = permitNumber
         boat.lastDelivery = lastDelivery.save()
         boat.ems.removeAll()
-        ems.forEach { item in
-            guard let modelItem = item.save() else { return }
-            boat.ems.append(modelItem)
-        }
+        boat.ems.append(objectsIn: ems.compactMap {
+            $0.isEmpty ? nil : $0.save()
+        })
         boat.attachments = attachments.save()
         return boat
     }

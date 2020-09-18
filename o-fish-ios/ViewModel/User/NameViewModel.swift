@@ -27,9 +27,9 @@ class NameViewModel: ObservableObject {
     }
 
     func save() -> Name? {
-        // Always want to create a new instance of Name because you can't embed the same embeddable object
-        // in more than one Object
-        name = Name()
+        if name == nil {
+            name = Name()
+        }
         guard let name = name else { return nil }
         name.first = self.first
         name.last = self.last
