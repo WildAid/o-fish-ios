@@ -22,9 +22,13 @@ class ReportViewModelTest: XCTestCase {
     }
     
     func testSaveDiscard() {
-        sut!.save()
-        XCTAssertNotNil(sut!.report)
-        sut!.discard()
-        XCTAssertNil(sut!.report)
+        XCTAssertNotNil(sut)
+        guard let sut = sut else {
+            return
+        }
+        sut.save()
+        XCTAssertNotNil(sut.report)
+        sut.discard()
+        XCTAssertNil(sut.report)
     }
 }
