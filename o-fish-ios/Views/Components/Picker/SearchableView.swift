@@ -66,7 +66,7 @@ struct SearchableView<SearchableData: SearchableDataProtocol,
             ScrollView {
                 VStack(spacing: 0) {
                     ForEach(items.filter {
-                        $0.isMatch(search: searchText) || searchText == ""
+                        $0.isMatch(search: searchText) || searchText == "" || $0.isMatch(search: "Other")
                     }) { item in
 
                         VStack(spacing: 0) {
