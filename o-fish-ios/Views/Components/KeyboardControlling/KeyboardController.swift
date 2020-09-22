@@ -17,7 +17,6 @@ final class KeyboardController: ObservableObject {
     }
 
     deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 
     private func addObserver() {

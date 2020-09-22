@@ -27,13 +27,13 @@ struct AddAttachmentsButton: View {
         // TODO: for some reason this works only from action and not from viewModifier
         // TODO: review when viewModifier actions will be available
 
-        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
-                ModalView(buttons: [
-                    ModalViewButton(title: NSLocalizedString("Photo", comment: ""), action: showPhotoPickerTypeModal),
-                    ModalViewButton(title: NSLocalizedString("Note", comment: ""), action: addNote)
-                ],
-                    cancel: hidePopover)
-        }
+        PopoverManager.shared.showPopover(id: popoverId, content: {
+            ModalView(buttons: [
+                ModalViewButton(title: NSLocalizedString("Photo", comment: ""), action: showPhotoPickerTypeModal),
+                ModalViewButton(title: NSLocalizedString("Note", comment: ""), action: addNote)
+            ],
+            cancel: hidePopover)
+        }, withButton: false)
     }
 
     private func showPhotoPickerTypeModal() {
@@ -42,13 +42,13 @@ struct AddAttachmentsButton: View {
         // TODO: for some reason this works only from action and not from viewModifier
         // TODO: review when viewModifier actions will be available
 
-        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
+        PopoverManager.shared.showPopover(id: popoverId, content: {
             ModalView(buttons: [
                 ModalViewButton(title: NSLocalizedString("Camera", comment: ""), action: { self.showPhotoTaker(source: .camera) }),
                 ModalViewButton(title: NSLocalizedString("Photo Library", comment: ""), action: { self.showPhotoTaker(source: .photoLibrary) })
             ],
-                cancel: hidePopover)
-        }
+            cancel: hidePopover)
+        }, withButton: false)
     }
 
     /// Logic
