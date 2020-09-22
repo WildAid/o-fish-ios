@@ -17,6 +17,7 @@ extension UIColor {
     }
 
     public static let main = UIColor(red: 10, green: 64, blue: 116) // #0a4074
+    public static let actionBlue = UIColor(red: 0, green: 0.48, blue: 1, alpha: 1.0)
 }
 
 extension Color {
@@ -63,5 +64,6 @@ extension Color {
 
     public static let lightGrayIcon = Color(red: 203, green: 203, blue: 203) //#CBCBCB
     public static let iconGreen = Color(red: 0, green: 0.7, blue: 0.29)
+    public static let actionBlue = Color(red: 0, green: 0.48, blue: 1)
 
 }

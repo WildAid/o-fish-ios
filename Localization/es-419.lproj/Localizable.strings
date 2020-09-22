@@ -161,3 +161,9 @@
 "Log Out?" = "Log Out?";
 "All draft boardings will be deleted!" = "All draft boardings will be deleted!";
 "Edit" = "Edit";
+"Save and Finish Later" = "Save and Finish Later";
+"If canceled, this boarding will not be saved. You may however save it to finish later." = "If canceled, this boarding will not be saved. You may however save it to finish later.";
+"Delete Boarding" = "Delete Boarding";
+"Boarding Deleted!" = "Boarding Deleted!";
+"Boarding Canceled!" = "Boarding Canceled!";
+"Save" = "Save";
