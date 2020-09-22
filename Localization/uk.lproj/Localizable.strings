@@ -161,3 +161,9 @@
 "Log Out?" = "Вийти?";
 "All draft boardings will be deleted!" = "Всі не збережені висадки будуть видалені";
 "Edit" = "Редагувати";
+"Save and Finish Later" = "Зберегти і завершити потім";
+"If canceled, this boarding will not be saved. You may however save it to finish later." = "Якщо скасувати прибуття, то воно не буде здбережено. Однак, ви можете зберегти і завершити його потім.";
+"Delete Boarding" = "Видалити Прибуття";
+"Boarding Deleted!" = "Прибуття Видалено!";
+"Boarding Canceled!" = "Прибуття відмінено!";
+"Save" = "Зберегти";

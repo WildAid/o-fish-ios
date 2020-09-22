@@ -16,6 +16,7 @@ struct ReportNavigationRootView: View {
     @State private var showingAlertItem: AlertItem?
     @State private var notFilledScreens: [String] = TopTabBarItems.allCases.map { $0.rawValue }
     @State private var prefilledCrewAvailable: Bool
+    @State private var showingActionSheetItem: ActionSheetItem?
 
     init(report: ReportViewModel? = nil, prefilledAvailable: Bool = false, rootIsActive: Binding<Bool>) {
         self.report = report ?? ReportViewModel()
@@ -45,35 +46,41 @@ struct ReportNavigationRootView: View {
                 leading: Button(action: showCancelAlert) {
                     Text("Cancel")
                 }, trailing: Button(action: submitNavBarClicked) {
-                    Text("Submit")
+                    Text("Save")
                 })
             .navigationBarTitle("New Boarding", displayMode: .inline)
             .showingAlert(alertItem: $showingAlertItem)
+            .showingActionSheet(actionSheetItem: $showingActionSheetItem)
     }
 
     /// Logic
 
     private func showSubmitAlert() {
-        showingAlertItem = AlertItem(title: "Submit boarding?",
-            message: "Are you sure you want to submit the boarding?",
-            primaryButton: .default(Text("Keep Editing")),
-            secondaryButton: .cancel(Text("Submit"), action: saveAlertClicked))
+        showingActionSheetItem = ActionSheetItem(title: "Submit boarding?",
+                                                 message: "Are you sure you want to submit the boarding?",
+                                                 firstButton: .default(Text("Submit"), action: { self.submitAlertClicked() }),
+                                                 secondButton: .default(Text("Keep Editing")),
+                                                 thirdButton: .default(Text("Save and Finish Later"),
+                                                                       action: { self.saveAlertClicked() }))
     }
 
     private func showSubmitNotFilledAlert() {
-        showingAlertItem = AlertItem(title: NSLocalizedString("You left the following sections blank", comment: "")
+        showingActionSheetItem = ActionSheetItem(title: NSLocalizedString("You left the following sections blank", comment: "")
             + ":\n" + notFilledScreens.map { NSLocalizedString($0, comment: "") }.joined(separator: "\n"),
-
-            message: "Are you sure you want to submit the boarding?",
-            primaryButton: .default(Text("Keep Editing")),
-            secondaryButton: .cancel(Text("Submit"), action: saveAlertClicked))
+                                                 message: "Are you sure you want to submit the boarding?",
+                                                 firstButton: .default(Text("Keep Editing")),
+                                                 secondButton: .default(Text("Save and Finish Later"),
+                                                                        action: { self.saveAlertClicked() }),
+                                                 thirdButton: .default(Text("Submit"),
+                                                                       action: { self.submitAlertClicked() }))
     }
 
     private func showCancelAlert() {
-        showingAlertItem = AlertItem(title: NSLocalizedString("Cancel boarding?", comment: ""),
-        message: "This boarding will not be saved.",
-        primaryButton: .default(Text("Keep Editing")),
-        secondaryButton: .cancel(Text("Cancel Boarding"), action: discardReport))
+        showingActionSheetItem = ActionSheetItem(title: NSLocalizedString("Cancel boarding?", comment: ""),
+        message: "If canceled, this boarding will not be saved. You may however save it to finish later.",
+        firstButton: .default(Text("Keep Editing")),
+        secondButton: .default(Text("Save and Finish Later"), action: { self.saveAlertClicked() }),
+        thirdButton: .destructive(Text(report.draft ? "Delete Boarding" : "Cancel Boarding" ), action: discardReport))
     }
 
     private func showFinalAlert() {
@@ -84,9 +91,17 @@ struct ReportNavigationRootView: View {
         }
     }
 
-    private func showSubmittedAlert() {
-        self.showingAlertItem = AlertItem(title: "Boarding Submitted!", secondaryButton: .cancel(Text("Ok"), action: { self.rootIsActive.toggle() }))
+    private func showSubmittedAlert(isDraft: Bool) {
+        self.showingAlertItem = AlertItem(title: isDraft ? "Boarding Saved!" : "Boarding Submitted!",
+                                          secondaryButton: .cancel(Text("Ok"),
+                                                                   action: { self.rootIsActive.toggle() }))
     }
+
+    private func showCanceledAlert(isDraft: Bool) {
+           self.showingAlertItem = AlertItem(title: isDraft ? "Boarding Deleted!" : "Boarding Canceled!",
+                                             secondaryButton: .cancel(Text("Ok"),
+                                                                      action: { self.rootIsActive.toggle() }))
+       }
 
     /// Actions
     private func submitNavBarClicked() {
@@ -94,11 +109,24 @@ struct ReportNavigationRootView: View {
     }
 
     private func discardReport() {
+        let isDraft = report.draft
         report.discard()
-        rootIsActive.toggle()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.showCanceledAlert(isDraft: isDraft)
+        }
     }
 
     private func saveAlertClicked() {
+        report.draft = true
+        report.save()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.showSubmittedAlert(isDraft: true)
+        }
+    }
+
+    private func submitAlertClicked() {
+        let wasDraft = report.draft
+        report.draft = true
         if prefilledCrewAvailable {
             let captain = CrewMemberViewModel()
             captain.isCaptain = true
@@ -107,9 +135,10 @@ struct ReportNavigationRootView: View {
         }
         report.save()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.showSubmittedAlert()
+            self.showSubmittedAlert(isDraft: wasDraft)
         }
     }
+
 }
 
 struct ReportNavigationRootView_Previews: PreviewProvider {
