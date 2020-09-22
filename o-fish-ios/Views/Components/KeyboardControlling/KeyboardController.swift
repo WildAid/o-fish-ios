@@ -16,9 +16,6 @@ final class KeyboardController: ObservableObject {
         addObserver()
     }
 
-    deinit {
-    }
-
     private func addObserver() {
         NotificationCenter.default.addObserver(self,
             selector: #selector(keyBoardWillShow(notification:)),
