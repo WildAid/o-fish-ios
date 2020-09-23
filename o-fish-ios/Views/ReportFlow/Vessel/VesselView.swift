@@ -20,12 +20,13 @@ struct VesselView: View {
     @State private var informationComplete: Bool
     @State private var deliveryComplete: Bool
     @State private var emsComplete: [String: Bool]
-
+    @Binding private var showingAlertItem: AlertItem?
     @Binding private var showingWarningState: Bool
 
     init(vessel: BoatViewModel,
          reportId: String,
          prefilledVesselAvailable: Binding<Bool>,
+         showingAlertItem: Binding<AlertItem?>,
          allFieldsComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>) {
 
@@ -34,6 +35,7 @@ struct VesselView: View {
         _activeEditableComponentId = State(initialValue: vessel.id)
         _showingAddEMSButton = State(initialValue: vessel.ems.filter({ $0.isEmpty }).isEmpty)
         _showingPrefilledAlert = prefilledVesselAvailable
+        self._showingAlertItem = showingAlertItem
         _allFieldsComplete = allFieldsComplete
 
         _informationComplete = State(initialValue: false)
@@ -78,15 +80,7 @@ struct VesselView: View {
                         }
                     }
                 }
-                    .alert(isPresented: self.$showingPrefilledAlert) {
-                        Alert(title: Text("Prefill Vessel Information From Previous Boarding?"),
-                            message: Text("You'll still be able to edit fields"),
-                            primaryButton: .default(Text("No")) {
-                                self.showingPrefilledAlert = false
-                            },
-                            secondaryButton: .default(Text("Prefill"), action: self.prefillVesselInformationClicked)
-                        )
-                    }
+                .showingAlert(alertItem: $showingAlertItem)
 
                 if self.showingAddEMSButton {
                     SectionButton(title: "Add Electronic Monitoring System",
@@ -151,6 +145,15 @@ struct VesselView: View {
                 emsComplete[model.id] = false
                 showingAddEMSButton = false
             }
+
+            if showingAlertItem == nil {
+                showingAlertItem = AlertItem(
+                    title: "Prefill Vessel Information From Previous Boarding?",
+                    message: "You'll still be able to edit fields",
+                    primaryButton: .default(Text("No")) { self.showingPrefilledAlert = false },
+                    secondaryButton: .default(Text("Prefill")) { self.prefillVesselInformationClicked() }
+                )
+            }
         }
     }
 
@@ -191,11 +194,21 @@ struct VesselView: View {
 
 struct VesselView_Previews: PreviewProvider {
     static var previews: some View {
-        VesselView(
-            vessel: .sample,
-            reportId: "TestId",
-            prefilledVesselAvailable: .constant(true),
-            allFieldsComplete: .constant(false),
-            showingWarningState: .constant(false))
+        Group {
+            VesselView(
+                vessel: .sample,
+                reportId: "TestId",
+                prefilledVesselAvailable: .constant(true),
+                showingAlertItem: .constant(nil),
+                allFieldsComplete: .constant(false),
+                showingWarningState: .constant(false))
+            VesselView(
+                vessel: .sample,
+                reportId: "TestId",
+                prefilledVesselAvailable: .constant(true),
+                showingAlertItem: .constant(.sample),
+                allFieldsComplete: .constant(false),
+                showingWarningState: .constant(false))
+        }
     }
 }
