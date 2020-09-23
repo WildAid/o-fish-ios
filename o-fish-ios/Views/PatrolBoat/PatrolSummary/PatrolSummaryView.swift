@@ -102,7 +102,7 @@ struct PatrolSummaryView: View {
     }
 
     private func goOffDutyClicked() {
-        startDuty.save()
+        startDuty.save(existingObject: true)
         onDuty.recordOnDutyChange(status: false, date: plannedOffDutyTime)
 
         self.presentationMode.wrappedValue.dismiss()

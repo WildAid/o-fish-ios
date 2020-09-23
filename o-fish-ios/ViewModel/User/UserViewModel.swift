@@ -24,12 +24,12 @@ class UserViewModel: ObservableObject {
         }
     }
 
-    func save() -> User? {
-        if user == nil {
+    func save(existingObject: Bool = false) -> User? {
+        if user == nil || !existingObject {
             user = User()
         }
         guard let user = user else { return nil }
-        user.name = name.save()
+        user.name = name.save(existingObject: existingObject)
         user.email = email
         return user
     }

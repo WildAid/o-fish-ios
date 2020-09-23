@@ -26,8 +26,8 @@ class NameViewModel: ObservableObject {
 
     }
 
-    func save() -> Name? {
-        if name == nil {
+    func save(existingObject: Bool = false) -> Name? {
+        if name == nil || !existingObject {
             name = Name()
         }
         guard let name = name else { return nil }
