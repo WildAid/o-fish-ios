@@ -114,6 +114,7 @@ struct TopTabBarContainerView: View {
                     vessel: report.vessel,
                     reportId: report.id,
                     prefilledVesselAvailable: $prefilledVesselAvailable,
+                    showingAlertItem: $showingAlertItem,
                     allFieldsComplete: allFieldsCompleteBinding,
                     showingWarningState: $showingNotCompleteState)
 
@@ -139,6 +140,7 @@ struct TopTabBarContainerView: View {
                 CrewView(
                     report: self.report,
                     prefilledCrewAvailable: $prefilledCrewAvailable,
+                    showingAlertItem: $showingAlertItem,
                     allFieldsComplete: allFieldsCompleteBinding,
                     showingWarningState: $showingNotCompleteState)
 
@@ -344,12 +346,21 @@ struct TopTabBarContainerView: View {
 
 struct TopTabBarContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        TopTabBarContainerView(report: .sample,
-            prefilledAvailable: true,
-            prefilledCrewAvailable: .constant(true),
-            showingAlertItem: .constant(nil),
-            notFilledScreens: .constant([])
-        )
+        Group {
+            TopTabBarContainerView(report: .sample,
+                                   prefilledAvailable: true,
+                                   prefilledCrewAvailable: .constant(true),
+                                   showingAlertItem: .constant(nil),
+                                   notFilledScreens: .constant([])
+            )
             .environmentObject(Settings.shared)
+            TopTabBarContainerView(report: .sample,
+                                   prefilledAvailable: true,
+                                   prefilledCrewAvailable: .constant(true),
+                                   showingAlertItem: .constant(.sample),
+                                   notFilledScreens: .constant([])
+            )
+            .environmentObject(Settings.shared)
+        }
     }
 }

@@ -15,6 +15,18 @@ struct AlertItem: Identifiable {
     var secondaryButton: Alert.Button = .default(Text("Keep Editing"))
 }
 
+extension AlertItem: Samplable {
+    static var sample: AlertItem {
+        let alertItem = AlertItem(
+            title: "Sample Alert Title",
+            message: "Sample alert message.",
+            primaryButton: .default(Text("Print")) {print("Alert button clicked")},
+            secondaryButton: .default(Text("Skip"))
+        )
+        return alertItem
+    }
+}
+
 extension View {
     func showingAlert(alertItem: Binding<AlertItem?>) -> some View {
         alert(item: alertItem) { alertItem in

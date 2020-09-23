@@ -10,12 +10,11 @@ import SwiftUI
 struct CrewView: View {
     @ObservedObject var report: ReportViewModel
     @Binding private var showingPrefilledAlert: Bool
-
+    @Binding private var showingAlertItem: AlertItem?
     @Binding private var allFieldsComplete: Bool
     @Binding private var showingWarningState: Bool
 
     @State private var crewMemberWaitingRemoveConfirmation: CrewMemberViewModel?
-    @State private var showingRemoveConfirmationAlert: Bool
     @State private var initialCaptain = CrewMemberViewModel()
     @State private var initialCrew = [CrewMemberViewModel]()
 
@@ -31,6 +30,7 @@ struct CrewView: View {
 
     init(report: ReportViewModel,
          prefilledCrewAvailable: Binding<Bool>,
+         showingAlertItem: Binding<AlertItem?>,
          allFieldsComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>) {
 
@@ -41,11 +41,9 @@ struct CrewView: View {
             State(initialValue: report.crew.filter({ $0.isEmpty }).first?.id ?? "") :
             State(initialValue: report.captain.id)
         _isCurrentEditingCrewNonEmpty = State(initialValue: !report.captain.isEmpty)
-        _showingRemoveConfirmationAlert = State(initialValue: false)
-
+        self._showingAlertItem = showingAlertItem
         _allFieldsComplete = allFieldsComplete
         _showingWarningState = showingWarningState
-
         _crewMembersComplete = State(initialValue: [:])
     }
 
@@ -81,24 +79,10 @@ struct CrewView: View {
                     Spacer()
                 }
                 Spacer()
-                    .alert(isPresented: self.$showingRemoveConfirmationAlert) {
-                        Alert(title: Text("This crew member contained in violation(s)"),
-                            message: Text("Are you sure you want to remove this crew member?"),
-                            primaryButton: .cancel(Text("Yes"), action: self.removeCrewMemberFromViolationsClicked),
-                            secondaryButton: .default(Text("Continue editing")))
-                    }
             }
-            .alert(isPresented: self.$showingPrefilledAlert) {
-                Alert(title: Text("Prefill Crew Information From Previous Boarding?"),
-                    message: Text("You'll still be able to edit fields"),
-                    primaryButton: .default(Text("No")) {
-                        self.showingPrefilledAlert = false
-                    },
-                    secondaryButton: .default(Text("Prefill"), action: self.prefillCrewClicked)
-                )
-            }
+            .showingAlert(alertItem: $showingAlertItem)
         }
-            .onAppear(perform: self.onAppear)
+        .onAppear(perform: self.onAppear)
     }
 
     private func informationCompleteBinding(_ member: CrewMemberViewModel) -> Binding<Bool> {
@@ -132,6 +116,14 @@ struct CrewView: View {
             report.captain = emptyCaptain
             currentEditingCrewMemberId = report.captain.id
             report.crew = [CrewMemberViewModel]()
+            if showingAlertItem == nil {
+                showingAlertItem = AlertItem(
+                    title: "Prefill Crew Information From Previous Boarding?",
+                    message: "You'll still be able to edit fields",
+                    primaryButton: .default(Text("No")) { self.showingPrefilledAlert = false },
+                    secondaryButton: .default(Text("Prefill")) { self.prefillCrewClicked() }
+                )
+            }
         }
         if report.crew.isEmpty {
             let model = CrewMemberViewModel()
@@ -171,13 +163,23 @@ struct CrewView: View {
 
     private func removeItemClicked(_ crewViewModel: CrewMemberViewModel) {
         let violationsWithThisCrew = report.inspection.summary
-            .violations.filter { $0.crewMember.id == crewViewModel.id }
+            .violations.filter {
+                print("Matching \($0.crewMember.id) with \(crewViewModel.id)")
+                return $0.crewMember.id == crewViewModel.id
+            }
 
         crewMembersComplete.removeValue(forKey: crewViewModel.id)
 
         if !violationsWithThisCrew.isEmpty {
-            self.showingRemoveConfirmationAlert = true
-            self.crewMemberWaitingRemoveConfirmation = crewViewModel
+            if showingAlertItem == nil {
+                showingAlertItem = AlertItem(
+                    title: "This crew member contained in violation(s)",
+                    message: "Are you sure you want to remove this crew member?",
+                    primaryButton: .default(Text("Yes")) { self.removeCrewMemberFromViolationsClicked() },
+                    secondaryButton: .default(Text("Continue editing"))
+                )
+            }
+          self.crewMemberWaitingRemoveConfirmation = crewViewModel
             return
         }
 
@@ -190,6 +192,7 @@ struct CrewView: View {
         currentEditingCrewMemberId = report.crew.last?.id ?? ""
         checkingForComplete()
         checkAllInput()
+        showingPrefilledAlert = false
     }
 
     /// Logic
@@ -212,9 +215,17 @@ struct CrewView: View {
 
 struct CrewView_Previews: PreviewProvider {
     static var previews: some View {
-        CrewView(report: .sample,
-            prefilledCrewAvailable: .constant(false),
-            allFieldsComplete: .constant(false),
-            showingWarningState: .constant(false))
+        Group {
+            CrewView(report: .sample,
+                     prefilledCrewAvailable: .constant(false),
+                     showingAlertItem: .constant(nil),
+                     allFieldsComplete: .constant(false),
+                     showingWarningState: .constant(false))
+            CrewView(report: .sample,
+                     prefilledCrewAvailable: .constant(false),
+                     showingAlertItem: .constant(.sample),
+                     allFieldsComplete: .constant(false),
+                     showingWarningState: .constant(false))
+        }
     }
 }
