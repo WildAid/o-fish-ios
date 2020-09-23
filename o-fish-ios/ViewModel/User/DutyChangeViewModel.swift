@@ -33,7 +33,7 @@ class DutyChangeViewModel: ObservableObject {
         self.date = dutyChange.date
     }
 
-    func save() {
+    func save(existingObject: Bool = false) {
         let isNew = (dutyChange == nil)
         do {
             guard let realm = app.currentUser()?.agencyRealm() else {
@@ -45,7 +45,7 @@ class DutyChangeViewModel: ObservableObject {
                     dutyChange = DutyChange(id: id)
                 }
                 guard let dutyChange = dutyChange else { return }
-                dutyChange.user = self.user.save()
+                dutyChange.user = self.user.save(existingObject: existingObject)
                 dutyChange.status = self.status.rawValue
                 dutyChange.date = self.date
                 if isNew {
