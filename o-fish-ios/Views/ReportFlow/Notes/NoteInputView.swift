@@ -55,7 +55,7 @@ struct NoteInputView: View {
             PopoverManager.shared.hidePopover(id: popoverId)
         }
 
-        PopoverManager.shared.showPopover(id: popoverId, withButton: false) {
+        PopoverManager.shared.showPopover(id: popoverId, content: {
             ModalView(buttons: [
                 ModalViewButton(title: NSLocalizedString("Camera", comment: ""), action: {
                     hidePopover()
@@ -66,8 +66,8 @@ struct NoteInputView: View {
                     self.showPhotoTaker(source: .photoLibrary)
                 })
             ],
-                cancel: hidePopover)
-        }
+            cancel: hidePopover)
+        }, withButton: false)
     }
 
     private func showPhotoTaker(source: UIImagePickerController.SourceType) {
