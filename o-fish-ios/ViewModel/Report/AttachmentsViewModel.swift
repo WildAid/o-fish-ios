@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 class AttachmentsViewModel: ObservableObject, Identifiable {
 
@@ -32,10 +33,8 @@ class AttachmentsViewModel: ObservableObject, Identifiable {
         }
     }
 
-    func save() -> Attachments? {
-        if attachments == nil {
-            attachments = Attachments()
-        }
+    func save(clearModel: Bool = false) -> Attachments? {
+        if attachments == nil || clearModel { attachments = Attachments() }
         guard let attachments = attachments else { return nil }
         attachments.photoIDs.removeAll()
         attachments.photoIDs.append(objectsIn: photoIDs.compactMap {

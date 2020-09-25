@@ -5,7 +5,7 @@
 //  Copyright © 2020 WildAid. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 
 class SummaryViewModel: ObservableObject, Identifiable {
     private var summary: Summary?
@@ -29,13 +29,15 @@ class SummaryViewModel: ObservableObject, Identifiable {
         }
     }
 
-    func save() -> Summary? {
+    func save(_ realm: Realm) -> Summary? {
         if summary == nil {
             summary = Summary()
         }
         guard let summary = summary else { return nil }
         summary.safetyLevel = safetyLevel.save()
-        summary.violations.removeAll()
+        summary.violations.forEach {
+            realm.delete($0)
+        }
         summary.violations.append(objectsIn: violations.compactMap {
             $0.isEmpty ? nil : $0.save()
         })

@@ -5,7 +5,7 @@
 //  Copyright © 2020 WildAid. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 
 class InspectionViewModel: ObservableObject, Identifiable {
     private var inspection: Inspection?
@@ -35,7 +35,7 @@ class InspectionViewModel: ObservableObject, Identifiable {
         }
     }
 
-    func save() -> Inspection? {
+    func save(_ realm: Realm) -> Inspection? {
         if inspection == nil {
             inspection = Inspection()
         }
@@ -43,9 +43,11 @@ class InspectionViewModel: ObservableObject, Identifiable {
 
         inspection.activity = activity.save()
         inspection.fishery = fishery.save()
-        inspection.summary = summary.save()
+        inspection.summary = summary.save(realm)
         inspection.gearType = gearType.save()
-        inspection.actualCatch.removeAll()
+        inspection.actualCatch.forEach {
+            realm.delete($0)
+        }
         inspection.actualCatch.append(objectsIn: actualCatch.compactMap {
             $0.isEmpty ? nil : $0.save()
         })

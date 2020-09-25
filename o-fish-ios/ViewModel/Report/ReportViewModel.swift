@@ -85,13 +85,15 @@ class ReportViewModel: ObservableObject, Identifiable {
                 report.location.append(location.latitude)
                 report.date = date as NSDate
                 report.reportingOfficer = reportingOfficer.save()
-                report.vessel = vessel.save()
+                report.vessel = vessel.save(realm)
                 report.captain = captain.save()
-                report.crew.removeAll()
+                report.crew.forEach {
+                    realm.delete($0)
+                }
                 report.crew.append(objectsIn: crew.compactMap {
                     $0.isEmpty ? nil : $0.save()
                 })
-                report.inspection = inspection.save()
+                report.inspection = inspection.save(realm)
                 report.notes.removeAll()
                 report.notes.append(objectsIn: notes.compactMap {
                     $0.isEmpty ? nil : $0.save()

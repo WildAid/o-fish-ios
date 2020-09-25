@@ -40,14 +40,12 @@ class EMSViewModel: ObservableObject, Identifiable {
     }
 
     func save() -> EMS? {
-        if eMS == nil {
-            eMS = EMS()
-        }
+        eMS = EMS()
         guard let eMS = eMS else { return nil }
         eMS.emsType = emsType
         eMS.emsDescription = emsDescription
         eMS.registryNumber = registryNumber
-        eMS.attachments = attachments.save()
+        eMS.attachments = attachments.save(clearModel: true)
         return eMS
     }
 }

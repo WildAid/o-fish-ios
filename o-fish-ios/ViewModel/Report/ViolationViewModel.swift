@@ -51,14 +51,12 @@ class ViolationViewModel: ObservableObject, Identifiable {
     }
 
     func save() -> Violation? {
-        if violation == nil {
-            violation = Violation()
-        }
+        violation = Violation()
         guard let violation = violation else { return nil }
         violation.disposition = disposition.rawValue
-        violation.offence = offence.save()
-        violation.crewMember = crewMember.save()
-        violation.attachments = attachments.save()
+        violation.offence = offence.save(clearModel: true)
+        violation.crewMember = crewMember.save(clearModel: true)
+        violation.attachments = attachments.save(clearModel: true)
         return violation
     }
 }

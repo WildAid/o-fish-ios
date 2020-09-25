@@ -45,14 +45,12 @@ class CrewMemberViewModel: ObservableObject, Identifiable {
         isCaptain = crewMember.isCaptain
     }
 
-    func save() -> CrewMember? {
-        if  crewMember == nil {
-            crewMember = CrewMember()
-        }
+    func save(clearModel: Bool = false) -> CrewMember? {
+        crewMember = CrewMember()
         guard let crewMember = crewMember else { return nil }
         crewMember.name = name
         crewMember.license = license
-        crewMember.attachments = attachments.save()
+        crewMember.attachments = attachments.save(clearModel: true)
         return crewMember
     }
 

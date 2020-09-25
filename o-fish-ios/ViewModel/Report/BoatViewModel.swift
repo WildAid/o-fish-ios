@@ -5,7 +5,7 @@
 //  Copyright © 2020 WildAid. All rights reserved.
 //
 
-import Foundation
+import RealmSwift
 
 class BoatViewModel: ObservableObject, Identifiable {
     private var boat: Boat?
@@ -41,7 +41,7 @@ class BoatViewModel: ObservableObject, Identifiable {
         }
     }
 
-    func save() -> Boat? {
+    func save(_ realm: Realm) -> Boat? {
         if boat == nil {
             boat = Boat()
         }
@@ -51,7 +51,9 @@ class BoatViewModel: ObservableObject, Identifiable {
         boat.nationality = nationality
         boat.permitNumber = permitNumber
         boat.lastDelivery = lastDelivery.save()
-        boat.ems.removeAll()
+        boat.ems.forEach {
+            realm.delete($0)
+        }
         boat.ems.append(objectsIn: ems.compactMap {
             $0.isEmpty ? nil : $0.save()
         })
