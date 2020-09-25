@@ -28,10 +28,8 @@ class OffenceViewModel: ObservableObject {
         }
     }
 
-    func save() -> Offence? {
-        if offence == nil {
-            offence = Offence()
-        }
+    func save(clearModel: Bool = false) -> Offence? {
+        if offence == nil || clearModel { offence = Offence() }
         guard let offence = offence else { return nil }
         offence.code = code
         offence.explanation = explanation

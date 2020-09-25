@@ -71,15 +71,13 @@ class CatchViewModel: ObservableObject, Identifiable {
     }
 
     func save() -> Catch? {
-        if catchModel == nil {
-            catchModel = Catch()
-        }
+        catchModel = Catch()
         guard let catchModel = catchModel else { return nil }
         catchModel.fish = fish
         catchModel.number = number
         catchModel.weight = weight
         catchModel.unit = unit.rawValue
-        catchModel.attachments = attachments.save()
+        catchModel.attachments = attachments.save(clearModel: true)
         return catchModel
     }
 }
