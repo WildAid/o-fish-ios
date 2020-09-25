@@ -1,4 +1,4 @@
-#  WildAid O-FISH iOS App
+# WildAid O-FISH iOS App
 
 The [WildAid Marine Program](https://marine.wildaid.org/) work to protect vulnerable marine environments.
 
