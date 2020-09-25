@@ -28,7 +28,7 @@ To build:
   - Select the "Product" menu, then the "Destination" item and choose either:
     - Your physical device, if you have it connected
     - The simulator you want to run the code on (e.g. iPhone 11), from the "iOS Simulators" submenu
-  - Select the "Product" menu and then the "Run" item to build and run the application on either your physical device or the simulator.
+  - Select the "Product" menu and then the "Run" item to build and run the application on the destination you just chose.
     - If you do not see your changes in the application, make sure to uninstall the application and try building again.
 
 To be able to login to the app once it is built, you need to create a user in your instance of the [O-FISH Realm App](https://github.com/WildAid/o-fish-realm).
