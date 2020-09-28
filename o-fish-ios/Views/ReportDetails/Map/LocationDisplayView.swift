@@ -24,7 +24,7 @@ struct LocationDisplayView: View {
     var body: some View {
         return VStack(spacing: Dimensions.padding) {
             ZStack {
-                MapDisplayView(location: self.$report.location)
+                MapDisplayView(location: self.report.location)
                     .frame(height: Dimensions.mapHeight)
                 LocationPointView()
             }

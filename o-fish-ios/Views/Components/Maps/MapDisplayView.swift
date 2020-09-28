@@ -9,8 +9,7 @@ import SwiftUI
 import MapKit
 
 struct MapDisplayView: UIViewRepresentable {
-    @Binding var location: LocationViewModel
-
+    var location: LocationViewModel
     let settings = Settings.shared
 
     func makeCoordinator() -> Coordinator {
@@ -20,8 +19,8 @@ struct MapDisplayView: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         let radius = CLLocationDistance(settings.intialZoomLevel)
-
         mapView.isScrollEnabled = false
+        mapView.isRotateEnabled = false
         mapView.region = MKCoordinateRegion(center: location.location, latitudinalMeters: radius, longitudinalMeters: radius)
         mapView.delegate = context.coordinator
         return mapView
@@ -37,14 +36,17 @@ struct MapDisplayView: UIViewRepresentable {
             self.parent = parent
         }
 
-        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+            var region = mapView.region
+            region.center = CLLocationCoordinate2D(latitude: parent.location.location.latitude, longitude: parent.location.location.longitude)
+            mapView.region = region
         }
     }
 }
 
 struct MapDisplayView_Previews: PreviewProvider {
     static var previews: some View {
-        MapDisplayView(location: .constant(.sample))
+        MapDisplayView(location: .sample)
             .environmentObject(Settings.shared)
     }
 }
