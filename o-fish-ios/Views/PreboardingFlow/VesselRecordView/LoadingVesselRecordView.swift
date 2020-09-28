@@ -39,7 +39,8 @@ struct LoadingVesselRecordView: View {
 
     private func loadReports() {
         storedReports = []
-        let predicate = NSPredicate(format: "draft == false AND vessel.name == %@ AND vessel.permitNumber == %@", report.vessel.name, report.vessel.permitNumber)
+        let predicate = NSPredicate(format: "draft == false AND vessel.name == %@ AND vessel.permitNumber == %@",
+                                    report.vessel.name, report.vessel.permitNumber)
         let realmReports = settings.realmUser?
             .agencyRealm()?
             .objects(Report.self)

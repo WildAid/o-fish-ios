@@ -11,7 +11,7 @@ struct DraftBoardingLoadedStateView: View {
     @Binding var storedReports: [ReportViewModel]
     @Binding var rootIsActive: Bool
 
-    @State private var showingReport: ReportViewModel = .sample
+    @State private var showingReport: ReportViewModel = ReportViewModel()
 
     let horizontalPadding: CGFloat = 16.0
 
