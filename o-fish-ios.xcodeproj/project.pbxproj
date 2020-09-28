@@ -63,6 +63,9 @@
 		30D82D842498E14100AB0E2E /* UIImage+Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */; };
 		30D8445924C98FE4001A5BC5 /* VesselAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8445824C98FE4001A5BC5 /* VesselAsyncImage.swift */; };
 		30D8445B24C99896001A5BC5 /* PhotoVesselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D8445A24C99896001A5BC5 /* PhotoVesselView.swift */; };
+		30D953322519EC0000795E59 /* DraftBoardingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D953312519EC0000795E59 /* DraftBoardingsView.swift */; };
+		30D953342519ED8D00795E59 /* EmptyDraftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D953332519ED8D00795E59 /* EmptyDraftView.swift */; };
+		30D9533A2519FC9700795E59 /* DraftBoardingLoadedStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D953392519FC9700795E59 /* DraftBoardingLoadedStateView.swift */; };
 		30DAA61E24D7FEDB003848FB /* ActivityViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DAA61D24D7FEDB003848FB /* ActivityViewModelTests.swift */; };
 		30DAA62024D801B1003848FB /* FisheryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DAA61F24D801B1003848FB /* FisheryViewModelTests.swift */; };
 		30DAA62224D8025E003848FB /* GearTypeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DAA62124D8025E003848FB /* GearTypeViewModelTests.swift */; };
@@ -348,6 +351,9 @@
 		30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Thumbnail.swift"; sourceTree = "<group>"; };
 		30D8445824C98FE4001A5BC5 /* VesselAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesselAsyncImage.swift; sourceTree = "<group>"; };
 		30D8445A24C99896001A5BC5 /* PhotoVesselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVesselView.swift; sourceTree = "<group>"; };
+		30D953312519EC0000795E59 /* DraftBoardingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBoardingsView.swift; sourceTree = "<group>"; };
+		30D953332519ED8D00795E59 /* EmptyDraftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDraftView.swift; sourceTree = "<group>"; };
+		30D953392519FC9700795E59 /* DraftBoardingLoadedStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraftBoardingLoadedStateView.swift; sourceTree = "<group>"; };
 		30DAA61D24D7FEDB003848FB /* ActivityViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModelTests.swift; sourceTree = "<group>"; };
 		30DAA61F24D801B1003848FB /* FisheryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FisheryViewModelTests.swift; sourceTree = "<group>"; };
 		30DAA62124D8025E003848FB /* GearTypeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearTypeViewModelTests.swift; sourceTree = "<group>"; };
@@ -686,6 +692,16 @@
 			path = PreboardingView;
 			sourceTree = "<group>";
 		};
+		30D953302519EBE100795E59 /* DraftBoardings */ = {
+			isa = PBXGroup;
+			children = (
+				30D953312519EC0000795E59 /* DraftBoardingsView.swift */,
+				30D953392519FC9700795E59 /* DraftBoardingLoadedStateView.swift */,
+				30D953332519ED8D00795E59 /* EmptyDraftView.swift */,
+			);
+			path = DraftBoardings;
+			sourceTree = "<group>";
+		};
 		30E315D42507C3200037235E /* PatrolBoatView */ = {
 			isa = PBXGroup;
 			children = (
@@ -821,6 +837,7 @@
 				BCE486EF5A22D91EE1260968 /* MainNavigationRootView.swift */,
 				4980764A242E46D700D463F4 /* ReportDetails */,
 				493CDFB923FEB86D00516048 /* LoginView.swift */,
+				30D953302519EBE100795E59 /* DraftBoardings */,
 				3013CA782424AF1300D2FF60 /* PatrolBoat */,
 				BCE483F917662257CAB7586F /* ReportFlow */,
 			);
@@ -1566,6 +1583,7 @@
 				493CDFE824044B9100516048 /* LabeledTextInput.swift in Sources */,
 				490C0DA723F6B15800283307 /* SceneDelegate.swift in Sources */,
 				493CDFDE2403CDBA00516048 /* MapView.swift in Sources */,
+				30D953322519EC0000795E59 /* DraftBoardingsView.swift in Sources */,
 				495AC6F5243F0BBB00EA11D3 /* SafetyLevelViewModel.swift in Sources */,
 				30E31E8E243F36EA00B96A04 /* DeliveryInputView.swift in Sources */,
 				308A75352476704000C10462 /* PersonIconView.swift in Sources */,
@@ -1653,6 +1671,7 @@
 				49807655242E7A3900D463F4 /* LocationCoordsDisplayView.swift in Sources */,
 				308A75372476B99C00C10462 /* NoteFieldView.swift in Sources */,
 				300C4AEC24190226000A2763 /* ActivityView.swift in Sources */,
+				30D953342519ED8D00795E59 /* EmptyDraftView.swift in Sources */,
 				BCE4825F4A971D6F6F24D571 /* CatchView.swift in Sources */,
 				BCE485456643E90831423A1B /* CatchInputView.swift in Sources */,
 				49FDCD63241D1EDA00C00574 /* EMSViewModel.swift in Sources */,
@@ -1704,6 +1723,7 @@
 				BCE480EBBFF6B060DCE9C939 /* SearchableView.swift in Sources */,
 				BCE4820A7E5A15B8AA93DB4A /* TextPickerView.swift in Sources */,
 				497EBF182433B78200B01800 /* SampleUserViewModel.swift in Sources */,
+				30D9533A2519FC9700795E59 /* DraftBoardingLoadedStateView.swift in Sources */,
 				BCE48B9CAD5B8F1EB27C60BD /* ChooseEMSView.swift in Sources */,
 				BCE48B02D6D3331545500562 /* ChooseSpeciesView.swift in Sources */,
 				BCE48D2FCD0F20F23AEC0EF4 /* ChooseNationalityView.swift in Sources */,

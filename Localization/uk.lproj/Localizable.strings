@@ -157,10 +157,12 @@
 "Boarding Submitted!" = "Прибуття Збережено!";
 "No Notes or Photos for Risk" = "Немає збережених нотатків чи фотографій для ризика";
 "Draft Boardings" = "Не збережені висадки";
+"Draft Boarding" = "Чернетка";
 "Close" = "Зачинити";
 "Log Out?" = "Вийти?";
 "All draft boardings will be deleted!" = "Всі не збережені висадки будуть видалені";
 "Edit" = "Редагувати";
+"0 Draft Boardings" = "0 не збережених висадок";
 "Save and Finish Later" = "Зберегти і завершити потім";
 "If canceled, this boarding will not be saved. You may however save it to finish later." = "Якщо скасувати прибуття, то воно не буде здбережено. Однак, ви можете зберегти і завершити його потім.";
 "Delete Boarding" = "Видалити Прибуття";

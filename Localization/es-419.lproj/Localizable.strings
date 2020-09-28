@@ -157,10 +157,12 @@
 "Boarding Submitted!" = "¡Embarque enviado!";
 "No Notes or Photos for Risk" = "Sin notas ni fotos por riesgo";
 "Draft Boardings" = "Draft Boardings";
+"Draft Boarding" = "Draft Boarding";
 "Close" = "Close";
 "Log Out?" = "Log Out?";
 "All draft boardings will be deleted!" = "All draft boardings will be deleted!";
 "Edit" = "Edit";
+"0 Draft Boardings" = "0 Draft Boardings";
 "Save and Finish Later" = "Save and Finish Later";
 "If canceled, this boarding will not be saved. You may however save it to finish later." = "If canceled, this boarding will not be saved. You may however save it to finish later.";
 "Delete Boarding" = "Delete Boarding";

@@ -19,9 +19,11 @@ struct PatrolBoatView: View {
     @State private var isActiveRootFromSearchView = false
     @State private var showingProfilePage = false
     @State private var resetLocation = {}
+    @State private var showingDrafts = false
 
     @State private var showingAlertItem: AlertItem?
     @State private var profilePicture: PhotoViewModel?
+    @State private var draftBoardingsCount = 0
 
     let photoQueryManager = PhotoQueryManager.shared
 
@@ -68,10 +70,10 @@ struct PatrolBoatView: View {
                     }
                         .padding(.top, Dimensions.coordTopPadding)
                     Spacer()
-                    BottomPatrolView(draftBoardingsCount: .constant(5), //TODO need to add real variable after implementing
+                    BottomPatrolView(draftBoardingsCount: $draftBoardingsCount,
                                      findAction: showFindRecords,
                                      boardVesselAction: showBoardVessel,
-                                     draftBoardingsAction: nil) //TODO need to add real logic after implementing
+                                     draftBoardingsAction: showDraftRecords)
 
                     NavigationLink(
                         destination: PreboardingView(viewType: .preboarding,
@@ -90,6 +92,12 @@ struct PatrolBoatView: View {
                             EmptyView()
                     }
                         .isDetailLink(false)
+
+                    NavigationLink(
+                        destination: DraftBoardingsView(),
+                        isActive: $showingDrafts) {
+                            EmptyView()
+                    }
                 }
             }
                 .edgesIgnoringSafeArea(.all)
@@ -120,6 +128,17 @@ struct PatrolBoatView: View {
         self.user.name.last = user.lastName
         onDuty.user = self.user
 
+        // set draft boardings count
+        let predicate = NSPredicate(format: "draft == true && reportingOfficer.email == %@", user.emailAddress)
+        let realmReports = user
+            .agencyRealm()?
+            .objects(Report.self)
+            .filter(predicate)
+
+        if let realmReports = realmReports {
+            draftBoardingsCount = realmReports.count
+        }
+
         profilePicture = getPicture(documentId: user.profilePictureDocumentId)
         location = LocationViewModel(LocationHelper.currentLocation)
     }
@@ -147,6 +166,10 @@ struct PatrolBoatView: View {
         } else {
             showGoOnDutyAlert()
         }
+    }
+
+    private func showDraftRecords() {
+        showingDrafts.toggle()
     }
 }
 
