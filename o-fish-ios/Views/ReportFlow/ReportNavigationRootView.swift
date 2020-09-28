@@ -48,7 +48,7 @@ struct ReportNavigationRootView: View {
                 }, trailing: Button(action: submitNavBarClicked) {
                     Text("Save")
                 })
-            .navigationBarTitle("New Boarding", displayMode: .inline)
+            .navigationBarTitle(report.draft ? "Draft Boarding" : "New Boarding", displayMode: .inline)
             .showingAlert(alertItem: $showingAlertItem)
             .showingActionSheet(actionSheetItem: $showingActionSheetItem)
     }
@@ -126,7 +126,7 @@ struct ReportNavigationRootView: View {
 
     private func submitAlertClicked() {
         let wasDraft = report.draft
-        report.draft = true
+        report.draft = false
         if prefilledCrewAvailable {
             let captain = CrewMemberViewModel()
             captain.isCaptain = true

@@ -155,7 +155,7 @@ struct PreboardingView: View {
     private func loadReports(with searchText: String) {
         storedReports.removeAll(keepingCapacity: true)
         showingRecentBoardings = false
-        let predicate = NSPredicate(format: "vessel.name CONTAINS[cd] %@", searchText)
+        let predicate = NSPredicate(format: "draft == false && vessel.name CONTAINS[cd] %@", searchText)
         let realmReports = settings.realmUser?
             .agencyRealm()?
             .objects(Report.self)
@@ -176,9 +176,11 @@ struct PreboardingView: View {
     }
 
     private func loadRecentBoardings() {
+        let predicate = NSPredicate(format: "draft == false")
         let realmReports = settings.realmUser?
             .agencyRealm()?
             .objects(Report.self)
+            .filter(predicate)
             .sorted(byKeyPath: "timestamp", ascending: false) ?? nil
         var uniqueIdentifiers = [String]()
         storedReports.removeAll(keepingCapacity: true)

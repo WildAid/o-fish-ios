@@ -80,7 +80,7 @@ struct CrewView: View {
                 }
                 Spacer()
             }
-            .showingAlert(alertItem: $showingAlertItem)
+            .showingAlert(alertItem: self.$showingAlertItem)
         }
         .onAppear(perform: self.onAppear)
     }

@@ -80,7 +80,7 @@ struct VesselView: View {
                         }
                     }
                 }
-                .showingAlert(alertItem: $showingAlertItem)
+                .showingAlert(alertItem: self.$showingAlertItem)
 
                 if self.showingAddEMSButton {
                     SectionButton(title: "Add Electronic Monitoring System",
