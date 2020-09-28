@@ -2,7 +2,8 @@
 node_modules
 Pods
 
-o-fish-ios/Constants.swift
+## O-FISH config file
+o-fish-ios/Helpers/Constants.swift
 
 # Podfile.lock
 
@@ -48,3 +49,5 @@ DerivedData/
 
 ## Gcc Patch
 /*.gcno
+
+
