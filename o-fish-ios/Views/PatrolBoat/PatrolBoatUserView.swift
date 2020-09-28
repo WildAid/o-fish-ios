@@ -13,11 +13,13 @@ struct PatrolBoatUserView: View {
     var size: Size = .small
     var action: () -> Void = {}
 
+    let cornerRadius: CGFloat = 50.0
+
     var body: some View {
         Button(action: action) {
             ZStack {
                 image
-                    .cornerRadius(.infinity)
+                    .cornerRadius(cornerRadius)
                 HStack {
                     Spacer()
                     VStack {

@@ -28,6 +28,7 @@ struct TrafficLightButton: View {
     private enum Configuration {
         static let opacityFactor: Double = 0.3
         static let height: CGFloat = 40.0
+        static let radius: CGFloat = 50.0
     }
 
     var body: some View {
@@ -39,7 +40,7 @@ struct TrafficLightButton: View {
             .frame(maxWidth: .infinity)
             .foregroundColor(foregroundColor)
             .background(backgroundColor)
-            .cornerRadius(.infinity)
+            .cornerRadius(Configuration.radius)
     }
 
     private var currentlySelected: Bool {

@@ -25,6 +25,7 @@ struct SegmentedField: View {
         static let lineLimit = 1
         static let scaleFactor: CGFloat = 0.7
         static let heightButton: CGFloat = 32.0
+        static let radius: CGFloat = 50.0
     }
 
     var body: some View {
@@ -47,7 +48,7 @@ struct SegmentedField: View {
                         }
                             .frame(height: Dimensions.heightButton)
                             .background(self.selectedItem == item ? self.activeColor : self.secondaryColor)
-                            .cornerRadius(.infinity)
+                            .cornerRadius(Dimensions.radius)
                             .overlay(
                                 RoundedRectangle(cornerRadius: .infinity)
                                     .stroke(self.activeColor, lineWidth: Dimensions.lineWidth)

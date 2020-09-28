@@ -10,6 +10,7 @@ import SwiftUI
 struct PatrolReportView: View {
 
     var report: ReportViewModel
+    var showingOnSummary = false
 
     @State private var vesselImage: PhotoViewModel?
     private let photoQueryManager = PhotoQueryManager.shared
@@ -18,12 +19,23 @@ struct PatrolReportView: View {
         static let leadingSpacing: CGFloat = 4.0
         static let padding: CGFloat = 16.0
         static let heightDivider: CGFloat = 1.0
+        static let circleSize: CGFloat = 12.0
+        static let topPadding: CGFloat = 18.0
     }
 
     var body: some View {
 
         VStack(spacing: .zero) {
             HStack(alignment: .top, spacing: .zero) {
+
+                if showingOnSummary {
+                    Circle()
+                        .fill(report.draft ? Color.spanishOrange : Color.white)
+                        .frame(width: Dimensions.circleSize, height: Dimensions.circleSize)
+                        .padding(.trailing, Dimensions.padding/2.0)
+                        .padding(.top, Dimensions.topPadding)
+                }
+
                 VesselImageView(vesselImage: vesselImage)
                     .padding(.trailing, Dimensions.padding)
 
@@ -61,6 +73,12 @@ struct PatrolReportView: View {
 
 struct PatrolReportView_Previews: PreviewProvider {
     static var previews: some View {
-        PatrolReportView(report: .sample)
+        let draftReport: ReportViewModel = .sample
+        draftReport.draft = true
+        return VStack {
+            PatrolReportView(report: .sample)
+            PatrolReportView(report: .sample, showingOnSummary: true)
+            PatrolReportView(report: draftReport, showingOnSummary: true)
+        }
     }
 }
