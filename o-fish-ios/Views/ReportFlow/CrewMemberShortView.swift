@@ -18,6 +18,7 @@ struct CrewMemberShortView: View {
         static let captainLabelHorizontalPadding: CGFloat = 10
         static let backgroundOpacity = 0.1
         static let padding: CGFloat = 16
+        static let radius: CGFloat = 50.0
     }
 
     var body: some View {
@@ -39,7 +40,7 @@ struct CrewMemberShortView: View {
                         .padding(.horizontal, Dimensions.captainLabelHorizontalPadding)
                 }
                     .background(color.opacity(Dimensions.backgroundOpacity))
-                    .cornerRadius(.infinity)
+                    .cornerRadius(Dimensions.radius)
                     .padding(.trailing, showingLicenseNumber ? Dimensions.padding : .zero)
             }
         }

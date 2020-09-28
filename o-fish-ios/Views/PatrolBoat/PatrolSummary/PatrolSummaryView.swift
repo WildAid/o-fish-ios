@@ -38,23 +38,32 @@ struct PatrolSummaryView: View {
                         endDate: $plannedOffDutyTime)
                 }
 
-                wrappedShadowView {
-                    VStack(spacing: .zero) {
-
+                VStack(spacing: .zero) {
+                    HStack {
                         TitleLabel(title: titleLabel)
-                            .padding(.top, Dimensions.spacing)
-                            .padding(.bottom, self.dutyReports.count > 0 ? (Dimensions.spacing / 2.0) : Dimensions.spacing)
+                        Spacer()
+                        Text(draftLabel)
+                            .font(.body).fontWeight(.semibold)
+                            .foregroundColor(Color.spanishOrange)
+                    }
+                    .padding(.top, Dimensions.spacing)
+                    .padding(.bottom, self.dutyReports.count > 0 ? (Dimensions.spacing / 2.0) : Dimensions.spacing)
+                    .padding(.leading, Dimensions.spacing / 2.0)
 
-                        ForEach(self.dutyReports) { report in
+                    ForEach(self.dutyReports) { report in
 
-                            Button(action: { self.vesselItemClicked(report) }) {
+                        Button(action: { self.vesselItemClicked(report) }) {
 
-                                PatrolReportView(report: report)
-                                    .padding(.bottom, report == self.dutyReports.last ? Dimensions.bottomPadding : 0)
-                            }
+                            PatrolReportView(report: report, showingOnSummary: true)
+                                .padding(.bottom, report == self.dutyReports.last ? Dimensions.bottomPadding : 0)
                         }
                     }
                 }
+                    .padding(.trailing, Dimensions.spacing)
+                    .padding(.leading, Dimensions.spacing / 2.0)
+                    .background(Color.white)
+                    .compositingGroup()
+                    .defaultShadow()
             }
 
             VStack(spacing: .zero) {
@@ -92,6 +101,12 @@ struct PatrolSummaryView: View {
         let boardingCount = dutyReports.count
         let boardingsString = NSLocalizedString((boardingCount == 1 ? "Boarding" : "Boardings"), comment: "")
         return "\(boardingCount) \(boardingsString)"
+    }
+
+    private var draftLabel: String {
+        let draftCount = dutyReports.filter({ $0.draft }).count
+        let draftString = NSLocalizedString((draftCount == 1 ? "Draft" : "Drafts"), comment: "")
+        return "\(draftCount) \(draftString)"
     }
 
     /// Actions

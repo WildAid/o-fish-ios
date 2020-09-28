@@ -28,6 +28,7 @@ struct ProfilePageView: View {
         static let leadingPadding: CGFloat = 20.0
         static let padding: CGFloat = 16.0
         static let lineWidth: CGFloat = 1.0
+        static let radius: CGFloat = 50.0
     }
 
     var body: some View {
@@ -76,7 +77,7 @@ struct ProfilePageView: View {
                 }
                 .padding(.vertical, Dimensions.stackSpacing)
                 .background(Color.white)
-                .cornerRadius(.infinity)
+                .cornerRadius(Dimensions.radius)
                 .overlay(
                     RoundedRectangle(cornerRadius: .infinity)
                         .stroke(Color.main, lineWidth: Dimensions.lineWidth)

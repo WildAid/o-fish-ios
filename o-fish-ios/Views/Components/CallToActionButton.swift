@@ -15,6 +15,7 @@ struct CallToActionButton: View {
     private enum Dimensions {
         static let labelSpacing: CGFloat = 14
         static let lineLimit = 1
+        static let radius: CGFloat = 50.0
     }
 
     var body: some View {
@@ -33,7 +34,7 @@ struct CallToActionButton: View {
             }
                 .foregroundColor(.white)
                 .background(Color.callToAction)
-                .cornerRadius(.infinity)
+                .cornerRadius(Dimensions.radius)
         }
     }
 }
