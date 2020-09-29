@@ -9,8 +9,6 @@ import CoreLocation
 
 struct Constants {
 
-    static let realmAppId = "your-realm-app-id"
-
     static let DefaultLocation = CLLocationCoordinate2D(latitude: 51.506520923981554, longitude: -0.10689139236939127)
 
     static let maximumImageSize = 3 * 1024 * 1024 // 3 MB

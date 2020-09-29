@@ -2,7 +2,7 @@
 node_modules
 Pods
 
-o-fish-ios/Constants.swift
+# o-fish-ios/LocalConstants.swift
 
 # Podfile.lock
 

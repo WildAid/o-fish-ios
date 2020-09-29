@@ -23,7 +23,7 @@ struct KeychainError: Error {
 class KeychainWrapper {
 
     static let shared = KeychainWrapper()
-    private let server = Constants.realmAppId
+    private let server = LocalConstants.realmAppId
     private enum BiometricType {
         case touch
         case face
