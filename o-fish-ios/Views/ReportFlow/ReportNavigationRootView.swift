@@ -27,7 +27,7 @@ struct ReportNavigationRootView: View {
         } else {
             print("Failed to read menus")
         }
-        _prefilledCrewAvailable = State(initialValue: prefilledAvailable)
+        _prefilledCrewAvailable = State(initialValue: !(report?.crew.isEmpty ?? true) || !(report?.captain.isEmpty ?? true))
     }
 
     var body: some View {
