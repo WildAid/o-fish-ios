@@ -32,4 +32,3 @@ To build:
     - If you do not see your changes in the application, make sure to uninstall the application and try building again.
 
 To be able to login to the app once it is built, you need to create a user in your instance of the [O-FISH Realm App](https://github.com/WildAid/o-fish-realm).
-
