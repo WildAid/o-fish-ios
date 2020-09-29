@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-let app = App(id: Constants.realmAppId)
+let app = App(id: LocalConstants.realmAppId)
 
 class Settings: ObservableObject {
     static let shared = Settings()
