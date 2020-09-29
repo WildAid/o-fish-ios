@@ -54,11 +54,11 @@ class CrewMemberViewModel: ObservableObject, Identifiable {
         return crewMember
     }
 
-    func clone() -> CrewMemberViewModel {
+    func clone(wihtoutNotes: Bool = true) -> CrewMemberViewModel {
         let clone = CrewMemberViewModel()
         clone.name = crewMember?.name ?? ""
         clone.license = crewMember?.license ?? ""
-        clone.attachments = attachments.clone()
+        clone.attachments = attachments.clone(withoutNotes: wihtoutNotes)
 
         return clone
     }
