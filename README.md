@@ -12,7 +12,6 @@ This repo implements the iOS O-FISH app.
 
 This is the iOS Mobile app for O-FISH. To build and use the app, you must [use the sandbox realm-app-id](https://wildaid.github.io/contribute/sandbox.html) or [build your own foundation](http://wildaid.github.io/build).
 
-
 ## Building and running the app
 
 Set the Realm Application ID (find it for your app through the [MongoDB Realm UI](https://realm.mongodb.com)) in `o-fish-ios/Helpers/Constants.swift`:
