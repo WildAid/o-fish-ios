@@ -2,8 +2,7 @@
 node_modules
 Pods
 
-## O-FISH config file
-o-fish-ios/Helpers/Constants.swift
+o-fish-ios/LocalConstants.swift
 
 # Podfile.lock
 

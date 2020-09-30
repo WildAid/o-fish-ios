@@ -42,10 +42,12 @@ struct RiskSummaryView: View {
             if !risk.attachments.notes.isEmpty || !risk.attachments.photoIDs.isEmpty {
                 AttachmentsView(attachments: risk.attachments, isEditable: false)
             } else {
-                Text("No Notes or Photos for Risk")
-                    .font(.body)
-                    .foregroundColor(.captainGray)
-                    .padding(.vertical, Dimensions.verticalPadding)
+                if risk.reason.isEmpty {
+                    Text("No Notes or Photos for Risk")
+                        .font(.body)
+                        .foregroundColor(.captainGray)
+                        .padding(.vertical, Dimensions.verticalPadding)
+                }
             }
         }
         .padding(.vertical, Dimensions.spacing)
