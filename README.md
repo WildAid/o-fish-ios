@@ -4,13 +4,14 @@ The [WildAid Marine Program](https://marine.wildaid.org/) works to protect vulne
 
 O-FISH (Officer Fishery Information Sharing Hub) is a multi-platform application that enables officers to browse and record boarding report data from their mobile devices.
 
-This repo implements the iOS O-FISH app.
+<BR><BR>Developers are expected to follow the <A HREF="https://www.mongodb.com/community-code-of-conduct">MongoDB Community Code of Conduct</A> guidelines.
 
-Details on installing all applications making up the solution can be found [here](http://wildaid.github.io/).
+This repo implements the iOS O-FISH app.
 
 ## Prerequisites
 
-This is the iOS Mobile app for O-FISH. To build and use the app, you must first create and configure your serverless backend application using the [WildAid O-FISH MongoDB Realm repo](https://github.com/WildAid/o-fish-realm).
+This is the iOS Mobile app for O-FISH. To build and use the app, you must [use the sandbox realm-app-id](https://wildaid.github.io/contribute/sandbox.html) or [build your own foundation](http://wildaid.github.io/build).
+
 
 ## Building and running the app
 
@@ -31,5 +32,5 @@ To build:
   - Select the "Product" menu and then the "Run" item to build and run the application on the destination you just chose.
     - If you do not see your changes in the application, make sure to uninstall the application and try building again.
 
-To be able to login to the app once it is built, you need to create a user in your instance of the [O-FISH Realm App](https://github.com/WildAid/o-fish-realm).
+To be able to login to the app once it is built, you need to create a user in your instance of the [O-FISH Realm App](https://github.com/WildAid/o-fish-realm) or [in the sandbox environment](https://wildaid.github.io/contribute/sandbox.html).
 
