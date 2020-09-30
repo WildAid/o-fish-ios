@@ -71,7 +71,7 @@ struct EMSInputView: View {
                 InputField(title: "Description", text: emsDescriptionBinding, showingWarning: showingDescriptionWarning)
             }
 
-            InputField(title: "Registry Number", text: registryNumberBinding, showingWarning: showingRegistryNumberWarning)
+            InputField(title: "Registry Number", text: registryNumberBinding, showingWarning: showingRegistryNumberWarning).keyboardType(.numberPad)
 
             if !ems.attachments.photoIDs.isEmpty || !ems.attachments.notes.isEmpty {
                 AttachmentsView(attachments: ems.attachments)
