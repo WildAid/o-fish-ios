@@ -128,6 +128,7 @@
 		49674E52245322980023ABC6 /* PhotoThumbNailGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49674E51245322980023ABC6 /* PhotoThumbNailGrid.swift */; };
 		49674E54245330440023ABC6 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49674E53245330440023ABC6 /* GridStack.swift */; };
 		49674E5624535E2A0023ABC6 /* PhotosDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49674E5524535E2A0023ABC6 /* PhotosDisplayView.swift */; };
+		49686CE225233D8F000C7F18 /* LocalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49686CE125233D8F000C7F18 /* LocalConstants.swift */; };
 		4977D0E124484D4900E3E409 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4977D0E024484D4900E3E409 /* NoteView.swift */; };
 		4977D0E524484FC800E3E409 /* AnnotatedNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4977D0E424484FC800E3E409 /* AnnotatedNoteViewModel.swift */; };
 		4977D0E92448570400E3E409 /* NoteInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4977D0E82448570400E3E409 /* NoteInputView.swift */; };
@@ -423,6 +424,7 @@
 		49674E51245322980023ABC6 /* PhotoThumbNailGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoThumbNailGrid.swift; sourceTree = "<group>"; };
 		49674E53245330440023ABC6 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
 		49674E5524535E2A0023ABC6 /* PhotosDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosDisplayView.swift; sourceTree = "<group>"; };
+		49686CE125233D8F000C7F18 /* LocalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalConstants.swift; sourceTree = "<group>"; };
 		4977D0E024484D4900E3E409 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		4977D0E424484FC800E3E409 /* AnnotatedNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotatedNoteViewModel.swift; sourceTree = "<group>"; };
 		4977D0E82448570400E3E409 /* NoteInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteInputView.swift; sourceTree = "<group>"; };
@@ -805,6 +807,7 @@
 				490C0DB223F6B15A00283307 /* Info.plist */,
 				490C0DAC23F6B15A00283307 /* Preview Content */,
 				BCE489A0F819B698F681DB37 /* Design */,
+				49686CE125233D8F000C7F18 /* LocalConstants.swift */,
 			);
 			path = "o-fish-ios";
 			sourceTree = "<group>";
@@ -1637,6 +1640,7 @@
 				490C0DBC23F6E6F700283307 /* Report.swift in Sources */,
 				BCE48781AEC57E09C5378783 /* InputField.swift in Sources */,
 				49E385AD2431FE53000A6EC3 /* CatchSummaryView.swift in Sources */,
+				49686CE225233D8F000C7F18 /* LocalConstants.swift in Sources */,
 				4977D0E124484D4900E3E409 /* NoteView.swift in Sources */,
 				49FDCD6E241D204D00C00574 /* ViolationViewModel.swift in Sources */,
 				303A3F10241A4EAE000DCADB /* ViolationInputView.swift in Sources */,
