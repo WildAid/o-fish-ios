@@ -13,7 +13,7 @@ private class CountryHelper {
 
     private func pickerDataFromCountry(code: String) -> CountryPickerData? {
         if let name = Locale.autoupdatingCurrent.localizedString(forRegionCode: code) {
-            return CountryPickerData(image: code, title: name)
+            return CountryPickerData(code: code, title: name)
         }
         return nil
     }
@@ -70,7 +70,7 @@ struct ChooseNationalityView: View {
 
 struct ChooseNationalityView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseNationalityView(selectedItem: .constant(CountryPickerData(image: "FR",
+        ChooseNationalityView(selectedItem: .constant(CountryPickerData(code: "FR",
                                                                         title: "France")))
     }
 }

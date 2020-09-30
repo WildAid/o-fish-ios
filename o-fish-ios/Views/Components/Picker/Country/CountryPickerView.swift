@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct CountryPickerData {
-    var image: String
+    var code: String
     var title: String
 }
 
 extension CountryPickerData: SearchableDataProtocol {
-    static let notSelected = CountryPickerData(image: "", title: "")
+    static let notSelected = CountryPickerData(code: "", title: "")
 
     var id: String {
         title
@@ -43,11 +43,11 @@ struct CountryPickerView: View {
 
 struct CountryPickerView_Previews: PreviewProvider {
     static var previews: some View {
-        let items = [CountryPickerData(image: "FR", title: "France"),
-                     CountryPickerData(image: "NL", title: "Netherlands"),
-                     CountryPickerData(image: "PL", title: "Poland")]
+        let items = [CountryPickerData(code: "FR", title: "France"),
+                     CountryPickerData(code: "NL", title: "Netherlands"),
+                     CountryPickerData(code: "PL", title: "Poland")]
 
-        return CountryPickerView(selectedItem: .constant(CountryPickerData(image: "FR",
+        return CountryPickerView(selectedItem: .constant(CountryPickerData(code: "FR",
                                                                            title: "France")),
                                  items: items,
                                  title: "Title" ,

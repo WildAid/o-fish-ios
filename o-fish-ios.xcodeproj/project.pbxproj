@@ -203,7 +203,7 @@
 		BCE480EEF0B2F0E6A189ECC6 /* ViolationPickerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48E834DC859834E1E01E4 /* ViolationPickerDataView.swift */; };
 		BCE4814543022D42A642CA4A /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE486CABA40FF0D6D14E5F9 /* KeyboardController.swift */; };
 		BCE4815F88C024AD476B8DE2 /* DutyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48D936613848423BBAF33 /* DutyState.swift */; };
-		BCE4817B0B89F5D95768925A /* CountryPickerView.swif.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE486BCBC428C8539A22A9D /* CountryPickerView.swif.swift */; };
+		BCE4817B0B89F5D95768925A /* CountryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE486BCBC428C8539A22A9D /* CountryPickerView.swift */; };
 		BCE4820A7E5A15B8AA93DB4A /* TextPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48555D654177BE1259C7B /* TextPickerView.swift */; };
 		BCE4825F4A971D6F6F24D571 /* CatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48E5B87FCD1126A5C26C4 /* CatchView.swift */; };
 		BCE48275C134A902EF0293D4 /* GlassIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48B8D8932DF568200B811 /* GlassIconView.swift */; };
@@ -525,7 +525,7 @@
 		BCE4867F873ECC8BEEF0AF47 /* ViolationCrewMemberSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViolationCrewMemberSelectView.swift; sourceTree = "<group>"; };
 		BCE4869550ED589453572C7E /* VesselInformationInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VesselInformationInputView.swift; sourceTree = "<group>"; };
 		BCE486BBFA7E770F010DA1AA /* AlertItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
-		BCE486BCBC428C8539A22A9D /* CountryPickerView.swif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerView.swif.swift; sourceTree = "<group>"; };
+		BCE486BCBC428C8539A22A9D /* CountryPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryPickerView.swift; sourceTree = "<group>"; };
 		BCE486CABA40FF0D6D14E5F9 /* KeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
 		BCE486E471A682C466E106D0 /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		BCE486EF5A22D91EE1260968 /* MainNavigationRootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationRootView.swift; sourceTree = "<group>"; };
@@ -1229,7 +1229,7 @@
 		BCE48B04A5E3CDA8E4879663 /* Country */ = {
 			isa = PBXGroup;
 			children = (
-				BCE486BCBC428C8539A22A9D /* CountryPickerView.swif.swift */,
+				BCE486BCBC428C8539A22A9D /* CountryPickerView.swift */,
 				BCE4824D90AA3E6903C93562 /* CountryPickerDataView.swift */,
 			);
 			path = Country;
@@ -1731,7 +1731,7 @@
 				BCE48B9CAD5B8F1EB27C60BD /* ChooseEMSView.swift in Sources */,
 				BCE48B02D6D3331545500562 /* ChooseSpeciesView.swift in Sources */,
 				BCE48D2FCD0F20F23AEC0EF4 /* ChooseNationalityView.swift in Sources */,
-				BCE4817B0B89F5D95768925A /* CountryPickerView.swif.swift in Sources */,
+				BCE4817B0B89F5D95768925A /* CountryPickerView.swift in Sources */,
 				3093805F24460A2A00E23350 /* VesselRecordItemView.swift in Sources */,
 				BCE48D4A017A5B4B64690CCE /* ViolationPickerView.swift in Sources */,
 				BCE4854AADAFBC1B0BD9ECFB /* ChooseViolationsView.swift in Sources */,

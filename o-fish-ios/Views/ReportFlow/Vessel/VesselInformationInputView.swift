@@ -88,7 +88,7 @@ struct VesselInformationInputView: View {
                         Binding<CountryPickerData>(
                             get: { self.displayedNationality },
                             set: {
-                                self.vessel.nationality = $0.title
+                                self.vessel.nationality = $0.code
                                 self.checkAllInput()
                         }
                     ))
@@ -116,17 +116,11 @@ struct VesselInformationInputView: View {
     }
 
     private var displayedNationality: CountryPickerData {
-        CountryPickerData(image: "\(transformCountryName(from: vessel.nationality))", title: vessel.nationality)
+        CountryPickerData(code: vessel.nationality, title: getCountryName(from: vessel.nationality))
     }
 
-    private func transformCountryName(from country: String) -> String {
-        for code in Locale.isoRegionCodes as [String] {
-            if let name = Locale.autoupdatingCurrent.localizedString(forRegionCode: code),
-                name == country {
-                return code
-            }
-        }
-        return ""
+    private func getCountryName(from countryCode: String) -> String {
+        return Locale.autoupdatingCurrent.localizedString(forRegionCode: countryCode) ?? ""
     }
 
     private func checkAllInput() {
