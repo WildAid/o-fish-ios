@@ -89,7 +89,7 @@ struct ViolationInputView: View {
                                                   selectedItem:
                         Binding<CrewMemberViewModel>( get: { self.violation.crewMember },
                                                       set: {
-                                                        self.violation.crewMember = CrewMemberViewModel($0)
+                                                        self.violation.crewMember = $0
                                                         self.updateViolationStatus()
                         })
                     )
