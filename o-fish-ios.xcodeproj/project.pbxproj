@@ -2021,7 +2021,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = PH747F3726;
 				ENABLE_PREVIEWS = YES;
@@ -2031,6 +2031,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = "0.29.d-beta";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.wildaid.o-fish";
 				PRODUCT_NAME = "O-FISH";
 				SWIFT_VERSION = 5.0;
@@ -2044,7 +2045,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = PH747F3726;
 				ENABLE_PREVIEWS = YES;
@@ -2054,6 +2055,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = "0.29.d-beta";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.wildaid.o-fish";
 				PRODUCT_NAME = "O-FISH";
 				SWIFT_VERSION = 5.0;

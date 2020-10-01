@@ -46,16 +46,16 @@ class AttachmentsViewModel: ObservableObject, Identifiable {
         })
         return attachments
     }
-    
+
     func clone(withoutNotes: Bool = true) -> AttachmentsViewModel {
         let clone = AttachmentsViewModel()
-        
+
         if let photoIDs = attachments?.photoIDs {
             for index in photoIDs.indices {
                 clone.photoIDs.append(photoIDs[index])
             }
         }
-        
+
         if !withoutNotes {
             if let notes = attachments?.notes {
                 for index in notes.indices {
@@ -63,7 +63,7 @@ class AttachmentsViewModel: ObservableObject, Identifiable {
                 }
             }
         }
-        
+
         return clone
     }
 }

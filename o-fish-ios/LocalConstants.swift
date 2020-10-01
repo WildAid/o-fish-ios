@@ -8,5 +8,5 @@
 import Foundation
 
 struct LocalConstants {
-    static let realmAppId = "your-realm-app-id"
+    static let realmAppId = "o-fish-trial-dmssx"
 }
