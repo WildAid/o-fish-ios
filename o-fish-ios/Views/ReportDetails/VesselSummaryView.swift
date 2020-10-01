@@ -38,7 +38,7 @@ struct VesselSummaryView: View {
 
             HStack(alignment: .top, spacing: Dimensions.spacing) {
                 LabeledText(label: "Home Port", text: "\(vessel.homePort)")
-                LabeledText(label: "Flag State", text: "\(vessel.nationality)")
+                LabeledText(label: "Flag State", text: "\(getCountryName(from: vessel.nationality))")
             }
 
             if !vessel.attachments.notes.isEmpty || !vessel.attachments.photoIDs.isEmpty {
@@ -46,6 +46,10 @@ struct VesselSummaryView: View {
             }
         }
             .padding(.bottom, Dimensions.bottomPading)
+    }
+
+    private func getCountryName(from countryCode: String) -> String {
+        return Locale.autoupdatingCurrent.localizedString(forRegionCode: countryCode) ?? ""
     }
 }
 
