@@ -56,9 +56,14 @@ struct VesselInformationInputView: View {
             InputField(title: "Vessel Name", text: $vessel.name,
                 showingWarning: showingNameWarning,
                 inputChanged: inputChanged)
-            InputField(title: "Permit Number", text: $vessel.permitNumber,
+            InputField(title: "Permit Number", text:
+                Binding<String>(
+                    get: { self.vessel.permitNumber.uppercased() },
+                    set: { self.vessel.permitNumber = $0}
+                ),
                 showingWarning: showingPermitNumberWarning,
                 inputChanged: inputChanged)
+            .autocapitalization(.allCharacters)
             InputField(title: "Home Port", text: $vessel.homePort,
                 showingWarning: showingHomePortWarning,
                 inputChanged: inputChanged)
