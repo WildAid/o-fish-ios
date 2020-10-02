@@ -2,8 +2,6 @@
 node_modules
 Pods
 
-o-fish-ios/LocalConstants.swift
-
 # Podfile.lock
 
 # local env files
