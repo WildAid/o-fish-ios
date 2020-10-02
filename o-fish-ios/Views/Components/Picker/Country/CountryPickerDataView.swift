@@ -18,7 +18,7 @@ struct CountryPickerDataView: View {
 
     var body: some View {
         HStack(spacing: Dimensions.spacing) {
-            Text("\(flag(from: item.image).uppercased())")
+            Text("\(flag(for: item.code).uppercased())")
                 .font(.system(size: Dimensions.imageSize))
                 .foregroundColor(.white)
                 .clipShape(Circle())
@@ -34,10 +34,10 @@ struct CountryPickerDataView: View {
             .padding(.bottom, Dimensions.bottomPadding)
     }
 
-    private func flag(from country: String) -> String {
+    private func flag(for countryCode: String) -> String {
         let base: UInt32 = 127397 // magic number for transforming country prefix into emoji
         var emojiFlag = ""
-        for letter in country.uppercased().unicodeScalars {
+        for letter in countryCode.uppercased().unicodeScalars {
             if let element = UnicodeScalar(base + letter.value) {
                 emojiFlag.unicodeScalars.append(element)
             }
@@ -49,7 +49,7 @@ struct CountryPickerDataView: View {
 
 struct CountryPickerDataView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryPickerDataView(item: CountryPickerData(image: "FR",
+        CountryPickerDataView(item: CountryPickerData(code: "FR",
                                                       title: "France"))
     }
 }
