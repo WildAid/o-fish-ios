@@ -21,6 +21,7 @@ realm_app_id=your_app_id
 ```
 
 To build:
+- Copy `o-fish-ios/LocalConstants.swift.tmpl` to `o-fish-ios/LocalConstants.swift`
 - Make sure the realm_app_id is set in `o-fish-ios/LocalConstants.swift`
 - `pod install`
   - Note: you may need to resolve dependencies by doing `pod install --repo-update`
