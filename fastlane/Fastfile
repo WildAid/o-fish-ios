@@ -27,6 +27,7 @@ platform :ios do
   desc "Base build check" # this action skips all signing and exporting, only do the base build check (compillability)
   lane :build do
     cocoapods(clean_install: true)
+    sh 'cp ../o-fish-ios/LocalConstants.swift.tmpl ../o-fish-ios/LocalConstants.swift'
     gym(clean: true,
         skip_archive: true,
         skip_package_ipa: true,
