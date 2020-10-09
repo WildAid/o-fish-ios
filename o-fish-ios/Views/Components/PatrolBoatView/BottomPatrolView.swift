@@ -34,7 +34,7 @@ struct BottomPatrolView: View {
 
         }
         .frame(height: Dimensions.height)
-        .background(Color.white)
+        .background(Color.oAltBackground)
     }
 }
 

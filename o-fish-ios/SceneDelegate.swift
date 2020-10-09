@@ -22,17 +22,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let rootView = MainNavigationRootView()
 
-        let mainColor = UIColor.main
-
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.actionBlue
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
 
-            window.tintColor = mainColor
+            window.tintColor = .oAccent
 
             window.rootViewController = UIHostingController(rootView: rootView
-                .navigationBar(backgroundColor: .white, textColor: .black, tintColor: mainColor)
+                .navigationBar(backgroundColor: .oNavbarBackground, textColor: .oText, tintColor: .oAccent)
                 .stackNavigationView()
                 .environmentObject(self.settings)
                 .environmentObject(self.locationHelper)

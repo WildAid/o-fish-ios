@@ -13,6 +13,7 @@ struct PatrolBoatView: View {
 
     @ObservedObject var user = UserViewModel()
     @ObservedObject var onDuty = DutyState.shared
+    @ObservedObject var userSettings = UserSettings.shared
 
     @State private var location = LocationViewModel(LocationHelper.currentLocation)
     @State private var isActiveRootFromPreboardingView  = false
@@ -51,14 +52,14 @@ struct PatrolBoatView: View {
                                                             dutyState: onDuty,
                                                             profilePicture: profilePicture),
                                isActive: $showingProfilePage) {
-                                EmptyView()
+                    EmptyView()
                 }
             }
 
             ZStack(alignment: .bottom) {
                 MapComponentView(location: self.$location,
-                    reset: self.$resetLocation,
-                    isLocationViewNeeded: false)
+                                 reset: self.$resetLocation,
+                                 isLocationViewNeeded: false)
                 VStack {
                     HStack {
                         CoordsBoxView(location: location)
@@ -68,7 +69,7 @@ struct PatrolBoatView: View {
                         LocationButton(action: resetLocation)
                             .padding(.trailing, Dimensions.coordTopPadding)
                     }
-                        .padding(.top, Dimensions.coordTopPadding)
+                    .padding(.top, Dimensions.coordTopPadding)
                     Spacer()
                     BottomPatrolView(draftBoardingsCount: $draftBoardingsCount,
                                      findAction: showFindRecords,
@@ -80,40 +81,41 @@ struct PatrolBoatView: View {
                                                      onDuty: onDuty,
                                                      rootIsActive: $isActiveRootFromPreboardingView),
                         isActive: self.$isActiveRootFromPreboardingView) {
-                            EmptyView()
+                        EmptyView()
                     }
-                        .isDetailLink(false)
+                    .isDetailLink(false)
 
                     NavigationLink(
                         destination: PreboardingView(viewType: .searchRecords,
                                                      onDuty: onDuty,
                                                      rootIsActive: $isActiveRootFromSearchView),
                         isActive: $isActiveRootFromSearchView) {
-                            EmptyView()
+                        EmptyView()
                     }
-                        .isDetailLink(false)
+                    .isDetailLink(false)
 
                     NavigationLink(
                         destination: DraftBoardingsView(),
                         isActive: $showingDrafts) {
-                            EmptyView()
+                        EmptyView()
                     }
                 }
             }
-                .edgesIgnoringSafeArea(.all)
-                .navigationBarTitle(Text(""), displayMode: .inline)
-                .navigationBarBackButtonHidden(true)
-                .navigationBarHidden(true)
+            .edgesIgnoringSafeArea(.all)
+            .navigationBarTitle(Text(""), displayMode: .inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
         }
-            .showingAlert(alertItem: $showingAlertItem)
-            .onAppear(perform: onAppear)
+        .showingAlert(alertItem: $showingAlertItem)
+        .onAppear(perform: onAppear)
+        .preferredColorScheme(userSettings.showDarkMode ? .dark : .light)
     }
 
     private func showGoOnDutyAlert() {
         showingAlertItem = AlertItem(title: "You're currently on land",
-            message: "Change status to \"At Sea\"?",
-            primaryButton: .default(Text("Yes"), action: goOnDutyAlertClicked),
-            secondaryButton: .cancel())
+                                     message: "Change status to \"At Sea\"?",
+                                     primaryButton: .default(Text("Yes"), action: goOnDutyAlertClicked),
+                                     secondaryButton: .cancel())
     }
 
     /// Actions
