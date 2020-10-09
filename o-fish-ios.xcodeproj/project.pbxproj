@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		224735CA2530F3A000356A5C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224735C92530F39F00356A5C /* String+Extensions.swift */; };
+		224735CE2530F43800356A5C /* UIColor+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224735CD2530F43800356A5C /* UIColor+Theme.swift */; };
+		224735D22530FD3F00356A5C /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224735D12530FD3F00356A5C /* Color+Theme.swift */; };
 		3004955C24B87E2A00906D35 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3004955B24B87E2A00906D35 /* NotificationManager.swift */; };
 		300C4AEB24190226000A2763 /* ActivityItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AE924190226000A2763 /* ActivityItemView.swift */; };
 		300C4AEC24190226000A2763 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AEA24190226000A2763 /* ActivityView.swift */; };
@@ -293,6 +296,9 @@
 
 /* Begin PBXFileReference section */
 		01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_o_fish_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		224735C92530F39F00356A5C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		224735CD2530F43800356A5C /* UIColor+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Theme.swift"; sourceTree = "<group>"; };
+		224735D12530FD3F00356A5C /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		3004955B24B87E2A00906D35 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		300C4AE924190226000A2763 /* ActivityItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityItemView.swift; sourceTree = "<group>"; };
 		300C4AEA24190226000A2763 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -868,6 +874,9 @@
 				30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */,
 				BCE48D8DD8B8DF7DE800C8F4 /* View+NavigationStyle.swift */,
 				BCE480BDC5FDB15656C972A0 /* Debouncer.swift */,
+				224735C92530F39F00356A5C /* String+Extensions.swift */,
+				224735CD2530F43800356A5C /* UIColor+Theme.swift */,
+				224735D12530FD3F00356A5C /* Color+Theme.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1601,6 +1610,7 @@
 				49E385AB2431F9D5000A6EC3 /* ActivitySummaryView.swift in Sources */,
 				49063BCC240FEBD200C54231 /* DateTimeView.swift in Sources */,
 				490C0DBE23FAB49300283307 /* MenuData.swift in Sources */,
+				224735CE2530F43800356A5C /* UIColor+Theme.swift in Sources */,
 				493CDFE02403CDD600516048 /* MapComponentView.swift in Sources */,
 				49E0BE4D24129B5B0083228C /* NotesView.swift in Sources */,
 				49674E462451D3DE0023ABC6 /* AsyncImage.swift in Sources */,
@@ -1652,6 +1662,7 @@
 				49669329243E304900AC4D87 /* ActivityViewModel.swift in Sources */,
 				4946C108240D4C1B009FB1D9 /* PhotoCaptureController.swift in Sources */,
 				3013CA7C2424AF7A00D2FF60 /* PatrolBoatView.swift in Sources */,
+				224735D22530FD3F00356A5C /* Color+Theme.swift in Sources */,
 				BCE480D709F963CBC526C21F /* ButtonField.swift in Sources */,
 				3004955C24B87E2A00906D35 /* NotificationManager.swift in Sources */,
 				4977D0EB244864E700E3E409 /* NoteStaticView.swift in Sources */,
@@ -1750,6 +1761,7 @@
 				BCE483F97684587434E8421E /* ReportNavigationRootView.swift in Sources */,
 				BCE482FC535CCA17C9D9F30A /* EMSInputView.swift in Sources */,
 				49669323243DF50B00AC4D87 /* AttachmentsViewModel.swift in Sources */,
+				224735CA2530F3A000356A5C /* String+Extensions.swift in Sources */,
 				30CBCE512475B8D7000AC61C /* LocationPointView.swift in Sources */,
 				49674E54245330440023ABC6 /* GridStack.swift in Sources */,
 				BCE486016027CCB045AFECB5 /* VesselInformationInputView.swift in Sources */,
