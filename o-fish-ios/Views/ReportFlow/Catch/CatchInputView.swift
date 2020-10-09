@@ -71,7 +71,7 @@ struct CatchInputView: View {
             HStack(spacing: Dimensions.offset) {
                 InputField(title: "Weight", text: weightBinding,
                            showingWarning: self.showingWeightWarning)
-                    .keyboardType(.numberPad)
+                    .keyboardType(.decimalPad)
 
                 ButtonField(title: "Unit",
                             text: NSLocalizedString(self.catchModel.unit.rawValue, comment: "Units localized"),
@@ -100,7 +100,7 @@ struct CatchInputView: View {
 
     private var weightBinding: Binding<String> {
         Binding<String>(
-            get: { self.catchModel.weight != 0 ? "\(self.catchModel.weight)" : "" },
+            get: { self.catchModel.weight != 0 ? self.catchModel.weight.cleanValue : "" },
             set: {
                 let numberFormatter = NumberFormatter()
                 numberFormatter.maximumFractionDigits = 2
