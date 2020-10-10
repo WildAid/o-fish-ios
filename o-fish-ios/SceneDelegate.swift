@@ -79,7 +79,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private func updateAppearance() {
 
-        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.oText]
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.oText]
         UINavigationBar.appearance().backgroundColor = .oNavbarBackground
