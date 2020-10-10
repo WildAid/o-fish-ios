@@ -44,6 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             })
 
             window.overrideUserInterfaceStyle = (userSettings.showDarkMode ? .dark : .light)
+            updateAppearance()
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -76,4 +77,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
+    private func updateAppearance() {
+
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.oText]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.oText]
+        UINavigationBar.appearance().backgroundColor = .oNavbarBackground
+        UINavigationBar.appearance().barTintColor = .oNavbarBackground
+        UINavigationBar.appearance().tintColor = .oAccent
+        UIWindow.appearance().tintColor = .oAccent
+    }
 }
