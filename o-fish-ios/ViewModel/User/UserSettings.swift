@@ -19,6 +19,7 @@ class UserSettings: ObservableObject {
     @Published var showDarkMode: Bool {
         didSet {
             UserDefaults.standard.setValue(self.showDarkMode, forKey: StringKeys.showDarkMode)
+            SceneDelegate.shared?.window?.overrideUserInterfaceStyle = (self.showDarkMode ? .dark : .light)
         }
     }
 

@@ -2051,7 +2051,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
-				DEVELOPMENT_TEAM = PH747F3726;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "o-fish-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -2075,7 +2075,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
-				DEVELOPMENT_TEAM = PH747F3726;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "o-fish-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
