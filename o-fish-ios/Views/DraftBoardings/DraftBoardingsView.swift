@@ -11,10 +11,21 @@ struct DraftBoardingsView: View {
 
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var settings: Settings
-    @State var rootIsActive: Bool = false
+    @State private var rootIsActive: Bool = false
     @State private var storedReports = [ReportViewModel]()
     @State private var state: States = .empty
-    @State private var showingDismissAlert = false
+
+    // (1/2) Binding workaround for view updating after appearing onscreen to show navigation bar
+    //
+    // Problem: after appering view on screen with slow-mode animation you could see jumped view to the top of screen.
+    // This way navigation bar is hidden
+    //
+    // It seems as Swift UI bug. Similar cases are described here:
+    // https://developer.apple.com/forums/thread/654471
+    // https://stackoverflow.com/questions/58756846/swiftui-view-content-layout-unexpectedly-pop-jumps-on-appear
+    // https://developer.apple.com/forums/thread/125800
+    @State private var updatedViewAfterShowing = false
+    // End of (1/2)
 
     private enum States {
         case loading, empty, loaded
@@ -31,7 +42,12 @@ struct DraftBoardingsView: View {
         }
         .navigationBarHidden(false)
         .onAppear(perform: loadReports)
-        .navigationBarTitle("Draft Boardings", displayMode: .inline)
+        // (2/2) Binding workaround for view updating after appearing onscreen to show navigation bar
+        .alert(isPresented: $updatedViewAfterShowing) {
+            Alert(title: Text(""))
+        }
+        // End of (2/2)
+        .navigationBarTitle(LocalizedStringKey("Draft Boardings"), displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
             BackButton(label: "")
