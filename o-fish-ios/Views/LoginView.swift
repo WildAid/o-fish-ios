@@ -96,7 +96,7 @@ struct LoginView: View {
             }
     }
 
-    private func login(username: String, password: String) {
+    private func `login`(username: String, password: String) {
         if username.isEmpty || password.isEmpty {
             return
         }

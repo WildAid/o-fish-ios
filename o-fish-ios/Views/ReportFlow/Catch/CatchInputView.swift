@@ -70,8 +70,8 @@ struct CatchInputView: View {
 
             HStack(spacing: Dimensions.offset) {
                 InputField(title: "Weight", text: weightBinding,
-                           showingWarning: self.showingWeightWarning,
-                           keyboardType: .decimalPad)
+                           showingWarning: self.showingWeightWarning)
+                    .keyboardType(.decimalPad)
 
                 ButtonField(title: "Unit",
                             text: NSLocalizedString(self.catchModel.unit.rawValue, comment: "Units localized"),
@@ -81,8 +81,8 @@ struct CatchInputView: View {
 
             InputField(title: "Count",
                        text: countBinding,
-                       showingWarning: self.showingCountWarning,
-                       keyboardType: .numberPad)
+                       showingWarning: self.showingCountWarning)
+                .keyboardType(.numberPad)
 
             if !catchModel.attachments.photoIDs.isEmpty || !catchModel.attachments.notes.isEmpty {
                 AttachmentsView(attachments: catchModel.attachments)

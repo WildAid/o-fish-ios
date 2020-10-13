@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		114C3993253195BE0076BF1A /* DoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C3992253195BE0076BF1A /* DoneTextField.swift */; };
 		3004955C24B87E2A00906D35 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3004955B24B87E2A00906D35 /* NotificationManager.swift */; };
 		300C4AEB24190226000A2763 /* ActivityItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AE924190226000A2763 /* ActivityItemView.swift */; };
 		300C4AEC24190226000A2763 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AEA24190226000A2763 /* ActivityView.swift */; };
@@ -296,7 +295,6 @@
 
 /* Begin PBXFileReference section */
 		01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_o_fish_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		114C3992253195BE0076BF1A /* DoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTextField.swift; sourceTree = "<group>"; };
 		3004955B24B87E2A00906D35 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		300C4AE924190226000A2763 /* ActivityItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityItemView.swift; sourceTree = "<group>"; };
 		300C4AEA24190226000A2763 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -935,7 +933,6 @@
 				BCE488B03B27A519E5271DC6 /* InputMultilineFieldCaption.swift */,
 				BCE48E39591741EEEEE3DDCF /* PhotoView.swift */,
 				30E315D42507C3200037235E /* PatrolBoatView */,
-				114C3992253195BE0076BF1A /* DoneTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1668,7 +1665,6 @@
 				49FDCD5B241D1DCF00C00574 /* OffenceViewModel.swift in Sources */,
 				3093805E24460A2A00E23350 /* VesselRecordView.swift in Sources */,
 				49669329243E304900AC4D87 /* ActivityViewModel.swift in Sources */,
-				114C3993253195BE0076BF1A /* DoneTextField.swift in Sources */,
 				4946C108240D4C1B009FB1D9 /* PhotoCaptureController.swift in Sources */,
 				3013CA7C2424AF7A00D2FF60 /* PatrolBoatView.swift in Sources */,
 				BCE480D709F963CBC526C21F /* ButtonField.swift in Sources */,
