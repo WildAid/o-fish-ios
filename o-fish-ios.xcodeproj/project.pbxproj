@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		114C3993253195BE0076BF1A /* DoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C3992253195BE0076BF1A /* DoneTextField.swift */; };
+		226D01F825352A62006E2A0F /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D01F725352A62006E2A0F /* UserSettings.swift */; };
+		226D01FC25352A8B006E2A0F /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D01FB25352A8B006E2A0F /* Color+Theme.swift */; };
+		226D020025352AB6006E2A0F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226D01FF25352AB6006E2A0F /* String+Extensions.swift */; };
 		3004955C24B87E2A00906D35 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3004955B24B87E2A00906D35 /* NotificationManager.swift */; };
 		300C4AEB24190226000A2763 /* ActivityItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AE924190226000A2763 /* ActivityItemView.swift */; };
 		300C4AEC24190226000A2763 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AEA24190226000A2763 /* ActivityView.swift */; };
@@ -297,6 +300,9 @@
 /* Begin PBXFileReference section */
 		01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_o_fish_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		114C3992253195BE0076BF1A /* DoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTextField.swift; sourceTree = "<group>"; };
+		226D01F725352A62006E2A0F /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		226D01FB25352A8B006E2A0F /* Color+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
+		226D01FF25352AB6006E2A0F /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3004955B24B87E2A00906D35 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		300C4AE924190226000A2763 /* ActivityItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityItemView.swift; sourceTree = "<group>"; };
 		300C4AEA24190226000A2763 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -857,6 +863,7 @@
 		493CDFC723FEBA9300516048 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				226D01FB25352A8B006E2A0F /* Color+Theme.swift */,
 				30A4474624CAF84900CDF824 /* KeychainWrapper.swift */,
 				3004955B24B87E2A00906D35 /* NotificationManager.swift */,
 				30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */,
@@ -869,6 +876,7 @@
 				493CDFE32404069D00516048 /* LocationHelper.swift */,
 				493CE01A240555CA00516048 /* Date.swift */,
 				BCE4888D0AB99F5CE3FA87DA /* SwiftUI+DebugPrint.swift */,
+				226D01FF25352AB6006E2A0F /* String+Extensions.swift */,
 				BCE48F54CA4C3989E363C19A /* String+Identifiable.swift */,
 				BCE48EFBBE1997660C4F1EE6 /* Collection+EnumeratedArray.swift */,
 				49674E3E2450AD190023ABC6 /* Array_OptionalAppend.swift */,
@@ -1034,6 +1042,7 @@
 				49A3EC9B242CBA4E00055342 /* DutyChangeViewModel.swift */,
 				49A3EC9A242CBA4E00055342 /* NameViewModel.swift */,
 				49A3EC99242CBA4E00055342 /* UserViewModel.swift */,
+				226D01F725352A62006E2A0F /* UserSettings.swift */,
 				497EBF172433B78200B01800 /* SampleUserViewModel.swift */,
 			);
 			path = User;
@@ -1643,6 +1652,7 @@
 				49FDCD57241D1CA300C00574 /* LocationViewModel.swift in Sources */,
 				4977D0E524484FC800E3E409 /* AnnotatedNoteViewModel.swift in Sources */,
 				4980765D242E82AB00D463F4 /* MapDisplayView.swift in Sources */,
+				226D01F825352A62006E2A0F /* UserSettings.swift in Sources */,
 				49B83EEA2489546D00027B8C /* AnnotatedNote.swift in Sources */,
 				493CE01924054FD500516048 /* ReportSummary.swift in Sources */,
 				4977D0E92448570400E3E409 /* NoteInputView.swift in Sources */,
@@ -1715,6 +1725,7 @@
 				49FDCD6C241D202000C00574 /* InspectionViewModel.swift in Sources */,
 				49A3EC96242CBA0000055342 /* DutyChange.swift in Sources */,
 				49FDCD8E241E200000C00574 /* Photo.swift in Sources */,
+				226D01FC25352A8B006E2A0F /* Color+Theme.swift in Sources */,
 				49D6CAAF241B9663009AD8F6 /* ReportViewModel.swift in Sources */,
 				49B83EDE2489546D00027B8C /* Catch.swift in Sources */,
 				49807649242E049000D463F4 /* SampleReportViewModel.swift in Sources */,
@@ -1828,6 +1839,7 @@
 				BCE48744C5AC97E42348905B /* StartStopDatePicker.swift in Sources */,
 				BCE485F8B0B2A469B5FBAE61 /* PatrolReportView.swift in Sources */,
 				BCE4880D6DD1C2FEEFC2B9FC /* VesselImageView.swift in Sources */,
+				226D020025352AB6006E2A0F /* String+Extensions.swift in Sources */,
 				BCE48C8A28AE75897D15AF75 /* ModalView.swift in Sources */,
 				3093E8E42508E48100C6D481 /* ProfilePageView.swift in Sources */,
 				BCE48BB3CF6EE23B71F7A818 /* InputMultilineFieldCaption.swift in Sources */,
