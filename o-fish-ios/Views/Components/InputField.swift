@@ -20,6 +20,8 @@ struct InputField: View {
 
     var inputChanged: ((String) -> Void)?
 
+    var keyboardType: UIKeyboardType = .alphabet
+
     private enum Dimensions {
         static let noSpacing: CGFloat = 0
         static let bottomPadding: CGFloat = 16
@@ -31,18 +33,10 @@ struct InputField: View {
             CaptionLabel(title: title, color: showingWarning ? warningColor : captionColor)
 
             HStack(spacing: Dimensions.noSpacing) {
-
-                if !showingSecureField {
-                    TextField("", text: textBinding)
-                        .padding(.bottom, Dimensions.bottomPadding)
-                        .foregroundColor(.text)
-                        .font(.body)
-                } else {
-                    SecureField("", text: textBinding)
-                        .padding(.bottom, Dimensions.bottomPadding)
-                        .foregroundColor(.text)
-                        .font(.body)
-                }
+                DoneTextField(text: textBinding, keyboardType: keyboardType, isSecureTextEntry: showingSecureField)
+                    .padding(.bottom, Dimensions.bottomPadding)
+                    .foregroundColor(.text)
+                    .font(.body)
 
                 if showingWarning {
                     ExclamationIconView()

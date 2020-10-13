@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		224735CA2530F3A000356A5C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224735C92530F39F00356A5C /* String+Extensions.swift */; };
-		224735CE2530F43800356A5C /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224735CD2530F43800356A5C /* Color+Theme.swift */; };
-		224735D82531038F00356A5C /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224735D72531038F00356A5C /* UserSettings.swift */; };
+		114C3993253195BE0076BF1A /* DoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C3992253195BE0076BF1A /* DoneTextField.swift */; };
 		3004955C24B87E2A00906D35 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3004955B24B87E2A00906D35 /* NotificationManager.swift */; };
 		300C4AEB24190226000A2763 /* ActivityItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AE924190226000A2763 /* ActivityItemView.swift */; };
 		300C4AEC24190226000A2763 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AEA24190226000A2763 /* ActivityView.swift */; };
@@ -196,6 +194,8 @@
 		49FDCD74241D274200C00574 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDCD73241D274200C00574 /* PhotoViewModel.swift */; };
 		49FDCD8E241E200000C00574 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDCD8D241E200000C00574 /* Photo.swift */; };
 		49FDCD90241E41EB00C00574 /* NoInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FDCD8F241E41EB00C00574 /* NoInputField.swift */; };
+		4D59CE7F252FF26500F02587 /* LocalConstants.swift in Resources */ = {isa = PBXBuildFile; fileRef = 4D59CE7E252FF26500F02587 /* LocalConstants.swift */; };
+		4D59CE87252FF38600F02587 /* Double+CleanValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59CE86252FF38600F02587 /* Double+CleanValue.swift */; };
 		58803D1DF7134D26A62353B7 /* Pods_O_FISHTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2A897480E19C63773305C9 /* Pods_O_FISHTests.framework */; };
 		A1404A98C1D9F0F6A7FFDF3F /* Pods_o_fish_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */; };
 		BCE48044A1B3C063E89649B4 /* CallToActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48AB83BB50A193A6B4113 /* CallToActionButton.swift */; };
@@ -296,9 +296,7 @@
 
 /* Begin PBXFileReference section */
 		01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_o_fish_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		224735C92530F39F00356A5C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		224735CD2530F43800356A5C /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
-		224735D72531038F00356A5C /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		114C3992253195BE0076BF1A /* DoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTextField.swift; sourceTree = "<group>"; };
 		3004955B24B87E2A00906D35 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		300C4AE924190226000A2763 /* ActivityItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityItemView.swift; sourceTree = "<group>"; };
 		300C4AEA24190226000A2763 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -496,6 +494,8 @@
 		49FDCD8D241E200000C00574 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		49FDCD8F241E41EB00C00574 /* NoInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInputField.swift; sourceTree = "<group>"; };
 		4D2A897480E19C63773305C9 /* Pods_O_FISHTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_O_FISHTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D59CE7E252FF26500F02587 /* LocalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalConstants.swift; sourceTree = "<group>"; };
+		4D59CE86252FF38600F02587 /* Double+CleanValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+CleanValue.swift"; sourceTree = "<group>"; };
 		542E5D76C2521F4603E2BDEA /* Pods-o-fish-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-o-fish-ios.debug.xcconfig"; path = "Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		75D1B2651469F1E66F32D4A7 /* Pods-O-FISHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-O-FISHTests.debug.xcconfig"; path = "Target Support Files/Pods-O-FISHTests/Pods-O-FISHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F135385C428BA5F9EB62154 /* Pods-o-fish-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-o-fish-ios.release.xcconfig"; path = "Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -787,6 +787,7 @@
 				BCE48CAC6D64429D408B7A01 /* swiftlint */,
 				DAE9DCD121DA99696B456B9B /* Frameworks */,
 				BCE482C38FC5E84EB0A5278C /* Localization */,
+				4D1939B72530F53E00B50B54 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -860,6 +861,7 @@
 				3004955B24B87E2A00906D35 /* NotificationManager.swift */,
 				30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */,
 				30E9393824A225C500011305 /* Double+LocationDegrees.swift */,
+				4D59CE86252FF38600F02587 /* Double+CleanValue.swift */,
 				493B5CDD245C1DDD00071740 /* Constants.swift */,
 				49674E422451D3780023ABC6 /* ImageLoading */,
 				3093806624460A6D00E23350 /* UIImage+resize.swift */,
@@ -874,8 +876,6 @@
 				30D82D832498E14100AB0E2E /* UIImage+Thumbnail.swift */,
 				BCE48D8DD8B8DF7DE800C8F4 /* View+NavigationStyle.swift */,
 				BCE480BDC5FDB15656C972A0 /* Debouncer.swift */,
-				224735C92530F39F00356A5C /* String+Extensions.swift */,
-				224735CD2530F43800356A5C /* Color+Theme.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -935,6 +935,7 @@
 				BCE488B03B27A519E5271DC6 /* InputMultilineFieldCaption.swift */,
 				BCE48E39591741EEEEE3DDCF /* PhotoView.swift */,
 				30E315D42507C3200037235E /* PatrolBoatView */,
+				114C3992253195BE0076BF1A /* DoneTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1034,7 +1035,6 @@
 				49A3EC9A242CBA4E00055342 /* NameViewModel.swift */,
 				49A3EC99242CBA4E00055342 /* UserViewModel.swift */,
 				497EBF172433B78200B01800 /* SampleUserViewModel.swift */,
-				224735D72531038F00356A5C /* UserSettings.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1109,6 +1109,14 @@
 				49807648242E049000D463F4 /* SampleReportViewModel.swift */,
 			);
 			path = Report;
+			sourceTree = "<group>";
+		};
+		4D1939B72530F53E00B50B54 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				4D59CE7E252FF26500F02587 /* LocalConstants.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		BCE480B476F746A6D1679C83 /* Catch */ = {
@@ -1427,6 +1435,7 @@
 				490C0DB123F6B15A00283307 /* LaunchScreen.storyboard in Resources */,
 				FBE107AE247FFF87001DA29C /* Localizable.strings in Resources */,
 				490C0DAE23F6B15A00283307 /* Preview Assets.xcassets in Resources */,
+				4D59CE7F252FF26500F02587 /* LocalConstants.swift in Resources */,
 				490C0DAB23F6B15A00283307 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1610,7 +1619,6 @@
 				49E385AB2431F9D5000A6EC3 /* ActivitySummaryView.swift in Sources */,
 				49063BCC240FEBD200C54231 /* DateTimeView.swift in Sources */,
 				490C0DBE23FAB49300283307 /* MenuData.swift in Sources */,
-				224735CE2530F43800356A5C /* Color+Theme.swift in Sources */,
 				493CDFE02403CDD600516048 /* MapComponentView.swift in Sources */,
 				49E0BE4D24129B5B0083228C /* NotesView.swift in Sources */,
 				49674E462451D3DE0023ABC6 /* AsyncImage.swift in Sources */,
@@ -1618,7 +1626,6 @@
 				49A3EC9C242CBA4E00055342 /* UserViewModel.swift in Sources */,
 				493CDFBC23FEB86D00516048 /* LoginView.swift in Sources */,
 				49B83EDD2489546D00027B8C /* Delivery.swift in Sources */,
-				224735D82531038F00356A5C /* UserSettings.swift in Sources */,
 				493CE01B240555CA00516048 /* Date.swift in Sources */,
 				493CDFE42404069D00516048 /* LocationHelper.swift in Sources */,
 				49076E44241192D900B3CF43 /* TrafficLightButton.swift in Sources */,
@@ -1661,6 +1668,7 @@
 				49FDCD5B241D1DCF00C00574 /* OffenceViewModel.swift in Sources */,
 				3093805E24460A2A00E23350 /* VesselRecordView.swift in Sources */,
 				49669329243E304900AC4D87 /* ActivityViewModel.swift in Sources */,
+				114C3993253195BE0076BF1A /* DoneTextField.swift in Sources */,
 				4946C108240D4C1B009FB1D9 /* PhotoCaptureController.swift in Sources */,
 				3013CA7C2424AF7A00D2FF60 /* PatrolBoatView.swift in Sources */,
 				BCE480D709F963CBC526C21F /* ButtonField.swift in Sources */,
@@ -1761,7 +1769,6 @@
 				BCE483F97684587434E8421E /* ReportNavigationRootView.swift in Sources */,
 				BCE482FC535CCA17C9D9F30A /* EMSInputView.swift in Sources */,
 				49669323243DF50B00AC4D87 /* AttachmentsViewModel.swift in Sources */,
-				224735CA2530F3A000356A5C /* String+Extensions.swift in Sources */,
 				30CBCE512475B8D7000AC61C /* LocationPointView.swift in Sources */,
 				49674E54245330440023ABC6 /* GridStack.swift in Sources */,
 				BCE486016027CCB045AFECB5 /* VesselInformationInputView.swift in Sources */,
@@ -1782,6 +1789,7 @@
 				BCE4808C711680D5EDD03D5C /* EditIconView.swift in Sources */,
 				BCE48998EA1E025783FB6D6F /* IconLabel.swift in Sources */,
 				BCE48D2E131F3FF37B16527A /* AddAttachmentIconView.swift in Sources */,
+				4D59CE87252FF38600F02587 /* Double+CleanValue.swift in Sources */,
 				BCE48F10100DC3B1E448EFA5 /* CrewMemberShortView.swift in Sources */,
 				BCE486F4F1B6668619180222 /* AddPhotoIconView.swift in Sources */,
 				BCE486CD5E197C1D1A7FFDC5 /* VesselIconView.swift in Sources */,
@@ -2035,7 +2043,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PH747F3726;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "o-fish-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -2059,7 +2067,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PH747F3726;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "o-fish-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
