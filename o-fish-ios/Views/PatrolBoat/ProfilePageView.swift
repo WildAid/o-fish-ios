@@ -73,7 +73,7 @@ struct ProfilePageView: View {
                     .background(Color.oDivider)
                     .frame(height: Dimensions.lineWidth)
 
-                Toggle(isOn: $userSettings.showDarkMode) {
+                Toggle(isOn: $userSettings.forceDarkMode) {
                     Text("Dark Mode")
                         .foregroundColor(.oFieldTitle)
                         .font(.callout)
@@ -127,7 +127,7 @@ struct ProfilePageView: View {
                 .foregroundColor(.oAccent)
         })
         .showingAlert(alertItem: $showingAlertItem)
-        .preferredColorScheme(userSettings.showDarkMode ? .dark : .light)
+        .preferredColorScheme(userSettings.forceDarkMode ? .dark : .light)
     }
 
     private var dutyBinding: Binding<Bool> {

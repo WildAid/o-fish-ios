@@ -108,7 +108,7 @@ struct PatrolBoatView: View {
         }
         .showingAlert(alertItem: $showingAlertItem)
         .onAppear(perform: onAppear)
-        .preferredColorScheme(userSettings.showDarkMode ? .dark : .light)
+        .preferredColorScheme(userSettings.forceDarkMode ? .dark : .light)
     }
 
     private func showGoOnDutyAlert() {

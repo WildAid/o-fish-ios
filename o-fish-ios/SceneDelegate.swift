@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     window.endEditing(true)
             })
 
-            window.overrideUserInterfaceStyle = (userSettings.showDarkMode ? .dark : .light)
+            window.overrideUserInterfaceStyle = (userSettings.forceDarkMode ? .dark : .light)
             updateAppearance()
             self.window = window
             window.makeKeyAndVisible()

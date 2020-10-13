@@ -9,28 +9,28 @@ import Foundation
 import Combine
 
 private struct StringKeys {
-    static let showDarkMode = "showDarkMode"
+    static let forceDarkMode = "forceDarkMode"
 }
 
 class UserSettings: ObservableObject {
 
     static let shared = UserSettings()
 
-    @Published var showDarkMode: Bool {
+    @Published var forceDarkMode: Bool {
         didSet {
-            UserDefaults.standard.setValue(self.showDarkMode, forKey: StringKeys.showDarkMode)
-            SceneDelegate.shared?.window?.overrideUserInterfaceStyle = (self.showDarkMode ? .dark : .light)
+            UserDefaults.standard.setValue(self.forceDarkMode, forKey: StringKeys.forceDarkMode)
+            SceneDelegate.shared?.window?.overrideUserInterfaceStyle = (self.forceDarkMode ? .dark : .light)
         }
     }
 
     init() {
-        self.showDarkMode = (UserDefaults.standard.object(forKey: StringKeys.showDarkMode) as? Bool) ?? false
+        self.forceDarkMode = (UserDefaults.standard.object(forKey: StringKeys.forceDarkMode) as? Bool) ?? false
     }
 }
 
 extension UserDefaults {
 
-    @objc dynamic var showDarkMode: Bool {
-        return bool(forKey: StringKeys.showDarkMode)
+    @objc dynamic var forceDarkMode: Bool {
+        return bool(forKey: StringKeys.forceDarkMode)
     }
 }
