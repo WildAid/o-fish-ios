@@ -13,14 +13,10 @@ struct InputField: View {
 
     var showingSecureField = false
     var showingWarning = false
-
     var captionColor = Color.removeAction
     var separatorColor = Color.inactiveBar
     var warningColor = Color.spanishOrange
-
     var inputChanged: ((String) -> Void)?
-
-    var keyboardType: UIKeyboardType = .alphabet
 
     private enum Dimensions {
         static let noSpacing: CGFloat = 0
@@ -33,16 +29,21 @@ struct InputField: View {
             CaptionLabel(title: title, color: showingWarning ? warningColor : captionColor)
 
             HStack(spacing: Dimensions.noSpacing) {
-                DoneTextField(text: textBinding, keyboardType: keyboardType, isSecureTextEntry: showingSecureField)
-                    .padding(.bottom, Dimensions.bottomPadding)
-                    .foregroundColor(.text)
-                    .font(.body)
-
+                if !showingSecureField {
+                    TextField("", text: textBinding)
+                        .padding(.bottom, Dimensions.bottomPadding)
+                        .foregroundColor(.text)
+                        .font(.body)
+                } else {
+                    SecureField("", text: textBinding)
+                        .padding(.bottom, Dimensions.bottomPadding)
+                        .foregroundColor(.text)
+                        .font(.body)
+                }
                 if showingWarning {
                     ExclamationIconView()
                 }
             }
-
             Divider()
                 .background(showingWarning ? warningColor : separatorColor)
         }
