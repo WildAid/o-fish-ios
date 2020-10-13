@@ -51,7 +51,7 @@ struct ProfilePageView: View {
                         .font(.body)
                     }
                     Button(action: edit) {
-                        Text(AppStrings.General.edit)
+                        Text("Edit")
                             .foregroundColor(.oAccent)
                             .font(.caption1)
                             .padding(.leading, Dimensions.leadingPadding)
@@ -63,7 +63,7 @@ struct ProfilePageView: View {
                     .frame(height: Dimensions.lineWidth)
 
                 Toggle(isOn: dutyBinding) {
-                    Text(dutyState.onDuty ? AppStrings.Profile.atSeaLabel : AppStrings.Profile.notAtSeaLabel)
+                    Text(dutyState.onDuty ? "At Sea" : "Not At Sea")
                         .foregroundColor(.oFieldTitle)
                         .font(.callout)
                 }
@@ -74,7 +74,7 @@ struct ProfilePageView: View {
                     .frame(height: Dimensions.lineWidth)
 
                 Toggle(isOn: $userSettings.showDarkMode) {
-                    Text(AppStrings.Profile.darkModeLabel)
+                    Text("Dark Mode")
                         .foregroundColor(.oFieldTitle)
                         .font(.callout)
                 }
@@ -88,7 +88,7 @@ struct ProfilePageView: View {
             VStack {
                 Button(action: showLogoutAlert) {
                     Spacer()
-                    Text(AppStrings.General.logOut)
+                    Text("Log Out")
                         .font(.body)
                         .foregroundColor(.oAccent)
                     Spacer()
@@ -123,7 +123,7 @@ struct ProfilePageView: View {
         .navigationBarItems(leading: Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
-            Text(AppStrings.General.close)
+            Text("Close")
                 .foregroundColor(.oAccent)
         })
         .showingAlert(alertItem: $showingAlertItem)
@@ -147,9 +147,9 @@ struct ProfilePageView: View {
     }
 
     private func showLogoutAlert() {
-        showingAlertItem = AlertItem(title: AppStrings.Profile.logoutAlertTitle,
-                                     message: AppStrings.Profile.logoutAlertMessage,
-                                     primaryButton: .destructive(Text(AppStrings.General.logOut), action: logoutAlertClicked),
+        showingAlertItem = AlertItem(title: "Logout?",
+                                     message: "All draft boardings will be deleted!",
+                                     primaryButton: .destructive(Text("Log Out"), action: logoutAlertClicked),
                                      secondaryButton: .cancel())
     }
 
@@ -181,12 +181,12 @@ struct ProfilePageView: View {
         }
         PopoverManager.shared.showPopover(id: popoverId, content: {
             ModalView(buttons: [
-                ModalViewButton(title: AppStrings.General.camera, action: {
+                ModalViewButton(title: "Camera", action: {
                     hidePopover()
                     self.showPhotoTaker(source: .camera)
                 }),
 
-                ModalViewButton(title: AppStrings.General.photoLibrary, action: {
+                ModalViewButton(title: "Photo Library", action: {
                     hidePopover()
                     self.showPhotoTaker(source: .photoLibrary)
                 })
