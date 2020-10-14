@@ -69,12 +69,14 @@ struct CatchInputView: View {
             }
 
             HStack(spacing: Dimensions.offset) {
-                InputField(title: "Weight", text: weightBinding,
+                InputField(title: "Weight",
+                           text: weightBinding,
                            showingWarning: self.showingWeightWarning,
                            keyboardType: .decimalPad)
 
                 ButtonField(title: "Unit",
-                            text: NSLocalizedString(self.catchModel.unit.rawValue, comment: "Units localized"),
+                            text: NSLocalizedString(self.catchModel.unit.rawValue,
+                            comment: "Units localized"),
                             showingWarning: self.showingUnitWarning,
                             fieldButtonClicked: self.showUnitPickerClicked)
             }

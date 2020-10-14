@@ -33,10 +33,17 @@ struct InputField: View {
             CaptionLabel(title: title, color: showingWarning ? warningColor : captionColor)
 
             HStack(spacing: Dimensions.noSpacing) {
-                DoneTextField(text: textBinding, keyboardType: keyboardType, isSecureTextEntry: showingSecureField)
-                    .padding(.bottom, Dimensions.bottomPadding)
-                    .foregroundColor(.text)
-                    .font(.body)
+                if !showingSecureField {
+                    TextField("", text: textBinding)
+                        .padding(.bottom, Dimensions.bottomPadding)
+                        .foregroundColor(.text)
+                        .font(.body)
+                } else {
+                    SecureField("", text: textBinding)
+                        .padding(.bottom, Dimensions.bottomPadding)
+                        .foregroundColor(.text)
+                        .font(.body)
+                }
 
                 if showingWarning {
                     ExclamationIconView()
