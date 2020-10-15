@@ -22,5 +22,10 @@ struct KeyboardControllingScrollView<Content: View>: View {
             content()
             Spacer(minLength: controller.keyboardRect.size.height)
         }
+        .highPriorityGesture(
+            DragGesture().onChanged { _ in
+                hideKeyboard()
+            }
+        )
     }
 }

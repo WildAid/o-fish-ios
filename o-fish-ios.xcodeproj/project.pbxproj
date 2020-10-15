@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1168756D253826E400A72328 /* View+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168756C253826E400A72328 /* View+HideKeyboard.swift */; };
 		3004955C24B87E2A00906D35 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3004955B24B87E2A00906D35 /* NotificationManager.swift */; };
 		300C4AEB24190226000A2763 /* ActivityItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AE924190226000A2763 /* ActivityItemView.swift */; };
 		300C4AEC24190226000A2763 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300C4AEA24190226000A2763 /* ActivityView.swift */; };
@@ -295,6 +296,7 @@
 
 /* Begin PBXFileReference section */
 		01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_o_fish_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1168756C253826E400A72328 /* View+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HideKeyboard.swift"; sourceTree = "<group>"; };
 		3004955B24B87E2A00906D35 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		300C4AE924190226000A2763 /* ActivityItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityItemView.swift; sourceTree = "<group>"; };
 		300C4AEA24190226000A2763 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -1179,6 +1181,7 @@
 			children = (
 				BCE486CABA40FF0D6D14E5F9 /* KeyboardController.swift */,
 				BCE48AF913D1F963F18F6FAF /* KeyboardControllingScrollView.swift */,
+				1168756C253826E400A72328 /* View+HideKeyboard.swift */,
 			);
 			path = KeyboardControlling;
 			sourceTree = "<group>";
@@ -1623,6 +1626,7 @@
 				49A3EC9C242CBA4E00055342 /* UserViewModel.swift in Sources */,
 				493CDFBC23FEB86D00516048 /* LoginView.swift in Sources */,
 				49B83EDD2489546D00027B8C /* Delivery.swift in Sources */,
+				1168756D253826E400A72328 /* View+HideKeyboard.swift in Sources */,
 				493CE01B240555CA00516048 /* Date.swift in Sources */,
 				493CDFE42404069D00516048 /* LocationHelper.swift in Sources */,
 				49076E44241192D900B3CF43 /* TrafficLightButton.swift in Sources */,
