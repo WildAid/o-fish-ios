@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EMSInputView: View {
     @ObservedObject var ems: EMSViewModel
+    @ObservedObject var attachments: AttachmentsViewModel
     @Binding var activeEditableComponentId: String
     @Binding var isEmsNonEmpty: Bool
     @Binding var informationComplete: Bool
@@ -43,6 +44,7 @@ struct EMSInputView: View {
         _informationComplete = informationComplete
         _showingWarningState = showingWarningState
 
+        self.attachments = ems.attachments
         self.reportId = reportId
         self.deleteClicked = deleteClicked
 
@@ -55,7 +57,7 @@ struct EMSInputView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack {
                 TitleLabel(title: "Electronic Monitoring System")
-                AddAttachmentsButton(attachments: ems.attachments, reportId: reportId)
+                AddAttachmentsButton(attachments: attachments, reportId: reportId)
             }
                 .padding(.top, Dimensions.spacing)
 
@@ -73,8 +75,8 @@ struct EMSInputView: View {
 
             InputField(title: "Registry Number", text: registryNumberBinding, showingWarning: showingRegistryNumberWarning)
 
-            if !ems.attachments.photoIDs.isEmpty || !ems.attachments.notes.isEmpty {
-                AttachmentsView(attachments: ems.attachments)
+            if !attachments.isEmpty {
+                AttachmentsView(attachments: attachments)
             }
 
             SectionButton(title: "Remove EMS",
