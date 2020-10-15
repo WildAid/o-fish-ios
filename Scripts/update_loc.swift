@@ -148,6 +148,8 @@ private func genStrings(sourcePath: String, backUpDirPath: String? = nil) -> Boo
         "-print0"
     ]
 
+    // Add additional pattern matches below
+    // using: -s Function (see TextField example below)
     genStringsTask.standardError = nil
     genStringsTask.standardInput = toGenStringsPipe
     genStringsTask.executableURL = URL(fileURLWithPath: "/usr/bin/xargs") 
