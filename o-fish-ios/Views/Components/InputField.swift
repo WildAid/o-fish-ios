@@ -13,10 +13,14 @@ struct InputField: View {
 
     var showingSecureField = false
     var showingWarning = false
+
     var captionColor = Color.removeAction
     var separatorColor = Color.inactiveBar
     var warningColor = Color.spanishOrange
+
     var inputChanged: ((String) -> Void)?
+
+    var keyboardType: UIKeyboardType = .alphabet
 
     private enum Dimensions {
         static let noSpacing: CGFloat = 0
@@ -40,10 +44,12 @@ struct InputField: View {
                         .foregroundColor(.text)
                         .font(.body)
                 }
+
                 if showingWarning {
                     ExclamationIconView()
                 }
             }
+
             Divider()
                 .background(showingWarning ? warningColor : separatorColor)
         }
