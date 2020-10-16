@@ -24,7 +24,7 @@ struct KeyboardControllingScrollView<Content: View>: View {
         }
         .highPriorityGesture(
             DragGesture().onChanged { _ in
-                hideKeyboard()
+                self.hideKeyboard()
             }
         )
     }
