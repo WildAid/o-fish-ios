@@ -16,15 +16,15 @@ chmod +x ./update_loc.swift
 
 <b>e.g.</b>
 ```bash
-./update_loc.swift --source_path=/Projects/o-fish-ios/o-fish-ios --loc_path=--loc_path=/Projects/o-fish-ios/Localization/
+./update_loc.swift --source_path=/Projects/o-fish-ios/o-fish-ios --loc_path=/Projects/o-fish-ios/Localization/
 ```
 
 ## Flags
 - --loc_path= Localization Directory {Required}
 - --source_path= Source Files Directory {Required}
 - --backup_path= Loc File BackUp Location {Optional - Defaults to Script/Backup}
-- --verbose= Show Info Messages {Optional - true/false}
-- --test= Show Missing Keys without Making Changes {Optional - true/false} 
+- --verbose= Show Info Messages {Optional - true/false; Default = false}
+- --test= Show Missing Keys without Making Changes {Optional - true/false; Default = false} 
 - --help {Prints out commands}
 
 ## How Does It Work?

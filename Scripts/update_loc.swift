@@ -445,7 +445,13 @@ private func addMissing(keys: [String], to locFileUrl: URL) {
         let sortedKeys = Array(newKeyset).sorted()
 
         if !test {
-            log("Adding missing keys to: \(locFileUrl)")
+            if verbose {
+                if sortedKeys.count > 0 {
+                    log("Adding missing \(sortedKeys.count) keys to: \(locFileUrl)")
+                } else {
+                    log("No missing keys to add to: \(locFileUrl)")
+                }
+            }
         }
 
         // Loop and either display missing keys or append to loc file
