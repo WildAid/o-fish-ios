@@ -21,10 +21,7 @@ struct CrewItemView: View {
                 LabeledText(label: titleLabelName, text: crewMember.name)
                 LabeledText(label: "License Number", text: crewMember.license)
             }
-
-            if !crewMember.attachments.notes.isEmpty || !crewMember.attachments.photoIDs.isEmpty {
-                AttachmentsView(attachments: crewMember.attachments, isEditable: false)
-            }
+            AttachmentsView(attachments: crewMember.attachments, isEditable: false)
         }
     }
 }

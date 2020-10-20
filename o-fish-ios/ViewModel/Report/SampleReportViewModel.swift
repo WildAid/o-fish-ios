@@ -26,9 +26,9 @@ extension ReportViewModel: Samplable {
 extension AttachmentsViewModel: Samplable {
     static var sample: AttachmentsViewModel {
         let attachments = AttachmentsViewModel()
-        let note1 = Note(id: UUID().uuidString, text: "First Note")
-        let note2 = Note(id: UUID().uuidString, text: "Second Note")
-        let note3 = Note(id: UUID().uuidString, text: "Third Note")
+        let note1 = NoteViewModel(id: UUID().uuidString, text: "First Note")
+        let note2 = NoteViewModel(id: UUID().uuidString, text: "Second Note")
+        let note3 = NoteViewModel(id: UUID().uuidString, text: "Third Note")
         attachments.photoIDs = ["00000000", "00000001"]
         attachments.notes = [note1, note2, note3]
         return attachments
@@ -210,5 +210,11 @@ extension PhotoViewModel: Samplable {
         photo.pictureURL = "https://fishingnews.co.uk/wp-content/uploads/2017/12/STG-1-cropped-820x547.jpg"
         photo.picture = nil
         return photo
+    }
+}
+
+extension NoteViewModel: Samplable {
+    static var sample: NoteViewModel {
+        return NoteViewModel(text: "Sample text")
     }
 }

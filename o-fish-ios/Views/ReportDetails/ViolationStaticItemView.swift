@@ -15,17 +15,14 @@ struct ViolationStaticItemView: View {
     var body: some View {
         VStack(spacing: spacing) {
             LabeledText(label: "Violation", text: violation.fullViolationDescription)
-                .fixedSize(horizontal: false, vertical: true)
+            .fixedSize(horizontal: false, vertical: true)
             HStack(alignment: .top, spacing: spacing) {
                 LabeledText(label: "Result of Violation",
                     text: NSLocalizedString(violation.disposition.rawValue, comment: "Violation result localized"))
                 LabeledText(label: "Issued to",
                             text: violation.crewMember.name + titleOrEmpty)
             }
-
-            if !violation.attachments.notes.isEmpty || !violation.attachments.photoIDs.isEmpty {
-                AttachmentsView(attachments: violation.attachments, isEditable: false)
-            }
+            AttachmentsView(attachments: violation.attachments, isEditable: false)
         }
     }
 

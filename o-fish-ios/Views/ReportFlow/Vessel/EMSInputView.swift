@@ -18,13 +18,11 @@ struct EMSInputView: View {
     var deleteClicked: ((String) -> Void)?
 
     @State private var showingChooseEMSPicker = false
-
     @Binding private var showingTypeWarning: Bool
     @Binding private var showingDescriptionWarning: Bool
     @Binding private var showingRegistryNumberWarning: Bool
 
     private enum Dimensions {
-
         static let spacing: CGFloat = 16.0
         static let bottomPadding: CGFloat = 24.0
     }
@@ -36,16 +34,13 @@ struct EMSInputView: View {
          showingWarningState: Binding<Bool>,
          reportId: String,
          deleteClicked: ((String) -> Void)? = nil) {
-
         self.ems = ems
         _activeEditableComponentId = activeEditableComponentId
         _isEmsNonEmpty = isEmsNonEmpty
         _informationComplete = informationComplete
         _showingWarningState = showingWarningState
-
         self.reportId = reportId
         self.deleteClicked = deleteClicked
-
         _showingTypeWarning = .constant(showingWarningState.wrappedValue && ems.emsType.isEmpty)
         _showingDescriptionWarning = .constant(ems.emsType == "Other" ? (showingWarningState.wrappedValue && ems.emsDescription.isEmpty) : false)
         _showingRegistryNumberWarning = .constant(showingWarningState.wrappedValue && ems.registryNumber.isEmpty)
@@ -57,8 +52,7 @@ struct EMSInputView: View {
                 TitleLabel(title: "Electronic Monitoring System")
                 AddAttachmentsButton(attachments: ems.attachments, reportId: reportId)
             }
-                .padding(.top, Dimensions.spacing)
-
+            .padding(.top, Dimensions.spacing)
             ButtonField(title: "EMS Type",
                 text: self.ems.emsType,
                 showingWarning: showingTypeWarning,
@@ -66,28 +60,21 @@ struct EMSInputView: View {
                 .sheet(isPresented: $showingChooseEMSPicker) {
                     ChooseEMSView(selectedItem: self.emsBinding)
             }
-
             if ems.emsType == "Other" {
                 InputField(title: "Description", text: emsDescriptionBinding, showingWarning: showingDescriptionWarning)
             }
-
             InputField(title: "Registry Number", text: registryNumberBinding, showingWarning: showingRegistryNumberWarning)
-
-            if !ems.attachments.photoIDs.isEmpty || !ems.attachments.notes.isEmpty {
-                AttachmentsView(attachments: ems.attachments)
-            }
-
+            AttachmentsView(attachments: ems.attachments)
             SectionButton(title: "Remove EMS",
                           systemImageName: "minus",
                           callingToAction: false,
                           action: { self.deleteClicked?(self.ems.id) })
-                .padding(.bottom, Dimensions.bottomPadding)
-
+            .padding(.bottom, Dimensions.bottomPadding)
         }
-            .contentShape(Rectangle())
-            .onTapGesture {
-                self.activeEditableComponentId = self.ems.id
-            }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            self.activeEditableComponentId = self.ems.id
+        }
     }
 
     private var emsBinding: Binding<String> {
@@ -126,22 +113,16 @@ struct EMSInputView: View {
         )
     }
 
-    /// Actions
-
     private func emsTypeClicked() {
         self.showingChooseEMSPicker.toggle()
         self.activeEditableComponentId = self.ems.id
     }
 
-    /// Logic
-
     private func checkAllInput() {
         self.isEmsNonEmpty = !self.ems.isEmpty
-
         showingTypeWarning = showingWarningState && ems.emsType.isEmpty
         showingDescriptionWarning = ems.emsType == "Other" ? (showingWarningState && ems.emsDescription.isEmpty) : false
         showingRegistryNumberWarning = showingWarningState && ems.registryNumber.isEmpty
-
         informationComplete = ems.isComplete
     }
 }

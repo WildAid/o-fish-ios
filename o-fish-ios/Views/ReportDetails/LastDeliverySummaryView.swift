@@ -26,27 +26,22 @@ struct LastDeliverySummaryView: View {
                     Button(action: onClickEdit ?? {}) {
                        EditIconView()
                     }
-                        .foregroundColor(.secondary)
+                    .foregroundColor(.secondary)
                 }
             }
-                .padding(.top, Dimensions.padding)
-
+            .padding(.top, Dimensions.padding)
             HStack(alignment: .top, spacing: Dimensions.padding) {
                 LabeledText(label: "Date", text: "\(delivery.date?.justLongDate() ?? "")")
                 LabeledText(label: "Business", text: "\(delivery.business)")
             }
-
             VStack(alignment: .leading, spacing: Dimensions.noSpacing) {
                 CaptionLabel(title: "Location")
                 Text(delivery.location)
                     .fixedSize(horizontal: false, vertical: true)
             }
-
-            if !delivery.attachments.notes.isEmpty || !delivery.attachments.photoIDs.isEmpty {
-                AttachmentsView(attachments: delivery.attachments, isEditable: false)
-            }
+            AttachmentsView(attachments: delivery.attachments, isEditable: false)
         }
-            .padding(.bottom, Dimensions.bottomPading)
+        .padding(.bottom, Dimensions.bottomPading)
     }
 }
 

@@ -7,7 +7,7 @@
 import SwiftUI
 
 struct NoteFieldView: View {
-    @Binding var note: Note
+    @Binding var note: NoteViewModel
     var isEditable = true
     var delete: ((String) -> Void)?
 
@@ -22,7 +22,6 @@ struct NoteFieldView: View {
 
     var body: some View {
         VStack(spacing: Dimensions.noSpacing) {
-
             if isEditable {
                 CaptionLabel(title: "Note")
                 HStack(alignment: .top, spacing: Dimensions.spacing) {
@@ -45,7 +44,6 @@ struct NoteFieldView: View {
                     }
                 }
             }
-
             Divider()
                 .opacity(isEditable ? 1 : 0)
                 .padding(.top, isEditable ? Dimensions.padding : Dimensions.noSpacing )
@@ -59,17 +57,15 @@ struct NoteFieldView: View {
 
 struct NoteFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        let note  = Note(id: "123",
+        let note  = NoteViewModel(id: "123",
                          text: """
                                 This is
                                 multiline
                                 note
                                """)
-
-        return VStack {
+        return Group {
             NoteFieldView(note: .constant(note),
                           isEditable: true)
-            Spacer()
             NoteFieldView(note: .constant(note),
                           isEditable: false)
 

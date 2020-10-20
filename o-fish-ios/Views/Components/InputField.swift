@@ -51,7 +51,7 @@ struct InputField: View {
             }
 
             Divider()
-                .background(showingWarning ? warningColor : separatorColor)
+            .background(showingWarning ? warningColor : separatorColor)
         }
     }
 
