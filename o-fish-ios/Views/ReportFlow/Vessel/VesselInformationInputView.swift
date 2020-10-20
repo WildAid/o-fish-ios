@@ -32,7 +32,6 @@ struct VesselInformationInputView: View {
          activeEditableComponentId: Binding<String>,
          informationComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>) {
-
         self.vessel = vessel
         self.reportId = reportId
         _activeEditableComponentId = activeEditableComponentId
@@ -51,8 +50,7 @@ struct VesselInformationInputView: View {
                 TitleLabel(title: "Vessel Information")
                 AddAttachmentsButton(attachments: vessel.attachments, reportId: reportId)
             }
-                .padding(.top, Dimensions.spacing)
-
+            .padding(.top, Dimensions.spacing)
             InputField(title: "Vessel Name", text: $vessel.name,
                 showingWarning: showingNameWarning,
                 inputChanged: inputChanged)
@@ -67,7 +65,6 @@ struct VesselInformationInputView: View {
             InputField(title: "Home Port", text: $vessel.homePort,
                 showingWarning: showingHomePortWarning,
                 inputChanged: inputChanged)
-
             Group {
                 if hasNationality {
                     VStack(spacing: Dimensions.noSpacing) {
@@ -88,33 +85,26 @@ struct VesselInformationInputView: View {
                     })
                 }
             }
-                .sheet(isPresented: $showingNationalityPicker) {
-                    ChooseNationalityView(selectedItem:
-                        Binding<CountryPickerData>(
-                            get: { self.displayedNationality },
-                            set: {
-                                self.vessel.nationality = $0.code
-                                self.checkAllInput()
-                        }
-                    ))
-                }
-
-                    AttachmentsView(attachments: vessel.attachments)
-                }
-                    .padding(.bottom, Dimensions.bottomPadding)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        self.activeEditableComponentId = self.vessel.id
+            .sheet(isPresented: $showingNationalityPicker) {
+                ChooseNationalityView(selectedItem:
+                    Binding<CountryPickerData>(
+                        get: { self.displayedNationality },
+                        set: {
+                            self.vessel.nationality = $0.code
+                            self.checkAllInput()
                     }
+                ))
+            }
+            AttachmentsView(attachments: vessel.attachments)
+        }
+        .padding(.bottom, Dimensions.bottomPadding)
+        .contentShape(Rectangle())
+        .onTapGesture { self.activeEditableComponentId = self.vessel.id }
     }
-
-    /// Actions
 
     private func inputChanged(_ value: String) {
         self.checkAllInput()
     }
-
-    /// Logic
 
     private var hasNationality: Bool {
         !vessel.nationality.isEmpty
@@ -133,7 +123,6 @@ struct VesselInformationInputView: View {
         showingPermitNumberWarning = showingWarningState && vessel.permitNumber.isEmpty
         showingHomePortWarning = showingWarningState && vessel.homePort.isEmpty
         showingNationalityWarning = showingWarningState && vessel.nationality.isEmpty
-
         informationComplete = !vessel.name.isEmpty
             && !vessel.permitNumber.isEmpty
             && !vessel.homePort.isEmpty
@@ -143,7 +132,7 @@ struct VesselInformationInputView: View {
 
 struct VesselInformationInputView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
+        Group {
             VesselInformationInputView(
                 vessel: .sample,
                 reportId: "TestId",
@@ -151,7 +140,6 @@ struct VesselInformationInputView_Previews: PreviewProvider {
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false))
             .environment(\.locale, .init(identifier: "uk"))
-
             VesselInformationInputView(
                 vessel: .sample,
                 reportId: "TestId",

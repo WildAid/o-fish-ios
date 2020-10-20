@@ -85,6 +85,7 @@
 		30E9393924A225C500011305 /* Double+LocationDegrees.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E9393824A225C500011305 /* Double+LocationDegrees.swift */; };
 		30EB886224ACA24600904894 /* ActionSheetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EB886124ACA24600904894 /* ActionSheetButton.swift */; };
 		30F4D601245C725C00543F54 /* BusinessPickerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */; };
+		4904466C253EDC2300871C5A /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904466B253EDC2300871C5A /* NoteViewModel.swift */; };
 		49063BC7240FE0C100C54231 /* BasicInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49063BC6240FE0C100C54231 /* BasicInfoView.swift */; };
 		49063BCA240FEAAF00C54231 /* DisplayField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49063BC9240FEAAF00C54231 /* DisplayField.swift */; };
 		49063BCC240FEBD200C54231 /* DateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49063BCB240FEBD200C54231 /* DateTimeView.swift */; };
@@ -381,6 +382,7 @@
 		30EB886124ACA24600904894 /* ActionSheetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetButton.swift; sourceTree = "<group>"; };
 		30F4D5FF245C725C00543F54 /* BusinessPickerDataView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessPickerDataView.swift; sourceTree = "<group>"; };
 		42361A2F78F4E1AC0DEA6DA8 /* Pods-O-FISHTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-O-FISHTests.release.xcconfig"; path = "Target Support Files/Pods-O-FISHTests/Pods-O-FISHTests.release.xcconfig"; sourceTree = "<group>"; };
+		4904466B253EDC2300871C5A /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		49063BC6240FE0C100C54231 /* BasicInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicInfoView.swift; sourceTree = "<group>"; };
 		49063BC9240FEAAF00C54231 /* DisplayField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayField.swift; sourceTree = "<group>"; };
 		49063BCB240FEBD200C54231 /* DateTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeView.swift; sourceTree = "<group>"; };
@@ -1110,6 +1112,7 @@
 				495AC6F4243F0BBB00EA11D3 /* SafetyLevelViewModel.swift */,
 				495AC6F8243F176C00EA11D3 /* SeizureViewModel.swift */,
 				49807648242E049000D463F4 /* SampleReportViewModel.swift */,
+				4904466B253EDC2300871C5A /* NoteViewModel.swift */,
 			);
 			path = Report;
 			sourceTree = "<group>";
@@ -1820,6 +1823,7 @@
 				BCE48D3F831CFB459F1F6F56 /* PopoverManager.swift in Sources */,
 				BCE4848AF540CA27E798B49F /* UIView+Constraings.swift in Sources */,
 				BCE485FB82E626571C19B582 /* RectangleButton.swift in Sources */,
+				4904466C253EDC2300871C5A /* NoteViewModel.swift in Sources */,
 				30D8445924C98FE4001A5BC5 /* VesselAsyncImage.swift in Sources */,
 				BCE483016BC86FB511F7A3F5 /* View+NavigationStyle.swift in Sources */,
 				BCE4899544B72DD8D04E3DA7 /* NavigationBarViewModifier.swift in Sources */,

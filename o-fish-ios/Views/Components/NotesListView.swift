@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-struct Note: Identifiable {
-    var id = UUID().uuidString
-    var text: String
-    var isEmpty: Bool {
-        text.isEmpty
-    }
-}
-
 struct NotesListView: View {
     @ObservedObject var attachments: AttachmentsViewModel
 
@@ -25,9 +17,11 @@ struct NotesListView: View {
     var body: some View {
         VStack(spacing: spacing) {
             ForEach(self.attachments.notes.indices, id: \.self) { index in
-                NoteFieldView(note: self.$attachments.notes[index],
-                              isEditable: self.isEditable,
-                              delete: self.deleteNote)
+                if !self.attachments.notes[index].isArchived {
+                    NoteFieldView(note: self.$attachments.notes[index],
+                                  isEditable: self.isEditable,
+                                  delete: self.deleteNote)
+                }
             }
         }
     }
@@ -39,9 +33,8 @@ struct NotesListView: View {
 
 struct NotesListView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
+        Group {
             NotesListView(attachments: .sample)
-            Spacer()
             NotesListView(attachments: .sample, isEditable: false)
         }
     }

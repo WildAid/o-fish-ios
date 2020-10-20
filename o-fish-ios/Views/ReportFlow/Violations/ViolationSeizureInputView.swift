@@ -23,15 +23,13 @@ struct ViolationSeizureInputView: View {
                 TitleLabel(title: "Seizure")
                 AddAttachmentsButton(attachments: seizure.attachments, reportId: reportId)
             }
-                .padding(.top, Dimensions.spacing)
-
+            .padding(.top, Dimensions.spacing)
             InputMultilineFieldCaption(title: "Description",
                 text: $seizure.description,
                 textInputHeight: Dimensions.textFrameHeight)
-
             AttachmentsView(attachments: seizure.attachments)
         }
-            .padding(.bottom, Dimensions.bottomPadding)
+        .padding(.bottom, Dimensions.bottomPadding)
     }
 }
 

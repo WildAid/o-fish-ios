@@ -15,14 +15,10 @@ struct CatchInputView: View {
     private let reportId: String
     private let index: Int
     private var removeClicked: ((CatchViewModel) -> Void)?
-
-    /// Warning state
     @Binding private var showingSpeciesWarning: Bool
     @Binding private var showingWeightWarning: Bool
     @Binding private var showingUnitWarning: Bool
     @Binding private var showingCountWarning: Bool
-
-    /// Navigation state
     @State private var showingSpeciesPicker = false
 
     private enum Dimensions {
@@ -37,7 +33,6 @@ struct CatchInputView: View {
          reportId: String,
          index: Int,
          removeClicked: ((CatchViewModel) -> Void)? = nil) {
-
         _isCatchNonEmpty = isCatchNonEmpty
         _informationComplete = informationComplete
         _showingWarningState = showingWarningState
@@ -49,7 +44,6 @@ struct CatchInputView: View {
         _showingSpeciesWarning = .constant(showingWarningState.wrappedValue && catchModel.fish.isEmpty)
         _showingWeightWarning = .constant(showingWarningState.wrappedValue && catchModel.weight == 0)
         _showingUnitWarning = .constant(showingWarningState.wrappedValue && catchModel.unit == .notSelected)
-
         _showingCountWarning = .constant(showingWarningState.wrappedValue && catchModel.number == 0)
     }
 
@@ -60,36 +54,28 @@ struct CatchInputView: View {
                 AddAttachmentsButton(attachments: catchModel.attachments, reportId: reportId)
             }
                 .padding(.top, Dimensions.spacing)
-
             ButtonField(title: "Species", text: catchModel.fish,
                 showingWarning: self.showingSpeciesWarning,
                 fieldButtonClicked: { self.showingSpeciesPicker.toggle() })
                 .sheet(isPresented: $showingSpeciesPicker) {
                     ChooseSpeciesView(selectedSpecies: self.selectedSpeciesBinding)
             }
-
             HStack(spacing: Dimensions.offset) {
                 InputField(title: "Weight",
                            text: weightBinding,
                            showingWarning: self.showingWeightWarning,
                            keyboardType: .decimalPad)
-
                 ButtonField(title: "Unit",
                             text: NSLocalizedString(self.catchModel.unit.rawValue,
                             comment: "Units localized"),
                             showingWarning: self.showingUnitWarning,
                             fieldButtonClicked: self.showUnitPickerClicked)
             }
-
             InputField(title: "Count",
                        text: countBinding,
                        showingWarning: self.showingCountWarning,
                        keyboardType: .numberPad)
-
-            if !catchModel.attachments.photoIDs.isEmpty || !catchModel.attachments.notes.isEmpty {
-                AttachmentsView(attachments: catchModel.attachments)
-            }
-
+            AttachmentsView(attachments: catchModel.attachments)
             SectionButton(title: NSLocalizedString("Remove", comment: "") + " " +  buttonTitle,
                 systemImageName: "minus",
                 callingToAction: false,
@@ -97,8 +83,6 @@ struct CatchInputView: View {
                 .padding(.bottom, Dimensions.spacing)
         }
     }
-
-    /// Bindings
 
     private var weightBinding: Binding<String> {
         Binding<String>(
@@ -129,55 +113,44 @@ struct CatchInputView: View {
             })
     }
 
-    /// Interface data
-
     private var buttonTitle: String {
         catchModel.fish.isEmpty ? (NSLocalizedString("Catch", comment: "") + " \(self.index)")
                                 : NSLocalizedString(catchModel.fish, comment: "Fish type")
     }
-
-    /// Actions
 
     private func showUnitPickerClicked() {
         // TODO: for some reason this works only from action and not from viewModifier
         // TODO: review when viewModifier actions will be available
 
         let popoverId = UUID().uuidString
-
         let unitPickerSelectClicked = { (unit: UnitPickerWithButton.UnitSpecification) in
             self.catchModel.unit = unit
             self.checkAllInput()
             PopoverManager.shared.hidePopover(id: popoverId)
         }
-
         PopoverManager.shared.showPopover(id: popoverId) {
             UnitPickerWithButton(selectButtonClicked: unitPickerSelectClicked)
                 .background(Color.white)
         }
     }
 
-    /// Logic
-
     private func checkAllInput() {
         isCatchNonEmpty = !catchModel.isEmpty
-
         showingSpeciesWarning = showingWarningState && catchModel.fish.isEmpty
         showingWeightWarning = showingWarningState && catchModel.weight == 0
         showingUnitWarning = showingWarningState && catchModel.unit == .notSelected
         showingCountWarning = showingWarningState && catchModel.number == 0
-
         informationComplete = catchModel.isComplete
     }
 }
 
 struct CatchInputView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
+        Group {
             CatchInputView(isCatchNonEmpty: .constant(true),
                 informationComplete: .constant(true),
                 showingWarningState: .constant(false),
                 catchModel: .sample, reportId: "TestId", index: 1)
-
             CatchInputView(isCatchNonEmpty: .constant(true),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(true),

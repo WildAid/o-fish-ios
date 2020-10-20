@@ -23,9 +23,7 @@ struct ViolationCreateCrewMemberView: View {
     @State private var name = ""
     @State private var license = ""
     @State private var isCaptain = true
-
     @State private var presentedAlert = PresentedAlert.notPresented
-
     @State private var attachments = AttachmentsViewModel()
 
     private enum Dimensions {
@@ -43,45 +41,37 @@ struct ViolationCreateCrewMemberView: View {
                             attachments: attachments,
                             reportId: report.id)
                     }
-                        .padding(.vertical, Dimensions.spacing)
-
+                    .padding(.vertical, Dimensions.spacing)
                     InputField(title: "Crew Member Name", text: $name)
-
                     InputField(title: "License Number", text: $license)
-
                     HStack {
                         Spacer()
                         CheckBox(title: "Captain", value: self.$isCaptain)
                     }
-
                     AttachmentsView(attachments: attachments)
-
                     CallToActionButton(title: "Add", action: addCrewMember)
-                        .padding(.bottom, Dimensions.bottomPadding)
+                    .padding(.bottom, Dimensions.bottomPadding)
                 }
             }
-
             Spacer()
         }
-            .alert(isPresented:
-                Binding<Bool>(
-                    get: { self.presentedAlert != .notPresented },
-                    set: {_ in self.presentedAlert = .notPresented}
-                )
-            ) {
-                if self.presentedAlert == .replaceCaptain {
-                    return Alert(title: Text("This report already contains a captain"),
-                        message: Text("Are you sure you want to replace captain?"),
-                        primaryButton: .cancel(Text("Yes"), action: replaceCaptainClicked),
-                        secondaryButton: .default(Text("Continue editing")))
-
-                } else if self.presentedAlert == .emptyInput {
-                    return Alert(title: Text("Empty fields"), message: Text("Please, input name or license"))
-                }
-
-                assertionFailure("Should never reach this option")
-                return Alert(title: Text(""))
+        .alert(isPresented:
+            Binding<Bool>(
+                get: { self.presentedAlert != .notPresented },
+                set: {_ in self.presentedAlert = .notPresented}
+            )
+        ) {
+            if self.presentedAlert == .replaceCaptain {
+                return Alert(title: Text("This report already contains a captain"),
+                    message: Text("Are you sure you want to replace captain?"),
+                    primaryButton: .cancel(Text("Yes"), action: replaceCaptainClicked),
+                    secondaryButton: .default(Text("Continue editing")))
+            } else if self.presentedAlert == .emptyInput {
+                return Alert(title: Text("Empty fields"), message: Text("Please, input name or license"))
             }
+            assertionFailure("Should never reach this option")
+            return Alert(title: Text(""))
+        }
     }
 
     private func addCrewMember() {
@@ -89,14 +79,11 @@ struct ViolationCreateCrewMemberView: View {
             presentedAlert = .emptyInput
             return
         }
-
         if isCaptain && !report.captain.isEmpty {
             presentedAlert = .replaceCaptain
             return
         }
-
         let crewMember = crewMemberFromInput()
-
         if isCaptain {
             if report.captain.isEmpty {
                 report.captain = crewMember
@@ -104,20 +91,15 @@ struct ViolationCreateCrewMemberView: View {
         } else {
             report.crew.append(crewMember)
         }
-
         dismiss(selected: crewMember)
     }
 
     private func replaceCaptainClicked() {
         let newCaptain = crewMemberFromInput()
         report.captain = newCaptain
-
         report.replaceCaptainInLinkedViolations(with: newCaptain)
-
         dismiss(selected: newCaptain)
     }
-
-    /// Logic
 
     private func crewMemberFromInput() -> CrewMemberViewModel {
         let crewMember = CrewMemberViewModel()

@@ -21,52 +21,47 @@ struct ViolationInputView: View {
     @ObservedObject var violation: ViolationViewModel
     let index: Int
     var removeClicked: ((ViolationViewModel) -> Void)?
-
     @State private var showingCrewMemberSheet = false
     @State private var showingViolationSheet = false
 
-    private enum Dimensions {
-        static let spacing: CGFloat = 16
-    }
+    let spacing: CGFloat = 16
 
     var body: some View {
-        VStack(spacing: Dimensions.spacing) {
+        VStack(spacing: spacing) {
             HStack {
                 TitleLabel(title: NSLocalizedString("Violation", comment: "") + " \(index)")
                 AddAttachmentsButton(
                     attachments: violation.attachments,
                     reportId: report.id)
             }
-                .padding(.top, Dimensions.spacing)
+            .padding(.top, spacing)
 
             ButtonField(title: "Violation",
                         text: violation.fullViolationDescription,
                         fieldButtonClicked: {
                             self.showingViolationSheet = true
             })
-                .fixedSize(horizontal: false, vertical: true)
-                .sheet(isPresented: $showingViolationSheet) {
-                    ChooseViolationsView(selectedItem:
-                        Binding<ViolationPickerData>(
-                            get: { .notSelected },
-                            set: {
-                                self.violation.offence.code = $0.title
-                                self.violation.offence.explanation = $0.description
-                                self.updateViolationStatus()
-                        }
-                        )
+            .fixedSize(horizontal: false, vertical: true)
+            .sheet(isPresented: $showingViolationSheet) {
+                ChooseViolationsView(selectedItem:
+                    Binding<ViolationPickerData>(
+                        get: { .notSelected },
+                        set: {
+                            self.violation.offence.code = $0.title
+                            self.violation.offence.explanation = $0.description
+                            self.updateViolationStatus()
+                    }
                     )
+                )
             }
-
             SegmentedField(selectedItem: Binding<String>(
                 get: { self.violation.disposition.rawValue },
                 set: {
                     self.violation.disposition = ViolationViewModel.Disposition(rawValue: $0) ?? .notSelected
                     self.updateViolationStatus()
-            }),
+                }),
                 title: "Result of Violation",
                 items: ViolationViewModel.Disposition.allValues.map { $0.rawValue })
-
             Group {
                 if violation.crewMember.name.isEmpty && violation.crewMember.license.isEmpty {
                     ButtonField(title: "Issued to",
@@ -77,33 +72,29 @@ struct ViolationInputView: View {
                         VStack(spacing: .zero) {
                             CaptionLabel(title: "Issued to")
                             CrewMemberShortView(crewMember: violation.crewMember, showingLicenseNumber: false)
-                                .padding(.bottom, Dimensions.spacing)
+                                .padding(.bottom, spacing)
                             Divider()
                         }
                     }
                 }
             }
-                .sheet(isPresented: $showingCrewMemberSheet) {
-                    ViolationCrewMemberSelectView(report: self.report,
-                                                  items: self.crew,
-                                                  selectedItem:
-                        Binding<CrewMemberViewModel>( get: { self.violation.crewMember },
-                                                      set: {
-                                                        self.violation.crewMember = CrewMemberViewModel($0)
-                                                        self.updateViolationStatus()
-                        })
-                    )
-                }
-
-            if !violation.attachments.photoIDs.isEmpty || !violation.attachments.notes.isEmpty {
-                AttachmentsView(attachments: violation.attachments)
+            .sheet(isPresented: $showingCrewMemberSheet) {
+                ViolationCrewMemberSelectView(report: self.report,
+                                              items: self.crew,
+                                              selectedItem:
+                    Binding<CrewMemberViewModel>( get: { self.violation.crewMember },
+                                                  set: {
+                                                    self.violation.crewMember = CrewMemberViewModel($0)
+                                                    self.updateViolationStatus()
+                    })
+                )
             }
-
+            AttachmentsView(attachments: violation.attachments)
             SectionButton(title: NSLocalizedString("Remove Violation", comment: "") + " \(index)",
                 systemImageName: "minus",
                 callingToAction: false,
                 action: { self.removeClicked?(self.violation) })
-                .padding(.bottom, Dimensions.spacing)
+                .padding(.bottom, spacing)
         }
     }
 

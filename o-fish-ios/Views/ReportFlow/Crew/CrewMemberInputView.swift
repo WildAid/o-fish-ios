@@ -58,21 +58,15 @@ struct CrewMemberInputView: View {
                 AddAttachmentsButton(attachments: crewMember.attachments, reportId: reportId)
             }
                 .padding(.top, Dimensions.spacing)
-
             InputField(title: isCaptain ? "Captain's Name" : "Crew Member Name",
                 text: self.$crewMember.name,
                 showingWarning: showingNameWarning,
                 inputChanged: inputChanged)
-
             InputField(title: "License Number",
                 text: self.$crewMember.license,
                 showingWarning: showingNumberWarning,
                 inputChanged: inputChanged)
-
-            if !crewMember.attachments.notes.isEmpty || !crewMember.attachments.photoIDs.isEmpty {
-                AttachmentsView(attachments: crewMember.attachments)
-            }
-
+            AttachmentsView(attachments: crewMember.attachments)
             if !isCaptain {
                 SectionButton(title: NSLocalizedString("Remove", comment: "") + " \(crewMember.name)",
                     systemImageName: "minus",
@@ -83,14 +77,10 @@ struct CrewMemberInputView: View {
             .padding(.bottom, Dimensions.bottomPadding)
     }
 
-    /// Actions
-
     private func inputChanged(_ value: String) {
         updateCrewMemberStatus()
         self.checkAllInput()
     }
-
-    /// Logic
 
     private func updateCrewMemberStatus() {
         self.isCrewMemberNonEmpty = !self.crewMember.isEmpty
@@ -99,34 +89,41 @@ struct CrewMemberInputView: View {
     private func checkAllInput() {
         showingNameWarning = showingWarningState && crewMember.name.isEmpty
         showingNumberWarning = showingWarningState && crewMember.license.isEmpty
-
         informationComplete = crewMember.isComplete
     }
 }
 
 struct CrewMemberInputView_Previews: PreviewProvider {
+    static var crewNoNotes = CrewMemberViewModel()
     static var previews: some View {
-        VStack {
+        Group {
             CrewMemberInputView(isCrewMemberNonEmpty: .constant(true),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false),
                 crewMember: .sample,
                 reportId: "TestID",
                 isCaptain: true)
-
             CrewMemberInputView(isCrewMemberNonEmpty: .constant(true),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false),
                 crewMember: .sample,
                 reportId: "TestID",
                 isCaptain: false)
-
             CrewMemberInputView(isCrewMemberNonEmpty: .constant(true),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(true),
                 crewMember: .sample,
                 reportId: "TestID",
                 isCaptain: false)
+            VStack {
+                CrewMemberInputView(isCrewMemberNonEmpty: .constant(true),
+                    informationComplete: .constant(true),
+                    showingWarningState: .constant(false),
+                    crewMember: crewNoNotes,
+                    reportId: "TestID",
+                    isCaptain: true)
+                Divider()
+            }
         }
     }
 }

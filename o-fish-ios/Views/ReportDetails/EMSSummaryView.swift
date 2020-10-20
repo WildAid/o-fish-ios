@@ -25,33 +25,27 @@ struct EMSSummaryView: View {
                     Button(action: onClickEdit ?? {}) {
                        EditIconView()
                     }
-                        .foregroundColor(.secondary)
+                    .foregroundColor(.secondary)
                 }
             }
-                .padding(.top, Dimensions.spacing)
-
+            .padding(.top, Dimensions.spacing)
             HStack(alignment: .top, spacing: Dimensions.spacing) {
                 LabeledText(label: "Type", text: "\(ems.emsType)")
                 if ems.emsType == "Other" {
                     LabeledText(label: "Description", text: "\(ems.emsDescription)")
                 }
             }
-
             LabeledText(label: "Registry Number", text: "\(ems.registryNumber)")
-
-            if !ems.attachments.notes.isEmpty || !ems.attachments.photoIDs.isEmpty {
-                AttachmentsView(attachments: ems.attachments, isEditable: false)
-            }
+            AttachmentsView(attachments: ems.attachments, isEditable: false)
         }
-            .padding(.bottom, Dimensions.bottomPading)
+        .padding(.bottom, Dimensions.bottomPading)
     }
 }
 
 struct EMSSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
+        Group {
             EMSSummaryView(ems: .sample, isEditable: true)
-            Divider()
             EMSSummaryView(ems: .sample, isEditable: false)
         }
     }

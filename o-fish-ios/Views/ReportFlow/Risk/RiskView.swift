@@ -18,7 +18,6 @@ struct RiskView: View {
     }
 
     var body: some View {
-
         KeyboardControllingScrollView {
             wrappedShadowView {
                 VStack(spacing: Dimensions.spacing) {
@@ -27,23 +26,21 @@ struct RiskView: View {
                         Spacer()
                         AddAttachmentsButton(attachments: self.report.inspection.summary.safetyLevel.attachments, reportId: self.report.id)
                     }
-                        .padding(.top, Dimensions.spacing)
-
+                    .padding(.top, Dimensions.spacing)
                     TrafficLights(color: self.$report.inspection.summary.safetyLevel.level)
                         .padding(.bottom, Dimensions.trafficLightPadding)
                     if self.report.inspection.summary.safetyLevel.level == .amber {
                         InputField(title: "Reason for Amber", text: self.$report.inspection.summary.safetyLevel.reason)
                     }
-
                     if self.report.inspection.summary.safetyLevel.level == .red {
                         InputField(title: "Reason for Red", text: self.$report.inspection.summary.safetyLevel.reason)
                     }
                     AttachmentsView(attachments: self.report.inspection.summary.safetyLevel.attachments)
                 }
-                    .padding(.bottom, Dimensions.bottomPadding)
+                .padding(.bottom, Dimensions.bottomPadding)
             }
         }
-            .onAppear(perform: { self.allFieldsComplete = true })
+        .onAppear(perform: { self.allFieldsComplete = true })
     }
 }
 
