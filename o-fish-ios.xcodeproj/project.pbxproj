@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1168756D253826E400A72328 /* View+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1168756C253826E400A72328 /* View+HideKeyboard.swift */; };
 		2274E4D32536194400D7B5CD /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2274E4D22536194400D7B5CD /* Color+Theme.swift */; };
 		2274E4DB253619C800D7B5CD /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2274E4DA253619C800D7B5CD /* UserSettings.swift */; };
 		3004955C24B87E2A00906D35 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3004955B24B87E2A00906D35 /* NotificationManager.swift */; };
@@ -298,6 +299,7 @@
 
 /* Begin PBXFileReference section */
 		01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_o_fish_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1168756C253826E400A72328 /* View+HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HideKeyboard.swift"; sourceTree = "<group>"; };
 		2274E4D22536194400D7B5CD /* Color+Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 		2274E4DA253619C800D7B5CD /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		3004955B24B87E2A00906D35 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -1188,6 +1190,7 @@
 			children = (
 				BCE486CABA40FF0D6D14E5F9 /* KeyboardController.swift */,
 				BCE48AF913D1F963F18F6FAF /* KeyboardControllingScrollView.swift */,
+				1168756C253826E400A72328 /* View+HideKeyboard.swift */,
 			);
 			path = KeyboardControlling;
 			sourceTree = "<group>";
@@ -1632,6 +1635,7 @@
 				49A3EC9C242CBA4E00055342 /* UserViewModel.swift in Sources */,
 				493CDFBC23FEB86D00516048 /* LoginView.swift in Sources */,
 				49B83EDD2489546D00027B8C /* Delivery.swift in Sources */,
+				1168756D253826E400A72328 /* View+HideKeyboard.swift in Sources */,
 				493CE01B240555CA00516048 /* Date.swift in Sources */,
 				2274E4DB253619C800D7B5CD /* UserSettings.swift in Sources */,
 				493CDFE42404069D00516048 /* LocationHelper.swift in Sources */,
