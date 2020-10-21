@@ -16,7 +16,6 @@ struct DeliveryInputView: View {
 
     @State private var showingBusinessPickerSheet = false
     @State private var isAutofillBusiness = true
-
     @Binding private var showingBusinessWarning: Bool
     @Binding private var showingLocationWarning: Bool
     @Binding private var showingDateWarning: Bool
@@ -32,7 +31,6 @@ struct DeliveryInputView: View {
          activeEditableComponentId: Binding<String>,
          informationComplete: Binding<Bool>,
          showingWarningState: Binding<Bool>) {
-
         self.delivery = delivery
         self.reportId = reportId
         _activeEditableComponentId = activeEditableComponentId
@@ -52,8 +50,7 @@ struct DeliveryInputView: View {
                     attachments: delivery.attachments,
                     reportId: reportId)
             }
-                .padding(.top, Dimensions.spacing)
-
+            .padding(.top, Dimensions.spacing)
             ButtonField(title: "Date",
                 text: deliveryDate,
                 showingWarning: showingDateWarning,
@@ -72,32 +69,28 @@ struct DeliveryInputView: View {
                         fieldButtonClicked: self.showBusinessPicker)
                         .fixedSize(horizontal: false, vertical: true)
                 }
-                    .sheet(isPresented: $showingBusinessPickerSheet) {
-                        ChooseBusinessView(selectedItem:
-                            Binding<BusinessPickerData>(
-                                get: { .notSelected },
-                                set: {
-                                    self.delivery.business = $0.business
-                                    self.delivery.location = $0.location
-                                    self.checkAllInput()
-                                }
-                                ),
-                            isAutofillItem: self.$isAutofillBusiness)
+                .sheet(isPresented: $showingBusinessPickerSheet) {
+                    ChooseBusinessView(selectedItem:
+                        Binding<BusinessPickerData>(
+                            get: { .notSelected },
+                            set: {
+                                self.delivery.business = $0.business
+                                self.delivery.location = $0.location
+                                self.checkAllInput()
+                            }
+                            ),
+                        isAutofillItem: self.$isAutofillBusiness)
                     }
-
             } else {
-
                 InputField(title: "Business",
                     text: $delivery.business,
                     showingWarning: showingBusinessWarning,
                     inputChanged: inputChanged)
-
                 InputMultilineFieldCaption(title: "Location",
                     text: $delivery.location,
                     showingWarning: showingLocationWarning,
                     inputChanged: inputChanged)
             }
-
             AttachmentsView(attachments: delivery.attachments)
         }
             .padding(.bottom, Dimensions.bottomPadding)
@@ -106,8 +99,6 @@ struct DeliveryInputView: View {
             }
     }
 
-    /// Actions
-
     private func inputChanged(_ value: String) {
         self.checkAllInput()
     }
@@ -115,16 +106,13 @@ struct DeliveryInputView: View {
     private func dateFieldClicked() {
         // TODO: for some reason this works only from action and not from viewModifier
         // TODO: review when viewModifier actions will be available
-
         let popoverId = UUID().uuidString
         activeEditableComponentId = self.delivery.id
-
         let datePickerSelectClicked = { (date: Date) in
             self.delivery.date = date
             self.checkAllInput()
             PopoverManager.shared.hidePopover(id: popoverId)
         }
-
         PopoverManager.shared.showPopover(id: popoverId) {
             DatePickerWithButton(selectButtonClicked: datePickerSelectClicked)
                 .background(Color.white)
@@ -136,8 +124,6 @@ struct DeliveryInputView: View {
         self.activeEditableComponentId = self.delivery.id
     }
 
-    /// Logic
-
     private var deliveryDate: String {
         (delivery.date as Date?)?.justLongDate() ?? ""
     }
@@ -146,7 +132,6 @@ struct DeliveryInputView: View {
         showingBusinessWarning = showingWarningState && delivery.business.isEmpty
         showingLocationWarning = showingWarningState && delivery.location.isEmpty
         showingDateWarning = showingWarningState && delivery.date == nil
-
         informationComplete = !delivery.business.isEmpty
             && !delivery.location.isEmpty
             && delivery.date != nil

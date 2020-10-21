@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfilePageView: View {
     @ObservedObject var user: UserViewModel
     @ObservedObject var dutyState: DutyState
+    @ObservedObject var userSettings = UserSettings.shared
     @State var profilePicture: PhotoViewModel?
 
     @Environment(\.presentationMode) var presentationMode
@@ -42,62 +43,80 @@ struct ProfilePageView: View {
                                            action: edit)
                         VStack(alignment: .leading, spacing: .zero) {
                             Text(user.name.fullName)
+                                .foregroundColor(.oFieldValue)
+
                             Text(user.email)
-                                .foregroundColor(.gray)
+                                .foregroundColor(.oFieldTitle)
                         }
                         .font(.body)
                     }
                     Button(action: edit) {
                         Text("Edit")
-                            .foregroundColor(.main)
+                            .foregroundColor(.oAccent)
                             .font(.caption1)
                             .padding(.leading, Dimensions.leadingPadding)
                     }
                 }
                 .padding(.all, Dimensions.padding)
                 Divider()
+                    .background(Color.oDivider)
                     .frame(height: Dimensions.lineWidth)
 
                 Toggle(isOn: dutyBinding) {
-                    Text(dutyState.onDuty ? "At Sea" :"Not At Sea")
+                    Text(dutyState.onDuty ? "At Sea" : "Not At Sea")
+                        .foregroundColor(.oFieldTitle)
                         .font(.callout)
                 }
                 .padding(.all, Dimensions.padding)
 
                 Divider()
+                    .background(Color.oDivider)
+                    .frame(height: Dimensions.lineWidth)
+
+                Toggle(isOn: $userSettings.forceDarkMode) {
+                    Text("Dark Mode")
+                        .foregroundColor(.oFieldTitle)
+                        .font(.callout)
+                }
+                .padding(.all, Dimensions.padding)
+
+                Divider()
+                    .background(Color.oDivider)
                     .frame(height: Dimensions.lineWidth)
             }
-            .background(Color.white)
+            .background(Color.oBackground)
             VStack {
                 Button(action: showLogoutAlert) {
                     Spacer()
                     Text("Log Out")
                         .font(.body)
+                        .foregroundColor(.oAccent)
                     Spacer()
                 }
                 .padding(.vertical, Dimensions.stackSpacing)
-                .background(Color.white)
+                .background(Color.clear)
                 .cornerRadius(Dimensions.radius)
                 .overlay(
                     RoundedRectangle(cornerRadius: .infinity)
-                        .stroke(Color.main, lineWidth: Dimensions.lineWidth)
+                        .stroke(Color.oAccent,
+                                lineWidth: Dimensions.lineWidth)
                 )
             }
             .padding(.horizontal, Dimensions.padding)
             Spacer()
 
             NavigationLink(destination:
-                PatrolSummaryView(dutyReports: dutyReports,
-                                  startDuty: startDuty,
-                                  onDuty: dutyState,
-                                  plannedOffDutyTime: plannedOffDutyTime,
-                                  rootIsActive: .constant(false)),
+                            PatrolSummaryView(dutyReports: dutyReports,
+                                              startDuty: startDuty,
+                                              onDuty: dutyState,
+                                              plannedOffDutyTime: plannedOffDutyTime,
+                                              rootIsActive: .constant(false)),
                            isActive: $showingPatrolSummaryView) {
-                            EmptyView()
+                EmptyView()
             }
             .isDetailLink(false)
         }
-        .background(Color.lightGrayButton)
+        .background(Color.oBackground)
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
@@ -105,8 +124,10 @@ struct ProfilePageView: View {
             self.presentationMode.wrappedValue.dismiss()
         }) {
             Text("Close")
+                .foregroundColor(.oAccent)
         })
-            .showingAlert(alertItem: $showingAlertItem)
+        .showingAlert(alertItem: $showingAlertItem)
+        .preferredColorScheme(userSettings.forceDarkMode ? .dark : .light)
     }
 
     private var dutyBinding: Binding<Bool> {
@@ -118,7 +139,7 @@ struct ProfilePageView: View {
                 } else {
                     self.dutyState.onDuty = $0
                 }
-        })
+            })
     }
 
     private func edit() {
@@ -126,7 +147,7 @@ struct ProfilePageView: View {
     }
 
     private func showLogoutAlert() {
-        showingAlertItem = AlertItem(title: "Log Out?",
+        showingAlertItem = AlertItem(title: "Logout?",
                                      message: "All draft boardings will be deleted!",
                                      primaryButton: .destructive(Text("Log Out"), action: logoutAlertClicked),
                                      secondaryButton: .cancel())
@@ -160,12 +181,12 @@ struct ProfilePageView: View {
         }
         PopoverManager.shared.showPopover(id: popoverId, content: {
             ModalView(buttons: [
-                ModalViewButton(title: NSLocalizedString("Camera", comment: ""), action: {
+                ModalViewButton(title: "Camera", action: {
                     hidePopover()
                     self.showPhotoTaker(source: .camera)
                 }),
 
-                ModalViewButton(title: NSLocalizedString("Photo Library", comment: ""), action: {
+                ModalViewButton(title: "Photo Library", action: {
                     hidePopover()
                     self.showPhotoTaker(source: .photoLibrary)
                 })
@@ -196,7 +217,7 @@ struct ProfilePageView: View {
     private func showOffDutyConfirmation() {
         let endDutyTime = Date()
         guard let startDuty = getDutyStartForCurrentUser(),
-            startDuty.status == .onDuty else { return }
+              startDuty.status == .onDuty else { return }
 
         self.startDuty = startDuty
         plannedOffDutyTime = endDutyTime
@@ -219,7 +240,7 @@ struct ProfilePageView: View {
             .sorted(byKeyPath: "date", ascending: false) ?? nil
 
         guard let dutyChanges = realmDutyChanges,
-            let dutyChange = dutyChanges.first else { return nil }
+              let dutyChange = dutyChanges.first else { return nil }
 
         return DutyChangeViewModel(dutyChange: dutyChange)
     }
@@ -269,6 +290,6 @@ struct ProfilePageView_Previews: PreviewProvider {
                     ProfilePageView(user: user,
                                     dutyState: .sample)
                 }
-        }
+            }
     }
 }

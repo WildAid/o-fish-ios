@@ -67,23 +67,22 @@ struct ActivityItemView: View {
                         TitleLabel(title: title)
                         AddAttachmentsButton(attachments: attachments, reportId: reportId)
                     }
-                        .padding(.top, Dimensions.spacing)
-
+                    .padding(.top, Dimensions.spacing)
                     ButtonField(title: buttonTitle,
                                 text: name,
                                 showingWarning: showingWarningState,
                                 fieldButtonClicked: {
                                     self.showingSheetItem = self.activityItem.sheetItem()
                     })
-                        .sheet(item: $showingSheetItem) { item in
-                            TextPickerView(selectedItem: self.$name,
-                                           items: item.items,
-                                           title: item.title,
-                                           searchBarPlaceholder: item.searchBarPlaceholder)
+                    .sheet(item: $showingSheetItem) { item in
+                        TextPickerView(selectedItem: self.$name,
+                                       items: item.items,
+                                       title: item.title,
+                                       searchBarPlaceholder: item.searchBarPlaceholder)
                     }
                     AttachmentsView(attachments: self.attachments)
                 }
-                    .padding(.bottom, Dimensions.bottomPadding)
+                .padding(.bottom, Dimensions.bottomPadding)
             }
         }
     }

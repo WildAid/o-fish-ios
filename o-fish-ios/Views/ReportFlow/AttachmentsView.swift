@@ -14,22 +14,24 @@ struct AttachmentsView: View {
     private let spacing: CGFloat = 16.0
 
     var body: some View {
-        VStack(spacing: spacing) {
-            if !attachments.notes.isEmpty {
+        if !attachments.isEmpty {
+            VStack(spacing: spacing) {
                 NotesListView(attachments: attachments,
-                              isEditable: isEditable,
-                              deleteNote: deleteNote)
-            }
-
-            if !attachments.photoIDs.isEmpty {
-                PhotoIDsDisplayView(photoIDs: attachments.photoIDs,
-                                    deletePhoto: isEditable ? deletePhoto : nil)
+                                  isEditable: isEditable,
+                                  deleteNote: deleteNote)
+                if !attachments.photoIDs.isEmpty {
+                    PhotoIDsDisplayView(photoIDs: attachments.photoIDs,
+                                        deletePhoto: isEditable ? deletePhoto : nil)
+                }
             }
         }
     }
 
     private func deleteNote(id: String) {
-        attachments.notes.removeAll(where: { $0.id == id })
+        // TODO: Add this back if/when SwiftUI bug is fixed
+        // attachments.notes.removeAll(where: { $0.id == id })
+        attachments.notes.filter({$0.id == id}).first?.isArchived = true
+        attachments.refresh()
     }
 
     private func deletePhoto(photo: PhotoViewModel) {
@@ -40,6 +42,8 @@ struct AttachmentsView: View {
 
 struct AttachmentsView_Previews: PreviewProvider {
     static var previews: some View {
-        AttachmentsView(attachments: .sample)
+        Group {
+            AttachmentsView(attachments: .sample)
+        }
     }
 }

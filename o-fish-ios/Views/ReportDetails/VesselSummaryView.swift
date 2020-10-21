@@ -26,26 +26,21 @@ struct VesselSummaryView: View {
                     Button(action: onClickEdit ?? {}) {
                         EditIconView()
                     }
-                        .foregroundColor(.secondary)
+                    .foregroundColor(.secondary)
                 }
             }
-                .padding(.top, Dimensions.spacing)
-
+            .padding(.top, Dimensions.spacing)
             HStack(alignment: .top, spacing: Dimensions.spacing) {
                 LabeledText(label: "Vessel Name", text: "\(vessel.name)")
                 LabeledText(label: "Permit Number", text: "\(vessel.permitNumber)")
             }
-
             HStack(alignment: .top, spacing: Dimensions.spacing) {
                 LabeledText(label: "Home Port", text: "\(vessel.homePort)")
                 LabeledText(label: "Flag State", text: "\(getCountryName(from: vessel.nationality))")
             }
-
-            if !vessel.attachments.notes.isEmpty || !vessel.attachments.photoIDs.isEmpty {
-                AttachmentsView(attachments: vessel.attachments, isEditable: false)
-            }
+            AttachmentsView(attachments: vessel.attachments, isEditable: false)
         }
-            .padding(.bottom, Dimensions.bottomPading)
+        .padding(.bottom, Dimensions.bottomPading)
     }
 
     private func getCountryName(from countryCode: String) -> String {
@@ -55,9 +50,8 @@ struct VesselSummaryView: View {
 
 struct VesselSummaryView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
+        Group {
             VesselSummaryView(vessel: .sample, isEditable: true)
-            Divider()
             VesselSummaryView(vessel: .sample, isEditable: false)
         }
     }

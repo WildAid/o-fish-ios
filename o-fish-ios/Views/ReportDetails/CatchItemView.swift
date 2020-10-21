@@ -21,10 +21,7 @@ struct CatchItemView: View {
                 LabeledText(label: "Weight", text: "\(fish.weightString) \(fish.unit.rawValue)").opacity(fish.weight > 0 ? 1 : 0)
                 LabeledText(label: "Count", text: "\(fish.number)").opacity(fish.number > 0 ? 1 : 0)
             }
-
-            if !fish.attachments.notes.isEmpty || !fish.attachments.photoIDs.isEmpty {
-                AttachmentsView(attachments: fish.attachments, isEditable: false)
-            }
+            AttachmentsView(attachments: fish.attachments, isEditable: false)
         }
     }
 }
@@ -33,13 +30,12 @@ struct CatchItemView_Previews: PreviewProvider {
     static var previews: some View {
         let catch1 = CatchViewModel()
         let catch2 = CatchViewModel()
-
         catch1.fish = "Turbot"
         catch1.number = 12
         catch2.fish = "Dolphin"
         catch2.weight = 23.5
         catch2.unit = .kilograms
-        return VStack {
+        return Group {
         CatchItemView(fish: catch1)
             CatchItemView(fish: catch2)
             CatchItemView(fish: .sample)

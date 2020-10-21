@@ -14,17 +14,10 @@ This is the iOS Mobile app for O-FISH. To build and use the app, you must first 
 
 ## Building and running the app
 
-Set the Realm Application ID (find it for your app through the [MongoDB Realm UI](https://realm.mongodb.com)) create the file `o-fish-ios/LocalConstants.swift` and add this code (substituting your Realm application ID):
-
-```
-struct LocalConstants {
-    static let realmAppId = "your_app_id"
-}
-```
-
 To build:
+- Find the Realm Application ID (through the [MongoDB Realm UI](https://realm.mongodb.com)) for your Realm app.
 - Copy `o-fish-ios/LocalConstants.swift.tmpl` to `o-fish-ios/LocalConstants.swift`
-- Make sure the realm_app_id is set in `o-fish-ios/LocalConstants.swift`
+- Set the `realm_app_id` in `o-fish-ios/LocalConstants.swift`
 - `pod install`
   - Note: you may need to resolve dependencies by doing `pod install --repo-update`
 - Build/run in Xcode

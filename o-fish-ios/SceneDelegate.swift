@@ -12,27 +12,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var settings = Settings.shared
+    var userSettings = UserSettings.shared
     var locationHelper = LocationHelper.shared
     var imageCache = ImageCache()
+    private(set) static var shared: SceneDelegate?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
+        Self.shared = self
         let rootView = MainNavigationRootView()
-
-        let mainColor = UIColor.main
 
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.actionBlue
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
 
-            window.tintColor = mainColor
+            window.tintColor = .oAccent
 
             window.rootViewController = UIHostingController(rootView: rootView
-                .navigationBar(backgroundColor: .white, textColor: .black, tintColor: mainColor)
+                .navigationBar(backgroundColor: .oNavbarBackground, textColor: .oText, tintColor: .oAccent)
                 .stackNavigationView()
                 .environmentObject(self.settings)
                 .environmentObject(self.locationHelper)
@@ -41,6 +42,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     // Hide the keyboard when clicking anywhere on the view
                     window.endEditing(true)
             })
+
+            window.overrideUserInterfaceStyle = (userSettings.forceDarkMode ? .dark : .light)
+            updateAppearance()
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -73,4 +77,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
+    private func updateAppearance() {
+
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.oText]
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.oText]
+        UINavigationBar.appearance().backgroundColor = .oNavbarBackground
+        UINavigationBar.appearance().barTintColor = .oNavbarBackground
+        UINavigationBar.appearance().tintColor = .oAccent
+        UIWindow.appearance().tintColor = .oAccent
+    }
 }

@@ -63,7 +63,7 @@ struct AddAttachmentsButton: View {
 
     private func addNote() {
         hidePopover()
-        attachments.notes.append(Note(text: ""))
+        attachments.notes.append(NoteViewModel())
     }
 }
 

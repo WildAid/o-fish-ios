@@ -29,12 +29,12 @@ struct BoardVesselButtonView: View {
                         Spacer()
                             .frame(height: Dimensions.heightSpacer)
                         Circle()
-                            .fill(Color.white)
+                            .fill(Color.oAltBackground)
                             .frame(width: Dimensions.whiteCircleSize, height: Dimensions.whiteCircleSize)
                     }
 
                     Circle()
-                        .fill(Color.main)
+                        .fill(Color.oAccent)
                         .frame(width: Dimensions.blueCircleSize, height: Dimensions.blueCircleSize)
 
                     Image("vesselButton")

@@ -22,18 +22,14 @@ struct CatchStaticView: View {
         VStack(spacing: Dimensions.spacing) {
             HStack {
                 TitleLabel(title: NSLocalizedString("Catch", comment: "") + " \(self.index)")
-
                 Button(action: { self.editClicked?(self.catchModel) }) {
                     EditIconView()
                 }
             }
-                .padding(.top, Dimensions.spacing)
-
+            .padding(.top, Dimensions.spacing)
             HStack(spacing: Dimensions.spacing) {
-
                 LabeledText(label: "Species",
                             text: catchModel.fish)
-
                 if catchModel.weight != 0 {
                     LabeledText(label: "Weight",
                                 text: "\(catchModel.weightString) \(catchModel.unit.rawValue)")
@@ -43,12 +39,9 @@ struct CatchStaticView: View {
                                 text: "\(catchModel.number)")
                 }
             }
-
-            if !catchModel.attachments.notes.isEmpty || !catchModel.attachments.photoIDs.isEmpty {
-                AttachmentsView(attachments: catchModel.attachments, isEditable: false)
-            }
+            AttachmentsView(attachments: catchModel.attachments, isEditable: false)
         }
-            .padding(.bottom, Dimensions.bottomPadding)
+        .padding(.bottom, Dimensions.bottomPadding)
     }
 }
 
@@ -63,7 +56,7 @@ struct CatchStaticView_Previews: PreviewProvider {
         catch2.weight = 23.5
         catch2.unit = .kilograms
 
-        return VStack {
+        return Group {
             CatchStaticView(catchModel: catch1, index: 1)
             CatchStaticView(catchModel: catch2, index: 2)
             CatchStaticView(catchModel: .sample, index: 3)

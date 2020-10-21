@@ -24,7 +24,6 @@ struct RiskSummaryView: View {
                 Spacer()
                 StatusSymbolView(risk: risk.level, size: .small)
             }
-
             if !titleReason.isEmpty && !risk.reason.isEmpty {
                 HStack {
                     VStack(alignment: .leading) {
@@ -38,16 +37,12 @@ struct RiskSummaryView: View {
                     Spacer()
                 }
             }
-
-            if !risk.attachments.notes.isEmpty || !risk.attachments.photoIDs.isEmpty {
-                AttachmentsView(attachments: risk.attachments, isEditable: false)
-            } else {
-                if risk.reason.isEmpty {
-                    Text("No Notes or Photos for Risk")
-                        .font(.body)
-                        .foregroundColor(.captainGray)
-                        .padding(.vertical, Dimensions.verticalPadding)
-                }
+            AttachmentsView(attachments: risk.attachments, isEditable: false)
+            if risk.attachments.notes.isEmpty && !risk.attachments.photoIDs.isEmpty && risk.reason.isEmpty {
+                Text("No Notes or Photos for Risk")
+                .font(.body)
+                .foregroundColor(.captainGray)
+                .padding(.vertical, Dimensions.verticalPadding)
             }
         }
         .padding(.vertical, Dimensions.spacing)
