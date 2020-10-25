@@ -57,19 +57,22 @@ struct CrewMemberInputView: View {
                 TitleLabel(title: isCaptain ? "Captain" : "Crew Member \(index)")
                 AddAttachmentsButton(attachments: crewMember.attachments, reportId: reportId)
             }
-                .padding(.top, Dimensions.spacing)
+            .padding(.top, Dimensions.spacing)
             InputField(title: isCaptain ? "Captain's Name" : "Crew Member Name",
-                text: self.$crewMember.name,
-                showingWarning: showingNameWarning,
-                inputChanged: inputChanged)
+                       text: self.$crewMember.name,
+                       tag: 0,
+                       showingWarning: showingNameWarning,
+                       inputChanged: inputChanged)
+
             InputField(title: "License Number",
-                text: self.$crewMember.license,
-                showingWarning: showingNumberWarning,
-                inputChanged: inputChanged)
+                       text: self.$crewMember.license,
+                       tag: 1,
+                       showingWarning: showingNumberWarning,
+                       inputChanged: inputChanged)
             AttachmentsView(attachments: crewMember.attachments)
             if !isCaptain {
                 SectionButton(title: NSLocalizedString("Remove", comment: "") + " \(crewMember.name)",
-                    systemImageName: "minus",
+                              systemImageName: "minus",
                     callingToAction: false,
                     action: { self.removeClicked?(self.crewMember) })
             }
@@ -77,7 +80,7 @@ struct CrewMemberInputView: View {
             .padding(.bottom, Dimensions.bottomPadding)
     }
 
-    private func inputChanged(_ value: String) {
+    private func inputChanged() {
         updateCrewMemberStatus()
         self.checkAllInput()
     }

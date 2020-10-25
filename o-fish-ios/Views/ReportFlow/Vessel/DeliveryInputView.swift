@@ -83,23 +83,24 @@ struct DeliveryInputView: View {
                     }
             } else {
                 InputField(title: "Business",
-                    text: $delivery.business,
-                    showingWarning: showingBusinessWarning,
-                    inputChanged: inputChanged)
+                           text: $delivery.business,
+                           tag: 0,
+                           showingWarning: showingBusinessWarning,
+                           inputChanged: inputChanged)
                 InputMultilineFieldCaption(title: "Location",
-                    text: $delivery.location,
-                    showingWarning: showingLocationWarning,
-                    inputChanged: inputChanged)
+                                           text: $delivery.location,
+                                           showingWarning: showingLocationWarning,
+                                           inputChanged: inputChanged)
             }
             AttachmentsView(attachments: delivery.attachments)
         }
-            .padding(.bottom, Dimensions.bottomPadding)
-            .onTapGesture {
-                self.activeEditableComponentId = self.delivery.id
-            }
+        .padding(.bottom, Dimensions.bottomPadding)
+        .onTapGesture {
+            self.activeEditableComponentId = self.delivery.id
+        }
     }
 
-    private func inputChanged(_ value: String) {
+    private func inputChanged() {
         self.checkAllInput()
     }
 

@@ -51,20 +51,26 @@ struct VesselInformationInputView: View {
                 AddAttachmentsButton(attachments: vessel.attachments, reportId: reportId)
             }
             .padding(.top, Dimensions.spacing)
-            InputField(title: "Vessel Name", text: $vessel.name,
-                showingWarning: showingNameWarning,
-                inputChanged: inputChanged)
+            InputField(title: "Vessel Name",
+                       text: $vessel.name,
+                       tag: 0,
+                       showingWarning: showingNameWarning,
+                       inputChanged: inputChanged)
+
             InputField(title: "Permit Number", text:
-                Binding<String>(
-                    get: { self.vessel.permitNumber.uppercased() },
-                    set: { self.vessel.permitNumber = $0}
-                ),
-                showingWarning: showingPermitNumberWarning,
-                inputChanged: inputChanged)
-            .autocapitalization(.allCharacters)
-            InputField(title: "Home Port", text: $vessel.homePort,
-                showingWarning: showingHomePortWarning,
-                inputChanged: inputChanged)
+                        Binding<String>(
+                            get: { self.vessel.permitNumber.uppercased() },
+                            set: { self.vessel.permitNumber = $0}
+                        ),
+                       tag: 1,
+                       showingWarning: showingPermitNumberWarning,
+                       inputChanged: inputChanged,
+                       autocapitalizationType: .allCharacters)
+            InputField(title: "Home Port",
+                       text: $vessel.homePort,
+                       tag: 2,
+                       showingWarning: showingHomePortWarning,
+                       inputChanged: inputChanged)
             Group {
                 if hasNationality {
                     VStack(spacing: Dimensions.noSpacing) {
@@ -102,7 +108,7 @@ struct VesselInformationInputView: View {
         .onTapGesture { self.activeEditableComponentId = self.vessel.id }
     }
 
-    private func inputChanged(_ value: String) {
+    private func inputChanged() {
         self.checkAllInput()
     }
 

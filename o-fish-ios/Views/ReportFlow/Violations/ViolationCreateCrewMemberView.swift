@@ -42,8 +42,8 @@ struct ViolationCreateCrewMemberView: View {
                             reportId: report.id)
                     }
                     .padding(.vertical, Dimensions.spacing)
-                    InputField(title: "Crew Member Name", text: $name)
-                    InputField(title: "License Number", text: $license)
+                    InputField(title: "Crew Member Name", text: $name, tag: 0)
+                    InputField(title: "License Number", text: $license, tag: 1)
                     HStack {
                         Spacer()
                         CheckBox(title: "Captain", value: self.$isCaptain)

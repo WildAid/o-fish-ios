@@ -42,9 +42,10 @@ struct LoginView: View {
 
                             ZStack(alignment: .trailing) {
                                 InputField(title: "Email/Username",
-                                    text: self.$username)
-                                    .keyboardType(.emailAddress)
-                                    .autocapitalization(.none)
+                                           text: self.$username,
+                                           tag: 0,
+                                           autocapitalizationType: .none,
+                                           keyboardType: .emailAddress)
 
                                 Button(action: self.getStoredCredentials) {
                                     Image(systemName: self.keychain.getPictureName())
@@ -55,8 +56,9 @@ struct LoginView: View {
                                 .padding(.bottom, Dimensions.padding)
 
                             InputField(title: "Password",
-                                text: self.$password,
-                                showingSecureField: true)
+                                       text: self.$password,
+                                       tag: 1,
+                                       showingSecureField: true)
 
                             CallToActionButton(title: "Log In",
                                                action: {

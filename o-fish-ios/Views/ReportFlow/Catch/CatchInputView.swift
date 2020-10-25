@@ -63,6 +63,7 @@ struct CatchInputView: View {
             HStack(spacing: Dimensions.offset) {
                 InputField(title: "Weight",
                            text: weightBinding,
+                           tag: 0,
                            showingWarning: self.showingWeightWarning,
                            keyboardType: .decimalPad)
                 ButtonField(title: "Unit",
@@ -73,6 +74,7 @@ struct CatchInputView: View {
             }
             InputField(title: "Count",
                        text: countBinding,
+                       tag: 1,
                        showingWarning: self.showingCountWarning,
                        keyboardType: .numberPad)
             AttachmentsView(attachments: catchModel.attachments)
