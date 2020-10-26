@@ -47,3 +47,6 @@ DerivedData/
 
 ## Gcc Patch
 /*.gcno
+
+# Scripts
+/Scripts/Generated/
