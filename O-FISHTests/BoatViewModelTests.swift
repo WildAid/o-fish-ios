@@ -48,9 +48,9 @@ class BoatViewModelTests: XCTestCase {
         //given
         let boat: Boat? = nil
         sut = BoatViewModel(boat)
-        
+
         //when
-        let vessel = sut?.save()
+        let vessel = sut?.save(MockDataProvider())
         
         //then
         XCTAssertNotNil(vessel)

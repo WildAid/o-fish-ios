@@ -38,7 +38,7 @@ class InspectionViewModelTests: XCTestCase {
         sut?.attachments = attachments
         
         //when
-        let inspection = sut?.save()
+        let inspection = sut?.save(MockDataProvider())
         
         //then
         XCTAssertNotNil(inspection)
@@ -50,7 +50,7 @@ class InspectionViewModelTests: XCTestCase {
         sut = InspectionViewModel(inspection)
         
         //when
-        let inspectionIn = sut?.save()
+        let inspectionIn = sut?.save(MockDataProvider())
         
         //then
         XCTAssertNotNil(inspectionIn)

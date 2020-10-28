@@ -29,7 +29,7 @@ class SummaryViewModel: ObservableObject, Identifiable {
         }
     }
 
-    func save(_ realm: Realm) -> Summary? {
+    func save(_ realm: DataProvider) -> Summary? {
         if summary == nil {
             summary = Summary()
         }

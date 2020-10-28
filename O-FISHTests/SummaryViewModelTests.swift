@@ -32,7 +32,7 @@ class SummaryViewModelTests: XCTestCase {
         sut?.seizures = seizures
         
         //when
-        let summary = sut?.save()
+        let summary = sut?.save(MockDataProvider())
         
         //then
         XCTAssertNotNil(summary)
@@ -44,7 +44,7 @@ class SummaryViewModelTests: XCTestCase {
         sut = SummaryViewModel(summary)
         
         //when
-        let summaryIn = sut?.save()
+        let summaryIn = sut?.save(MockDataProvider())
         
         //then
         XCTAssertNotNil(summaryIn)

@@ -41,7 +41,7 @@ class BoatViewModel: ObservableObject, Identifiable {
         }
     }
 
-    func save(_ realm: Realm) -> Boat? {
+    func save(_ realm: DataProvider) -> Boat? {
         if boat == nil {
             boat = Boat()
         }

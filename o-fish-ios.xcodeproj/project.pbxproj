@@ -202,6 +202,8 @@
 		4FA1D4EE2545D2A60086143A /* FocusableTextFieldAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA1D4ED2545D2A60086143A /* FocusableTextFieldAdapter.swift */; };
 		58803D1DF7134D26A62353B7 /* Pods_O_FISHTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D2A897480E19C63773305C9 /* Pods_O_FISHTests.framework */; };
 		A1404A98C1D9F0F6A7FFDF3F /* Pods_o_fish_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F16184A0134571492EE1ED /* Pods_o_fish_ios.framework */; };
+		B2FA834521E6A653AF9138B0 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA89905BD6358F3EA94B70 /* DataProvider.swift */; };
+		B2FA8EEDC74B9DB19888F873 /* MockDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FA85AE5A35D088310D00D0 /* MockDataProvider.swift */; };
 		BCE48044A1B3C063E89649B4 /* CallToActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48AB83BB50A193A6B4113 /* CallToActionButton.swift */; };
 		BCE4808C711680D5EDD03D5C /* EditIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE481A493BE842563164A56 /* EditIconView.swift */; };
 		BCE480D0F3CA40D362612037 /* String+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48F54CA4C3989E363C19A /* String+Identifiable.swift */; };
@@ -507,6 +509,8 @@
 		542E5D76C2521F4603E2BDEA /* Pods-o-fish-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-o-fish-ios.debug.xcconfig"; path = "Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		75D1B2651469F1E66F32D4A7 /* Pods-O-FISHTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-O-FISHTests.debug.xcconfig"; path = "Target Support Files/Pods-O-FISHTests/Pods-O-FISHTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F135385C428BA5F9EB62154 /* Pods-o-fish-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-o-fish-ios.release.xcconfig"; path = "Target Support Files/Pods-o-fish-ios/Pods-o-fish-ios.release.xcconfig"; sourceTree = "<group>"; };
+		B2FA85AE5A35D088310D00D0 /* MockDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataProvider.swift; sourceTree = "<group>"; };
+		B2FA89905BD6358F3EA94B70 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		BCE4805F57C9DCAF47BCB4FE /* RectangleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleButton.swift; sourceTree = "<group>"; };
 		BCE480BDC5FDB15656C972A0 /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		BCE4817C8B123F01E50A23D9 /* MultiRowPickerWithButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiRowPickerWithButton.swift; sourceTree = "<group>"; };
@@ -754,6 +758,7 @@
 				30DAA62124D8025E003848FB /* GearTypeViewModelTests.swift */,
 				30DAA62324D80311003848FB /* SafetyLevelViewModelTests.swift */,
 				30DAA62524D804C1003848FB /* SeizuresViewModelTests.swift */,
+				B2FA85AE5A35D088310D00D0 /* MockDataProvider.swift */,
 			);
 			path = "O-FISHTests";
 			sourceTree = "<group>";
@@ -1055,6 +1060,7 @@
 				49A3EC98242CBA3700055342 /* User */,
 				49FDCD64241D1EF800C00574 /* Report */,
 				497EBF192433B7A000B01800 /* Samplable.swift */,
+				B2FA89905BD6358F3EA94B70 /* DataProvider.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1603,6 +1609,7 @@
 				309CD29124D42012002636C1 /* EMSViewModelTests.swift in Sources */,
 				3075348A24D7F8CD000257D1 /* AnnotatedNoteViewModelTests.swift in Sources */,
 				30DAA62224D8025E003848FB /* GearTypeViewModelTests.swift in Sources */,
+				B2FA8EEDC74B9DB19888F873 /* MockDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1861,6 +1868,7 @@
 				BCE4815F88C024AD476B8DE2 /* DutyState.swift in Sources */,
 				BCE4847641980BF415EC286C /* PhotoView.swift in Sources */,
 				BCE48AE399A063A7D94860ED /* PatrolBoatUserView.swift in Sources */,
+				B2FA834521E6A653AF9138B0 /* DataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
