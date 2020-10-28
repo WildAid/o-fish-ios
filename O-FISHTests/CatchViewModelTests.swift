@@ -136,11 +136,11 @@ class CatchViewModelTests: XCTestCase {
         // when
         sut.fish = "Some fish"
         sut.weight = 1
-        sut.unit = .kilograms
+        sut.unit = .notSelected
         sut.number = 1
 
         // then
-        XCTAssertFalse(sut.isComplete, "QuantityType mandatory")
+        XCTAssertFalse(sut.isComplete, "Unit is mandatory")
 
         // when
         sut.fish = ""
