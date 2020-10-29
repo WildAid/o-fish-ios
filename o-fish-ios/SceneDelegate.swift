@@ -5,14 +5,16 @@
 //  Copyright © 2020 WildAid. All rights reserved.
 //
 
+import Combine
 import UIKit
 import SwiftUI
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+typealias DisposeBag = [AnyCancellable]
 
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    private var disposeBag = DisposeBag()
     var window: UIWindow?
     var settings = Settings.shared
-    var userSettings = UserSettings.shared
     var locationHelper = LocationHelper.shared
     var imageCache = ImageCache()
     private(set) static var shared: SceneDelegate?
@@ -43,7 +45,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     window.endEditing(true)
             })
 
-            window.overrideUserInterfaceStyle = (userSettings.forceDarkMode ? .dark : .light)
+            UserSettings.shared.$forceDarkMode.sink { [weak window] in
+                window?.overrideUserInterfaceStyle = $0 ? .dark : .unspecified
+            }.store(in: &self.disposeBag)
             updateAppearance()
             self.window = window
             window.makeKeyAndVisible()
