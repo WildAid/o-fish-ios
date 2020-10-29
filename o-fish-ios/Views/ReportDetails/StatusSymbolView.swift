@@ -36,7 +36,8 @@ struct StatusSymbolView: View {
                 .cornerRadius(.infinity)
                 .frame(width: width, height: height)
 
-            Text(NSLocalizedString(risk.rawValue, comment: "Risk color").uppercased())
+            Text(LocalizedStringKey(self.risk.rawValue))
+                .textCase(.uppercase)
                 .minimumScaleFactor(0.5)
                 .font(font)
                 .foregroundColor(colors.textColor)
