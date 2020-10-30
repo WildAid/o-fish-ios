@@ -127,7 +127,6 @@ struct ProfilePageView: View {
                 .foregroundColor(.oAccent)
         })
         .showingAlert(alertItem: $showingAlertItem)
-        .preferredColorScheme(userSettings.forceDarkMode ? .dark : .light)
     }
 
     private var dutyBinding: Binding<Bool> {
