@@ -13,7 +13,6 @@ struct LocationButton: View {
 
     private enum Dimensions {
         static let cornerRadius: CGFloat = 4.0
-        static let opacity = 0.7
         static let size: CGFloat = 32.0
     }
 
@@ -22,7 +21,7 @@ struct LocationButton: View {
             ZStack {
                 if showingBackground {
                     Rectangle()
-                        .fill(Color.white.opacity(Dimensions.opacity))
+                        .fill(Color.oStrongOverlay)
                         .cornerRadius(Dimensions.cornerRadius)
                 }
                 Image(systemName: "location.fill")

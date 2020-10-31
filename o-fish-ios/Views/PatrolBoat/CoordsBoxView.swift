@@ -15,7 +15,6 @@ struct CoordsBoxView: View {
         static let cornerRadius: CGFloat = 4.0
         static let padding: CGFloat = 8.0
         static let noSpacing: CGFloat = 0.0
-        static let opacity = 0.7
     }
 
     var body: some View {
@@ -24,7 +23,7 @@ struct CoordsBoxView: View {
             LabeledDoubleOutput(coordinate: .longitude, value: self.location.longitude)
         }
             .padding(.vertical, Dimensions.padding)
-            .background(Color.white.opacity(Dimensions.opacity))
+            .background(Color.oStrongOverlay)
             .cornerRadius(Dimensions.cornerRadius)
     }
 }

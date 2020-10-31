@@ -30,7 +30,7 @@ struct SearchBarButton: View {
             }
                 .frame(height: Dimensions.height)
                 .foregroundColor(.gray)
-                .background(Color(.secondarySystemBackground))
+                .background(Color.oWeakOverlay)
                 .cornerRadius(Dimensions.cornerRadius)
                 .padding(.horizontal, Dimensions.padding)
         }
