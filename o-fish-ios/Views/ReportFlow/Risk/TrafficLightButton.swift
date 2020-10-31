@@ -35,12 +35,16 @@ struct TrafficLightButton: View {
         Button(LocalizedStringKey(targetColor.rawValue)) {
             self.selectedColor = self.targetColor
         }
-            .font(font)
-            .frame(height: Configuration.height)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(foregroundColor)
-            .background(backgroundColor)
-            .cornerRadius(Configuration.radius)
+        .buttonStyle(PlainButtonStyle())
+        .font(self.font)
+        .lineLimit(1)
+        .minimumScaleFactor(0.5)
+        .padding(.horizontal, Configuration.height / 4)
+        .frame(height: Configuration.height)
+        .frame(maxWidth: .infinity)
+        .foregroundColor(self.foregroundColor)
+        .background(self.backgroundColor)
+        .cornerRadius(Configuration.radius)
     }
 
     private var currentlySelected: Bool {
@@ -63,22 +67,22 @@ struct TrafficLightButton: View {
 struct TrafficLightButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TrafficLightButton(targetColor: .green,
-                               selectedColor: .constant(.green))
-            Divider()
-            TrafficLightButton(targetColor: .green,
-                               selectedColor: .constant(.red))
-            Divider()
-            TrafficLightButton(targetColor: .amber,
-                               selectedColor: .constant(.amber))
-            Divider()
-            TrafficLightButton(targetColor: .amber,
-                               selectedColor: .constant(.green))
-            Divider()
-            TrafficLightButton(targetColor: .red,
-                               selectedColor: .constant(.red))
-            TrafficLightButton(targetColor: .red,
-            selectedColor: .constant(.green))
+            HStack {
+                TrafficLightButton(targetColor: .green, selectedColor: .constant(.green))
+                Divider()
+                TrafficLightButton(targetColor: .green, selectedColor: .constant(.red))
+                Divider()
+                TrafficLightButton(targetColor: .amber, selectedColor: .constant(.amber))
+            }
+            .environment(\.locale, .init(identifier: "uk"))
+            HStack {
+                TrafficLightButton(targetColor: .amber, selectedColor: .constant(.green))
+                Divider()
+                TrafficLightButton(targetColor: .red, selectedColor: .constant(.red))
+                Divider()
+                TrafficLightButton(targetColor: .red, selectedColor: .constant(.green))
+            }
         }
+        .previewLayout(.fixed(width: 400.0, height: 200.0))
     }
 }

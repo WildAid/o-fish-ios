@@ -30,17 +30,22 @@ struct StatusSymbolView: View {
     }
 
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(colors.backgroundColor)
-                .cornerRadius(.infinity)
-                .frame(width: width, height: height)
+        Text(LocalizedStringKey(self.risk.rawValue))
+            .textCase(.uppercase)
+            .font(self.font)
+            .foregroundColor(self.colors.textColor)
+            .lineLimit(1)
+            .minimumScaleFactor(0.5)
+            .padding(.horizontal, self.padding)
+            .frame(width: self.width, height: self.height)
+            .background(
+                Rectangle()
+                    .fill(self.colors.backgroundColor)
+                    .cornerRadius(.infinity))
+    }
 
-            Text(NSLocalizedString(risk.rawValue, comment: "Risk color").uppercased())
-                .minimumScaleFactor(0.5)
-                .font(font)
-                .foregroundColor(colors.textColor)
-        }
+    private var padding: CGFloat {
+        self.size == .small ? 6 : 12
     }
 
     private var height: CGFloat {
@@ -59,11 +64,32 @@ struct StatusSymbolView: View {
 struct StatusSymbolView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            StatusSymbolView(risk: .amber)
-            Divider()
-            StatusSymbolView(risk: .green)
-            Divider()
-            StatusSymbolView(risk: .red, size: .large)
+            HStack {
+                StatusSymbolView(risk: .amber)
+                Divider()
+                StatusSymbolView(risk: .green)
+                Divider()
+                StatusSymbolView(risk: .red, size: .large)
+            }
+            Spacer()
+            HStack {
+                StatusSymbolView(risk: .amber)
+                Divider()
+                StatusSymbolView(risk: .green)
+                Divider()
+                StatusSymbolView(risk: .red, size: .large)
+            }
+            .environment(\.sizeCategory, .accessibilityExtraExtraExtraLarge)
+            Spacer()
+            HStack {
+                StatusSymbolView(risk: .amber)
+                Divider()
+                StatusSymbolView(risk: .green)
+                Divider()
+                StatusSymbolView(risk: .red, size: .large)
+            }
+            .environment(\.locale, .init(identifier: "uk"))
         }
+        .previewLayout(.fixed(width: 400.0, height: 200.0))
     }
 }

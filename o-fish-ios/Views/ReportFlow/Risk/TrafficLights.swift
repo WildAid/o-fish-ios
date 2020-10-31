@@ -16,24 +16,28 @@ struct TrafficLights: View {
 
     var body: some View {
         HStack(spacing: Dimensions.spacing) {
-            TrafficLightButton(targetColor: .green,
-                               selectedColor: self.$color)
-
-            TrafficLightButton(targetColor: .amber,
-                               selectedColor: self.$color)
-
-            TrafficLightButton(targetColor: .red,
-                               selectedColor: self.$color)
+            TrafficLightButton(targetColor: .green, selectedColor: self.$color.animation())
+            TrafficLightButton(targetColor: .amber, selectedColor: self.$color.animation())
+            TrafficLightButton(targetColor: .red, selectedColor: self.$color.animation())
         }
     }
 }
 
 struct TrafficLights_Previews: PreviewProvider {
+    private struct LivePreview: View {
+        @State var color = SafetyLevelViewModel.LevelColor.green
+
+        var body: some View {
+            TrafficLights(color: self.$color)
+        }
+    }
+
     static var previews: some View {
         VStack {
-            TrafficLights(color: .constant(.green))
+            LivePreview()
             Divider()
             TrafficLights(color: .constant(.amber))
+                .environment(\.locale, .init(identifier: "uk"))
             Divider()
             TrafficLights(color: .constant(.red))
         }

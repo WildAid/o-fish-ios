@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 private struct StringKeys {
     static let forceDarkMode = "forceDarkMode"
@@ -18,19 +17,11 @@ class UserSettings: ObservableObject {
 
     @Published var forceDarkMode: Bool {
         didSet {
-            UserDefaults.standard.setValue(self.forceDarkMode, forKey: StringKeys.forceDarkMode)
-            SceneDelegate.shared?.window?.overrideUserInterfaceStyle = (self.forceDarkMode ? .dark : .light)
+            UserDefaults.standard.set(self.forceDarkMode, forKey: StringKeys.forceDarkMode)
         }
     }
 
     init() {
-        self.forceDarkMode = (UserDefaults.standard.object(forKey: StringKeys.forceDarkMode) as? Bool) ?? false
-    }
-}
-
-extension UserDefaults {
-
-    @objc dynamic var forceDarkMode: Bool {
-        return bool(forKey: StringKeys.forceDarkMode)
+        self.forceDarkMode = UserDefaults.standard.bool(forKey: StringKeys.forceDarkMode)
     }
 }
