@@ -38,76 +38,82 @@ struct PatrolBoatView: View {
     }
 
     var body: some View {
-        VStack {
-            HStack {
-                SearchBarButton(title: "Find records", action: showFindRecords)
-                    .padding(.vertical, Dimensions.coordTopPadding)
+        ZStack {
+            Color.oSelectionBackground
+                .ignoresSafeArea()
 
-                PatrolBoatUserView(photo: profilePicture,
-                                   onSea: $onDuty.onDuty,
-                                   action: { self.showingProfilePage.toggle() })
-                    .padding(.trailing, Dimensions.trailingPadding)
+            VStack {
+                HStack {
+                    SearchBarButton(title: "Find records", action: showFindRecords)
+                        .padding(.vertical, Dimensions.coordTopPadding)
 
-                NavigationLink(destination: ProfilePageView(user: user,
-                                                            dutyState: onDuty,
-                                                            profilePicture: profilePicture),
-                               isActive: $showingProfilePage) {
-                    EmptyView()
-                }
-            }
+                    PatrolBoatUserView(photo: profilePicture,
+                                       onSea: $onDuty.onDuty,
+                                       action: { self.showingProfilePage.toggle() })
+                        .padding(.trailing, Dimensions.trailingPadding)
 
-            ZStack(alignment: .bottom) {
-                MapComponentView(location: self.$location,
-                                 reset: self.$resetLocation,
-                                 isLocationViewNeeded: false)
-                VStack {
-                    HStack {
-                        CoordsBoxView(location: location)
-                            .padding(.trailing, Dimensions.trailingCoordPadding)
-                            .padding(.leading, Dimensions.coordPadding)
-
-                        LocationButton(action: resetLocation)
-                            .padding(.trailing, Dimensions.coordTopPadding)
-                    }
-                    .padding(.top, Dimensions.coordTopPadding)
-                    Spacer()
-                    BottomPatrolView(draftBoardingsCount: $draftBoardingsCount,
-                                     findAction: showFindRecords,
-                                     boardVesselAction: showBoardVessel,
-                                     draftBoardingsAction: showDraftRecords)
-
-                    NavigationLink(
-                        destination: PreboardingView(viewType: .preboarding,
-                                                     onDuty: onDuty,
-                                                     rootIsActive: $isActiveRootFromPreboardingView),
-                        isActive: self.$isActiveRootFromPreboardingView) {
-                        EmptyView()
-                    }
-                    .isDetailLink(false)
-
-                    NavigationLink(
-                        destination: PreboardingView(viewType: .searchRecords,
-                                                     onDuty: onDuty,
-                                                     rootIsActive: $isActiveRootFromSearchView),
-                        isActive: $isActiveRootFromSearchView) {
-                        EmptyView()
-                    }
-                    .isDetailLink(false)
-
-                    NavigationLink(
-                        destination: DraftBoardingsView(),
-                        isActive: $showingDrafts) {
+                    NavigationLink(destination: ProfilePageView(user: user,
+                                                                dutyState: onDuty,
+                                                                profilePicture: profilePicture),
+                                   isActive: $showingProfilePage) {
                         EmptyView()
                     }
                 }
+
+                ZStack(alignment: .bottom) {
+                    MapComponentView(location: self.$location,
+                                     reset: self.$resetLocation,
+                                     isLocationViewNeeded: false)
+                    VStack {
+                        HStack {
+                            CoordsBoxView(location: location)
+                                .padding(.trailing, Dimensions.trailingCoordPadding)
+                                .padding(.leading, Dimensions.coordPadding)
+
+                            LocationButton(action: resetLocation)
+                                .padding(.trailing, Dimensions.coordTopPadding)
+                        }
+                        .padding(.top, Dimensions.coordTopPadding)
+                        Spacer()
+                        BottomPatrolView(draftBoardingsCount: $draftBoardingsCount,
+                                         findAction: showFindRecords,
+                                         boardVesselAction: showBoardVessel,
+                                         draftBoardingsAction: showDraftRecords)
+
+                        NavigationLink(
+                            destination: PreboardingView(viewType: .preboarding,
+                                                         onDuty: onDuty,
+                                                         rootIsActive: $isActiveRootFromPreboardingView),
+                            isActive: self.$isActiveRootFromPreboardingView) {
+                            EmptyView()
+                        }
+                        .isDetailLink(false)
+
+                        NavigationLink(
+                            destination: PreboardingView(viewType: .searchRecords,
+                                                         onDuty: onDuty,
+                                                         rootIsActive: $isActiveRootFromSearchView),
+                            isActive: $isActiveRootFromSearchView) {
+                            EmptyView()
+                        }
+                        .isDetailLink(false)
+
+                        NavigationLink(
+                            destination: DraftBoardingsView(),
+                            isActive: $showingDrafts) {
+                            EmptyView()
+                        }
+                    }
+                }
+                .edgesIgnoringSafeArea(.all)
+                .navigationBarTitle(Text(""), displayMode: .inline)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarHidden(true)
             }
-            .edgesIgnoringSafeArea(.all)
-            .navigationBarTitle(Text(""), displayMode: .inline)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarHidden(true)
+            .showingAlert(alertItem: $showingAlertItem)
+            .onAppear(perform: onAppear)
+            .preferredColorScheme(userSettings.forceDarkMode ? .dark : .light)
         }
-        .showingAlert(alertItem: $showingAlertItem)
-        .onAppear(perform: onAppear)
     }
 
     private func showGoOnDutyAlert() {

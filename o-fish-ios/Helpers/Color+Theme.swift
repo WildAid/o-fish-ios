@@ -140,6 +140,14 @@ extension Color {
         return Color("oSelectionBackground")
     }
 
+    public static var oStrongOverlay: Color {
+        return Color("oStrongOverlay")
+    }
+
+    public static var oWeakOverlay: Color {
+        return Color("oWeakOverlay")
+    }
+
     public static var oText: Color {
         return Color("oText")
     }
