@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InputField: View {
     @State var title = "Title"
-    @Binding private(set) var text: String
+    @Binding var text: String
 
     let tag: Int
 
@@ -38,13 +38,10 @@ struct InputField: View {
             HStack(spacing: Dimensions.noSpacing) {
                 FocusableTextFieldAdapter(
                     tag: tag,
-                    text: text,
+                    text: textBinding,
                     isSecure: showingSecureField,
                     keyboardType: keyboardType,
-                    autocapitalizationType: autocapitalizationType,
-                    onEditingHandler: { enteredText in
-                        self.textBinding.wrappedValue = enteredText
-                    })
+                    autocapitalizationType: autocapitalizationType)
                     .padding(.bottom, Dimensions.bottomPadding)
 
                 if showingWarning {

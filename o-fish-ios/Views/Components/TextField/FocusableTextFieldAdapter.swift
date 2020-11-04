@@ -13,34 +13,17 @@ import SwiftUI
 /// 2. After 'Return key' tap move focus to the next screen textField
 struct FocusableTextFieldAdapter: UIViewRepresentable {
 
-    private let tag: Int
-    private let text: String
-    private let isSecure: Bool
-    private let keyboardType: UIKeyboardType
-    private let autocapitalizationType: UITextAutocapitalizationType
-    private let onEditingHandler: ((String) -> Void)?
-    private let textField = FocusableTextField()
+    let tag: Int
+    @Binding var text: String
+    let isSecure: Bool
+    let keyboardType: UIKeyboardType
+    let autocapitalizationType: UITextAutocapitalizationType
 
-    init(
-        tag: Int,
-        text: String,
-        isSecure: Bool = false,
-        keyboardType: UIKeyboardType,
-        autocapitalizationType: UITextAutocapitalizationType,
-        onEditingHandler: ((String) -> Void)?) {
-        self.tag = tag
-        self.text = text
-        self.isSecure = isSecure
-        self.keyboardType = keyboardType
-        self.autocapitalizationType = autocapitalizationType
-        self.onEditingHandler = onEditingHandler
-    }
+    func makeUIView(context: UIViewRepresentableContext<FocusableTextFieldAdapter>) -> UITextField {
+        let textField = UITextField()
 
-    func makeUIView(context: UIViewRepresentableContext<FocusableTextFieldAdapter>) -> FocusableTextField {
         textField.tag = tag
-        textField.text = text
-        textField.delegate = textField
-        textField.onEditingHandler = onEditingHandler
+        textField.delegate = context.coordinator
         textField.isSecureTextEntry = isSecure
         textField.autocapitalizationType = autocapitalizationType
         textField.keyboardType = keyboardType
@@ -52,8 +35,49 @@ struct FocusableTextFieldAdapter: UIViewRepresentable {
         return textField
     }
 
-    func updateUIView(_ uiView: FocusableTextField, context: UIViewRepresentableContext<FocusableTextFieldAdapter>) {
+    func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<FocusableTextFieldAdapter>) {
         uiView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         uiView.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        uiView.text = text
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator($text)
+    }
+
+    final class Coordinator: NSObject, UITextFieldDelegate {
+        var text: Binding<String>
+
+        init(_ text: Binding<String>) {
+            self.text = text
+        }
+
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            let nextFieldOfSuperview = textField.superview?.superview?.viewWithTag(textField.tag + 1) as? UITextField
+            let nextFieldOfSuperSuperview = textField.superview?.superview?.superview?.viewWithTag(textField.tag + 1) as? UITextField
+            let nextFieldOfSuperSuperSuperview = textField.superview?.superview?.superview?.superview?.viewWithTag(textField.tag + 1) as? UITextField
+
+            let nextField = nextFieldOfSuperview ?? nextFieldOfSuperSuperview ?? nextFieldOfSuperSuperSuperview
+
+            if let nextField = nextField {
+                nextField.becomeFirstResponder()
+            } else {
+                textField.resignFirstResponder()
+            }
+            return false
+        }
+
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            text.wrappedValue = textField.text ?? ""
+        }
+
+        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            if let currentValue = textField.text as NSString? {
+                let proposedValue = currentValue.replacingCharacters(in: range, with: string)
+                text.wrappedValue = proposedValue
+            }
+            return true
+        }
+
     }
 }
