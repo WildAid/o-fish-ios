@@ -22,9 +22,11 @@ chmod +x ./update_loc.swift
 ## Flags
 - --loc_path= Localization Directory {Required}
 - --source_path= Source Files Directory {Required}
-- --backup_path= Loc File BackUp Location {Optional - Defaults to Script/Backup}
+- --backup_path= Loc File BackUp Location {Optional - Defaults to Scripts/Backup}
+- --skip_list_path= Path to Skip List {Optional - Defaults to Scripts/skip_list.txt}
 - --verbose= Show Info Messages {Optional - true/false; Default = false}
 - --test= Show Missing Keys without Making Changes {Optional - true/false; Default = false} 
+- --skip_list= Use Skip List {Optional - true/false - Defaults to true}
 - --help {Prints out commands}
 
 ## How Does It Work?
@@ -33,6 +35,9 @@ chmod +x ./update_loc.swift
 - Collects the keys for unlocalized string from above
 - Loads each localization file and identifies any missing keys
 - Appends missing keys to the end of each localization file
+- Optionally pass in a path to text file containing a newline separated list of string keys to skip (not add)
+- By default, there is a skip list in the Scripts directory (skip_list.txt) to which can append keys to skip
+- Internal to the script, there is a default list of keys to skip which can be edited (see the global `defaultSkipList` inside update_loc.swift)
 
 ## About genstrings
 - Finds only strings that match a pattern where used within the NSLocalizedString() function or, with SwiftUI, within Text()

@@ -31,6 +31,10 @@ extension Data {
 private var verbose = false
 private var test = false
 
+// List of default keys to skip (not add as missing keys)
+private let defaultSkipList = ["%@", ":", "R%@ C%@"]
+private let defaultSkipListPath = "skip_list.txt"
+
 private struct LocConstants {
     static let stringsFileName = "Localizable.strings"
     static let locDirectorySuffix = ".lproj"
@@ -50,6 +54,8 @@ private struct UpdateRequest {
     var sourcePath: String
     var locPath: String
     var backupPath: String?
+    var skipListPath: String?
+    var useSkipList: Bool = true
 }
 
 // MARK: - Arg Parsing
@@ -58,21 +64,27 @@ private func parseArgs() -> Result<UpdateRequest, ParseError> {
     let loc_path = "--loc_path="
     let source_path = "--source_path="
     let backup_path = "--backup_path="
+    let skip_list_path = "--skip_list_path="
     let verbose_arg = "--verbose="
     let test_arg = "--test="
+    let use_skip_list = "--skip_list="
     let help_path = "--help"
     let validCommands = [
         "\(loc_path) Localization Directory {Required}",
         "\(source_path) Source Files Directory {Required}",
-        "\(backup_path) Loc File BackUp Location {Optional - Defaults to Script/Backup}",
+        "\(backup_path) Loc File BackUp Location {Optional - Defaults to Scripts/Backup}",
+        "\(skip_list_path) Path to Skip List {Optional - Defaults to Scripts/\(defaultSkipListPath)}",
         "\(verbose_arg) Show Info Messages {Optional - true/false}",
-        "\(test_arg) Show Missing Keys without Making Changes {Optional - true/false}"
+        "\(test_arg) Show Missing Keys without Making Changes {Optional - true/false}",
+        "\(use_skip_list) Use Skip List {Optional - true/false - Defaults to true}"
     ]
 
     var badArgs: [String] = []
     var locPath = ""
     var sourcePath = ""
+    var skipListPath: String?
     var backupPath: String?
+    var useSkipList = true
 
     for arg in CommandLine.arguments {
         // Skip input command
@@ -85,10 +97,14 @@ private func parseArgs() -> Result<UpdateRequest, ParseError> {
             locPath = String(arg.dropFirst(loc_path.count))
         } else if arg.starts(with: backup_path) {
             backupPath = String(arg.dropFirst(backup_path.count))
+        } else if arg.starts(with: skip_list_path) {
+            skipListPath = String(arg.dropFirst(skip_list_path.count))
         } else if arg.starts(with: verbose_arg) {
             verbose = (arg.dropFirst(verbose_arg.count).lowercased() == "true") ? true : false
         } else if arg.starts(with: test_arg) {
             test = (arg.dropFirst(test_arg.count).lowercased() == "true") ? true : false
+        } else if arg.starts(with: use_skip_list) {
+            useSkipList = (arg.dropFirst(use_skip_list.count).lowercased() == "true") ? true : false
         } else if arg.starts(with: help_path) {
             return .failure(.help(validCommands))
         } else {
@@ -104,7 +120,12 @@ private func parseArgs() -> Result<UpdateRequest, ParseError> {
     } else if locPath.count == 0 {
         return .failure(.requiredArg(String(loc_path.dropFirst(2).dropLast(1))))
     } else {
-        let request = UpdateRequest(sourcePath: sourcePath, locPath: locPath, backupPath: backupPath)  
+        let request = UpdateRequest(
+            sourcePath: sourcePath, 
+            locPath: locPath, 
+            backupPath: backupPath, 
+            skipListPath: skipListPath,
+            useSkipList: useSkipList)  
         return .success(request)      
     }
 }
@@ -312,10 +333,37 @@ private func tokenize(source: String) -> [String:String] {
     // Tokenize
     for rawString in rawStrings {
         let split = rawString.components(separatedBy: "=").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-        result[split[0]] = split[1]
+        let key = split[0].replacingOccurrences(of: "\"", with: "")
+        let value = split[1].replacingOccurrences(of: "\"", with: "")
+        result[key] = value
     }
 
     return result
+}
+
+// MARK: - Skip Strings
+private func skipStrings(for skipListPath: String?, useSkipList: Bool) -> Set<String> {
+
+    let skipPath = (skipListPath ?? "\(FileManager.default.currentDirectoryPath)/\(defaultSkipListPath)")
+    let fileUrl = URL(fileURLWithPath: skipPath)
+
+    guard useSkipList else {
+        log("Skipping SkipList")
+        return Set<String>(defaultSkipList)
+    }
+
+    guard FileManager.default.fileExists(atPath: fileUrl.path), 
+        let sourceString = read(from: fileUrl, encoding: .utf8) else {
+            log("SkipList not found at: \(fileUrl.path)")
+            return Set<String>(defaultSkipList)
+    }
+
+    var skipStrings = sourceString.components(separatedBy: .newlines)
+            .map( { $0.trimmingCharacters(in: .whitespacesAndNewlines)} ) 
+  
+    skipStrings.append(contentsOf: defaultSkipList)
+
+    return Set<String>(skipStrings)
 }
 
 // MARK: - Checks for edit line in file so we know if we need to append it
@@ -422,23 +470,33 @@ private func updateStrings(request: UpdateRequest) {
         return
     }
 
+    // Get skip list entries
+    let skipSet = skipStrings(for: request.skipListPath, useSkipList: request.useSkipList)
+
     // Analyze loc files for missing keys and update
     for locFileUrl in locUrls {
-        addMissing(keys: stringKeys, to: locFileUrl)
+        addMissing(keys: stringKeys, to: locFileUrl, skip: skipSet)
     }
 
     // Clean Up Working Directories
     cleanUp(with: request.backupPath)
 }
 
-private func addMissing(keys: [String], to locFileUrl: URL) {
+private func addMissing(keys: [String], to locFileUrl: URL, skip: Set<String>) {
 
     if let fileContents = read(from: locFileUrl, encoding: .utf8) {
         let needsEditLine = !containsEditLine(source: fileContents)
         let existingKeys = tokenize(source: fileContents).map { $0.key }
         var newKeyset = Set<String>(keys)
-        
+
+        // Remove any keys from found keys that
+        // are already in the loc file        
         for key in existingKeys {
+            newKeyset.remove(key)
+        }
+
+        // Remove skip keys
+        for key in skip {
             newKeyset.remove(key)
         }
 
@@ -468,7 +526,8 @@ private func addMissing(keys: [String], to locFileUrl: URL) {
 
                 for key in sortedKeys {
                     // Modify
-                    let newEntry = "\(key) = \(key);"
+                    let quote = "\""
+                    let newEntry = "\(quote)\(key)\(quote) = \(quote)\(key)\(quote);"
                     try newEntry.appendLine(to: locFileUrl)
                 }
             } catch {
