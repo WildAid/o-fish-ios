@@ -19,7 +19,7 @@ struct InputMultilineFieldCaption: View {
 
     var textInputHeight: CGFloat = 100
 
-    var inputChanged: ((String) -> Void)?
+    var inputChanged: (() -> Void)?
 
     var body: some View {
         VStack(spacing: .zero) {
@@ -44,7 +44,7 @@ struct InputMultilineFieldCaption: View {
             self.text
         }, set: {
             self.text = $0
-            self.inputChanged?($0)
+            self.inputChanged?()
         })
     }
 }

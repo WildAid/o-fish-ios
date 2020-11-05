@@ -9,7 +9,9 @@ import SwiftUI
 
 struct InputField: View {
     @State var title = "Title"
-    @Binding private(set) var text: String
+    @Binding var text: String
+
+    let tag: Int
 
     var showingSecureField = false
     var showingWarning = false
@@ -18,8 +20,9 @@ struct InputField: View {
     var separatorColor = Color.inactiveBar
     var warningColor = Color.spanishOrange
 
-    var inputChanged: ((String) -> Void)?
+    var inputChanged: (() -> Void)?
 
+    var autocapitalizationType: UITextAutocapitalizationType = .sentences
     var keyboardType: UIKeyboardType = .alphabet
 
     private enum Dimensions {
@@ -33,17 +36,13 @@ struct InputField: View {
             CaptionLabel(title: title, color: showingWarning ? warningColor : captionColor)
 
             HStack(spacing: Dimensions.noSpacing) {
-                if !showingSecureField {
-                    TextField("", text: textBinding)
-                        .padding(.bottom, Dimensions.bottomPadding)
-                        .foregroundColor(.text)
-                        .font(.body)
-                } else {
-                    SecureField("", text: textBinding)
-                        .padding(.bottom, Dimensions.bottomPadding)
-                        .foregroundColor(.text)
-                        .font(.body)
-                }
+                FocusableTextFieldAdapter(
+                    tag: tag,
+                    text: textBinding,
+                    isSecure: showingSecureField,
+                    keyboardType: keyboardType,
+                    autocapitalizationType: autocapitalizationType)
+                    .padding(.bottom, Dimensions.bottomPadding)
 
                 if showingWarning {
                     ExclamationIconView()
@@ -60,7 +59,7 @@ struct InputField: View {
             self.text
         }, set: {
             self.text = $0
-            self.inputChanged?($0)
+            self.inputChanged?()
         })
     }
 }
@@ -68,9 +67,9 @@ struct InputField: View {
 struct InputField_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            InputField(title: "Input", text: .constant("Data"))
-            InputField(title: "Input secure", text: .constant("Data"), showingSecureField: true)
-            InputField(title: "Input with warning", text: .constant("Data"), showingWarning: true)
+            InputField(title: "Input", text: .constant("Data"), tag: 0)
+            InputField(title: "Input secure", text: .constant("Data"), tag: 1, showingSecureField: true)
+            InputField(title: "Input with warning", text: .constant("Data"), tag: 2, showingWarning: true)
         }
     }
 }

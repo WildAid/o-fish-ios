@@ -61,9 +61,15 @@ struct EMSInputView: View {
                     ChooseEMSView(selectedItem: self.emsBinding)
             }
             if ems.emsType == "Other" {
-                InputField(title: "Description", text: emsDescriptionBinding, showingWarning: showingDescriptionWarning)
+                InputField(title: "Description",
+                           text: emsDescriptionBinding,
+                           tag: 0,
+                           showingWarning: showingDescriptionWarning)
             }
-            InputField(title: "Registry Number", text: registryNumberBinding, showingWarning: showingRegistryNumberWarning)
+            InputField(title: "Registry Number",
+                       text: registryNumberBinding,
+                       tag: 1,
+                       showingWarning: showingRegistryNumberWarning)
             AttachmentsView(attachments: ems.attachments)
             SectionButton(title: "Remove EMS",
                           systemImageName: "minus",
