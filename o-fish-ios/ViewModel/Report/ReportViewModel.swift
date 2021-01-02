@@ -67,12 +67,8 @@ class ReportViewModel: ObservableObject, Identifiable {
         violationsWithCaptain.forEach { $0.crewMember = newCaptain }
     }
 
-    func save() {
+    func save(_ realm: DataProvider) {
         let isNewReport = (report == nil)
-        guard let realm = app.currentUser()?.agencyRealm() else {
-            print("Realm not available")
-            return
-        }
         guard let report = isNewReport ? Report(id: id) : report else {
             print("report not set")
             return
@@ -108,11 +104,7 @@ class ReportViewModel: ObservableObject, Identifiable {
         }
     }
 
-    func discard() {
-        guard let realm = app.currentUser()?.agencyRealm() else {
-            print("Realm not available")
-            return
-        }
+    func discard(_ realm: DataProvider) {
         PhotoViewModel.delete(reportID: id, realm: realm)
         guard let report = report else {
             print("Deleting, but report not set")
