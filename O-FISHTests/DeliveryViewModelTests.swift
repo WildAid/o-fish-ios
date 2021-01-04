@@ -73,7 +73,7 @@ class DeliveryViewModelTests: XCTestCase {
         let deliveryObj = sut?.save()
         
         //then
-        XCTAssertNotNil(deliveryObj)
+        XCTAssertNil(deliveryObj)
     }
     
 }

@@ -110,7 +110,12 @@ struct ReportNavigationRootView: View {
 
     private func discardReport() {
         let isDraft = report.draft
-        report.discard()
+        if let realm = app.currentUser()?.agencyRealm() {
+            self.report.discard(realm)
+        } else {
+            print("Realm not available")
+        }
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.showCanceledAlert(isDraft: isDraft)
         }
@@ -118,7 +123,7 @@ struct ReportNavigationRootView: View {
 
     private func saveAlertClicked() {
         report.draft = true
-        report.save()
+        self.save()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.showSubmittedAlert(isDraft: true)
         }
@@ -133,12 +138,19 @@ struct ReportNavigationRootView: View {
             report.captain = captain
             report.crew = [CrewMemberViewModel]()
         }
-        report.save()
+        self.save()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.showSubmittedAlert(isDraft: wasDraft)
         }
     }
 
+    private func save() {
+        if let realm = app.currentUser()?.agencyRealm() {
+            self.report.save(realm)
+        } else {
+            print("Realm not available")
+        }
+    }
 }
 
 struct ReportNavigationRootView_Previews: PreviewProvider {

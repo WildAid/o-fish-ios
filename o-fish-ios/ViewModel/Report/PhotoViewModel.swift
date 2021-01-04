@@ -100,7 +100,7 @@ class PhotoViewModel: ObservableObject, Identifiable {
         }
     }
 
-    static func delete(reportID: String, realm: Realm ) {
+    static func delete(reportID: String, realm: DataProvider) {
         do {
             let predicate = NSPredicate(format: "referencingReportID == %@", reportID)
             try realm.write {

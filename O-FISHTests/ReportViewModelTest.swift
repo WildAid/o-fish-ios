@@ -26,9 +26,37 @@ class ReportViewModelTest: XCTestCase {
         guard let sut = sut else {
             return
         }
-        sut.save()
+
+        var writeCall = 0
+        let addExpectation = self.expectation(description: "DataProvider.add")
+        let deleteExpectation = self.expectation(description: "DataProvider.delete")
+        let writeExpectation = self.expectation(description: "DataProvider.write")
+        writeExpectation.expectedFulfillmentCount = 3
+        let dataProvider = MockDataProvider(
+            onAdd: { object, update in
+                addExpectation.fulfill()
+                XCTAssert(object is Report)
+                XCTAssertEqual(update, .error)
+            },
+            onDelete: { object in
+                deleteExpectation.fulfill()
+                XCTAssert(object is Report)
+            },
+            onWrite: { tokens in
+                writeCall += 1
+                writeExpectation.fulfill()
+                XCTAssertEqual(tokens, [])
+                if writeCall == 2 {
+                    throw TestError()
+                }
+            })
+        sut.save(dataProvider)
         XCTAssertNotNil(sut.report)
-        sut.discard()
+        sut.discard(dataProvider)
         XCTAssertNil(sut.report)
+        self.waitForExpectations(timeout: 0.1)
+    }
+
+    private struct TestError: Error {
     }
 }

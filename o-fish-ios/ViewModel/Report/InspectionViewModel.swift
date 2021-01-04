@@ -35,7 +35,7 @@ class InspectionViewModel: ObservableObject, Identifiable {
         }
     }
 
-    func save(_ realm: Realm) -> Inspection? {
+    func save(_ realm: DataProvider) -> Inspection? {
         if inspection == nil {
             inspection = Inspection()
         }
