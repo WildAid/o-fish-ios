@@ -7,7 +7,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     algoliasearch (1.27.3)
       httpclient (~> 2.8, >= 2.8.3)
@@ -238,7 +238,7 @@ PLATFORMS
 
 DEPENDENCIES
   cocoapods (= 1.9.3)
-  fastlane (=2.149.1)
+  fastlane (= 2.149.1)
 
 BUNDLED WITH
    2.1.4
