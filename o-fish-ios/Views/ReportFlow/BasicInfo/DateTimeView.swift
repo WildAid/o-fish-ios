@@ -19,18 +19,18 @@ struct DateTimeView: View {
             ButtonField(title: "Date",
                         text: date.justDate(),
                         fieldButtonClicked: {
-                            self.dateFieldClicked(type: .onlyDate)
+                            self.dateFieldClicked(type: .date)
             })
 
             ButtonField(title: "Time",
                         text: date.justTime(),
                         fieldButtonClicked: {
-                            self.dateFieldClicked(type: .hourAndMinute)
+                            self.dateFieldClicked(type: .time)
             })
         }
     }
 
-    private func dateFieldClicked(type: DatePickerWithButton.PickerType) {
+    private func dateFieldClicked(type: UIDatePicker.Mode) {
         // TODO: for some reason this works only from action and not from viewModifier
         // TODO: review when viewModifier actions will be available
 
@@ -41,25 +41,24 @@ struct DateTimeView: View {
             PopoverManager.shared.hidePopover(id: popoverId)
         }
 
-        PopoverManager.shared.showPopover(id: popoverId) {
-            DatePickerWithButton(selectButtonClicked: datePickerSelectClicked, type: type)
-                .background(Color.white)
-        }
+        PopoverManager.shared.showPopover(id: popoverId, content: {
+            DatePickerView(date: date, mode: type, completion: datePickerSelectClicked)
+        }, withButton: false)
     }
 
-    private func newDate(from date: Date, type: DatePickerWithButton.PickerType) {
+    private func newDate(from date: Date, type: UIDatePicker.Mode) {
         var dateComponentsOutDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute ], from: self.date)
         let dateComponentsDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute ], from: date)
 
         switch type {
-        case .onlyDate:
+        case .date:
             dateComponentsOutDate.year = dateComponentsDate.year
             dateComponentsOutDate.month = dateComponentsDate.month
             dateComponentsOutDate.day = dateComponentsDate.day
-        case .hourAndMinute:
+        case .time:
             dateComponentsOutDate.hour = dateComponentsDate.hour
             dateComponentsOutDate.minute = dateComponentsDate.minute
-        case .fullDate:
+        default:
             return
         }
 
