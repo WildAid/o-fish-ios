@@ -287,6 +287,7 @@
 		BCE48F10100DC3B1E448EFA5 /* CrewMemberShortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48456167E25D77C838694 /* CrewMemberShortView.swift */; };
 		BCE48F5083615CEB327EF9BD /* PhotoQueryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489E93BCA8E7B291D6830 /* PhotoQueryManager.swift */; };
 		BCE48F9EA32E0A9B405E6F04 /* SectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48AB036DA398FBFF3E3B4 /* SectionButton.swift */; };
+		F2ADF94227E9BFE2003D1245 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */; };
 		FBE107AE247FFF87001DA29C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBE107B0247FFF87001DA29C /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -595,6 +596,7 @@
 		BCE48FCB06AC5B25AF1BCA74 /* CatchOnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchOnBoardView.swift; sourceTree = "<group>"; };
 		BCE48FD1BBBF69F49C6EC765 /* NavigationBarViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModifier.swift; sourceTree = "<group>"; };
 		BCE48FFF9C49070CE13E7B27 /* PatrolBoatUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatrolBoatUserView.swift; sourceTree = "<group>"; };
+		F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		FBC9242D2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBC9242E2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBE107AF247FFF87001DA29C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1303,6 +1305,7 @@
 				BCE48555D654177BE1259C7B /* TextPickerView.swift */,
 				BCE48B04A5E3CDA8E4879663 /* Country */,
 				BCE48EF7F28532C22179C4E0 /* Violation */,
+				F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */,
 			);
 			path = Picker;
 			sourceTree = "<group>";
@@ -1618,6 +1621,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30BDE7822472D9CB0058E401 /* PreboardingLoadedStateView.swift in Sources */,
+				F2ADF94227E9BFE2003D1245 /* DatePickerController.swift in Sources */,
 				490C0DA523F6B15800283307 /* AppDelegate.swift in Sources */,
 				49063BCA240FEAAF00C54231 /* DisplayField.swift in Sources */,
 				493CDFE624044AE700516048 /* LocationCoordsView.swift in Sources */,
@@ -2077,6 +2081,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = PH747F3726;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = "o-fish-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2101,6 +2106,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = PH747F3726;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = "o-fish-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
