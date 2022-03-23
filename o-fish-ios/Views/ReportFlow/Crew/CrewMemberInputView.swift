@@ -62,13 +62,15 @@ struct CrewMemberInputView: View {
                        text: self.$crewMember.name,
                        tag: 0,
                        showingWarning: showingNameWarning,
-                       inputChanged: inputChanged)
+                       inputChanged: inputChanged,
+                       autocorrectionType: .no)
 
             InputField(title: "License Number",
                        text: self.$crewMember.license,
                        tag: 1,
                        showingWarning: showingNumberWarning,
-                       inputChanged: inputChanged)
+                       inputChanged: inputChanged,
+                       autocorrectionType: .no)
             AttachmentsView(attachments: crewMember.attachments)
             if !isCaptain {
                 SectionButton(title: NSLocalizedString("Remove", comment: "") + " \(crewMember.name)",

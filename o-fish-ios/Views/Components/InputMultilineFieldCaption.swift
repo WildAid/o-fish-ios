@@ -21,12 +21,15 @@ struct InputMultilineFieldCaption: View {
 
     var inputChanged: (() -> Void)?
 
+    var autocorrectionType: UITextAutocorrectionType = .default
+
     var body: some View {
         VStack(spacing: .zero) {
             CaptionLabel(title: title, color: showingWarning ? warningColor : captionColor)
 
             HStack(spacing: .zero) {
-                MultilineTextView(text: textBinding)
+                MultilineTextView(text: textBinding,
+                                  autocorrectionType: autocorrectionType)
                     .frame(minHeight: textInputHeight)
 
                 if showingWarning {
