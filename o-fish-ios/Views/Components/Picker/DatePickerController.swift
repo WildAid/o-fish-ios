@@ -91,19 +91,24 @@ struct DatePickerView: UIViewRepresentable {
     }
 
     private func configureDatePicker(for vc: DatePickerController, context: Context) {
-        if mode == .time {
-            vc.timePicker.date = date
+        vc.timePicker.date = date
+
+        switch mode {
+        case .time:
             vc.timePicker.isHidden = false
             vc.timePicker.addTarget(context.coordinator,
                                            action: #selector(Coordinator.timePickerHandler),
                                            for: .valueChanged)
-
-        } else {
-            vc.datePicker.date = date
-            vc.datePicker.datePickerMode = mode
+        case .date:
             vc.datePicker.isHidden = false
             vc.datePicker.addTarget(context.coordinator,
-                                    action: #selector(Coordinator.datePickerHandler),
+                                           action: #selector(Coordinator.timePickerHandler),
+                                           for: .valueChanged)
+        default:
+            vc.datePicker.isHidden = false
+            vc.datePicker.datePickerMode = mode
+            vc.datePicker.addTarget(context.coordinator,
+                                    action: #selector(Coordinator.dateAndTimePickerHandler),
                                     for: .valueChanged)
         }
     }
@@ -130,6 +135,11 @@ extension DatePickerView {
 
         @objc
         func timePickerHandler(_ sender: UIDatePicker) {
+            date = sender.date
+        }
+
+        @objc
+        func dateAndTimePickerHandler(_ sender: UIDatePicker) {
             date = sender.date
         }
 

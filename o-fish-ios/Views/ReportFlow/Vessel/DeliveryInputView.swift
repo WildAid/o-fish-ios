@@ -116,10 +116,11 @@ struct DeliveryInputView: View {
             self.checkAllInput()
             PopoverManager.shared.hidePopover(id: popoverId)
         }
-        PopoverManager.shared.showPopover(id: popoverId) {
-            DatePickerWithButton(selectButtonClicked: datePickerSelectClicked)
-                .background(Color.white)
-        }
+        PopoverManager.shared.showPopover(id: popoverId, content: {
+            DatePickerView(date: delivery.date ?? Date(),
+                           mode: .dateAndTime,
+                           completion: datePickerSelectClicked)
+        }, withButton: false)
     }
 
     private func showBusinessPicker() {
@@ -128,7 +129,7 @@ struct DeliveryInputView: View {
     }
 
     private var deliveryDate: String {
-        (delivery.date as Date?)?.justLongDate() ?? ""
+        (delivery.date as Date?)?.fullDateTime() ?? ""
     }
 
     private func checkAllInput() {
