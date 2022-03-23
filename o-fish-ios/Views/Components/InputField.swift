@@ -23,6 +23,7 @@ struct InputField: View {
     var inputChanged: (() -> Void)?
 
     var autocapitalizationType: UITextAutocapitalizationType = .sentences
+    var autocorrectionType: UITextAutocorrectionType = .default
     var keyboardType: UIKeyboardType = .alphabet
 
     private enum Dimensions {
@@ -41,8 +42,9 @@ struct InputField: View {
                     text: textBinding,
                     isSecure: showingSecureField,
                     keyboardType: keyboardType,
-                    autocapitalizationType: autocapitalizationType)
-                    .padding(.bottom, Dimensions.bottomPadding)
+                    autocapitalizationType: autocapitalizationType,
+                    autocorrectionType: autocorrectionType)
+                        .padding(.bottom, Dimensions.bottomPadding)
 
                 if showingWarning {
                     ExclamationIconView()
@@ -50,7 +52,7 @@ struct InputField: View {
             }
 
             Divider()
-            .background(showingWarning ? warningColor : separatorColor)
+                .background(showingWarning ? warningColor : separatorColor)
         }
     }
 

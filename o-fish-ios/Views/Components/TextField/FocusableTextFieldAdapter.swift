@@ -18,6 +18,7 @@ struct FocusableTextFieldAdapter: UIViewRepresentable {
     let isSecure: Bool
     let keyboardType: UIKeyboardType
     let autocapitalizationType: UITextAutocapitalizationType
+    let autocorrectionType: UITextAutocorrectionType
 
     func makeUIView(context: UIViewRepresentableContext<FocusableTextFieldAdapter>) -> UITextField {
         let textField = UITextField()
@@ -26,6 +27,7 @@ struct FocusableTextFieldAdapter: UIViewRepresentable {
         textField.delegate = context.coordinator
         textField.isSecureTextEntry = isSecure
         textField.autocapitalizationType = autocapitalizationType
+        textField.autocorrectionType = autocorrectionType
         textField.keyboardType = keyboardType
 
         textField.returnKeyType = .next

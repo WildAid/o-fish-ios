@@ -86,11 +86,13 @@ struct DeliveryInputView: View {
                            text: $delivery.business,
                            tag: 0,
                            showingWarning: showingBusinessWarning,
-                           inputChanged: inputChanged)
+                           inputChanged: inputChanged,
+                           autocorrectionType: .no)
                 InputMultilineFieldCaption(title: "Location",
                                            text: $delivery.location,
                                            showingWarning: showingLocationWarning,
-                                           inputChanged: inputChanged)
+                                           inputChanged: inputChanged,
+                                           autocorrectionType: .no)
             }
             AttachmentsView(attachments: delivery.attachments)
         }

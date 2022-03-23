@@ -45,6 +45,7 @@ struct LoginView: View {
                                            text: self.$username,
                                            tag: 0,
                                            autocapitalizationType: .none,
+                                           autocorrectionType: .no,
                                            keyboardType: .emailAddress)
 
                                 Button(action: self.getStoredCredentials) {

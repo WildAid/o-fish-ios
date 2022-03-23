@@ -11,6 +11,8 @@ struct MultilineTextView: UIViewRepresentable {
 
     @Binding var text: String
 
+    var autocorrectionType: UITextAutocorrectionType = .default
+
     func makeUIView(context: Context) -> UITextView {
         let view = UITextView()
         view.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
@@ -18,6 +20,7 @@ struct MultilineTextView: UIViewRepresentable {
         view.isEditable = true
         view.isUserInteractionEnabled = true
         view.delegate = context.coordinator
+        view.autocorrectionType = autocorrectionType
         return view
     }
 
@@ -53,6 +56,7 @@ struct MultilineTextView_Previews: PreviewProvider {
                                             It's a long text
                                             that should show
                                             on the two lines
-                                            """))
+                                            """),
+                          autocorrectionType: .no)
     }
 }

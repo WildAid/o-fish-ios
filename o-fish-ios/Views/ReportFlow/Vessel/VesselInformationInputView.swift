@@ -55,7 +55,8 @@ struct VesselInformationInputView: View {
                        text: $vessel.name,
                        tag: 0,
                        showingWarning: showingNameWarning,
-                       inputChanged: inputChanged)
+                       inputChanged: inputChanged,
+                       autocorrectionType: .no)
 
             InputField(title: "Permit Number", text:
                         Binding<String>(
@@ -65,12 +66,14 @@ struct VesselInformationInputView: View {
                        tag: 1,
                        showingWarning: showingPermitNumberWarning,
                        inputChanged: inputChanged,
-                       autocapitalizationType: .allCharacters)
+                       autocapitalizationType: .allCharacters,
+                       autocorrectionType: .no)
             InputField(title: "Home Port",
                        text: $vessel.homePort,
                        tag: 2,
                        showingWarning: showingHomePortWarning,
-                       inputChanged: inputChanged)
+                       inputChanged: inputChanged,
+                       autocorrectionType: .no)
             Group {
                 if hasNationality {
                     VStack(spacing: Dimensions.noSpacing) {
