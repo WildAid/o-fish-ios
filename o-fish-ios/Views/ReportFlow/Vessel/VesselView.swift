@@ -50,7 +50,7 @@ struct VesselView: View {
     }
 
     var body: some View {
-        KeyboardControllingScrollView(enableHideGesture: false) {
+        KeyboardControllingScrollView {
             Group {
                 VStack(spacing: Dimensions.itemsSpacing) {
                     VesselInformationView(

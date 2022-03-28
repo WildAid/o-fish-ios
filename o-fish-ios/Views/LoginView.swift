@@ -35,7 +35,7 @@ struct LoginView: View {
                 VStack(spacing: .zero) {
                     Color.inactiveBar.frame(height: 0.5)
 
-                    KeyboardControllingScrollView(enableHideGesture: false) {
+                    KeyboardControllingScrollView {
                         VStack(spacing: Dimensions.padding) {
                             Image("ofish-blue")
                                 .padding(.top, Dimensions.topPadding)
