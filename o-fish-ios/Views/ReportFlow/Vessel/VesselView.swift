@@ -92,6 +92,7 @@ struct VesselView: View {
                 }
             }
         }
+            .background(Color.oBackground)
             .onAppear(perform: self.onAppear)
     }
 

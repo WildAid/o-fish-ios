@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TextLabel: View {
     var title: String
-    var color: Color = .text
+    var color: Color = .oText
 
     var body: some View {
         HStack {
@@ -25,7 +25,6 @@ struct TextLabel: View {
 
 struct TextLabel_Previews: PreviewProvider {
     static var previews: some View {
-        TextLabel(title: "Title",
-                  color: .red)
+        TextLabel(title: "Title")
     }
 }

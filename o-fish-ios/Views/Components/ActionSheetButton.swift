@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActionSheetButton: View {
     var title = ""
-    var color = Color.blue
+    var color = Color.oBlue
     var radius: CGFloat = 15.0
     var action: () -> Void
 
@@ -26,7 +26,7 @@ struct ActionSheetButton: View {
                 .padding(Dimensions.buttonPadding)
             Spacer()
         }
-            .background(Color.white)
+            .background(Color.oAltBackground)
             .cornerRadius(radius)
             .padding(.horizontal, Dimensions.padding)
             .font(.title3)

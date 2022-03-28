@@ -14,7 +14,7 @@ class DatePickerController: UIViewController {
         let picker = UIDatePicker()
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .inline
-        picker.backgroundColor = .white
+        picker.backgroundColor = UIColor(Color.oBackground)
         picker.layer.cornerRadius = 15.0
         picker.clipsToBounds = true
         picker.isHidden = true
@@ -26,7 +26,7 @@ class DatePickerController: UIViewController {
         let picker = UIDatePicker()
         picker.datePickerMode = .time
         picker.preferredDatePickerStyle = .wheels
-        picker.backgroundColor = .white
+        picker.backgroundColor = UIColor(Color.oBackground)
         picker.layer.cornerRadius = 15.0
         picker.clipsToBounds = true
         picker.isHidden = true

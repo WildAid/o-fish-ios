@@ -27,7 +27,7 @@ struct CrewMemberShortView: View {
             VStack(spacing: .zero) {
                 TextLabel(title: crewMember.name)
                 if showingLicenseNumber {
-                    CaptionLabel(title: "License Number \( crewMember.license)", color: .text, font: .footnote)
+                    CaptionLabel(title: "License Number \( crewMember.license)", color: .oText, font: .footnote)
                 }
             }
 

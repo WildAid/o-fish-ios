@@ -73,7 +73,7 @@ struct ChooseCrewMemberView: View {
 
                     VStack(spacing: .zero) {
                         Button(action: { self.showingCreateCrewMember = true }) {
-                            IconLabel(imagePath: "plus", title: "Add Crew Member", color: .black, horizontalPadding: .zero)
+                            IconLabel(imagePath: "plus", title: "Add Crew Member", color: .oText, horizontalPadding: .zero)
                         }
                             .padding(.vertical, Dimensions.spacing)
                         Divider()

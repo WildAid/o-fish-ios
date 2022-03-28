@@ -51,8 +51,8 @@ struct ModalView: View {
                         }
                     }
                 }
+                .background(Color.oAltBackground)
             }
-                .background(Color.white)
                 .cornerRadius(Dimensions.radius)
                 .padding(.horizontal, Dimensions.padding)
 

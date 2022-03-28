@@ -13,13 +13,22 @@ struct TrafficLightButton: View {
 
     var targetColor: SafetyLevelViewModel.LevelColor
     @Binding var selectedColor: SafetyLevelViewModel.LevelColor
+    @Environment(\.colorScheme) var colorScheme
 
     private var colors: ButtonColors {
         var colors: ButtonColors
-        switch targetColor {
-        case .green: colors = ButtonColors(.white, .darkSpringGreen, .darkSpringGreen, .lilyWhite)
-        case .amber: colors = ButtonColors(.rowAmber, .moonYellow, .rowAmber, .oasis)
-        case .red: colors = ButtonColors(.white, .persianRed, .darkRed, .vanillaIce)
+        if colorScheme == .dark {
+            switch targetColor {
+            case .green: colors = ButtonColors(.black, .lightSpringGreen, .lightSpringGreen, .clear)
+            case .amber: colors = ButtonColors(.rowAmber, .moonLightYellow, .moonYellow, .clear)
+            case .red: colors = ButtonColors(.black, .persianLightRed, .persianRed, .clear)
+            }
+        } else {
+            switch targetColor {
+            case .green: colors = ButtonColors(.white, .darkSpringGreen, .darkSpringGreen, .lilyWhite)
+            case .amber: colors = ButtonColors(.rowAmber, .moonYellow, .rowAmber, .oasis)
+            case .red: colors = ButtonColors(.white, .persianRed, .darkRed, .vanillaIce)
+            }
         }
 
         return colors
@@ -32,7 +41,7 @@ struct TrafficLightButton: View {
     }
 
     var body: some View {
-        Button(LocalizedStringKey(targetColor.rawValue)) {
+        Button(LocalizedStringKey(targetColor.rawValue.uppercased())) {
             self.selectedColor = self.targetColor
         }
         .buttonStyle(PlainButtonStyle())
@@ -45,6 +54,10 @@ struct TrafficLightButton: View {
         .foregroundColor(self.foregroundColor)
         .background(self.backgroundColor)
         .cornerRadius(Configuration.radius)
+        .overlay(
+            RoundedRectangle(cornerRadius: Configuration.radius)
+                .stroke(borderColor, lineWidth: 1)
+        )
     }
 
     private var currentlySelected: Bool {
@@ -59,9 +72,14 @@ struct TrafficLightButton: View {
         currentlySelected ? colors.activeBackgroundColor : colors.inActiveBackgroundColor.opacity(Configuration.opacityFactor)
     }
 
+    private var borderColor: Color {
+        !currentlySelected && colorScheme == .dark ? foregroundColor : .clear
+    }
+
     private var font: Font {
         currentlySelected ? Font.callout.weight(.semibold) : Font.callout
     }
+
 }
 
 struct TrafficLightButton_Previews: PreviewProvider {
@@ -82,6 +100,7 @@ struct TrafficLightButton_Previews: PreviewProvider {
                 Divider()
                 TrafficLightButton(targetColor: .red, selectedColor: .constant(.green))
             }
+            .environment(\.colorScheme, .dark)
         }
         .previewLayout(.fixed(width: 400.0, height: 200.0))
     }
