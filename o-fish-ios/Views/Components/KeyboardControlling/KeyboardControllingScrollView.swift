@@ -13,7 +13,7 @@ struct KeyboardControllingScrollView<Content: View>: View {
     var enableHideGesture: Bool
     private let content: () -> Content
 
-    init(enableHideGesture: Bool = true, _ content: @escaping () -> Content, controller: KeyboardController = .sharedController) {
+    init(enableHideGesture: Bool = false, _ content: @escaping () -> Content, controller: KeyboardController = .sharedController) {
         self.enableHideGesture = enableHideGesture
         self.content = content
         self.controller = controller
