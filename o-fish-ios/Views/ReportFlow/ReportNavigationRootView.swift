@@ -10,6 +10,7 @@ import SwiftUI
 struct ReportNavigationRootView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var report: ReportViewModel
+    @ObservedObject var userSettings = UserSettings.shared
     @Binding var rootIsActive: Bool
 
     private var prefilledAvailable: Bool
@@ -49,6 +50,7 @@ struct ReportNavigationRootView: View {
                     Text("Save")
                 })
             .navigationBarTitle(report.draft ? "Draft Boarding" : "New Boarding", displayMode: .inline)
+            .preferredColorScheme(userSettings.forceDarkMode ? .dark : .light)
             .showingAlert(alertItem: $showingAlertItem)
             .showingActionSheet(actionSheetItem: $showingActionSheetItem)
     }

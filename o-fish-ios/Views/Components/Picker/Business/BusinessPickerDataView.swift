@@ -28,10 +28,10 @@ struct BusinessPickerDataView: View {
                 VStack(alignment: .leading, spacing: Dimensions.spacing) {
                     Text(item.business)
                         .font(.callout)
-                        .foregroundColor(.text)
+                        .foregroundColor(.oText)
                     Text(item.location)
                         .font(.caption1)
-                        .foregroundColor(.text)
+                        .foregroundColor(.oText)
                 }
 
                 Spacer()

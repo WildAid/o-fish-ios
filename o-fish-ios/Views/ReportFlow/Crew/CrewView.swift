@@ -82,6 +82,7 @@ struct CrewView: View {
             }
             .showingAlert(alertItem: self.$showingAlertItem)
         }
+        .background(Color.oBackground)
         .onAppear(perform: self.onAppear)
     }
 

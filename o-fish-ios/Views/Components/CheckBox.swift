@@ -22,11 +22,11 @@ struct CheckBox: View {
             HStack(spacing: Dimensions.spacing) {
                 Image(systemName: self.value ? "checkmark.square" : "square")
                     .font(.body)
-                    .foregroundColor(.text)
+                    .foregroundColor(.oText)
 
                 Text(LocalizedStringKey(title))
                     .lineLimit(1)
-                    .foregroundColor(.text)
+                    .foregroundColor(.oText)
                     .font(.body)
             }
         }

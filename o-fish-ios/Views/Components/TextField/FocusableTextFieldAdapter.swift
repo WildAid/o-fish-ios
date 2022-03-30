@@ -31,7 +31,7 @@ struct FocusableTextFieldAdapter: UIViewRepresentable {
         textField.keyboardType = keyboardType
 
         textField.returnKeyType = .next
-        textField.textColor = UIColor(Color.text)
+        textField.textColor = UIColor(Color.oText)
         textField.font = UIFont.preferredFont(forTextStyle: .body)
 
         return textField

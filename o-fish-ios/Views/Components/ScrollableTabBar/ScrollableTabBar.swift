@@ -42,7 +42,7 @@ struct ScrollableTabBar: View {
 
     var itemClicked: ((TabBarItem) -> Void)?
 
-    var tintColor = Color.main
+    var tintColor = Color.oBlue
 
     let noSpacing: CGFloat = 0
 
@@ -59,6 +59,7 @@ struct ScrollableTabBar: View {
                 Spacer(minLength: noSpacing)
             }
         }
+        .background(Color.oBackground)
     }
 
     private func isSelected(item: TabBarItem) -> Bool {

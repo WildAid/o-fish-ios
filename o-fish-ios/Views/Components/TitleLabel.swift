@@ -8,14 +8,12 @@ import SwiftUI
 
 struct TitleLabel: View {
     var title = "Title"
-    var color: Color = .black
 
     var body: some View {
         HStack {
             Text(LocalizedStringKey(title))
                 .lineLimit(3)
                 .multilineTextAlignment(.leading)
-                .foregroundColor(color)
                 .font(Font.title3.weight(.semibold))
             Spacer()
         }

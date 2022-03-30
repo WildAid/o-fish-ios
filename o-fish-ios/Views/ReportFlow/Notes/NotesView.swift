@@ -42,6 +42,7 @@ struct NotesView: View {
                 Spacer()
             }
         }
+            .background(Color.oBackground)
             .onAppear(perform: { self.allFieldsComplete = true })
     }
 

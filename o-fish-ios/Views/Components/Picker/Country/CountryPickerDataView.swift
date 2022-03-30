@@ -26,7 +26,7 @@ struct CountryPickerDataView: View {
 
             Text(item.title)
                 .lineLimit(2)
-                .foregroundColor(.text)
+                .foregroundColor(.oText)
                 .font(.body)
             Spacer()
         }

@@ -30,7 +30,7 @@ struct VesselItemView: View {
                 VStack(spacing: .zero) {
                     HStack {
                         Text(report.vessel.name)
-                            .foregroundColor(.text)
+                            .foregroundColor(.oText)
                             .font(.body)
                         Spacer()
                         StatusSymbolView(risk: report.inspection.summary.safetyLevel.level)

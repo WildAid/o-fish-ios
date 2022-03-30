@@ -46,11 +46,12 @@ struct BasicInfoView: View {
                         .frame(minHeight: Dimensions.minHeight)
                         .padding(.bottom, Dimensions.bottomPadding)
                 }
-                    .background(Color.white)
+                    .background(Color.oSelectionBackground)
                     .compositingGroup()
                     .defaultShadow()
             }
         }
+            .background(Color.oBackground)
             .onAppear(perform: { self.allFieldsComplete = true })
     }
 }
