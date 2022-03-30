@@ -31,7 +31,7 @@ struct ButtonField: View {
                 CaptionLabel(title: title, color: showingWarning ? warningColor : captionColor)
 
                 HStack(spacing: Dimensions.noSpacing) {
-                    TextLabel(title: text)
+                    TextLabel(title: text, color: .oText)
                         .frame(minHeight: Dimensions.textMinHeight)
                         .padding(.bottom, Dimensions.bottomPadding)
                         .font(.body)

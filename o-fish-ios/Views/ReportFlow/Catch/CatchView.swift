@@ -71,7 +71,8 @@ struct CatchView: View {
                 Spacer()
             }
         }
-            .onAppear(perform: onAppear)
+        .background(Color.oBackground)
+        .onAppear(perform: onAppear)
     }
 
     private func informationCompleteBinding(_ catchModel: CatchViewModel) -> Binding<Bool> {

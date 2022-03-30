@@ -13,7 +13,7 @@ struct SectionButton: View {
 
     var callingToAction = true
 
-    var colorPrimary: Color = .main
+    var colorPrimary: Color = .oBlue
     var colorSecondary: Color = .removeAction
 
     let action: () -> Void

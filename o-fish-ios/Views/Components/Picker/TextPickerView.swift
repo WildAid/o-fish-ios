@@ -34,7 +34,7 @@ struct TextPickerView: View {
             HStack {
                 Text(LocalizedStringKey(item))
                     .lineLimit(2)
-                    .foregroundColor(.text)
+                    .foregroundColor(.oText)
                     .font(.body)
                 Spacer()
             }

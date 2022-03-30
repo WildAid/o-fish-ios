@@ -18,7 +18,7 @@ struct LoadingIndicatorView: View {
         }
             .frame(width: 300, height: 200)
             .background(Color.white)
-            .foregroundColor(Color.text)
+            .foregroundColor(Color.oText)
             .cornerRadius(20)
     }
 }

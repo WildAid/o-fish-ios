@@ -30,6 +30,7 @@ enum TopTabBarItems: String {
 }
 
 // TODO fixme refactor in a reusable way
+// swiftlint:disable:next type_body_length
 struct TopTabBarContainerView: View {
     @ObservedObject private var report: ReportViewModel
     @State private var prefilledVesselAvailable: Bool
@@ -98,88 +99,91 @@ struct TopTabBarContainerView: View {
     }
 
     var body: some View {
-        VStack(spacing: Dimensions.noSpacing) {
-            Color.inactiveBar.frame(height: 0.5)
+        ZStack {
+            Color.oAltBackground.ignoresSafeArea()
 
-            ScrollableTabBar(items: $tabBarItems,
-                selectedItem: self.selectedItem,
-                itemClicked: scrollableBarItemClicked)
-                .background(Color.white)
+            VStack(spacing: Dimensions.noSpacing) {
+                Color.inactiveBar.frame(height: 0.5)
 
-            if self.isBasicInformationSelected {
-                BasicInfoView(report: self.report, allFieldsComplete: allFieldsCompleteBinding)
+                ScrollableTabBar(items: $tabBarItems,
+                                 selectedItem: self.selectedItem,
+                                 itemClicked: scrollableBarItemClicked)
 
-            } else if self.isVesselSelected {
-                VesselView(
-                    vessel: report.vessel,
-                    reportId: report.id,
-                    prefilledVesselAvailable: $prefilledVesselAvailable,
-                    showingAlertItem: $showingAlertItem,
-                    allFieldsComplete: allFieldsCompleteBinding,
-                    showingWarningState: $showingNotCompleteState)
+                if self.isBasicInformationSelected {
+                    BasicInfoView(report: self.report, allFieldsComplete: allFieldsCompleteBinding)
 
-            } else if self.isWhatsOnBoardSelected {
-                CatchView(
-                    inspection: report.inspection,
-                    reportId: report.id,
-                    allFieldsComplete: allFieldsCompleteBinding,
-                    showingWarningState: $showingNotCompleteState)
+                } else if self.isVesselSelected {
+                    VesselView(
+                        vessel: report.vessel,
+                        reportId: report.id,
+                        prefilledVesselAvailable: $prefilledVesselAvailable,
+                        showingAlertItem: $showingAlertItem,
+                        allFieldsComplete: allFieldsCompleteBinding,
+                        showingWarningState: $showingNotCompleteState)
 
-            } else if self.isActivitySelected {
-                ActivityView(
-                    inspection: report.inspection,
-                    reportId: report.id,
-                    allFieldsComplete: allFieldsCompleteBinding,
-                    showingWarningState: $showingNotCompleteState)
+                } else if self.isWhatsOnBoardSelected {
+                    CatchView(
+                        inspection: report.inspection,
+                        reportId: report.id,
+                        allFieldsComplete: allFieldsCompleteBinding,
+                        showingWarningState: $showingNotCompleteState)
 
-            } else if self.isRiskSelected {
-                RiskView(report: self.report,
-                    allFieldsComplete: allFieldsCompleteBinding)
+                } else if self.isActivitySelected {
+                    ActivityView(
+                        inspection: report.inspection,
+                        reportId: report.id,
+                        allFieldsComplete: allFieldsCompleteBinding,
+                        showingWarningState: $showingNotCompleteState)
 
-            } else if self.isCrewSelected {
-                CrewView(
-                    report: self.report,
-                    prefilledCrewAvailable: $prefilledCrewAvailable,
-                    showingAlertItem: $showingAlertItem,
-                    allFieldsComplete: allFieldsCompleteBinding,
-                    showingWarningState: $showingNotCompleteState)
+                } else if self.isRiskSelected {
+                    RiskView(report: self.report,
+                             allFieldsComplete: allFieldsCompleteBinding)
 
-            } else if self.isViolationsSelected {
-                ViolationsView(report: self.report,
-                    crew: ([report.captain] + report.crew).filter { !$0.isEmpty },
-                    summary: report.inspection.summary,
-                    allFieldsComplete: allFieldsCompleteBinding)
+                } else if self.isCrewSelected {
+                    CrewView(
+                        report: self.report,
+                        prefilledCrewAvailable: $prefilledCrewAvailable,
+                        showingAlertItem: $showingAlertItem,
+                        allFieldsComplete: allFieldsCompleteBinding,
+                        showingWarningState: $showingNotCompleteState)
 
-            } else if self.isNotesSelected {
-                NotesView(report: self.report,
-                    allFieldsComplete: allFieldsCompleteBinding)
+                } else if self.isViolationsSelected {
+                    ViolationsView(report: self.report,
+                                   crew: ([report.captain] + report.crew).filter { !$0.isEmpty },
+                                   summary: report.inspection.summary,
+                                   allFieldsComplete: allFieldsCompleteBinding)
 
-            } else {
-                Spacer()
-            }
+                } else if self.isNotesSelected {
+                    NotesView(report: self.report,
+                              allFieldsComplete: allFieldsCompleteBinding)
 
-            VStack(spacing: Dimensions.buttonTopPadding) {
-                if showingNotCompleteState {
-                    Text("Continue with empty fields?")
-                        .font(Font.body.weight(.semibold))
-                        .foregroundColor(warningColor)
-                        .padding(.top, Dimensions.buttonTopPadding)
+                } else {
+                    Spacer()
                 }
 
-                CallToActionButton(title: self.mainButtonTitle,
-                    showingArrow: self.selectedItem != tabBarItems.last,
-                    action: self.mainActionButtonClicked)
-                    .padding(.top, showingNotCompleteState ? 0 : Dimensions.buttonTopPadding)
-                    .padding(.bottom, Dimensions.buttonBottomPadding)
-                    .padding(.horizontal, Dimensions.buttonLeadingTrailingPadding)
-            }
+                VStack(spacing: Dimensions.buttonTopPadding) {
+                    if showingNotCompleteState {
+                        Text("Continue with empty fields?")
+                            .font(Font.body.weight(.semibold))
+                            .foregroundColor(warningColor)
+                            .padding(.top, Dimensions.buttonTopPadding)
+                    }
+
+                    CallToActionButton(title: self.mainButtonTitle,
+                                       showingArrow: self.selectedItem != tabBarItems.last,
+                                       action: self.mainActionButtonClicked)
+                        .padding(.top, showingNotCompleteState ? 0 : Dimensions.buttonTopPadding)
+                        .padding(.bottom, Dimensions.buttonBottomPadding)
+                        .padding(.horizontal, Dimensions.buttonLeadingTrailingPadding)
+                }
                 .edgesIgnoringSafeArea(.bottom)
-                .background(Color.white)
+                .background(Color.oAltBackground)
                 .compositingGroup()
                 .bottomShadow()
+            }
         }
-            .background(Color.backgroundGrey)
-            .showingAlert(alertItem: $showingAlertItem)
+        .background(Color.backgroundGrey)
+        .showingAlert(alertItem: $showingAlertItem)
     }
 
     private var allFieldsCompleteBinding: Binding<Bool> {
@@ -241,7 +245,7 @@ struct TopTabBarContainerView: View {
 
         if !tapBarItemsToSkip.isEmpty {
             showSkippingAlert(tapBarItemsToSkip.map { $0.title },
-                skipClicked: { self.skipAlertClicked(nextSelectedItem: item, itemsToSkip: tapBarItemsToSkip) })
+                              skipClicked: { self.skipAlertClicked(nextSelectedItem: item, itemsToSkip: tapBarItemsToSkip) })
         } else {
             updateSelectedItemAndMainButtonTitle(item)
         }
@@ -338,8 +342,8 @@ struct TopTabBarContainerView: View {
 
     private func showSkippingAlert(_ itemsToSkip: [String], skipClicked: @escaping () -> Void) {
         self.showingAlertItem = AlertItem(title: "Skip the following sections?",
-            message: itemsToSkip.map { NSLocalizedString($0, comment: "") }.joined(separator: "\n"),
-            primaryButton: .cancel(Text("Skip"), action: skipClicked)
+                                          message: itemsToSkip.map { NSLocalizedString($0, comment: "") }.joined(separator: "\n"),
+                                          primaryButton: .cancel(Text("Skip"), action: skipClicked)
         )
     }
 }
@@ -353,14 +357,14 @@ struct TopTabBarContainerView_Previews: PreviewProvider {
                                    showingAlertItem: .constant(nil),
                                    notFilledScreens: .constant([])
             )
-            .environmentObject(Settings.shared)
+                .environmentObject(Settings.shared)
             TopTabBarContainerView(report: .sample,
                                    prefilledAvailable: true,
                                    prefilledCrewAvailable: .constant(true),
                                    showingAlertItem: .constant(.sample),
                                    notFilledScreens: .constant([])
             )
-            .environmentObject(Settings.shared)
+                .environmentObject(Settings.shared)
         }
     }
 }

@@ -35,7 +35,7 @@ struct VesselRecordHeaderView: View {
             VStack {
                 Text(report.vessel.name)
                     .font(Font.title3.weight(.semibold))
-                    .foregroundColor(.text)
+                    .foregroundColor(.oText)
                 Text(NSLocalizedString("Permit #", comment: "") + report.vessel.permitNumber)
                     .font(.subheadline)
             }

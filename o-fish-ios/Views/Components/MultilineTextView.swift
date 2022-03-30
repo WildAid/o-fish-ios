@@ -20,6 +20,7 @@ struct MultilineTextView: UIViewRepresentable {
         view.isEditable = true
         view.isUserInteractionEnabled = true
         view.delegate = context.coordinator
+        view.backgroundColor = UIColor(Color.oAltBackground)
         view.autocorrectionType = autocorrectionType
         return view
     }

@@ -18,10 +18,10 @@ struct ViolationPickerDataView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: spacing) {
             Text(NSLocalizedString(title, comment: ""))
-                .foregroundColor(.text)
+                .foregroundColor(.oText)
                 .font(.body)
             Text(LocalizedStringKey(description))
-                .foregroundColor(.text)
+                .foregroundColor(.oText)
                 .font(.caption1)
                 .padding(.bottom, verticalPadding)
             Divider()

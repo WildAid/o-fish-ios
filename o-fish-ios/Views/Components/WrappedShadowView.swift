@@ -15,7 +15,7 @@ func wrappedShadowView<Content: View>
     return
         view()
             .padding(.horizontal, horizontalPadding)
-            .background(Color.white)
+            .background(Color.oSelectionBackground)
             .compositingGroup()
             .defaultShadow()
 }

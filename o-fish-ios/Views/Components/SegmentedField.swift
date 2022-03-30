@@ -13,9 +13,9 @@ struct SegmentedField: View {
     var title: String
     var items: [String]
 
-    var textColor: Color = .main
-    var activeColor: Color = .main
-    var secondaryColor: Color = .white
+    var textColor: Color = .oBlue
+    var activeColor: Color = .oBlue
+    var secondaryColor: Color = .clear
 
     private enum Dimensions {
         static let spacing: CGFloat = 8.0
@@ -41,8 +41,8 @@ struct SegmentedField: View {
                             Text(LocalizedStringKey(item))
                                 .padding(.vertical, Dimensions.labelSpacing)
                                 .lineLimit(Dimensions.lineLimit)
-                                .foregroundColor(self.selectedItem == item ? self.secondaryColor : self.textColor)
-                                .font(self.selectedItem == item ? Font.subheadline.weight(.semibold) : Font.subheadline)
+                                .foregroundColor(self.selectedItem == item ? Color.white : self.textColor)
+                                .font(self.selectedItem == item ? Font.subheadline.weight(.semibold) : Font.headline)
                                 .minimumScaleFactor(Dimensions.scaleFactor)
                             Spacer(minLength: Dimensions.labelSpacing)
                         }

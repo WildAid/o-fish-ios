@@ -44,6 +44,7 @@ struct RiskView: View {
                 .padding(.bottom, Dimensions.bottomPadding)
             }
         }
+        .background(Color.oBackground)
         .onAppear(perform: { self.allFieldsComplete = true })
     }
 }

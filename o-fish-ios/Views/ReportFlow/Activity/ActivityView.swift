@@ -65,6 +65,7 @@ struct ActivityView: View {
                                  reportId: self.reportId)
             }
         }
+        .background(Color.oBackground)
     }
 
     /// logic

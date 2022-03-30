@@ -11,12 +11,12 @@ struct ScrollableTabBarItemView: View {
     let item: TabBarItem
     let isSelected: Bool
 
-    var activeColor = Color.main
+    var activeColor = Color.oBlue
 
     var notStartedLineColor = Color.inactiveBar
     var notStartedTitleColor = Color.removeAction
     var skippedColor = Color.spanishOrange
-    var completeColor = Color.main
+    var completeColor = Color.oBlue
 
     var onClick: ((TabBarItem) -> Void)?
 
