@@ -49,49 +49,53 @@ struct VesselRecordView: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: Dimensions.spacing) {
-                VesselRecordHeaderView(report: reports.first ?? ReportViewModel(),
-                    onDuty: onDuty,
-                    boardings: numberOfBoardings,
-                    warnings: numberOfWarnings,
-                    citations: numberOfCitations,
-                    rootIsActive: $rootIsActive)
-                    .background(Color.oAltBackground)
-                    .compositingGroup()
-                    .defaultShadow()
-
-                wrappedShadowView {
-
-                    VStack(alignment: .leading, spacing: Dimensions.noSpacing) {
-                        Text("Previous Boardings")
-                            .font(Font.title3.weight(.semibold))
-                            .padding(.top, Dimensions.topPadding)
-                            .padding(.bottom, Dimensions.bottomPadding)
-                        VStack(spacing: Dimensions.noSpacing) {
-                            ForEach(self.reports) { report in
-                                VesselRecordItemView(report: report,
-                                    snapshotManager: self.snapshotManager)
-                                    .onTapGesture {
-                                        //TODO Need to replace on Button. For now it's unexpected behavior with showing mapViewImage.
-                                        self.openBoardingRecordView(with: report)
-                                    }
+        ZStack {
+            Color.oBackground.ignoresSafeArea(edges: .bottom)
+            
+            ScrollView {
+                VStack(spacing: Dimensions.spacing) {
+                    VesselRecordHeaderView(report: reports.first ?? ReportViewModel(),
+                                           onDuty: onDuty,
+                                           boardings: numberOfBoardings,
+                                           warnings: numberOfWarnings,
+                                           citations: numberOfCitations,
+                                           rootIsActive: $rootIsActive)
+                        .background(Color.oAltBackground)
+                        .compositingGroup()
+                        .defaultShadow()
+                    
+                    wrappedShadowView {
+                        
+                        VStack(alignment: .leading, spacing: Dimensions.noSpacing) {
+                            Text("Previous Boardings")
+                                .font(Font.title3.weight(.semibold))
+                                .padding(.top, Dimensions.topPadding)
+                                .padding(.bottom, Dimensions.bottomPadding)
+                            VStack(spacing: Dimensions.noSpacing) {
+                                ForEach(self.reports) { report in
+                                    VesselRecordItemView(report: report,
+                                                         snapshotManager: self.snapshotManager)
+                                        .onTapGesture {
+                                            //TODO Need to replace on Button. For now it's unexpected behavior with showing mapViewImage.
+                                            self.openBoardingRecordView(with: report)
+                                        }
+                                }
                             }
                         }
                     }
                 }
+                .background(Color.oBackground)
+                
+                //TODO Need to replace to ForEach. For now it's unexpected behavior with showing mapViewImage.
+                NavigationLink(destination: BoardingRecordView(report: selectedReport,
+                                                               onDuty: onDuty,
+                                                               rootIsActive: $rootIsActive),
+                               isActive: $showingBoardingRecordView) {
+                    EmptyView()
+                }
             }
-            .background(Color.oBackground)
-
-            //TODO Need to replace to ForEach. For now it's unexpected behavior with showing mapViewImage.
-            NavigationLink(destination: BoardingRecordView(report: selectedReport,
-                                                           onDuty: onDuty,
-                                                           rootIsActive: $rootIsActive),
-                           isActive: $showingBoardingRecordView) {
-                EmptyView()
-            }
-        }
             .edgesIgnoringSafeArea(.bottom)
+        }
     }
 
     private func openBoardingRecordView(with report: ReportViewModel) {

@@ -23,8 +23,10 @@ struct LoadingVesselRecordView: View {
         ZStack {
             Color.oAltBackground
                 .ignoresSafeArea()
-            
+
             VStack {
+                Color.inactiveBar.frame(height: 0.5)
+
                 if loading {
                     LoadingIndicatorView(isAnimating: self.$loading, style: .large)
                 } else {
