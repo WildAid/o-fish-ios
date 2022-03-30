@@ -103,6 +103,10 @@ extension Color {
         return Color("oRedDark")
     }
 
+    public static var oGray: Color {
+        return Color("oGray")
+    }
+
     // MARK: - Semantic Colors
     public static var oAccent: Color {
         return self.oBlue

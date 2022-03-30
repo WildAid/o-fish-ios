@@ -20,13 +20,19 @@ struct LoadingVesselRecordView: View {
     private let spacingBackButton: CGFloat = 1.0
 
     var body: some View {
-        VStack {
-            if loading {
-                LoadingIndicatorView(isAnimating: self.$loading, style: .large)
-            } else {
-                VesselRecordView(reports: storedReports, onDuty: onDuty, rootIsActive: $rootIsActive)
+        ZStack {
+            Color.oAltBackground
+                .ignoresSafeArea()
+
+            VStack {
+                Color.inactiveBar.frame(height: 0.5)
+
+                if loading {
+                    LoadingIndicatorView(isAnimating: self.$loading, style: .large)
+                } else {
+                    VesselRecordView(reports: storedReports, onDuty: onDuty, rootIsActive: $rootIsActive)
+                }
             }
-        }
             .navigationBarTitle("Vessel", displayMode: .inline)
             .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                 BackButton(label: "Search")
@@ -35,6 +41,7 @@ struct LoadingVesselRecordView: View {
             .onAppear(
                 perform: loadReports
             )
+        }
     }
 
     private func loadReports() {

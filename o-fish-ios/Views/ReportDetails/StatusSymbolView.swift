@@ -15,17 +15,24 @@ enum Size {
 
 struct StatusSymbolView: View {
     @State var risk: SafetyLevelViewModel.LevelColor
+    @Environment(\.colorScheme) var colorScheme
     var size: Size = .small
 
     private var colors: StatusColors {
-
         var colors: StatusColors
-        switch risk {
-        case .red: colors = StatusColors(.faluRed, .vanillaIce)
-        case .amber: colors = StatusColors(.rowAmber, .oasis)
-        case .green: colors = StatusColors(.crusoe, .bubbles)
+        if self.colorScheme == .dark {
+            switch risk {
+            case .red: colors = StatusColors(.persianLightRed, .clear)
+            case .amber: colors = StatusColors(.moonLightYellow, .clear)
+            case .green: colors = StatusColors(.lightSpringGreen, .clear)
+            }
+        } else {
+            switch risk {
+            case .red: colors = StatusColors(.faluRed, .vanillaIce)
+            case .amber: colors = StatusColors(.rowAmber, .oasis)
+            case .green: colors = StatusColors(.crusoe, .bubbles)
+            }
         }
-
         return colors
     }
 
@@ -39,9 +46,14 @@ struct StatusSymbolView: View {
             .padding(.horizontal, self.padding)
             .frame(width: self.width, height: self.height)
             .background(
-                Rectangle()
+                RoundedRectangle(cornerRadius: .infinity)
                     .fill(self.colors.backgroundColor)
-                    .cornerRadius(.infinity))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: .infinity)
+                    .stroke(self.colorScheme == .dark ? self.colors.textColor : Color.clear,
+                            lineWidth: 1)
+            )
     }
 
     private var padding: CGFloat {

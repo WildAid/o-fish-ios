@@ -15,7 +15,11 @@ func wrappedShadowView<Content: View>
     return
         view()
             .padding(.horizontal, horizontalPadding)
+<<<<<<< HEAD
             .background(Color.oAltBackground)
+=======
+            .background(Color.oSelectionBackground)
+>>>>>>> 380-fix-dark-mode
             .compositingGroup()
             .defaultShadow()
 }
