@@ -16,9 +16,9 @@ struct BackButton: View {
         HStack(spacing: spacing) {
             Image(systemName: "chevron.left")
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(.main)
+                .foregroundColor(.oBlue)
             Text(LocalizedStringKey(label))
-                .foregroundColor(.main)
+                .foregroundColor(.oBlue)
         }
     }
 }

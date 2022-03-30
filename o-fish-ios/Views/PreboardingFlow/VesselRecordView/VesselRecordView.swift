@@ -57,7 +57,7 @@ struct VesselRecordView: View {
                     warnings: numberOfWarnings,
                     citations: numberOfCitations,
                     rootIsActive: $rootIsActive)
-                    .background(Color.white)
+                    .background(Color.oAltBackground)
                     .compositingGroup()
                     .defaultShadow()
 
@@ -81,6 +81,7 @@ struct VesselRecordView: View {
                     }
                 }
             }
+            .background(Color.oBackground)
 
             //TODO Need to replace to ForEach. For now it's unexpected behavior with showing mapViewImage.
             NavigationLink(destination: BoardingRecordView(report: selectedReport,
@@ -90,7 +91,6 @@ struct VesselRecordView: View {
                 EmptyView()
             }
         }
-            .background(Color.backgroundGrey)
             .edgesIgnoringSafeArea(.bottom)
     }
 

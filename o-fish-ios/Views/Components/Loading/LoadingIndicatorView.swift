@@ -17,8 +17,8 @@ struct LoadingIndicatorView: View {
             ActivityIndicator(isAnimating: _isAnimating, style: style)
         }
             .frame(width: 300, height: 200)
-            .background(Color.white)
-            .foregroundColor(Color.text)
+            .background(Color.oBackground)
+            .foregroundColor(Color.oText)
             .cornerRadius(20)
     }
 }
