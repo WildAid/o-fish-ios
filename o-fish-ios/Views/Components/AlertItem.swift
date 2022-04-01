@@ -41,7 +41,9 @@ extension View {
                              primaryButton: primaryButton,
                              secondaryButton: alertItem.secondaryButton)
             } else {
-                return Alert(title: Text(LocalizedStringKey(alertItem.title)), message: Text(""), dismissButton: alertItem.secondaryButton)
+                return Alert(title: Text(LocalizedStringKey(alertItem.title)),
+                             message: Text(LocalizedStringKey(alertItem.message ?? "")),
+                             dismissButton: alertItem.secondaryButton)
             }
         }
     }

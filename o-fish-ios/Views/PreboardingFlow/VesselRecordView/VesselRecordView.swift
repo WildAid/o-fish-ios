@@ -51,7 +51,7 @@ struct VesselRecordView: View {
     var body: some View {
         ZStack {
             Color.oBackground.ignoresSafeArea(edges: .bottom)
-            
+
             ScrollView {
                 VStack(spacing: Dimensions.spacing) {
                     VesselRecordHeaderView(report: reports.first ?? ReportViewModel(),
@@ -63,9 +63,9 @@ struct VesselRecordView: View {
                         .background(Color.oAltBackground)
                         .compositingGroup()
                         .defaultShadow()
-                    
+
                     wrappedShadowView {
-                        
+
                         VStack(alignment: .leading, spacing: Dimensions.noSpacing) {
                             Text("Previous Boardings")
                                 .font(Font.title3.weight(.semibold))
@@ -85,7 +85,7 @@ struct VesselRecordView: View {
                     }
                 }
                 .background(Color.oBackground)
-                
+
                 //TODO Need to replace to ForEach. For now it's unexpected behavior with showing mapViewImage.
                 NavigationLink(destination: BoardingRecordView(report: selectedReport,
                                                                onDuty: onDuty,
