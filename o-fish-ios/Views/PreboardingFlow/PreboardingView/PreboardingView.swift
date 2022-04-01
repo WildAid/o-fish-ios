@@ -43,38 +43,44 @@ struct PreboardingView: View {
     /// Interface
 
     var body: some View {
-        VStack {
-            searchBar
+        ZStack {
+            Color.oAltBackground
+                .ignoresSafeArea(edges: .top)
 
-            if showingAddVessel {
-                NavigationLink(destination: ReportNavigationRootView(report: self.emptyReport, rootIsActive: $rootIsActive)) {
-                    VStack(spacing: Dimension.noSpacing) {
-                        IconLabel(imagePath: "plus", title: "Add New Vessel")
-                            .padding(.vertical, Dimension.padding)
-                        Divider()
+            VStack {
+                searchBar
+                
+                if showingAddVessel {
+                    NavigationLink(destination: ReportNavigationRootView(report: self.emptyReport, rootIsActive: $rootIsActive)) {
+                        VStack(spacing: Dimension.noSpacing) {
+                            IconLabel(imagePath: "plus", title: "Add New Vessel")
+                                .padding(.vertical, Dimension.padding)
+                            Divider()
+                        }
+                        Spacer()
                     }
-                    Spacer()
-                }
                     .opacity(state == .loading ? 0.0 : 1.0)
+                }
+                
+                stateView()
+                Spacer()
             }
-
-            stateView()
-            Spacer()
-        }
+            .background(Color.oBackground)
             .onAppear(perform: loadRecentBoardings)
             .alert(isPresented: $showingDismissAlert) {
                 Alert(title: Text("Cancel boarding?"),
-                    message: Text("This boarding will not be saved."),
-                    primaryButton: .default(Text("Keep Editing")),
-                    secondaryButton: .default(Text("Cancel Boarding")) {
-                        self.presentationMode.wrappedValue.dismiss()
-                    })
+                      message: Text("This boarding will not be saved."),
+                      primaryButton: .default(Text("Keep Editing")),
+                      secondaryButton: .default(Text("Cancel Boarding")) {
+                    self.presentationMode.wrappedValue.dismiss()
+                })
             }
             .navigationBarTitle(LocalizedStringKey(self.title), displayMode: .inline)
             .navigationBarItems(leading: Button(action: cancelTabBarClicked) {
                 Text(LocalizedStringKey(backButtonTitle))
             })
             .navigationBarBackButtonHidden(true)
+        }
     }
 
     private var searchBar: some View {
