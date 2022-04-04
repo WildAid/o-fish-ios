@@ -151,11 +151,29 @@ struct ProfilePageView: View {
             return
         }
 
+        deleteDraftReports()
+
         user.logOut { _ in
             DispatchQueue.main.async {
                 self.settings.realmUser = nil
             }
             NotificationManager.shared.removeAllNotification()
+        }
+    }
+
+    private func deleteDraftReports() {
+        guard let realm = app.currentUser()?.agencyRealm() else {
+            print("Can't access Realm to delete photo")
+            return
+        }
+
+        let predicate = NSPredicate(format: "draft == true && reportingOfficer.email == %@", settings.realmUser?.emailAddress ?? "")
+        do {
+            try realm.write {
+                realm.delete(realm.objects(Report.self).filter(predicate))
+            }
+        } catch {
+            print("Couldn't delete draft Reports from Realm")
         }
     }
 
