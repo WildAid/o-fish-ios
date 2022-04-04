@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchBarView: View {
-
+    @Environment(\.colorScheme) var colorScheme
     @Binding var searchText: String
     var placeholder: String
     @State private var errorText = ""
@@ -19,11 +19,10 @@ struct SearchBarView: View {
 
     private enum Dimension {
         static let inset: CGFloat = 7.0
-        static let bottomInset: CGFloat = 4.0
+        static let bottomInset: CGFloat = 5.0
         static let heightTextField: CGFloat = 36.0
         static let cornerRadius: CGFloat = 10.0
         static let padding: CGFloat = 16.0
-        static let topPadding: CGFloat = 15.0
     }
 
     var body: some View {
@@ -59,13 +58,15 @@ struct SearchBarView: View {
                 .padding(EdgeInsets(top: Dimension.inset, leading: Dimension.bottomInset, bottom: Dimension.inset, trailing: Dimension.inset))
                 .frame(height: Dimension.heightTextField)
                 .foregroundColor(.secondary)
-                .background(Color(.secondarySystemBackground))
+                .background(Color.oSearchBar)
                 .cornerRadius(Dimension.cornerRadius)
                 .padding([.horizontal, .top], Dimension.padding)
+
             Divider()
-                .padding(.top, Dimension.topPadding)
                 .frame(height: 1.0)
+                .opacity(self.colorScheme == .dark ? 0.0 : 1.0)
         }
+        .background(Color.oAltBackground)
     }
 }
 

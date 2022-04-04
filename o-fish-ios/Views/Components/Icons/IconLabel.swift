@@ -12,7 +12,7 @@ struct IconLabel: View {
     let imagePath: String
     let title: String
 
-    var color = Color.main
+    var color = Color.oBlue
     var horizontalPadding: CGFloat = 16.0
 
     private enum Dimension {

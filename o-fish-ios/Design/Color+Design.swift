@@ -42,6 +42,7 @@ extension Color {
     public static let captainGray = Color(white: 216.0/255.0)// #D8D8D8
     public static let removeAction = Color(white: 151.0/255.0)// #979797
     public static let inactiveBar = Color("oInactiveBar")// #E6E6E6
+    public static let oSearchBar = Color("oSearchBar")// #EEEEEF
 
     public static let lilyWhite = Color(red: 236, green: 244, blue: 239) // #ECF4EF
     public static let darkSpringGreen = Color(red: 0, green: 133, blue: 55) // #008537
