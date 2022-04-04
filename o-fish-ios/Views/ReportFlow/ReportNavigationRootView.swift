@@ -14,6 +14,7 @@ struct ReportNavigationRootView: View {
     @Binding var rootIsActive: Bool
 
     private var prefilledAvailable: Bool
+    private let settings = Settings.shared
     @State private var showingAlertItem: AlertItem?
     @State private var notFilledScreens: [String] = TopTabBarItems.allCases.map { $0.rawValue }
     @State private var prefilledCrewAvailable: Bool
@@ -99,6 +100,13 @@ struct ReportNavigationRootView: View {
                                                                    action: { self.rootIsActive.toggle() }))
     }
 
+    private func showErrorAlert() {
+        self.showingAlertItem = AlertItem(title: "Save draft not available",
+                                          message: "The maximum number of drafts cannot be more than 10",
+                                          secondaryButton: .cancel(Text("Ok"),
+                                                                   action: { self.showingAlertItem = nil }))
+    }
+
     private func showCanceledAlert(isDraft: Bool) {
            self.showingAlertItem = AlertItem(title: isDraft ? "Boarding Deleted!" : "Boarding Canceled!",
                                              secondaryButton: .cancel(Text("Ok"),
@@ -124,10 +132,16 @@ struct ReportNavigationRootView: View {
     }
 
     private func saveAlertClicked() {
+        if self.isSaveAvailable() {
         report.draft = true
         self.save()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.showSubmittedAlert(isDraft: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.showSubmittedAlert(isDraft: true)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.showErrorAlert()
+            }
         }
     }
 
@@ -144,6 +158,17 @@ struct ReportNavigationRootView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.showSubmittedAlert(isDraft: wasDraft)
         }
+    }
+
+    private func isSaveAvailable() -> Bool {
+        guard let realm = app.currentUser()?.agencyRealm() else {
+            return false
+        }
+        let predicate = NSPredicate(format: "draft == true && reportingOfficer.email == %@",
+                                    settings.realmUser?.emailAddress ?? "")
+        let reportsCount = realm.objects(Report.self).filter(predicate).count
+
+        return reportsCount < self.settings.maximunDraftNumber
     }
 
     private func save() {
