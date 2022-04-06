@@ -33,93 +33,99 @@ struct ProfilePageView: View {
     }
 
     var body: some View {
-        VStack(alignment: .center, spacing: Dimensions.spacing) {
-            VStack(alignment: .leading) {
-                VStack(alignment: .leading, spacing: .zero) {
-                    HStack(spacing: Dimensions.stackSpacing) {
-                        PatrolBoatUserView(photo: profilePicture,
-                                           onSea: $dutyState.onDuty,
-                                           size: .large)
-                        VStack(alignment: .leading, spacing: .zero) {
-                            Text(user.name.fullName)
-                                .foregroundColor(.oFieldValue)
+        ZStack {
 
-                            Text(user.email)
-                                .foregroundColor(.oFieldTitle)
+            Color.oAltBackground
+                .ignoresSafeArea(edges: .top)
+
+            VStack(alignment: .center, spacing: Dimensions.spacing) {
+                VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: .zero) {
+                        HStack(spacing: Dimensions.stackSpacing) {
+                            PatrolBoatUserView(photo: profilePicture,
+                                               onSea: $dutyState.onDuty,
+                                               size: .large)
+                            VStack(alignment: .leading, spacing: .zero) {
+                                Text(user.name.fullName)
+                                    .foregroundColor(.oFieldValue)
+
+                                Text(user.email)
+                                    .foregroundColor(.oFieldTitle)
+                            }
+                            .font(.body)
                         }
-                        .font(.body)
                     }
+                    .padding(.all, Dimensions.padding)
+                    Divider()
+                        .background(Color.oDivider)
+                        .frame(height: Dimensions.lineWidth)
+
+                    Toggle(isOn: dutyBinding) {
+                        Text(dutyState.onDuty ? "At Sea" : "Not At Sea")
+                            .foregroundColor(.oFieldTitle)
+                            .font(.callout)
+                    }
+                    .padding(.all, Dimensions.padding)
+
+                    Divider()
+                        .background(Color.oDivider)
+                        .frame(height: Dimensions.lineWidth)
+
+                    Toggle(isOn: $userSettings.forceDarkMode) {
+                        Text("Dark Mode")
+                            .foregroundColor(.oFieldTitle)
+                            .font(.callout)
+                    }
+                    .padding(.all, Dimensions.padding)
+
+                    Divider()
+                        .background(Color.oDivider)
+                        .frame(height: Dimensions.lineWidth)
                 }
-                .padding(.all, Dimensions.padding)
-                Divider()
-                    .background(Color.oDivider)
-                    .frame(height: Dimensions.lineWidth)
-
-                Toggle(isOn: dutyBinding) {
-                    Text(dutyState.onDuty ? "At Sea" : "Not At Sea")
-                        .foregroundColor(.oFieldTitle)
-                        .font(.callout)
+                .background(Color.oBackground)
+                VStack {
+                    Button(action: showLogoutAlert) {
+                        Spacer()
+                        Text("Log Out")
+                            .font(.body)
+                            .foregroundColor(.oAccent)
+                        Spacer()
+                    }
+                    .padding(.vertical, Dimensions.stackSpacing)
+                    .background(Color.clear)
+                    .cornerRadius(Dimensions.radius)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .stroke(Color.oAccent,
+                                    lineWidth: Dimensions.lineWidth)
+                    )
                 }
-                .padding(.all, Dimensions.padding)
+                .padding(.horizontal, Dimensions.padding)
+                Spacer()
 
-                Divider()
-                    .background(Color.oDivider)
-                    .frame(height: Dimensions.lineWidth)
-
-                Toggle(isOn: $userSettings.forceDarkMode) {
-                    Text("Dark Mode")
-                        .foregroundColor(.oFieldTitle)
-                        .font(.callout)
+                NavigationLink(destination:
+                                PatrolSummaryView(dutyReports: dutyReports,
+                                                  startDuty: startDuty,
+                                                  onDuty: dutyState,
+                                                  plannedOffDutyTime: plannedOffDutyTime,
+                                                  rootIsActive: .constant(false)),
+                               isActive: $showingPatrolSummaryView) {
+                    EmptyView()
                 }
-                .padding(.all, Dimensions.padding)
-
-                Divider()
-                    .background(Color.oDivider)
-                    .frame(height: Dimensions.lineWidth)
+                               .isDetailLink(false)
             }
             .background(Color.oBackground)
-            VStack {
-                Button(action: showLogoutAlert) {
-                    Spacer()
-                    Text("Log Out")
-                        .font(.body)
-                        .foregroundColor(.oAccent)
-                    Spacer()
-                }
-                .padding(.vertical, Dimensions.stackSpacing)
-                .background(Color.clear)
-                .cornerRadius(Dimensions.radius)
-                .overlay(
-                    RoundedRectangle(cornerRadius: .infinity)
-                        .stroke(Color.oAccent,
-                                lineWidth: Dimensions.lineWidth)
-                )
-            }
-            .padding(.horizontal, Dimensions.padding)
-            Spacer()
-
-            NavigationLink(destination:
-                            PatrolSummaryView(dutyReports: dutyReports,
-                                              startDuty: startDuty,
-                                              onDuty: dutyState,
-                                              plannedOffDutyTime: plannedOffDutyTime,
-                                              rootIsActive: .constant(false)),
-                           isActive: $showingPatrolSummaryView) {
-                EmptyView()
-            }
-            .isDetailLink(false)
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Text("Close")
+                    .foregroundColor(.oAccent)
+            })
+            .showingAlert(alertItem: $showingAlertItem)
         }
-        .background(Color.oBackground)
-        .edgesIgnoringSafeArea(.bottom)
-        .navigationBarTitle("", displayMode: .inline)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            Text("Close")
-                .foregroundColor(.oAccent)
-        })
-        .showingAlert(alertItem: $showingAlertItem)
     }
 
     private var dutyBinding: Binding<Bool> {
