@@ -41,7 +41,11 @@ struct TopTabBarContainerView: View {
     @Binding private var notFilledScreens: [String]
 
     @State private var tabBarItems: [TabBarItem]
-    @State private var selectedItem: TabBarItem
+    @State private var selectedItem: TabBarItem {
+        didSet {
+            updateDraftReport()
+        }
+    }
 
     @State private var mainButtonTitle: String
     @State private var showingNotCompleteState: Bool
@@ -345,6 +349,15 @@ struct TopTabBarContainerView: View {
                                           message: itemsToSkip.map { NSLocalizedString($0, comment: "") }.joined(separator: "\n"),
                                           primaryButton: .cancel(Text("Skip"), action: skipClicked)
         )
+    }
+
+    private func updateDraftReport() {
+        if let realm = app.currentUser()?.agencyRealm() {
+            self.report.draft = true
+            self.report.save(realm)
+        } else {
+            print("Realm not available")
+        }
     }
 }
 

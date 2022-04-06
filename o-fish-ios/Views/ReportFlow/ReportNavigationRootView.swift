@@ -133,8 +133,8 @@ struct ReportNavigationRootView: View {
 
     private func saveAlertClicked() {
         if self.isSaveAvailable() {
-        report.draft = true
-        self.save()
+            report.draft = true
+            self.save()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.showSubmittedAlert(isDraft: true)
             }
