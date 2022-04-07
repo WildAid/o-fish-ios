@@ -25,18 +25,24 @@ struct DraftBoardingsView: View {
     }
 
     var body: some View {
-        VStack {
-            stateView()
-            Spacer()
-        }
-        .navigationBarHidden(false)
-        .onAppear(perform: loadReports)
-        .navigationBarTitle("Draft Boardings", displayMode: .inline)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-            BackButton(label: "")
-        })
+        ZStack {
+            Color.oAltBackground
+                .edgesIgnoringSafeArea(.top)
 
+            VStack {
+                stateView()
+                Spacer()
+            }
+            .frame(maxWidth: .infinity)
+            .background(Color.oBackground)
+            .navigationBarHidden(false)
+            .onAppear(perform: loadReports)
+            .navigationBarTitle("Draft Boardings", displayMode: .inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                BackButton(label: "")
+            })
+        }
     }
 
     private func stateView() -> AnyView {
