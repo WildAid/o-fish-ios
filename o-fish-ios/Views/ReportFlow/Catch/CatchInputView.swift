@@ -15,6 +15,7 @@ struct CatchInputView: View {
     private let reportId: String
     private let index: Int
     private var removeClicked: ((CatchViewModel) -> Void)?
+    private var options = CatchViewModel.UnitSpecification.allCases
     @Binding private var showingSpeciesWarning: Bool
     @Binding private var showingWeightWarning: Bool
     @Binding private var showingUnitWarning: Bool
@@ -66,11 +67,10 @@ struct CatchInputView: View {
                            tag: 0,
                            showingWarning: self.showingWeightWarning,
                            keyboardType: .decimalPad)
-                ButtonField(title: "Unit",
-                            text: NSLocalizedString(self.catchModel.unit.rawValue,
-                            comment: "Units localized"),
-                            showingWarning: self.showingUnitWarning,
-                            fieldButtonClicked: self.showUnitPickerClicked)
+                UnitPickerField(title: "Unit",
+                                options: options,
+                                unit: $catchModel.unit,
+                                showingWarning: self.showingUnitWarning)
             }
             InputField(title: "Count",
                        text: countBinding,
@@ -118,22 +118,6 @@ struct CatchInputView: View {
     private var buttonTitle: String {
         catchModel.fish.isEmpty ? (NSLocalizedString("Catch", comment: "") + " \(self.index)")
                                 : NSLocalizedString(catchModel.fish, comment: "Fish type")
-    }
-
-    private func showUnitPickerClicked() {
-        // TODO: for some reason this works only from action and not from viewModifier
-        // TODO: review when viewModifier actions will be available
-
-        let popoverId = UUID().uuidString
-        let unitPickerSelectClicked = { (unit: UnitPickerWithButton.UnitSpecification) in
-            self.catchModel.unit = unit
-            self.checkAllInput()
-            PopoverManager.shared.hidePopover(id: popoverId)
-        }
-        PopoverManager.shared.showPopover(id: popoverId) {
-            UnitPickerWithButton(selectButtonClicked: unitPickerSelectClicked)
-                .background(Color.white)
-        }
     }
 
     private func checkAllInput() {

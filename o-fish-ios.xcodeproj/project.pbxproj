@@ -287,6 +287,7 @@
 		BCE48F10100DC3B1E448EFA5 /* CrewMemberShortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48456167E25D77C838694 /* CrewMemberShortView.swift */; };
 		BCE48F5083615CEB327EF9BD /* PhotoQueryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489E93BCA8E7B291D6830 /* PhotoQueryManager.swift */; };
 		BCE48F9EA32E0A9B405E6F04 /* SectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48AB036DA398FBFF3E3B4 /* SectionButton.swift */; };
+		F24C7E1627FAF67D00AA6504 /* UnitPickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C7E1527FAF67D00AA6504 /* UnitPickerField.swift */; };
 		F2ADF94227E9BFE2003D1245 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */; };
 		FBE107AE247FFF87001DA29C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBE107B0247FFF87001DA29C /* Localizable.strings */; };
 /* End PBXBuildFile section */
@@ -596,6 +597,7 @@
 		BCE48FCB06AC5B25AF1BCA74 /* CatchOnBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchOnBoardView.swift; sourceTree = "<group>"; };
 		BCE48FD1BBBF69F49C6EC765 /* NavigationBarViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModifier.swift; sourceTree = "<group>"; };
 		BCE48FFF9C49070CE13E7B27 /* PatrolBoatUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatrolBoatUserView.swift; sourceTree = "<group>"; };
+		F24C7E1527FAF67D00AA6504 /* UnitPickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPickerField.swift; sourceTree = "<group>"; };
 		F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		FBC9242D2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBC9242E2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -913,6 +915,7 @@
 				BCE484E6974BBB4F08413A3E /* InputField.swift */,
 				BCE481F6902A242DA2208F95 /* CaptionLabel.swift */,
 				BCE489430E879F75C5AAF84F /* ButtonField.swift */,
+				F24C7E1527FAF67D00AA6504 /* UnitPickerField.swift */,
 				BCE481CB48F61489E76F8F47 /* DatePickerWithButton.swift */,
 				BCE4887849269C5010940019 /* TitleLabel.swift */,
 				BCE489BFAF7761711B175260 /* WrappedShadowView.swift */,
@@ -1842,6 +1845,7 @@
 				30E315CF2507AB830037235E /* BottomPatrolView.swift in Sources */,
 				BCE48D3B49087F1687BB71D2 /* ScrollableTabBarItemView.swift in Sources */,
 				BCE48ECFBCDE115D3867DAC4 /* AlertItem.swift in Sources */,
+				F24C7E1627FAF67D00AA6504 /* UnitPickerField.swift in Sources */,
 				49B83EE32489546D00027B8C /* Offence.swift in Sources */,
 				BCE48D2E80CF82657D03614D /* ExclamationIconView.swift in Sources */,
 				BCE4814543022D42A642CA4A /* KeyboardController.swift in Sources */,
