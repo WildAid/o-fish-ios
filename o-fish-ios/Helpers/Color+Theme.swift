@@ -50,6 +50,14 @@ extension UIColor {
     }
 
     // MARK: - Named Colors
+    public static var main: UIColor {
+        return UIColor(named: "main")!
+    }
+
+    public static var actionBlue: UIColor {
+        return UIColor(named: "actionBlue")!
+    }
+
     public static var oBlue: UIColor {
         return UIColor(named: "oBlue")!
     }
@@ -74,11 +82,23 @@ extension UIColor {
     public static var oText: UIColor {
         return UIColor(named: "oText")!
     }
+
+    public static var inactiveBar: UIColor {
+        return UIColor(named: "oInactiveBar")!
+    }
+
+    public static var oSearchBar: UIColor {
+        return UIColor(named: "oSearchBar")!
+    }
 }
 
 extension Color {
 
     // MARK: - Named Colors
+    public static var main: Color {
+        return Color("main")
+    }
+
     public static var oAmber: Color {
         return Color("oAmber")
     }
@@ -154,5 +174,114 @@ extension Color {
 
     public static var oText: Color {
         return Color("oText")
+    }
+
+    public static var inactiveBar: Color {
+        return Color("oInactiveBar")
+    }
+
+    public static var oSearchBar: Color {
+        return Color("oSearchBar")
+    }
+
+    // MARK: - Single appearance colors
+    public static var backgroundGrey: Color {
+        return Color("backgroundGrey")
+    }
+
+    public static var iconsGray: Color {
+        return Color("iconsGray")
+    }
+
+    public static var captainGray: Color {
+        return Color("captainGray")
+    }
+
+    public static var removeAction: Color {
+        return Color("removeAction")
+    }
+
+    public static var lilyWhite: Color {
+        return Color("lilyWhite")
+    }
+
+    public static var darkSpringGreen: Color {
+        return Color("darkSpringGreen")
+    }
+
+    public static var lightSpringGreen: Color {
+        return Color("lightSpringGreen")
+    }
+
+    public static var moonYellow: Color {
+        return Color("moonYellow")
+    }
+
+    public static var moonLightYellow: Color {
+        return Color("moonLightYellow")
+    }
+
+    public static var oasis: Color {
+        return Color("oasis")
+    }
+
+    public static var spanishOrange: Color {
+        return Color("spanishOrange")
+    }
+
+    public static var persianRed: Color {
+        return Color("persianRed")
+    }
+
+    public static var persianLightRed: Color {
+        return Color("persianLightRed")
+    }
+
+    public static var vanillaIce: Color {
+        return Color("vanillaIce")
+    }
+
+    public static var darkRed: Color {
+        return Color("darkRed")
+    }
+
+    public static var bubbles: Color {
+        return Color("bubbles")
+    }
+
+    public static var crusoe: Color {
+        return Color("crusoe")
+    }
+
+    public static var rowAmber: Color {
+        return Color("rowAmber")
+    }
+
+    public static var faluRed: Color {
+        return Color("faluRed")
+    }
+
+    public static var appGray: Color {
+        return Color("appGray")
+    }
+
+    public static var lightGrayButton: Color {
+        return Color("lightGrayButton")
+    }
+
+    public static var blackWithOpacity: Color {
+        return Color("blackWithOpacity")
+    }
+
+    public static var lightGrayIcon: Color {
+        return Color("lightGrayIcon")
+    }
+
+    public static var iconGreen: Color {
+        return Color("iconGreen")
+    }
+
+    public static var actionBlue: Color {
+        return Color("actionBlue")
     }
 }

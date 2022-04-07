@@ -11,7 +11,7 @@ struct RectangleButton: View {
     var title: String
     var action: (() -> Void)?
 
-    var backgroundColor = Color.callToAction
+    var backgroundColor = Color.main
     var foregroundColor = Color.white
 
     var spacing: CGFloat = 16
