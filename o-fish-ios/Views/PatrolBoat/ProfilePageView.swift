@@ -44,7 +44,8 @@ struct ProfilePageView: View {
                         HStack(spacing: Dimensions.stackSpacing) {
                             PatrolBoatUserView(photo: profilePicture,
                                                onSea: $dutyState.onDuty,
-                                               size: .large)
+                                               size: .large,
+                                               action: edit)
                             VStack(alignment: .leading, spacing: .zero) {
                                 Text(user.name.fullName)
                                     .foregroundColor(.oFieldValue)
