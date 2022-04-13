@@ -45,7 +45,7 @@ struct ProfilePageView: View {
                             PatrolBoatUserView(photo: profilePicture,
                                                onSea: $dutyState.onDuty,
                                                size: .large,
-                                               action: edit)
+                                               action: changeProfilePhoto)
                             VStack(alignment: .leading, spacing: .zero) {
                                 Text(user.name.fullName)
                                     .foregroundColor(.oFieldValue)
@@ -141,7 +141,7 @@ struct ProfilePageView: View {
             })
     }
 
-    private func edit() {
+    private func changeProfilePhoto() {
         showPhotoPickerTypeModal()
     }
 
