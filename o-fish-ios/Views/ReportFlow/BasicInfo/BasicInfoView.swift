@@ -42,7 +42,8 @@ struct BasicInfoView: View {
                         .padding(.horizontal, Dimensions.padding)
 
                     MapComponentView(location: self.$report.location,
-                                     reset: self.$resetLocation)
+                                     reset: self.$resetLocation,
+                                     isDraft: self.report.draft)
                         .frame(minHeight: Dimensions.minHeight)
                         .padding(.bottom, Dimensions.bottomPadding)
                 }

@@ -10,6 +10,7 @@ import MapKit
 import CoreLocation
 
 struct MapView: UIViewRepresentable {
+    @State var isEnable: Bool = true
     @Binding var centerCoordinate: CLLocationCoordinate2D
     @Binding var location: CLLocationCoordinate2D
     @Binding var recenter: () -> Void
@@ -25,6 +26,7 @@ struct MapView: UIViewRepresentable {
         let mapView = MKMapView()
         let radius = CLLocationDistance(settings.intialZoomLevel)
 
+        mapView.isUserInteractionEnabled = isEnable
         mapView.region = MKCoordinateRegion(center: centerCoordinate, latitudinalMeters: radius, longitudinalMeters: radius)
         mapView.delegate = context.coordinator
         return mapView

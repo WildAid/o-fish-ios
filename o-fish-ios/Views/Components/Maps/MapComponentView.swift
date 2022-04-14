@@ -13,6 +13,8 @@ struct MapComponentView: View {
     @Binding var location: LocationViewModel
     @Binding var reset: () -> Void
     @State private var childReCenter: () -> Void = { }
+    @State private var alertIsPresented = false
+    var isDraft: Bool = false
     var isLocationViewNeeded: Bool = true
 
     private enum Dimensions {
@@ -22,19 +24,32 @@ struct MapComponentView: View {
     var body: some View {
         VStack(spacing: Dimensions.trailingPadding) {
             ZStack {
-                MapView(centerCoordinate: self.$location.location, location: self.$location.location, recenter: self.$childReCenter)
+                MapView(isEnable: !isDraft,
+                        centerCoordinate: self.$location.location,
+                        location: self.$location.location,
+                        recenter: self.$childReCenter)
                 LocationPointView()
             }
 
             if isLocationViewNeeded {
                 LocationCoordsView(location: self.$location.location)
                     .padding(.horizontal, Dimensions.trailingPadding)
+                    .onTapGesture {
+                        if !isDraft {
+                            alertIsPresented = true
+                        }
+                    }
             }
         }
-            .onAppear {
-                self.reset = {
-                    self.resetLocation()
-                }
+        .onAppear {
+            self.reset = {
+                self.resetLocation()
+            }
+        }
+        .textFieldAlert(isPresented: $alertIsPresented,
+                        latitude: "\(location.latitude)",
+                        longitude: "\(location.longitude)") { lat, lon in
+            updateLocation(lat, lon)
         }
     }
 
@@ -49,6 +64,17 @@ struct MapComponentView: View {
         print("Before: \(location.location.latitude), \(location.location.longitude)")
         childReCenter()
         print("After: \(location.location.latitude), \(location.location.longitude)")
+    }
+
+    private func updateLocation(_ lat: String, _ lon: String) {
+        guard let lat = Double(lat),
+              let lon = Double(lon) else {
+            return
+        }
+        let latitude = min(max(lat, -90), 90)
+        let longitude = min(max(lon, -180), 180)
+        location.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        childReCenter()
     }
 
 }

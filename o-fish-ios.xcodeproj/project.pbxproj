@@ -289,6 +289,7 @@
 		BCE48F9EA32E0A9B405E6F04 /* SectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48AB036DA398FBFF3E3B4 /* SectionButton.swift */; };
 		F24C7E1627FAF67D00AA6504 /* UnitPickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C7E1527FAF67D00AA6504 /* UnitPickerField.swift */; };
 		F2ADF94227E9BFE2003D1245 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */; };
+		F2D617512808494200EF9B3D /* TextFieldAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D617502808494200EF9B3D /* TextFieldAlertModifier.swift */; };
 		FBE107AE247FFF87001DA29C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBE107B0247FFF87001DA29C /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -599,6 +600,7 @@
 		BCE48FFF9C49070CE13E7B27 /* PatrolBoatUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatrolBoatUserView.swift; sourceTree = "<group>"; };
 		F24C7E1527FAF67D00AA6504 /* UnitPickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPickerField.swift; sourceTree = "<group>"; };
 		F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
+		F2D617502808494200EF9B3D /* TextFieldAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertModifier.swift; sourceTree = "<group>"; };
 		FBC9242D2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBC9242E2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBE107AF247FFF87001DA29C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -965,6 +967,7 @@
 				4980765C242E82AB00D463F4 /* MapDisplayView.swift */,
 				493CDFDD2403CDBA00516048 /* MapView.swift */,
 				493CDFDF2403CDD600516048 /* MapComponentView.swift */,
+				F2D617502808494200EF9B3D /* TextFieldAlertModifier.swift */,
 				493CDFE524044AE700516048 /* LocationCoordsView.swift */,
 			);
 			path = Maps;
@@ -1774,6 +1777,7 @@
 				49FDCD70241D206D00C00574 /* SummaryViewModel.swift in Sources */,
 				49976B4624536F3300EF84CC /* PhotoIDsDisplayView.swift in Sources */,
 				49A3EC9D242CBA4E00055342 /* NameViewModel.swift in Sources */,
+				F2D617512808494200EF9B3D /* TextFieldAlertModifier.swift in Sources */,
 				30E315CD25079A1C0037235E /* OnOffCircleView.swift in Sources */,
 				49E385B124320705000A6EC3 /* ViolationsSummaryView.swift in Sources */,
 				49FDCD61241D1EA400C00574 /* CrewMemberViewModel.swift in Sources */,
