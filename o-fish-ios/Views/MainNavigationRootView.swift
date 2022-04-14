@@ -13,10 +13,6 @@ struct MainNavigationRootView: View {
     @EnvironmentObject var settings: Settings
 
     var body: some View {
-        if settings.realmUser == nil && app.currentUser()?.state == .loggedIn {
-            print("Using same user as when last running the app")
-            settings.realmUser = app.currentUser()
-        }
         return NavigationView {
             if settings.realmUser != nil {
                 PatrolBoatView()

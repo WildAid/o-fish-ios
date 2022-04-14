@@ -27,6 +27,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         Self.shared = self
         let rootView = MainNavigationRootView()
 
+        if app.currentUser()?.state == .loggedIn {
+            self.settings.realmUser = app.currentUser()
+        }
+
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.actionBlue
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
