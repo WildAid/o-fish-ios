@@ -157,6 +157,7 @@ struct ProfilePageView: View {
             return
         }
 
+        saveOnDutySession()
         deleteDraftReports()
 
         user.logOut { _ in
@@ -165,6 +166,11 @@ struct ProfilePageView: View {
             }
             NotificationManager.shared.removeAllNotification()
         }
+    }
+
+    private func saveOnDutySession() {
+        startDuty.save(existingObject: true)
+        dutyState.recordOnDutyChange(status: false, date: plannedOffDutyTime)
     }
 
     private func deleteDraftReports() {
