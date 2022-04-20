@@ -10,9 +10,11 @@ import SwiftUI
 struct KeyboardControllingScrollView<Content: View>: View {
     @ObservedObject var controller: KeyboardController
 
+    var enableHideGesture: Bool
     private let content: () -> Content
 
-    init(_ content: @escaping () -> Content, controller: KeyboardController = .sharedController) {
+    init(enableHideGesture: Bool = false, _ content: @escaping () -> Content, controller: KeyboardController = .sharedController) {
+        self.enableHideGesture = enableHideGesture
         self.content = content
         self.controller = controller
     }
@@ -24,7 +26,9 @@ struct KeyboardControllingScrollView<Content: View>: View {
         }
         .highPriorityGesture(
             DragGesture().onChanged { _ in
-                self.hideKeyboard()
+                if enableHideGesture {
+                    self.hideKeyboard()
+                }
             }
         )
     }
