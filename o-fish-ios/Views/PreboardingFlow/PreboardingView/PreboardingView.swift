@@ -49,7 +49,7 @@ struct PreboardingView: View {
 
             VStack {
                 searchBar
-                
+
                 if showingAddVessel {
                     NavigationLink(destination: ReportNavigationRootView(report: self.emptyReport, rootIsActive: $rootIsActive)) {
                         VStack(spacing: Dimension.noSpacing) {
@@ -61,7 +61,7 @@ struct PreboardingView: View {
                     }
                     .opacity(state == .loading ? 0.0 : 1.0)
                 }
-                
+
                 stateView()
                 Spacer()
             }
