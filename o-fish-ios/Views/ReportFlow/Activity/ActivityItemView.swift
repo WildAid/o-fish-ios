@@ -53,6 +53,14 @@ struct ActivityItemView: View {
     let reportId: String
 
     @State private var showingSheetItem: ActivityItem.SheetItem?
+    @State var text = ""
+    @State private var selectedItem = "" {
+        didSet {
+            if selectedItem != "Other" {
+                self.name = selectedItem
+            }
+        }
+    }
 
     private enum Dimensions {
         static let bottomPadding: CGFloat = 24
@@ -69,16 +77,19 @@ struct ActivityItemView: View {
                     }
                     .padding(.top, Dimensions.spacing)
                     ButtonField(title: buttonTitle,
-                                text: name,
+                                text: selectedItem,
                                 showingWarning: showingWarningState,
                                 fieldButtonClicked: {
                                     self.showingSheetItem = self.activityItem.sheetItem()
                     })
                     .sheet(item: $showingSheetItem) { item in
-                        TextPickerView(selectedItem: self.$name,
+                        TextPickerView(selectedItem: $selectedItem,
                                        items: item.items,
                                        title: item.title,
                                        searchBarPlaceholder: item.searchBarPlaceholder)
+                    }
+                    if self.selectedItem == "Other" {
+                        InputField(title: "Description", text: $name, tag: 0)
                     }
                     AttachmentsView(attachments: self.attachments)
                 }
