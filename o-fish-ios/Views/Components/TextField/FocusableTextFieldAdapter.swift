@@ -13,8 +13,10 @@ import SwiftUI
 /// 2. After 'Return key' tap move focus to the next screen textField
 struct FocusableTextFieldAdapter: UIViewRepresentable {
 
-    let tag: Int
     @Binding var text: String
+    @State var becomeFirstResponder: Bool
+    let tag: Int
+    let placeholder: String
     let isSecure: Bool
     let keyboardType: UIKeyboardType
     let autocapitalizationType: UITextAutocapitalizationType
@@ -25,6 +27,7 @@ struct FocusableTextFieldAdapter: UIViewRepresentable {
         textField.tag = tag
         textField.delegate = context.coordinator
         textField.isSecureTextEntry = isSecure
+        textField.placeholder = placeholder
         textField.autocapitalizationType = autocapitalizationType
         textField.autocorrectionType = autocorrectionType
         textField.keyboardType = keyboardType
@@ -54,6 +57,12 @@ struct FocusableTextFieldAdapter: UIViewRepresentable {
         uiView.setContentHuggingPriority(.defaultHigh, for: .vertical)
         uiView.setContentHuggingPriority(.defaultLow, for: .horizontal)
         uiView.text = text
+        if becomeFirstResponder == true {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+                uiView.becomeFirstResponder()
+                self.becomeFirstResponder = false
+            }
+        }
     }
 
     func makeCoordinator() -> Coordinator {

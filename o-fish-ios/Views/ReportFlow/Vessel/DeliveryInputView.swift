@@ -85,6 +85,8 @@ struct DeliveryInputView: View {
                 InputField(title: "Business",
                            text: $delivery.business,
                            tag: 0,
+                           becomeFirstResponder: true,
+                           placeholder: "Business name",
                            showingWarning: showingBusinessWarning,
                            inputChanged: inputChanged,
                            autocorrectionType: .no)

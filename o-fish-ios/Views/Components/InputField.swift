@@ -12,6 +12,8 @@ struct InputField: View {
     @Binding var text: String
 
     let tag: Int
+    var becomeFirstResponder = false
+    var placeholder = ""
 
     var showingSecureField = false
     var showingWarning = false
@@ -38,8 +40,10 @@ struct InputField: View {
 
             HStack(spacing: Dimensions.noSpacing) {
                 FocusableTextFieldAdapter(
-                    tag: tag,
                     text: textBinding,
+                    becomeFirstResponder: becomeFirstResponder,
+                    tag: tag,
+                    placeholder: placeholder,
                     isSecure: showingSecureField,
                     keyboardType: keyboardType,
                     autocapitalizationType: autocapitalizationType,
