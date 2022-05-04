@@ -19,10 +19,9 @@ struct FocusableTextFieldAdapter: UIViewRepresentable {
     let keyboardType: UIKeyboardType
     let autocapitalizationType: UITextAutocapitalizationType
     let autocorrectionType: UITextAutocorrectionType
+    private let textField = UITextField()
 
     func makeUIView(context: UIViewRepresentableContext<FocusableTextFieldAdapter>) -> UITextField {
-        let textField = UITextField()
-
         textField.tag = tag
         textField.delegate = context.coordinator
         textField.isSecureTextEntry = isSecure
@@ -33,7 +32,21 @@ struct FocusableTextFieldAdapter: UIViewRepresentable {
         textField.returnKeyType = .next
         textField.textColor = UIColor(Color.oText)
         textField.font = UIFont.preferredFont(forTextStyle: .body)
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0,
+                                                                  width: UIScreen.main.bounds.width,
+                                                                  height: 50))
+        doneToolbar.barStyle = .default
 
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done",
+                                                    style: .done,
+                                                    target: context.coordinator,
+                                                    action: #selector(Coordinator.doneButtonAction))
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+
+        textField.inputAccessoryView = doneToolbar
         return textField
     }
 
@@ -44,14 +57,16 @@ struct FocusableTextFieldAdapter: UIViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        Coordinator($text)
+        Coordinator($text, textField)
     }
 
     final class Coordinator: NSObject, UITextFieldDelegate {
         var text: Binding<String>
+        var textField: UITextField
 
-        init(_ text: Binding<String>) {
+        init(_ text: Binding<String>, _ textField: UITextField) {
             self.text = text
+            self.textField = textField
         }
 
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -79,6 +94,11 @@ struct FocusableTextFieldAdapter: UIViewRepresentable {
                 text.wrappedValue = proposedValue
             }
             return true
+        }
+
+        @objc
+        func doneButtonAction() {
+            textField.resignFirstResponder()
         }
 
     }
