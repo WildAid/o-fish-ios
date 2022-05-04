@@ -72,6 +72,7 @@ class DatePickerController: UIViewController {
 
 struct DatePickerView: UIViewRepresentable {
     var date: Date
+    var finalDate: Date?
     var mode: UIDatePicker.Mode
     var completion: (Date) -> Void
 
@@ -92,6 +93,7 @@ struct DatePickerView: UIViewRepresentable {
 
     private func configureDatePicker(for vc: DatePickerController, context: Context) {
         vc.timePicker.date = date
+        vc.datePicker.maximumDate = finalDate
 
         switch mode {
         case .time:

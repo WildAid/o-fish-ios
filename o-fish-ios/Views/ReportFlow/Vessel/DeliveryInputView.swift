@@ -118,6 +118,7 @@ struct DeliveryInputView: View {
         }
         PopoverManager.shared.showPopover(id: popoverId, content: {
             DatePickerView(date: delivery.date ?? Date(),
+                           finalDate: Date(),
                            mode: .dateAndTime,
                            completion: datePickerSelectClicked)
         }, withButton: false)
