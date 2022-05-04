@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CrewMemberView: View {
-    @Binding var currentEditingCrewMemberId: String
     @Binding var isCrewMemberNonEmpty: Bool
     @Binding var informationComplete: Bool
     @Binding var showingWarningState: Bool
@@ -23,21 +22,14 @@ struct CrewMemberView: View {
 
     var body: some View {
         wrappedShadowView {
-            if crewMember.id == currentEditingCrewMemberId {
-                CrewMemberInputView(isCrewMemberNonEmpty: self.$isCrewMemberNonEmpty,
-                    informationComplete: $informationComplete,
-                    showingWarningState: $showingWarningState,
-                    crewMember: crewMember,
-                    reportId: reportId,
-                    index: index,
-                    isCaptain: crewMember.isCaptain,
-                    removeClicked: removeClicked)
-            } else {
-                CrewMemberStaticView(crewMember: crewMember,
-                    index: index,
-                    isCaptain: crewMember.isCaptain,
-                    editClicked: editClicked)
-            }
+            CrewMemberInputView(isCrewMemberNonEmpty: self.$isCrewMemberNonEmpty,
+                informationComplete: $informationComplete,
+                showingWarningState: $showingWarningState,
+                crewMember: crewMember,
+                reportId: reportId,
+                index: index,
+                isCaptain: crewMember.isCaptain,
+                removeClicked: removeClicked)
         }
     }
 }
@@ -47,7 +39,7 @@ struct CrewMemberView_Previews: PreviewProvider {
 
     static var previews: some View {
         VStack {
-            CrewMemberView(currentEditingCrewMemberId: .constant("1"),
+            CrewMemberView(
                 isCrewMemberNonEmpty: .constant(false),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false),
@@ -55,7 +47,7 @@ struct CrewMemberView_Previews: PreviewProvider {
                 reportId: "TestId",
                 index: 1
             )
-            CrewMemberView(currentEditingCrewMemberId: .constant(crewMember.id),
+            CrewMemberView(
                 isCrewMemberNonEmpty: .constant(false),
                 informationComplete: .constant(false),
                 showingWarningState: .constant(false),

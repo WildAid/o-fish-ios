@@ -17,8 +17,6 @@ struct CrewView: View {
     @State private var crewMemberWaitingRemoveConfirmation: CrewMemberViewModel?
     @State private var initialCaptain = CrewMemberViewModel()
     @State private var initialCrew = [CrewMemberViewModel]()
-
-    @State private var currentEditingCrewMemberId: String
     @State private var isCurrentEditingCrewNonEmpty: Bool
 
     @State private var crewMembersComplete: [String: Bool]
@@ -37,9 +35,6 @@ struct CrewView: View {
         self.report = report
 
         _showingPrefilledAlert = prefilledCrewAvailable
-        _currentEditingCrewMemberId = report.crew.filter({ $0.isEmpty }).count != 0 ?
-            State(initialValue: report.crew.filter({ $0.isEmpty }).first?.id ?? "") :
-            State(initialValue: report.captain.id)
         _isCurrentEditingCrewNonEmpty = State(initialValue: !report.captain.isEmpty)
         self._showingAlertItem = showingAlertItem
         _allFieldsComplete = allFieldsComplete
@@ -51,7 +46,7 @@ struct CrewView: View {
         KeyboardControllingScrollView {
             VStack(spacing: Dimensions.spacing) {
                 ForEach(self.allCrew.enumeratedArray(), id: \.element.id) { (index, member) in
-                    CrewMemberView(currentEditingCrewMemberId: self.$currentEditingCrewMemberId,
+                    CrewMemberView(
                         isCrewMemberNonEmpty: self.$isCurrentEditingCrewNonEmpty,
                         informationComplete: self.informationCompleteBinding(member),
                         showingWarningState: self.$showingWarningState,
@@ -65,7 +60,7 @@ struct CrewView: View {
 
                 if !(self.report.crew.last?.isEmpty ?? true)
                        || self.report.crew.isEmpty
-                       || (self.isCurrentEditingCrewNonEmpty && self.report.crew.last?.id == self.currentEditingCrewMemberId) {
+                       || (self.isCurrentEditingCrewNonEmpty) {
 
                     SectionButton(title: "Add Crew Member", systemImageName: "plus") {
                         self.addCrewMemberClicked()
@@ -115,7 +110,6 @@ struct CrewView: View {
             let emptyCaptain = CrewMemberViewModel()
             emptyCaptain.isCaptain = true
             report.captain = emptyCaptain
-            currentEditingCrewMemberId = report.captain.id
             report.crew = [CrewMemberViewModel]()
             if showingAlertItem == nil {
                 showingAlertItem = AlertItem(
@@ -190,7 +184,6 @@ struct CrewView: View {
     private func prefillCrewClicked() {
         report.captain = initialCaptain
         report.crew = initialCrew
-        currentEditingCrewMemberId = report.crew.last?.id ?? ""
         checkingForComplete()
         checkAllInput()
         showingPrefilledAlert = false
@@ -203,7 +196,6 @@ struct CrewView: View {
     }
 
     private func updateCurrentCrewMemberStatus(_ crewMember: CrewMemberViewModel?) {
-        currentEditingCrewMemberId = crewMember?.id ?? ""
         isCurrentEditingCrewNonEmpty = !(crewMember?.isEmpty ?? true)
         checkAllInput()
     }
