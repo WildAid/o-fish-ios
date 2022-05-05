@@ -12,6 +12,7 @@ struct BasicInfoView: View {
     @ObservedObject var report: ReportViewModel
     @Binding var allFieldsComplete: Bool
     @State private var resetLocation: () -> Void = {}
+    var isNewBoarding: Bool
 
     private enum Dimensions {
         static let padding: CGFloat = 16.0
@@ -43,7 +44,7 @@ struct BasicInfoView: View {
 
                     MapComponentView(location: self.$report.location,
                                      reset: self.$resetLocation,
-                                     isDraft: self.report.draft)
+                                     isEnable: self.isNewBoarding)
                         .frame(minHeight: Dimensions.minHeight)
                         .padding(.bottom, Dimensions.bottomPadding)
                 }
@@ -60,7 +61,9 @@ struct BasicInfoView: View {
 struct BasicInfoView_Previews: PreviewProvider {
     static var previews: some View {
         let report = ReportViewModel()
-        return BasicInfoView(report: report, allFieldsComplete: .constant(false))
+        return BasicInfoView(report: report,
+                             allFieldsComplete: .constant(false),
+                             isNewBoarding: true)
             .environmentObject(Settings.shared)
     }
 }

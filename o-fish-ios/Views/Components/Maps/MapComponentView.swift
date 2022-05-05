@@ -14,7 +14,7 @@ struct MapComponentView: View {
     @Binding var reset: () -> Void
     @State private var childReCenter: () -> Void = { }
     @State private var alertIsPresented = false
-    var isDraft: Bool = false
+    var isEnable: Bool = true
     var isLocationViewNeeded: Bool = true
 
     private enum Dimensions {
@@ -24,7 +24,7 @@ struct MapComponentView: View {
     var body: some View {
         VStack(spacing: Dimensions.trailingPadding) {
             ZStack {
-                MapView(isEnable: !isDraft,
+                MapView(isEnable: isEnable,
                         centerCoordinate: self.$location.location,
                         location: self.$location.location,
                         recenter: self.$childReCenter)
@@ -35,7 +35,7 @@ struct MapComponentView: View {
                 LocationCoordsView(location: self.$location.location)
                     .padding(.horizontal, Dimensions.trailingPadding)
                     .onTapGesture {
-                        if !isDraft {
+                        if isEnable {
                             alertIsPresented = true
                         }
                     }

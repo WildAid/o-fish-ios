@@ -37,6 +37,7 @@ struct TopTabBarContainerView: View {
     @Binding private var prefilledCrewAvailable: Bool
 
     @Binding private var showingAlertItem: AlertItem?
+    private var isNewBoarding: Bool
     private var showSubmitAlert: (() -> Void)?
     @Binding private var notFilledScreens: [String]
 
@@ -61,6 +62,7 @@ struct TopTabBarContainerView: View {
 
     init(report: ReportViewModel,
          prefilledAvailable: Bool,
+         isNewBoarding: Bool,
          prefilledCrewAvailable: Binding<Bool>,
          showingAlertItem: Binding<AlertItem?>,
          showSubmitAlert: (() -> Void)? = nil,
@@ -68,6 +70,7 @@ struct TopTabBarContainerView: View {
 
         self.report = report
         self._prefilledVesselAvailable = State(initialValue: prefilledAvailable)
+        self.isNewBoarding = isNewBoarding
         self._prefilledCrewAvailable = prefilledCrewAvailable
         self._showingAlertItem = showingAlertItem
         self.showSubmitAlert = showSubmitAlert
@@ -114,7 +117,9 @@ struct TopTabBarContainerView: View {
                                  itemClicked: scrollableBarItemClicked)
 
                 if self.isBasicInformationSelected {
-                    BasicInfoView(report: self.report, allFieldsComplete: allFieldsCompleteBinding)
+                    BasicInfoView(report: self.report,
+                                  allFieldsComplete: allFieldsCompleteBinding,
+                                  isNewBoarding: isNewBoarding)
 
                 } else if self.isVesselSelected {
                     VesselView(
@@ -366,6 +371,7 @@ struct TopTabBarContainerView_Previews: PreviewProvider {
         Group {
             TopTabBarContainerView(report: .sample,
                                    prefilledAvailable: true,
+                                   isNewBoarding: true,
                                    prefilledCrewAvailable: .constant(true),
                                    showingAlertItem: .constant(nil),
                                    notFilledScreens: .constant([])
@@ -373,6 +379,7 @@ struct TopTabBarContainerView_Previews: PreviewProvider {
                 .environmentObject(Settings.shared)
             TopTabBarContainerView(report: .sample,
                                    prefilledAvailable: true,
+                                   isNewBoarding: true,
                                    prefilledCrewAvailable: .constant(true),
                                    showingAlertItem: .constant(.sample),
                                    notFilledScreens: .constant([])

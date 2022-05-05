@@ -66,7 +66,6 @@ public struct TextFieldAlertModifier: ViewModifier {
 
 }
 
-
 extension View {
 
     public func textFieldAlert(isPresented: Binding<Bool>, latitude: String, longitude: String,

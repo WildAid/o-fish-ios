@@ -14,15 +14,17 @@ struct ReportNavigationRootView: View {
     @Binding var rootIsActive: Bool
 
     private var prefilledAvailable: Bool
+    private var isNewBoarding: Bool
     private let settings = Settings.shared
     @State private var showingAlertItem: AlertItem?
     @State private var notFilledScreens: [String] = TopTabBarItems.allCases.map { $0.rawValue }
     @State private var prefilledCrewAvailable: Bool
     @State private var showingActionSheetItem: ActionSheetItem?
 
-    init(report: ReportViewModel? = nil, prefilledAvailable: Bool = false, rootIsActive: Binding<Bool>) {
+    init(report: ReportViewModel? = nil, prefilledAvailable: Bool = false, isNewBoarding: Bool = true, rootIsActive: Binding<Bool>) {
         self.report = report ?? ReportViewModel()
         self.prefilledAvailable = prefilledAvailable
+        self.isNewBoarding = isNewBoarding
         _rootIsActive = rootIsActive
         if let menuData = app.currentUser()?.agencyRealm()?.objects(MenuData.self).first {
             Settings.shared.menuData = menuData
@@ -35,6 +37,7 @@ struct ReportNavigationRootView: View {
     var body: some View {
         TopTabBarContainerView(report: report,
             prefilledAvailable: prefilledAvailable,
+            isNewBoarding: isNewBoarding,
             prefilledCrewAvailable: $prefilledCrewAvailable,
             showingAlertItem: $showingAlertItem,
             showSubmitAlert: showFinalAlert,
@@ -50,7 +53,7 @@ struct ReportNavigationRootView: View {
                 }, trailing: Button(action: submitNavBarClicked) {
                     Text("Save")
                 })
-            .navigationBarTitle(report.draft ? "Draft Boarding" : "New Boarding", displayMode: .inline)
+            .navigationBarTitle(isNewBoarding ? "Draft Boarding" : "New Boarding", displayMode: .inline)
             .preferredColorScheme(userSettings.forceDarkMode ? .dark : .light)
             .showingAlert(alertItem: $showingAlertItem)
             .showingActionSheet(actionSheetItem: $showingActionSheetItem)
@@ -83,7 +86,8 @@ struct ReportNavigationRootView: View {
         message: "If canceled, this boarding will not be saved. You may however save it to finish later.",
         firstButton: .default(Text("Keep Editing")),
         secondButton: .default(Text("Save and Finish Later"), action: { self.saveAlertClicked() }),
-        thirdButton: .destructive(Text(report.draft ? "Delete Boarding" : "Cancel Boarding" ), action: discardReport))
+        thirdButton: .destructive(Text(isNewBoarding ? "Delete Boarding" : "Cancel Boarding" ),
+                                  action: discardReport))
     }
 
     private func showFinalAlert() {
