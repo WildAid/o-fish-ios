@@ -213,9 +213,14 @@ struct ProfilePageView: View {
     }
 
     private func showPhotoTaker(source: UIImagePickerController.SourceType) {
-        guard let photo = profilePicture else {
-            print("Error, no placeholder image, so cannot edit picture")
-            return
+        var photo: PhotoViewModel
+        if let profilePicture = profilePicture {
+            photo = profilePicture
+        } else {
+            photo = PhotoViewModel()
+            if let id = settings.realmUser?.profilePictureDocumentId {
+                photo.id = id
+            }
         }
 
         PhotoCaptureController.show(reportID: "", source: source, photoToEdit: photo) { controller, pictureId in
