@@ -160,7 +160,7 @@
 "Draft Boarding" = "Draft Boarding";
 "Close" = "Close";
 "Log Out?" = "Log Out?";
-"All draft boardings will be deleted!" = "All draft boardings will be deleted!";
+"All draft boardings will be deleted!" = "All draft boardings will be deleted, and you will be marked 'Not at Sea'!";
 "Edit" = "Edit";
 "0 Draft Boardings" = "0 Draft Boardings";
 "Save and Finish Later" = "Save and Finish Later";
