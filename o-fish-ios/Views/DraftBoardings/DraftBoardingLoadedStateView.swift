@@ -28,6 +28,7 @@ struct DraftBoardingLoadedStateView: View {
 
             NavigationLink(destination: ReportNavigationRootView(report: showingReport,
                                                                  prefilledAvailable: false,
+                                                                 isNewBoarding: false,
                                                                  rootIsActive: $rootIsActive),
                            isActive: $rootIsActive) {
                             EmptyView()
