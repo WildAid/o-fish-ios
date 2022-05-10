@@ -36,17 +36,7 @@ struct SearchBarView: View {
                     onCommit: onCommit)
                     .font(.body)
 
-                if searchText.isEmpty {
-                    Button(action: {
-                        //TODO: use microphone to input search string
-                        print("Microphone button tapped")
-                    }) {
-                        Image(systemName: "mic.fill")
-                    }
-                    .alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Error"), message: Text("\(errorText)"), dismissButton: .default(Text("Ok")))
-                    }
-                } else {
+                if !searchText.isEmpty {
                     Button(action: {
                         self.searchText = ""
                         self.clickedDelete()
@@ -55,12 +45,15 @@ struct SearchBarView: View {
                     }
                 }
             }
-                .padding(EdgeInsets(top: Dimension.inset, leading: Dimension.bottomInset, bottom: Dimension.inset, trailing: Dimension.inset))
-                .frame(height: Dimension.heightTextField)
-                .foregroundColor(.secondary)
-                .background(Color.oSearchBar)
-                .cornerRadius(Dimension.cornerRadius)
-                .padding([.horizontal, .top], Dimension.padding)
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Error"), message: Text("\(errorText)"), dismissButton: .default(Text("Ok")))
+            }
+            .padding(EdgeInsets(top: Dimension.inset, leading: Dimension.bottomInset, bottom: Dimension.inset, trailing: Dimension.inset))
+            .frame(height: Dimension.heightTextField)
+            .foregroundColor(.secondary)
+            .background(Color.oSearchBar)
+            .cornerRadius(Dimension.cornerRadius)
+            .padding([.horizontal, .top], Dimension.padding)
 
             Divider()
                 .frame(height: 1.0)
