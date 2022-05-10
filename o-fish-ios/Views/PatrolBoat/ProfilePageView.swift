@@ -146,7 +146,7 @@ struct ProfilePageView: View {
 
     private func showLogoutAlert() {
         showingAlertItem = AlertItem(title: "Logout?",
-                                     message: "All draft boardings will be deleted!",
+                                     message: "All draft boardings will be deleted, and you will be marked 'Not at Sea'!",
                                      primaryButton: .destructive(Text("Log Out"), action: logoutAlertClicked),
                                      secondaryButton: .cancel())
     }
