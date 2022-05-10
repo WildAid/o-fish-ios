@@ -146,7 +146,7 @@ struct ProfilePageView: View {
 
     private func showLogoutAlert() {
         showingAlertItem = AlertItem(title: "Logout?",
-                                     message: "All draft boardings will be deleted!",
+                                     message: "All draft boardings will be deleted, and you will be marked 'Not at Sea'!",
                                      primaryButton: .destructive(Text("Log Out"), action: logoutAlertClicked),
                                      secondaryButton: .cancel())
     }
@@ -157,6 +157,7 @@ struct ProfilePageView: View {
             return
         }
 
+        saveOnDutySession()
         deleteDraftReports()
 
         user.logOut { _ in
@@ -165,6 +166,11 @@ struct ProfilePageView: View {
             }
             NotificationManager.shared.removeAllNotification()
         }
+    }
+
+    private func saveOnDutySession() {
+        startDuty.save(existingObject: true)
+        dutyState.recordOnDutyChange(status: false, date: plannedOffDutyTime)
     }
 
     private func deleteDraftReports() {
