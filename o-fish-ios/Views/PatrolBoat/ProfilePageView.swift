@@ -44,7 +44,8 @@ struct ProfilePageView: View {
                         HStack(spacing: Dimensions.stackSpacing) {
                             PatrolBoatUserView(photo: profilePicture,
                                                onSea: $dutyState.onDuty,
-                                               size: .large)
+                                               size: .large,
+                                               action: changeProfilePhoto)
                             VStack(alignment: .leading, spacing: .zero) {
                                 Text(user.name.fullName)
                                     .foregroundColor(.oFieldValue)
@@ -140,7 +141,7 @@ struct ProfilePageView: View {
             })
     }
 
-    private func edit() {
+    private func changeProfilePhoto() {
         showPhotoPickerTypeModal()
     }
 
@@ -157,7 +158,6 @@ struct ProfilePageView: View {
             return
         }
 
-        saveOnDutySession()
         deleteDraftReports()
 
         user.logOut { _ in
@@ -166,11 +166,6 @@ struct ProfilePageView: View {
             }
             NotificationManager.shared.removeAllNotification()
         }
-    }
-
-    private func saveOnDutySession() {
-        startDuty.save(existingObject: true)
-        dutyState.recordOnDutyChange(status: false, date: plannedOffDutyTime)
     }
 
     private func deleteDraftReports() {
@@ -218,9 +213,14 @@ struct ProfilePageView: View {
     }
 
     private func showPhotoTaker(source: UIImagePickerController.SourceType) {
-        guard let photo = profilePicture else {
-            print("Error, no placeholder image, so cannot edit picture")
-            return
+        var photo: PhotoViewModel
+        if let profilePicture = profilePicture {
+            photo = profilePicture
+        } else {
+            photo = PhotoViewModel()
+            if let id = settings.realmUser?.profilePictureDocumentId {
+                photo.id = id
+            }
         }
 
         PhotoCaptureController.show(reportID: "", source: source, photoToEdit: photo) { controller, pictureId in
