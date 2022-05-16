@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Violation: EmbeddedObject, ObservableObject {
+class Violation: EmbeddedObject {
     @objc dynamic var disposition = ""
     @objc dynamic var offence: Offence? = Offence()
     @objc dynamic var crewMember: CrewMember? = CrewMember()

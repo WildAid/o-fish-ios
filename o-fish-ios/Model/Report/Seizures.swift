@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Seizures: EmbeddedObject, ObservableObject {
+class Seizures: EmbeddedObject {
     @objc dynamic var text = ""
     @objc dynamic var attachments: Attachments? = Attachments()
 }

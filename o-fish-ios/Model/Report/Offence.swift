@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Offence: EmbeddedObject, ObservableObject {
+class Offence: EmbeddedObject {
     @objc dynamic var code = ""
     @objc dynamic var explanation = ""
 }

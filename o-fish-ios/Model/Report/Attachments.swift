@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Attachments: EmbeddedObject, ObservableObject {
+class Attachments: EmbeddedObject {
     let notes = List<String>()
     let photoIDs = List<String>()
 }

@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Delivery: EmbeddedObject, ObservableObject {
+class Delivery: EmbeddedObject {
     @objc dynamic var date = NSDate(timeIntervalSince1970: 0)
     @objc dynamic var location = ""
     @objc dynamic var business = ""

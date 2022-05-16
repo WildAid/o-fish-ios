@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Inspection: EmbeddedObject, ObservableObject {
+class Inspection: EmbeddedObject {
     @objc dynamic var activity: Activity? = Activity()
     @objc dynamic var fishery: Fishery? = Fishery()
     @objc dynamic var gearType: GearType? = GearType()

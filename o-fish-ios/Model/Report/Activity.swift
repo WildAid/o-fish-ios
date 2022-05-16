@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Activity: EmbeddedObject, ObservableObject {
+class Activity: EmbeddedObject {
     @objc dynamic var name = ""
     @objc dynamic var attachments: Attachments? = Attachments()
 }

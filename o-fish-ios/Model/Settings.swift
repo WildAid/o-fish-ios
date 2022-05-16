@@ -25,7 +25,7 @@ class Settings: ObservableObject {
 
 extension RealmSwift.User {
     var partition: String {
-        guard case let .document(agency) = self.customData?["agency"],
+        guard case let .document(agency) = self.customData["agency"],
               case let .string(partition) = agency["name"] else {
                 print("Partition not set")
                 return ""
@@ -39,7 +39,7 @@ extension RealmSwift.User {
     }
 
     var firstName: String {
-        guard case let .document(name) = self.customData?["name"],
+        guard case let .document(name) = self.customData["name"],
               case let .string(first) = name["first"] else {
                 print("First name not set")
                 return "John"
@@ -48,7 +48,7 @@ extension RealmSwift.User {
     }
 
     var lastName: String {
-        guard case let .document(name) = self.customData?["name"],
+        guard case let .document(name) = self.customData["name"],
             case let .string(last) = name["last"] else {
                 print("Last name not set")
                 return "Doe"
@@ -57,7 +57,7 @@ extension RealmSwift.User {
     }
 
     var emailAddress: String {
-        guard case let .string(email) = self.customData?["email"] else {
+        guard case let .string(email) = self.customData["email"] else {
             print("email not set")
             return "john.doe@wildaid.org"
         }
@@ -65,7 +65,7 @@ extension RealmSwift.User {
     }
 
     var profilePictureDocumentId: String? {
-        guard case let .string(profilePic) = self.customData?["profilePic"] else {
+        guard case let .string(profilePic) = self.customData["profilePic"] else {
             return nil
         }
         return profilePic
