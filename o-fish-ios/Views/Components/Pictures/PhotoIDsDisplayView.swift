@@ -26,7 +26,7 @@ struct PhotoIDsDisplayView: View {
             do {
                 let _id = try ObjectId(string: id)
                 let predicate = NSPredicate(format: "_id == %@", _id)
-                let realmPhotos = app.currentUser()?.agencyRealm()?.objects(Photo.self).filter(predicate)
+                let realmPhotos = app.currentUser?.agencyRealm()?.objects(Photo.self).filter(predicate)
                 if let realmPhotos = realmPhotos {
                     if let photo = realmPhotos.first {
                         photoList.photos.append(PhotoViewModel(photo: photo))

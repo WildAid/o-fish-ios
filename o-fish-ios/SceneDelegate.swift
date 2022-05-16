@@ -27,8 +27,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         Self.shared = self
         let rootView = MainNavigationRootView()
 
-        if app.currentUser()?.state == .loggedIn {
-            self.settings.realmUser = app.currentUser()
+        if app.currentUser?.state == .loggedIn {
+            self.settings.realmUser = app.currentUser
         }
 
         UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = UIColor.actionBlue
@@ -80,7 +80,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        if DutyState.shared.onDuty && app.currentUser()?.state == .loggedIn {
+        if DutyState.shared.onDuty && app.currentUser?.state == .loggedIn {
             NotificationManager.shared.requestNotificationAfterClosing(hours: Constants.Notifications.hoursAfterClosing)
         }
     }

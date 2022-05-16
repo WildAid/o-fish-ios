@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Summary: EmbeddedObject, ObservableObject {
+class Summary: EmbeddedObject {
     @objc dynamic var safetyLevel: SafetyLevel? = SafetyLevel()
     let violations = List<Violation>()
     @objc dynamic var seizures: Seizures? = Seizures()

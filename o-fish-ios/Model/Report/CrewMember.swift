@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class CrewMember: EmbeddedObject, ObservableObject {
+class CrewMember: EmbeddedObject {
     @objc dynamic var name = ""
     @objc dynamic var license = ""
     @objc dynamic var attachments: Attachments? = Attachments()

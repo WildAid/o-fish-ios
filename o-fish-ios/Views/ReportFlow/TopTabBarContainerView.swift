@@ -357,7 +357,7 @@ struct TopTabBarContainerView: View {
     }
 
     private func updateDraftReport() {
-        if let realm = app.currentUser()?.agencyRealm() {
+        if let realm = app.currentUser?.agencyRealm() {
             self.report.draft = true
             self.report.save(realm)
         } else {

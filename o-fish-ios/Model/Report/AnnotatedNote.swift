@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class AnnotatedNote: EmbeddedObject, ObservableObject, Identifiable {
+class AnnotatedNote: EmbeddedObject, Identifiable {
     @objc dynamic var note = ""
     let photoIDs = List<String>()
 }

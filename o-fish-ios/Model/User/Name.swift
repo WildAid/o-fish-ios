@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Name: EmbeddedObject, ObservableObject {
+class Name: EmbeddedObject {
     @objc dynamic var first = ""
     @objc dynamic var last = ""
 }

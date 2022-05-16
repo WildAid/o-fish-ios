@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Boat: EmbeddedObject, ObservableObject {
+class Boat: EmbeddedObject {
     @objc dynamic var name = ""
     @objc dynamic var homePort = ""
     @objc dynamic var nationality = ""

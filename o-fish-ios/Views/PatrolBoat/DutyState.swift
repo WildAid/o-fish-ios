@@ -52,7 +52,7 @@ class DutyState: ObservableObject {
     private func loadOnDutyState(user: UserViewModel) -> Bool {
         let predicate = NSPredicate(format: "user.email = %@", user.email)
 
-        guard let dutyChange = app.currentUser()?
+        guard let dutyChange = app.currentUser?
                 .agencyRealm()?
                 .objects(DutyChange.self)
                 .filter(predicate)

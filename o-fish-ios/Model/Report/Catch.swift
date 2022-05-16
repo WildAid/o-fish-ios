@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Catch: EmbeddedObject, ObservableObject {
+class Catch: EmbeddedObject {
     @objc dynamic var fish = ""
     @objc dynamic var number = 0
     @objc dynamic var weight = 0.0

@@ -26,7 +26,7 @@ struct ReportNavigationRootView: View {
         self.prefilledAvailable = prefilledAvailable
         self.isNewBoarding = isNewBoarding
         _rootIsActive = rootIsActive
-        if let menuData = app.currentUser()?.agencyRealm()?.objects(MenuData.self).first {
+        if let menuData = app.currentUser?.agencyRealm()?.objects(MenuData.self).first {
             Settings.shared.menuData = menuData
         } else {
             print("Failed to read menus")
@@ -124,7 +124,7 @@ struct ReportNavigationRootView: View {
 
     private func discardReport() {
         let isDraft = report.draft
-        if let realm = app.currentUser()?.agencyRealm() {
+        if let realm = app.currentUser?.agencyRealm() {
             self.report.discard(realm)
         } else {
             print("Realm not available")
@@ -165,7 +165,7 @@ struct ReportNavigationRootView: View {
     }
 
     private func isSaveAvailable() -> Bool {
-        guard let realm = app.currentUser()?.agencyRealm() else {
+        guard let realm = app.currentUser?.agencyRealm() else {
             return false
         }
         let predicate = NSPredicate(format: "draft == true && reportingOfficer.email == %@",
@@ -176,7 +176,7 @@ struct ReportNavigationRootView: View {
     }
 
     private func save() {
-        if let realm = app.currentUser()?.agencyRealm() {
+        if let realm = app.currentUser?.agencyRealm() {
             self.report.save(realm)
         } else {
             print("Realm not available")
