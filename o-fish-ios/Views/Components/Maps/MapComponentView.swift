@@ -11,11 +11,14 @@ import MapKit
 struct MapComponentView: View {
 
     @Binding var location: LocationViewModel
+    @Binding var mpaEnable: Bool
     @Binding var reset: () -> Void
+    @Binding var mpaSelected: MPA?
     @State private var childReCenter: () -> Void = { }
     @State private var alertIsPresented = false
     var isEnable: Bool = true
     var isLocationViewNeeded: Bool = true
+    var enableGesture: Bool = true
 
     private enum Dimensions {
         static let trailingPadding: CGFloat = 16.0
@@ -25,9 +28,12 @@ struct MapComponentView: View {
         VStack(spacing: Dimensions.trailingPadding) {
             ZStack {
                 MapView(isEnable: isEnable,
+                        mpaEnable: self.$mpaEnable,
                         centerCoordinate: self.$location.location,
                         location: self.$location.location,
-                        recenter: self.$childReCenter)
+                        recenter: self.$childReCenter,
+                        mpaSelected: self.$mpaSelected,
+                        enableGesture: enableGesture)
                 LocationPointView()
             }
 
@@ -82,7 +88,7 @@ struct MapComponentView: View {
 struct MapComponentView_Previews: PreviewProvider {
     static var previews: some View {
         let location = LocationViewModel()
-        return MapComponentView(location: .constant(location), reset: .constant {})
+        return MapComponentView(location: .constant(location), mpaEnable: .constant(true), reset: .constant {}, mpaSelected: .constant(nil))
             .environmentObject(Settings.shared)
     }
 }

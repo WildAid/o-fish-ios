@@ -21,10 +21,12 @@ struct PatrolBoatView: View {
     @State private var showingProfilePage = false
     @State private var resetLocation = {}
     @State private var showingDrafts = false
-
+    @State private var mpaEnable = false
     @State private var showingAlertItem: AlertItem?
     @State private var profilePicture: PhotoViewModel?
     @State private var draftBoardingsCount = 0
+    @State private var bottomSheetState: BottomSheetState = .hidden
+    @State private var mpaSelected: MPA?
 
     let photoQueryManager = PhotoQueryManager.shared
 
@@ -38,6 +40,7 @@ struct PatrolBoatView: View {
     }
 
     var body: some View {
+        GeometryReader { geometry in
         ZStack {
             Color.oSelectionBackground
                 .ignoresSafeArea()
@@ -62,16 +65,23 @@ struct PatrolBoatView: View {
 
                 ZStack(alignment: .bottom) {
                     MapComponentView(location: self.$location,
+                                     mpaEnable: self.$mpaEnable,
                                      reset: self.$resetLocation,
+                                     mpaSelected: self.$mpaSelected,
                                      isLocationViewNeeded: false)
                     VStack {
-                        HStack {
+                        HStack(alignment: .top) {
                             CoordsBoxView(location: location)
                                 .padding(.trailing, Dimensions.trailingCoordPadding)
                                 .padding(.leading, Dimensions.coordPadding)
 
-                            LocationButton(action: resetLocation)
-                                .padding(.trailing, Dimensions.coordTopPadding)
+                            VStack {
+                                LocationButton(action: resetLocation)
+                                    .padding(.trailing, Dimensions.coordTopPadding)
+
+                                MPAButton(mpaEnable: $mpaEnable, buttonEnable: $settings.mpaEnable)
+                                    .padding(.trailing, Dimensions.coordTopPadding)
+                            }
                         }
                         .padding(.top, Dimensions.coordTopPadding)
                         Spacer()
@@ -84,7 +94,7 @@ struct PatrolBoatView: View {
                             destination: PreboardingView(viewType: .preboarding,
                                                          onDuty: onDuty,
                                                          rootIsActive: $isActiveRootFromPreboardingView),
-                            isActive: self.$isActiveRootFromPreboardingView) {
+                                                         isActive: self.$isActiveRootFromPreboardingView) {
                             EmptyView()
                         }
                         .isDetailLink(false)
@@ -93,7 +103,7 @@ struct PatrolBoatView: View {
                             destination: PreboardingView(viewType: .searchRecords,
                                                          onDuty: onDuty,
                                                          rootIsActive: $isActiveRootFromSearchView),
-                            isActive: $isActiveRootFromSearchView) {
+                                                         isActive: $isActiveRootFromSearchView) {
                             EmptyView()
                         }
                         .isDetailLink(false)
@@ -110,6 +120,24 @@ struct PatrolBoatView: View {
                 .navigationBarBackButtonHidden(true)
                 .navigationBarHidden(true)
             }
+
+            BottomSheetView(state: $bottomSheetState, maxHeight: geometry.size.height * 0.9, content: {
+                if let mpa = mpaSelected {
+                    MPAView(mpa: mpa, onDismiss: {
+                        self.mpaSelected = nil
+                        self.bottomSheetState = .hidden
+                    })
+                    .onAppear {
+                        self.bottomSheetState = .half
+                    }
+                    .onDisappear {
+                        self.bottomSheetState = .hidden
+                    }
+                }
+            }, onDismiss: {
+                self.mpaSelected = nil
+            })
+        }
             .showingAlert(alertItem: $showingAlertItem)
             .onAppear(perform: onAppear)
             .preferredColorScheme(userSettings.forceDarkMode ? .dark : .light)
@@ -148,6 +176,7 @@ struct PatrolBoatView: View {
 
         profilePicture = getPicture(documentId: user.profilePictureDocumentId)
         location = LocationViewModel(LocationHelper.currentLocation)
+        getMPAs()
     }
 
     private func goOnDutyAlertClicked() {
@@ -161,6 +190,13 @@ struct PatrolBoatView: View {
         guard let documentId = documentId else { return nil }
         let photos = photoQueryManager.photoViewModels(imagesId: [documentId])
         return photos.first
+    }
+
+    private func getMPAs() {
+        if let mpa = settings.realmUser?.agencyRealm()?.objects(MPA.self) {
+            Settings.shared.mpa = Array(mpa)
+            Settings.shared.mpaEnable = !mpa.isEmpty
+        }
     }
 
     private func showFindRecords() {

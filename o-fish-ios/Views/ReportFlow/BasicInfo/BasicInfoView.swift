@@ -12,6 +12,7 @@ struct BasicInfoView: View {
     @ObservedObject var report: ReportViewModel
     @Binding var allFieldsComplete: Bool
     @State private var resetLocation: () -> Void = {}
+    @State private var mpaSelected: MPA?
     var isNewBoarding: Bool
 
     private enum Dimensions {
@@ -43,10 +44,21 @@ struct BasicInfoView: View {
                         .padding(.horizontal, Dimensions.padding)
 
                     MapComponentView(location: self.$report.location,
+                                     mpaEnable: .constant(true),
                                      reset: self.$resetLocation,
-                                     isEnable: self.isNewBoarding)
+                                     mpaSelected: self.$mpaSelected,
+                                     isEnable: self.isNewBoarding,
+                                     enableGesture: false)
                         .frame(minHeight: Dimensions.minHeight)
                         .padding(.bottom, Dimensions.bottomPadding)
+
+                    if let mpaSelected = mpaSelected {
+                        VStack(spacing: 16) {
+                            LabeledText(label: "Marine Protected Area", text: mpaSelected.name)
+                            Divider()
+                        }
+                        .padding(.horizontal, 16)
+                    }
                 }
                     .background(Color.oSelectionBackground)
                     .compositingGroup()

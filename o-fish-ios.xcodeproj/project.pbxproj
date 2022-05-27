@@ -288,6 +288,11 @@
 		BCE48F5083615CEB327EF9BD /* PhotoQueryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE489E93BCA8E7B291D6830 /* PhotoQueryManager.swift */; };
 		BCE48F9EA32E0A9B405E6F04 /* SectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48AB036DA398FBFF3E3B4 /* SectionButton.swift */; };
 		F24C7E1627FAF67D00AA6504 /* UnitPickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24C7E1527FAF67D00AA6504 /* UnitPickerField.swift */; };
+		F24DBC0A283E3BE30076F7D4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24DBC09283E3BE30076F7D4 /* Location.swift */; };
+		F26ADFF72832681A00AEFEDE /* MPAButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26ADFF62832681A00AEFEDE /* MPAButton.swift */; };
+		F28C48E82837D317003BA155 /* MPA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28C48E72837D317003BA155 /* MPA.swift */; };
+		F2A01C3F283F8E1800467CB5 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A01C3E283F8E1800467CB5 /* BottomSheetView.swift */; };
+		F2A01C41283F962200467CB5 /* MPAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A01C40283F962200467CB5 /* MPAView.swift */; };
 		F2ADF94227E9BFE2003D1245 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */; };
 		F2D617512808494200EF9B3D /* TextFieldAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D617502808494200EF9B3D /* TextFieldAlertModifier.swift */; };
 		FBE107AE247FFF87001DA29C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBE107B0247FFF87001DA29C /* Localizable.strings */; };
@@ -599,6 +604,11 @@
 		BCE48FD1BBBF69F49C6EC765 /* NavigationBarViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModifier.swift; sourceTree = "<group>"; };
 		BCE48FFF9C49070CE13E7B27 /* PatrolBoatUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatrolBoatUserView.swift; sourceTree = "<group>"; };
 		F24C7E1527FAF67D00AA6504 /* UnitPickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitPickerField.swift; sourceTree = "<group>"; };
+		F24DBC09283E3BE30076F7D4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		F26ADFF62832681A00AEFEDE /* MPAButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPAButton.swift; sourceTree = "<group>"; };
+		F28C48E72837D317003BA155 /* MPA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPA.swift; sourceTree = "<group>"; };
+		F2A01C3E283F8E1800467CB5 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		F2A01C40283F962200467CB5 /* MPAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPAView.swift; sourceTree = "<group>"; };
 		F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		F2D617502808494200EF9B3D /* TextFieldAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertModifier.swift; sourceTree = "<group>"; };
 		FBC9242D2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -852,6 +862,8 @@
 				49A3EC91242CB9D000055342 /* User */,
 				49D6CAB4241BB8D6009AD8F6 /* Report */,
 				490C0DBD23FAB49300283307 /* MenuData.swift */,
+				F28C48E72837D317003BA155 /* MPA.swift */,
+				F24DBC09283E3BE30076F7D4 /* Location.swift */,
 				493CDFBF23FEB87600516048 /* Settings.swift */,
 				49FDCD8D241E200000C00574 /* Photo.swift */,
 			);
@@ -941,6 +953,7 @@
 				30D6584124AF3E8100E38ECC /* BoardVesselButton.swift */,
 				308A753A2476C7E900C10462 /* AddAttachmentsButton.swift */,
 				30CBCE4E24757E61000AC61C /* LocationButton.swift */,
+				F26ADFF62832681A00AEFEDE /* MPAButton.swift */,
 				30CBCE502475B8D7000AC61C /* LocationPointView.swift */,
 				BCE48F582115EDDFFD929037 /* CheckBox.swift */,
 				BCE4882A12D87E9A66F57B10 /* ScrollableTabBar */,
@@ -957,6 +970,8 @@
 				BCE488B03B27A519E5271DC6 /* InputMultilineFieldCaption.swift */,
 				BCE48E39591741EEEEE3DDCF /* PhotoView.swift */,
 				30E315D42507C3200037235E /* PatrolBoatView */,
+				F2A01C3E283F8E1800467CB5 /* BottomSheetView.swift */,
+				F2A01C40283F962200467CB5 /* MPAView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1707,6 +1722,7 @@
 				49FDCD5B241D1DCF00C00574 /* OffenceViewModel.swift in Sources */,
 				3093805E24460A2A00E23350 /* VesselRecordView.swift in Sources */,
 				49669329243E304900AC4D87 /* ActivityViewModel.swift in Sources */,
+				F2A01C41283F962200467CB5 /* MPAView.swift in Sources */,
 				4946C108240D4C1B009FB1D9 /* PhotoCaptureController.swift in Sources */,
 				3013CA7C2424AF7A00D2FF60 /* PatrolBoatView.swift in Sources */,
 				BCE480D709F963CBC526C21F /* ButtonField.swift in Sources */,
@@ -1756,6 +1772,7 @@
 				49FDCD8E241E200000C00574 /* Photo.swift in Sources */,
 				49D6CAAF241B9663009AD8F6 /* ReportViewModel.swift in Sources */,
 				49B83EDE2489546D00027B8C /* Catch.swift in Sources */,
+				F2A01C3F283F8E1800467CB5 /* BottomSheetView.swift in Sources */,
 				49807649242E049000D463F4 /* SampleReportViewModel.swift in Sources */,
 				300C4AF4241904A1000A2763 /* CrewMemberInputView.swift in Sources */,
 				49E385B324321066000A6EC3 /* NotesSummaryView.swift in Sources */,
@@ -1774,6 +1791,7 @@
 				49674E442451D3960023ABC6 /* ImageLoader.swift in Sources */,
 				4980764E242E688B00D463F4 /* InspectionSummaryView.swift in Sources */,
 				BCE48A80D03CDC3B8C68F3CC /* UnitPickerWithButton.swift in Sources */,
+				F24DBC0A283E3BE30076F7D4 /* Location.swift in Sources */,
 				49FDCD70241D206D00C00574 /* SummaryViewModel.swift in Sources */,
 				49976B4624536F3300EF84CC /* PhotoIDsDisplayView.swift in Sources */,
 				49A3EC9D242CBA4E00055342 /* NameViewModel.swift in Sources */,
@@ -1822,6 +1840,7 @@
 				30C112B62477E90D00DD13A8 /* NotesListView.swift in Sources */,
 				BCE48509E0E079B8621F7794 /* CatchStaticView.swift in Sources */,
 				49669331243E365200AC4D87 /* GearTypeViewModel.swift in Sources */,
+				F26ADFF72832681A00AEFEDE /* MPAButton.swift in Sources */,
 				BCE4899BD7A859DA2985D1E3 /* ChooseCrewMemberView.swift in Sources */,
 				BCE48DD4CE4154294AE96D20 /* SegmentedField.swift in Sources */,
 				BCE48636CB4B6415762754EC /* ViolationSeizureInputView.swift in Sources */,
@@ -1868,6 +1887,7 @@
 				BCE48F5083615CEB327EF9BD /* PhotoQueryManager.swift in Sources */,
 				30E315D32507BF170037235E /* BoardVesselButtonView.swift in Sources */,
 				BCE48324A3D831DED465C2D5 /* PatrolSummaryView.swift in Sources */,
+				F28C48E82837D317003BA155 /* MPA.swift in Sources */,
 				BCE48744C5AC97E42348905B /* StartStopDatePicker.swift in Sources */,
 				BCE485F8B0B2A469B5FBAE61 /* PatrolReportView.swift in Sources */,
 				BCE4880D6DD1C2FEEFC2B9FC /* VesselImageView.swift in Sources */,

@@ -7,10 +7,6 @@
 
 import RealmSwift
 
-enum MenuType: Int {
-    case countryPickerPriorityList = 0, ports, fisheries, species, emsTypes, activities, gear, violationCodes, violationDescriptions
-}
-
 class MenuData: Object {
     @objc dynamic var _id = ObjectId.generate()
     let countryPickerPriorityList = List<String>()
