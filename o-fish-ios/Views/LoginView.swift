@@ -105,7 +105,6 @@ struct LoginView: View {
             return
         }
         showingLoading = true
-//        let credentials = Credentials(username: username, password: password)
         let credentials = Credentials.emailPassword(email: username, password: password)
         app.login(credentials: credentials) { result in
             self.showingLoading = false
