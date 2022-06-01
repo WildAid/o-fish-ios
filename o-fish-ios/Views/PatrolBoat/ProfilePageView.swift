@@ -169,7 +169,7 @@ struct ProfilePageView: View {
     }
 
     private func deleteDraftReports() {
-        guard let realm = app.currentUser()?.agencyRealm() else {
+        guard let realm = app.currentUser?.agencyRealm() else {
             print("Can't access Realm to delete photo")
             return
         }

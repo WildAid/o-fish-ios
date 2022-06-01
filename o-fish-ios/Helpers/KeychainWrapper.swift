@@ -7,7 +7,7 @@
 
 import LocalAuthentication
 
-struct Credentials {
+struct AppCredentials {
     var username: String
     var password: String
 }
@@ -30,7 +30,7 @@ class KeychainWrapper {
         case none
     }
 
-    func addCredentials(_ credentials: Credentials) -> Error? {
+    func addCredentials(_ credentials: AppCredentials) -> Error? {
         var errorIn: Error?
         do {
             try addCredentials(credentials, server: server)
@@ -44,9 +44,9 @@ class KeychainWrapper {
         return errorIn
     }
 
-    func readCredentials() -> (error: Error?, credentials: Credentials?) {
+    func readCredentials() -> (error: Error?, credentials: AppCredentials?) {
         var errorIn: Error?
-        var credentials: Credentials?
+        var credentials: AppCredentials?
         do {
             credentials = try readCredentials(server: server)
             print("Credentials were read.")
@@ -72,7 +72,7 @@ class KeychainWrapper {
         return errorIn
     }
 
-    private func addCredentials(_ credentials: Credentials, server: String) throws {
+    private func addCredentials(_ credentials: AppCredentials, server: String) throws {
 
         let account = credentials.username
         guard let password = credentials.password.data(using: String.Encoding.utf8) else {
@@ -98,7 +98,7 @@ class KeychainWrapper {
         guard status == errSecSuccess else { throw KeychainError(status: status) }
     }
 
-    private func readCredentials(server: String) throws -> Credentials {
+    private func readCredentials(server: String) throws -> AppCredentials {
         let query: [String: Any] = [kSecClass as String: kSecClassInternetPassword,
                                     kSecAttrServer as String: server,
                                     kSecMatchLimit as String: kSecMatchLimitOne,
@@ -119,7 +119,7 @@ class KeychainWrapper {
                 throw KeychainError(status: errSecInternalError)
         }
 
-        return Credentials(username: account, password: password)
+        return AppCredentials(username: account, password: password)
     }
 
     private func deleteCredentials(server: String) throws {

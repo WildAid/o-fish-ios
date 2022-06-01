@@ -40,7 +40,7 @@ class PhotoViewModel: ObservableObject, Identifiable {
     func save() {
         let isNew = photo == nil
         do {
-            guard let realm = app.currentUser()?.agencyRealm() else {
+            guard let realm = app.currentUser?.agencyRealm() else {
                 print("Can't access Realm")
                 return
             }
@@ -66,7 +66,7 @@ class PhotoViewModel: ObservableObject, Identifiable {
 
     func delete() {
         do {
-            guard let realm = app.currentUser()?.agencyRealm() else {
+            guard let realm = app.currentUser?.agencyRealm() else {
                 print("Can't access Realm to delete photo")
                 return
             }
@@ -85,7 +85,7 @@ class PhotoViewModel: ObservableObject, Identifiable {
 
     static func delete(photoID: String) {
         do {
-            guard let realm = app.currentUser()?.agencyRealm() else {
+            guard let realm = app.currentUser?.agencyRealm() else {
                 print("Can't access Realm to delete photo")
                 return
             }

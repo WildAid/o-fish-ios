@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class User: EmbeddedObject, ObservableObject {
+class User: EmbeddedObject {
     @objc dynamic var name: Name? = Name()
     @objc dynamic var email = ""
 }

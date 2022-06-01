@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class SafetyLevel: EmbeddedObject, ObservableObject {
+class SafetyLevel: EmbeddedObject {
     @objc dynamic var level = ""
     @objc dynamic var amberReason = ""
     @objc dynamic var attachments: Attachments? = Attachments()

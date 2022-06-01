@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class Fishery: EmbeddedObject, ObservableObject {
+class Fishery: EmbeddedObject {
     @objc dynamic var name = ""
     @objc dynamic var attachments: Attachments? = Attachments()
 }

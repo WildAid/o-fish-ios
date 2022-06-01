@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class GearType: EmbeddedObject, ObservableObject {
+class GearType: EmbeddedObject {
     @objc dynamic var name = ""
     @objc dynamic var attachments: Attachments? = Attachments()
 }

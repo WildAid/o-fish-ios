@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class EMS: EmbeddedObject, ObservableObject {
+class EMS: EmbeddedObject {
     @objc dynamic var emsType = ""
     @objc dynamic var emsDescription = ""
     @objc dynamic var registryNumber = ""

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct LoginView: View {
     @EnvironmentObject var settings: Settings
@@ -104,25 +105,18 @@ struct LoginView: View {
             return
         }
         showingLoading = true
-        app.login(credentials: .init(username: username, password: password)) { user, error in
-            guard user != nil else {
-                self.showingLoading = false
+        let credentials = Credentials.emailPassword(email: username, password: password)
+        app.login(credentials: credentials) { result in
+            self.showingLoading = false
+            switch result {
+            case .success(let user):
+                DispatchQueue.main.async {
+                    print("Logged in")
+                    self.settings.realmUser = user
+                }
+            case .failure(let error):
+                print("Loggin error: \(error.localizedDescription)")
                 self.errorMessage = "Invalid email or password"
-                return
-            }
-
-            print("Logged in")
-
-            if let error = self.keychain.removeCredentials() as? KeychainError {
-                print(error.localizedDescription)
-            }
-
-            if let error = self.keychain.addCredentials(Credentials(username: username, password: password)) as? KeychainError {
-                print(error.localizedDescription)
-            }
-            DispatchQueue.main.async {
-                self.settings.realmUser = user
-                self.showingLoading = false
             }
         }
     }

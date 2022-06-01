@@ -13,7 +13,7 @@ class PhotoQueryManager {
 
     func lastVesselImagesId(permitNumber: String) -> [String] {
         let predicate = NSPredicate(format: "vessel.permitNumber = %@", permitNumber)
-        guard let reports = app.currentUser()?.agencyRealm()?.objects(Report.self)
+        guard let reports = app.currentUser?.agencyRealm()?.objects(Report.self)
                 .filter(predicate)
                 .sorted(byKeyPath: "timestamp", ascending: false) else {
             return []
@@ -39,7 +39,7 @@ class PhotoQueryManager {
         }
 
         let predicate = NSPredicate(format: "_id IN %@", indexes)
-        guard let photos = app.currentUser()?.agencyRealm()?.objects(Photo.self).filter(predicate) else {
+        guard let photos = app.currentUser?.agencyRealm()?.objects(Photo.self).filter(predicate) else {
             return []
         }
 

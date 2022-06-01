@@ -36,7 +36,7 @@ class DutyChangeViewModel: ObservableObject {
     func save(existingObject: Bool = false) {
         let isNew = (dutyChange == nil)
         do {
-            guard let realm = app.currentUser()?.agencyRealm() else {
+            guard let realm = app.currentUser?.agencyRealm() else {
                 print("Realm not avaialable")
                 return
             }
