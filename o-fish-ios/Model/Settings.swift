@@ -14,6 +14,8 @@ class Settings: ObservableObject {
     static let shared = Settings()
 
     @Published var realmUser: RealmSwift.User?
+    @Published var mpaEnable = false
+    @Published var mpa = [MPA]()
     var menuData = MenuData()
 
     var intialZoomLevel = 322000 // Meters to show in map views, ~= 200 mi
