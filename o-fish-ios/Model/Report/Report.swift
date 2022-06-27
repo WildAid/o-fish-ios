@@ -16,6 +16,7 @@ class Report: Object, Identifiable {
     @objc dynamic var date: NSDate? = NSDate()
     @objc dynamic var vessel: Boat? = Boat()
     @objc dynamic var captain: CrewMember? = CrewMember()
+    @objc dynamic var mpa: MPA?
     let crew = List<CrewMember>()
     let notes = List<AnnotatedNote>()
     @objc dynamic var inspection: Inspection? = Inspection()
