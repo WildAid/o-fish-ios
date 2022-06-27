@@ -76,14 +76,14 @@ struct TopTabBarContainerView: View {
         self.showSubmitAlert = showSubmitAlert
         self._notFilledScreens = notFilledScreens
 
-        let basicInfoItem = TabBarItem(title: TopTabBarItems.basicInformation.rawValue)
-        let vesselItem = TabBarItem(title: TopTabBarItems.vessel.rawValue)
-        let catchItem = TabBarItem(title: TopTabBarItems.whatsOnBoard.rawValue)
-        let activityItem = TabBarItem(title: TopTabBarItems.activity.rawValue)
-        let riskItem = TabBarItem(title: TopTabBarItems.risk.rawValue)
-        let crewItem = TabBarItem(title: TopTabBarItems.crew.rawValue)
-        let violationsItem = TabBarItem(title: TopTabBarItems.violations.rawValue)
-        let notesItem = TabBarItem(title: TopTabBarItems.notes.rawValue)
+        let basicInfoItem = TabBarItem(id: 0, title: TopTabBarItems.basicInformation.rawValue)
+        let vesselItem = TabBarItem(id: 1, title: TopTabBarItems.vessel.rawValue)
+        let catchItem = TabBarItem(id: 2, title: TopTabBarItems.whatsOnBoard.rawValue)
+        let activityItem = TabBarItem(id: 3, title: TopTabBarItems.activity.rawValue)
+        let riskItem = TabBarItem(id: 4, title: TopTabBarItems.risk.rawValue)
+        let crewItem = TabBarItem(id: 5, title: TopTabBarItems.crew.rawValue)
+        let violationsItem = TabBarItem(id: 6, title: TopTabBarItems.violations.rawValue)
+        let notesItem = TabBarItem(id: 7, title: TopTabBarItems.notes.rawValue)
 
         let tabItems = [
             basicInfoItem,

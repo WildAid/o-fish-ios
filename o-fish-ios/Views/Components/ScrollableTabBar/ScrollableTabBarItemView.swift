@@ -104,11 +104,11 @@ struct ScrollableTabBarItemView: View {
 }
 
 struct ScrollableTabBarItemView_Previews: PreviewProvider {
-    static let items = [TabBarItem(title: "Title1", state: .complete),
-                         TabBarItem(title: "Title2", state: .complete),
-                         TabBarItem(title: "Title3", state: .skipped),
-                         TabBarItem(title: "Title4", state: .notStarted),
-                         TabBarItem(title: "Title5", state: .notStarted)]
+    static let items = [TabBarItem(id: 0, title: "Title1", state: .complete),
+                         TabBarItem(id: 1, title: "Title2", state: .complete),
+                         TabBarItem(id: 2, title: "Title3", state: .skipped),
+                         TabBarItem(id: 3, title: "Title4", state: .notStarted),
+                         TabBarItem(id: 4, title: "Title5", state: .notStarted)]
 
     static var previews: some View {
         VStack {
