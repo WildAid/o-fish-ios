@@ -295,6 +295,7 @@
 		F2A01C41283F962200467CB5 /* MPAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A01C40283F962200467CB5 /* MPAView.swift */; };
 		F2ADF94227E9BFE2003D1245 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */; };
 		F2D617512808494200EF9B3D /* TextFieldAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D617502808494200EF9B3D /* TextFieldAlertModifier.swift */; };
+		F2E525F12869BEEC004A907D /* Screen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E525F02869BEEC004A907D /* Screen+Extension.swift */; };
 		FBE107AE247FFF87001DA29C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBE107B0247FFF87001DA29C /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -611,6 +612,7 @@
 		F2A01C40283F962200467CB5 /* MPAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPAView.swift; sourceTree = "<group>"; };
 		F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		F2D617502808494200EF9B3D /* TextFieldAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertModifier.swift; sourceTree = "<group>"; };
+		F2E525F02869BEEC004A907D /* Screen+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen+Extension.swift"; sourceTree = "<group>"; };
 		FBC9242D2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBC9242E2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBE107AF247FFF87001DA29C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -889,6 +891,7 @@
 			isa = PBXGroup;
 			children = (
 				2274E4D22536194400D7B5CD /* Color+Theme.swift */,
+				F2E525F02869BEEC004A907D /* Screen+Extension.swift */,
 				30A4474624CAF84900CDF824 /* KeychainWrapper.swift */,
 				3004955B24B87E2A00906D35 /* NotificationManager.swift */,
 				30DBF2F724A34B6C00A364F1 /* Font+title2+titile3.swift */,
@@ -1797,6 +1800,7 @@
 				49A3EC9D242CBA4E00055342 /* NameViewModel.swift in Sources */,
 				F2D617512808494200EF9B3D /* TextFieldAlertModifier.swift in Sources */,
 				30E315CD25079A1C0037235E /* OnOffCircleView.swift in Sources */,
+				F2E525F12869BEEC004A907D /* Screen+Extension.swift in Sources */,
 				49E385B124320705000A6EC3 /* ViolationsSummaryView.swift in Sources */,
 				49FDCD61241D1EA400C00574 /* CrewMemberViewModel.swift in Sources */,
 				308A753B2476C7E900C10462 /* AddAttachmentsButton.swift in Sources */,
