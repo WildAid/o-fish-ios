@@ -611,6 +611,7 @@
 		F2A01C40283F962200467CB5 /* MPAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPAView.swift; sourceTree = "<group>"; };
 		F2ADF94127E9BFE2003D1245 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		F2D617502808494200EF9B3D /* TextFieldAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertModifier.swift; sourceTree = "<group>"; };
+		F2E525F2286B4EB3004A907D /* o-fish-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "o-fish-ios.entitlements"; sourceTree = "<group>"; };
 		FBC9242D2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FBC9242E2481198900A7C005 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBE107AF247FFF87001DA29C /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -832,6 +833,7 @@
 		490C0DA323F6B15800283307 /* o-fish-ios */ = {
 			isa = PBXGroup;
 			children = (
+				F2E525F2286B4EB3004A907D /* o-fish-ios.entitlements */,
 				493CDFC723FEBA9300516048 /* Helpers */,
 				490C0DBA23F6E5EA00283307 /* Views */,
 				49D6CAAD241B9631009AD8F6 /* ViewModel */,
@@ -2104,6 +2106,7 @@
 			baseConfigurationReference = 542E5D76C2521F4603E2BDEA /* Pods-o-fish-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "o-fish-ios/o-fish-ios.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
@@ -2129,6 +2132,7 @@
 			baseConfigurationReference = 7F135385C428BA5F9EB62154 /* Pods-o-fish-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "o-fish-ios/o-fish-ios.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"o-fish-ios/Preview Content\"";
