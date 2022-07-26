@@ -33,37 +33,37 @@ extension UIScreen {
     /// 320.0 width
     @nonobjc static var isWidthAtLeast5: Bool {
         let bounds = UIScreen.main.fixedCoordinateSpace.bounds
-        return bounds.width >= UIScreen.screenWidth5
+        return bounds.width > UIScreen.screenWidth5
     }
     /// 375.0 width
     @nonobjc static var isWidthAtLeast6: Bool {
         let bounds = UIScreen.main.fixedCoordinateSpace.bounds
-        return bounds.width >= UIScreen.screenWidth6
+        return bounds.width > UIScreen.screenWidth6
     }
     /// 414.0 width
     @nonobjc static var isWidthAtLeast6Plus: Bool {
         let bounds = UIScreen.main.fixedCoordinateSpace.bounds
-        return bounds.width >= UIScreen.screenWidth6Plus
+        return bounds.width > UIScreen.screenWidth6Plus
     }
     /// 568.0 height
     @nonobjc static var isAtLeast5: Bool {
         let bounds = UIScreen.main.fixedCoordinateSpace.bounds
-        return bounds.height >= UIScreen.screenHeight5
+        return bounds.height > UIScreen.screenHeight5
     }
     /// 667.0 height
     @nonobjc static var isAtLeast6: Bool {
         let bounds = UIScreen.main.fixedCoordinateSpace.bounds
-        return bounds.height >= UIScreen.screenHeight6
+        return bounds.height > UIScreen.screenHeight6
     }
     /// 736.0 height
     @nonobjc static var isAtLeast6Plus: Bool {
         let bounds = UIScreen.main.fixedCoordinateSpace.bounds
-        return bounds.height >= UIScreen.screenHeight6Plus
+        return bounds.height > UIScreen.screenHeight6Plus
     }
     /// 812.0 height
     @nonobjc static var isAtLeast10: Bool {
         let bounds = UIScreen.main.fixedCoordinateSpace.bounds
-        return bounds.height >= UIScreen.screenHeightX
+        return bounds.height > UIScreen.screenHeightX
     }
 
 }

@@ -23,7 +23,7 @@ struct ChooseEMSView: View {
     var body: some View {
         TextPickerView(selectedItem: $selectedItem,
             items: items,
-            title: UIScreen.isAtLeast6 ? "Electronic Monitoring System" : "EMS",
+            title: UIScreen.isWidthAtLeast6 ? "Electronic Monitoring System" : "EMS",
             searchBarPlaceholder: "Search EMS's")
     }
 }
