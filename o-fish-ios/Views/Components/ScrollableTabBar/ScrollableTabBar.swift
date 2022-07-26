@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-class TabBarItem: ObservableObject {
+class TabBarItem: ObservableObject, Identifiable {
+    let id: Int
     @Published var title: String
     @Published var state: State
 
@@ -18,7 +19,8 @@ class TabBarItem: ObservableObject {
         case complete
     }
 
-    init(title: String, state: State = .notStarted) {
+    init(id: Int, title: String, state: State = .notStarted) {
+        self.id = id
         self.title = title
         self.state = state
     }
@@ -27,12 +29,6 @@ class TabBarItem: ObservableObject {
 extension TabBarItem: Equatable {
     public static func == (lhs: TabBarItem, rhs: TabBarItem) -> Bool {
         lhs.id == rhs.id
-    }
-}
-
-extension TabBarItem: Identifiable {
-    public var id: String {
-        title
     }
 }
 
@@ -48,15 +44,21 @@ struct ScrollableTabBar: View {
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: noSpacing) {
-                ForEach(items) { item in
-                    ScrollableTabBarItemView(item: item,
-                        isSelected: self.isSelected(item: item),
-                        activeColor: self.tintColor,
-                        onClick: self.itemClicked)
-                }
+            ScrollViewReader { value in
+                HStack(spacing: noSpacing) {
+                    ForEach(items) { item in
+                        ScrollableTabBarItemView(item: item,
+                                                 isSelected: self.isSelected(item: item),
+                                                 activeColor: self.tintColor,
+                                                 onClick: { item in
+                            self.itemClicked?(item)
+                            value.scrollTo(item.id, anchor: .center)
+                        })
+                        .id(item.id)
+                    }
 
-                Spacer(minLength: noSpacing)
+                    Spacer(minLength: noSpacing)
+                }
             }
         }
         .background(Color.oBackground)
@@ -69,11 +71,11 @@ struct ScrollableTabBar: View {
 
 struct ScrollableTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        let items = [TabBarItem(title: "Title1", state: .complete),
-                      TabBarItem(title: "Title2", state: .complete),
-                      TabBarItem(title: "Title3", state: .skipped),
-                      TabBarItem(title: "Title4", state: .notStarted),
-                      TabBarItem(title: "Title5", state: .notStarted)]
+        let items = [TabBarItem(id: 0, title: "Title1", state: .complete),
+                     TabBarItem(id: 1, title: "Title2", state: .complete),
+                      TabBarItem(id: 2, title: "Title3", state: .skipped),
+                      TabBarItem(id: 3, title: "Title4", state: .notStarted),
+                      TabBarItem(id: 4, title: "Title5", state: .notStarted)]
 
         return ScrollableTabBar(items: .constant(items), selectedItem: items[3])
     }
