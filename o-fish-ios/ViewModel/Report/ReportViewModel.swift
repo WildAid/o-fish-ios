@@ -6,6 +6,7 @@
 //
 
 import RealmSwift
+import Combine
 
 class ReportViewModel: ObservableObject, Identifiable {
     // Not making this private as it's used by the unit tests
@@ -21,6 +22,7 @@ class ReportViewModel: ObservableObject, Identifiable {
     @Published var crew = [CrewMemberViewModel]()
     @Published var inspection = InspectionViewModel()
     @Published var notes = [AnnotatedNoteViewModel]()
+    @Published var mpa: MPA?
 
     init() {
         self.captain.isCaptain = true
@@ -51,6 +53,7 @@ class ReportViewModel: ObservableObject, Identifiable {
         for index in report.notes.indices {
             notes.append(AnnotatedNoteViewModel(report.notes[index]))
         }
+        mpa = report.mpa
     }
 
     func removeCrewMemberFromLinkedViolations(_ crewMember: CrewMemberViewModel) {
@@ -86,6 +89,7 @@ class ReportViewModel: ObservableObject, Identifiable {
                 report.crew.forEach {
                     realm.delete($0)
                 }
+                report.mpa = mpa
                 report.crew.append(objectsIn: crew.compactMap {
                     $0.isEmpty ? nil : $0.save()
                 })
