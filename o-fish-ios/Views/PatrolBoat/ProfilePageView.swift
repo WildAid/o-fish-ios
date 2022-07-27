@@ -47,10 +47,16 @@ struct ProfilePageView: View {
                                                size: .large,
                                                action: changeProfilePhoto)
                             VStack(alignment: .leading, spacing: .zero) {
-                                Text(user.name.fullName)
+
+                               // TODO: figure out why user.name.fullName doesn't work
+                               // Text(user.name.fullName)
+                               Text((self.settings.realmUser?.firstName ?? "Jane") + " " +
+                                     (self.settings.realmUser?.lastName ?? "Roe") )
                                     .foregroundColor(.oFieldValue)
 
-                                Text(user.email)
+                                // TODO: figure out why user.email doesn't work
+                                // Text(user.email)
+                                Text(self.settings.realmUser?.emailAddress ?? "jane@test.com")
                                     .foregroundColor(.oFieldTitle)
                             }
                             .font(.body)
