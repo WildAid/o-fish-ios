@@ -47,7 +47,7 @@ struct MapView: UIViewRepresentable {
             }
         } else {
             mapView.overlays.forEach { mapView.removeOverlay($0) }
-            mif mpaSelected != nil {
+            if mpaSelected != nil {
                 mpaSelected = nil
             }
         }
